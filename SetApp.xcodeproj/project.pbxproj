@@ -36,6 +36,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0448CF327FC5C8400DD6BD2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B075219927FA1B1C009386AB /* Assets.xcassets */,
+				B075219C27FA1B1C009386AB /* Preview Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		B075218927FA1B1A009386AB = {
 			isa = PBXGroup;
 			children = (
@@ -57,18 +66,9 @@
 			children = (
 				B07521A427FA1C3F009386AB /* Controladores */,
 				B075219527FA1B1A009386AB /* SetAppApp.swift */,
-				B075219927FA1B1C009386AB /* Assets.xcassets */,
-				B075219B27FA1B1C009386AB /* Preview Content */,
+				B0448CF327FC5C8400DD6BD2 /* Assets */,
 			);
 			path = SetApp;
-			sourceTree = "<group>";
-		};
-		B075219B27FA1B1C009386AB /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				B075219C27FA1B1C009386AB /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		B07521A327FA1C15009386AB /* Principal */ = {
@@ -290,7 +290,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SetApp/Preview Content\"";
 				DEVELOPMENT_TEAM = HA55PZG2CJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -319,7 +318,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SetApp/Preview Content\"";
 				DEVELOPMENT_TEAM = HA55PZG2CJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
