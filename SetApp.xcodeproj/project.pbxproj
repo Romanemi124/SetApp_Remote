@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B064F7B927FDF482001811FE /* RecuPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064F7B827FDF482001811FE /* RecuPassView.swift */; };
+		B064F7C627FE2739001811FE /* NuevaPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064F7C527FE2739001811FE /* NuevaPassView.swift */; };
 		B075219627FA1B1A009386AB /* SetAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075219527FA1B1A009386AB /* SetAppApp.swift */; };
 		B075219827FA1B1A009386AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075219727FA1B1A009386AB /* ContentView.swift */; };
 		B075219A27FA1B1C009386AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B075219927FA1B1C009386AB /* Assets.xcassets */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B064F7B827FDF482001811FE /* RecuPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuPassView.swift; sourceTree = "<group>"; };
+		B064F7BB27FDF5C9001811FE /* Script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Script.sh; sourceTree = "<group>"; };
+		B064F7C527FE2739001811FE /* NuevaPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevaPassView.swift; sourceTree = "<group>"; };
 		B075219227FA1B1A009386AB /* SetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B075219527FA1B1A009386AB /* SetAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAppApp.swift; sourceTree = "<group>"; };
 		B075219727FA1B1A009386AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +72,7 @@
 				B07521A427FA1C3F009386AB /* Controladores */,
 				B075219527FA1B1A009386AB /* SetAppApp.swift */,
 				B0448CF327FC5C8400DD6BD2 /* Assets */,
+				B064F7BB27FDF5C9001811FE /* Script.sh */,
 			);
 			path = SetApp;
 			sourceTree = "<group>";
@@ -77,6 +83,8 @@
 				B075219727FA1B1A009386AB /* ContentView.swift */,
 				B07521A527FA1C69009386AB /* LoginView.swift */,
 				B07521A727FA3BC2009386AB /* RegistroView.swift */,
+				B064F7B827FDF482001811FE /* RecuPassView.swift */,
+				B064F7C527FE2739001811FE /* NuevaPassView.swift */,
 			);
 			path = Principal;
 			sourceTree = "<group>";
@@ -160,9 +168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B07521A627FA1C69009386AB /* LoginView.swift in Sources */,
+				B064F7B927FDF482001811FE /* RecuPassView.swift in Sources */,
 				B075219827FA1B1A009386AB /* ContentView.swift in Sources */,
 				B075219627FA1B1A009386AB /* SetAppApp.swift in Sources */,
 				B07521A827FA3BC3009386AB /* RegistroView.swift in Sources */,
+				B064F7C627FE2739001811FE /* NuevaPassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

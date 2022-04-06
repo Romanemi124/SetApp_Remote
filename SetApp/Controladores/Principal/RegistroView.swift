@@ -9,12 +9,12 @@ import SwiftUI
 
 struct RegistroView: View {
     
-    @State var nombreTxt = ""
-    @State var telefonoTxt = ""
-    @State var sexoTxt = ""
-    @State var nacimientoTxt = ""
-    @State var correoTxt = ""
-    @State var contrasenaTxt = ""
+    @State private var nombreTxt: String = ""
+    @State private var telefonoTxt: String = ""
+    @State private var sexoTxt: String = ""
+    @State private var nacimientoTxt: String = ""
+    @State private var correoTxt: String = ""
+    @State private var contrasenaTxt: String = ""
     
     var body: some View {
         
@@ -39,12 +39,12 @@ struct RegistroView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .offset(x: 45)
                 
-                CamposText(titulo : "Nombre", texto : nombreTxt)
-                CamposText(titulo : "Teléfono", texto : telefonoTxt)
-                CamposText(titulo : "Sexo", texto : sexoTxt)
-                CamposText(titulo : "Fecha nacimiento", texto : nacimientoTxt)
-                CamposText(titulo : "Correo electrónico", texto : correoTxt)
-                CamposText(titulo : "Contraseña", texto : contrasenaTxt)
+                TextoDatos(placeholder: "Nombre", text: self.$nombreTxt)
+                TextoDatos(placeholder: "Teléfono", text: self.$telefonoTxt)
+                TextoDatos(placeholder: "Sexo", text: self.$sexoTxt)
+                TextoDatos(placeholder: "Fecha nacimiento", text: self.$nacimientoTxt)
+                TextoDatos(placeholder: "Correo electrónico", text: self.$correoTxt)
+                TextoDatos(placeholder: "Contraseña", text: self.$contrasenaTxt)
                 
                 PrimaryButton(title: "Iniciar Sesión")
             }
