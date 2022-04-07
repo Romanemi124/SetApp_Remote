@@ -15,6 +15,10 @@
 		B075219D27FA1B1C009386AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B075219C27FA1B1C009386AB /* Preview Assets.xcassets */; };
 		B07521A627FA1C69009386AB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07521A527FA1C69009386AB /* LoginView.swift */; };
 		B07521A827FA3BC3009386AB /* RegistroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07521A727FA3BC2009386AB /* RegistroView.swift */; };
+		B0980F9B27FEF2910000EF62 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0980F9A27FEF2910000EF62 /* PerfilView.swift */; };
+		B0980FA527FEF3F30000EF62 /* MenuDesplegableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0980FA427FEF3F30000EF62 /* MenuDesplegableView.swift */; };
+		B0980FA927FF307B0000EF62 /* VistaPreviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0980FA827FF307B0000EF62 /* VistaPreviaView.swift */; };
+		B0980FAB27FF43930000EF62 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0980FAA27FF43930000EF62 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		B075219C27FA1B1C009386AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B07521A527FA1C69009386AB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B07521A727FA3BC2009386AB /* RegistroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroView.swift; sourceTree = "<group>"; };
+		B0980F9A27FEF2910000EF62 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
+		B0980FA427FEF3F30000EF62 /* MenuDesplegableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDesplegableView.swift; sourceTree = "<group>"; usesTabs = 0; };
+		B0980FA827FF307B0000EF62 /* VistaPreviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaPreviaView.swift; sourceTree = "<group>"; };
+		B0980FAA27FF43930000EF62 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +100,37 @@
 		B07521A427FA1C3F009386AB /* Controladores */ = {
 			isa = PBXGroup;
 			children = (
+				B0980F9927FEF2740000EF62 /* Cuenta */,
 				B07521A327FA1C15009386AB /* Principal */,
 			);
 			path = Controladores;
+			sourceTree = "<group>";
+		};
+		B0980F9927FEF2740000EF62 /* Cuenta */ = {
+			isa = PBXGroup;
+			children = (
+				B0980FAC27FF44E30000EF62 /* Menu */,
+				B0980F9A27FEF2910000EF62 /* PerfilView.swift */,
+			);
+			path = Cuenta;
+			sourceTree = "<group>";
+		};
+		B0980F9D27FEF2C70000EF62 /* Vistas */ = {
+			isa = PBXGroup;
+			children = (
+				B0980FA427FEF3F30000EF62 /* MenuDesplegableView.swift */,
+				B0980FA827FF307B0000EF62 /* VistaPreviaView.swift */,
+			);
+			path = Vistas;
+			sourceTree = "<group>";
+		};
+		B0980FAC27FF44E30000EF62 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B0980FAA27FF43930000EF62 /* MenuView.swift */,
+				B0980F9D27FEF2C70000EF62 /* Vistas */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,8 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B07521A627FA1C69009386AB /* LoginView.swift in Sources */,
+				B0980FAB27FF43930000EF62 /* MenuView.swift in Sources */,
+				B0980F9B27FEF2910000EF62 /* PerfilView.swift in Sources */,
 				B064F7B927FDF482001811FE /* RecuPassView.swift in Sources */,
+				B0980FA927FF307B0000EF62 /* VistaPreviaView.swift in Sources */,
 				B075219827FA1B1A009386AB /* ContentView.swift in Sources */,
+				B0980FA527FEF3F30000EF62 /* MenuDesplegableView.swift in Sources */,
 				B075219627FA1B1A009386AB /* SetAppApp.swift in Sources */,
 				B07521A827FA3BC3009386AB /* RegistroView.swift in Sources */,
 				B064F7C627FE2739001811FE /* NuevaPassView.swift in Sources */,
