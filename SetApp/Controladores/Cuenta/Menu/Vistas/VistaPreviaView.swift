@@ -80,6 +80,7 @@ import SwiftUI
                 Image(systemName: "xmark")
                     .font(.title.bold())
                     .foregroundColor(.white)
+                    .padding(.top, 24)
             }
             //Escondiendo el menú cuando es visible
             .opacity(showMenu ? 1 : 0)

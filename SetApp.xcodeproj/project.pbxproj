@@ -77,8 +77,8 @@
 		B075219427FA1B1A009386AB /* SetApp */ = {
 			isa = PBXGroup;
 			children = (
-				B07521A427FA1C3F009386AB /* Controladores */,
 				B075219527FA1B1A009386AB /* SetAppApp.swift */,
+				B07521A427FA1C3F009386AB /* Controladores */,
 				B0448CF327FC5C8400DD6BD2 /* Assets */,
 				B064F7BB27FDF5C9001811FE /* Script.sh */,
 			);

@@ -37,7 +37,6 @@ struct LoginView: View {
                 Spacer(minLength: 220)
                 
                 /*------------------------------------*/
-                //FALTA revisar colores con el custom
                 
                 //TextField donde se introducen los datos y el campo que voy a pasar
                 TextoDatos(placeholder: "Email", text: self.$emailTxt)
@@ -70,13 +69,13 @@ struct TextoDatos: View {
         ZStack (alignment: .leading) {
             
             Text(placeholder)
-                .foregroundColor(.blue.opacity(0.5))
+                .foregroundColor(.white)
                 .offset(y: self.text.isEmpty ? 0 : -25)
                 .scaleEffect(self.text.isEmpty ? 1 : 0.9, anchor: .leading)
                 //.font(.system(self.text.isEmpty ? .title3 : .title3, design: .rounded))
             
             TextField("", text: self.$text)
-                .foregroundColor(.blue)
+                .foregroundColor(.white)
         }
         .padding(.top, self.text.isEmpty ? 0 : 18)
         //Hace el efecto más suave
@@ -87,7 +86,7 @@ struct TextoDatos: View {
         .background(
             RoundedRectangle(cornerRadius: 10)
                 //Quitar el fondo del rectángulo con la opacidad del color
-                .stroke(text.isEmpty ? .blue.opacity(0.5) : .blue, lineWidth: 2)
+                .stroke(text.isEmpty ? .white : .white, lineWidth: 2)
         )
         //Separación de los laterales de la vista
         .cornerRadius(10)

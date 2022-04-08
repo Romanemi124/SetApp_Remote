@@ -26,9 +26,11 @@ struct MenuCompletoView: View {
             //Vista previa de las pantallas del menú
             VistaPreviaView(currentTab: $currentTab, showMenu: $showMenu)
                 //Borde redondeado
-                .cornerRadius(showMenu ? 25 : 0)
+                //.cornerRadius(showMenu ? 25 : 0)
                 //Movimiento 3D
+                /*
                 .rotation3DEffect(.init(degrees: showMenu ? -15 : 0), axis: (x: 0, y: 1, z: 0), anchor: .trailing)
+                 */
                 //Movimiento menú aparte
                 .offset(x: showMenu ? getRect().width / 2 : 0)
                 .ignoresSafeArea()
