@@ -40,12 +40,12 @@ struct MainTabView: View {
                 }.tag(1)
             
             //Casa
-            NotificacionesView()
+            PublicacionView()
                 .onTapGesture {
                     self.selectedIndex = 2
                 }
                 .tabItem {
-                    Image(systemName: "bell")
+                    Image(systemName: "plus.square")
                 }.tag(2)
             
             //Casa

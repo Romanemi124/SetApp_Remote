@@ -16,7 +16,6 @@ struct SeleccionarFotoPefilView: View {
     
     var body: some View {
         
-        
         //Diseño de la vista principal de la app
         ZStack {
             
@@ -44,7 +43,7 @@ struct SeleccionarFotoPefilView: View {
                         
                         Image("FotoPerfil").resizable()
                             .renderingMode(.template)
-                            .foregroundColor(Color(.systemBlue))
+                            .foregroundColor(Color(.white))
                             .scaledToFill()
                             .frame(width: 180, height: 180)
                     }
@@ -65,7 +64,6 @@ struct SeleccionarFotoPefilView: View {
                     
                     //Botón de Registarse
                     Button{
-
                      
                         viewModel.subirImagenPerfil(selectedImage)
                         
@@ -73,9 +71,7 @@ struct SeleccionarFotoPefilView: View {
                         
                         PrimaryButton(title: "Continuar")
                     }
-                    
                 }
-              
             }
         }
     }

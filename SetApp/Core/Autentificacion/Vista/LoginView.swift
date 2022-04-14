@@ -47,9 +47,9 @@ struct LoginView: View {
                         Text("¿Has olvidado la contraseña?")
                             .font(.caption)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color(.systemBlue))
                             .padding(.top)
                             .padding(.trailing, 30)
+                            .foregroundColor(.white)
                     }
                 }
                 .padding(.bottom, 30)
@@ -81,10 +81,12 @@ struct LoginView: View {
                     HStack {
                         Text("¿No tienes cuenta?")
                             .font(.footnote)
+                            .foregroundColor(.white)
                         
                         Text("Registrate aquí")
                             .font(.footnote)
                             .fontWeight(.semibold)
+                            .foregroundColor(.white)
                     }
                 }
                 .padding(.bottom, 32)

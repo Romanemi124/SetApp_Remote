@@ -28,12 +28,13 @@ struct PerfilView: View {
             //Parte superior de la vista
             /* Al llamar a esta variable mostramos la parte de la vista guarda en ella */
             headerView
+                .padding(.bottom, 10)
             
             //Botones de acciones(Notificaciones + editar perfil)
-            actionButtons
+            userInfoDetailsInfo
             
             //Información del usuario
-            userInfoDetailsInfo
+            actionButtons
             
             Spacer()
         }
@@ -61,11 +62,11 @@ extension PerfilView {
          bottomLeading orientar los elementos abajo y hacia la derecha */
         ZStack(alignment: .bottomLeading){
             //Color de fondo
-            Color(.systemIndigo)
+            Color(red: 0.113, green: 0.031, blue: 0.16)
             //ignoresSafeArea() permite añadir el fondo en la parte superior
                 .ignoresSafeArea()
             
-            VStack {
+            HStack(spacing:30) {
                 //Flecha de atrás
                 Button{
                     //Cambiamos el valor de la variable para que vuelva a la anterior vista
@@ -74,93 +75,131 @@ extension PerfilView {
                     
                     Image(systemName: "arrow.left")
                         .resizable()
-                        .frame(width: 20, height: 16)
+                        .frame(width: 25, height: 20)
                         .foregroundColor(.white)
-                        .offset(x: 16, y: -4)
+                        .padding(15)
                 }
-                //Foto de perfil
-                KFImage(URL(string: usuario.UrlImagenPerfil))
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(width: 72, height: 72)
-                //Elegimos el punto donde se va ubicar
-                    .offset(x: 16, y: 12)
                 
-            }
-        }
-        .frame(height: 96)
+                //Nombre completo + verficado
+                HStack {
         
+                    
+                    //Nombre de usario
+                    Text("@\(usuario.nombreUsuario)")
+                        .font(.title3).bold()
+                        .foregroundColor(.white)
+                    
+                    //Verificado
+                    /*
+                    Image(systemName: "checkmark.seal.fill").foregroundColor(Color(.systemBlue))
+                     */
+                }
+            }
+            .padding(.leading)
+            .padding(.bottom, 12)
+            .padding(.top, 12)
+
+        }
+        .frame(height: 30)
     }
     //Variable que guarda los botones de acciones(Notificaciones + editar perfil)
+    var userInfoDetailsInfo: some View{
+        
+        ZStack{
+            
+            //Foto de perfil del usuario
+            KFImage(URL(string: usuario.UrlImagenPerfil))
+                .resizable()
+            
+        }
+        .frame(height: 200)
+    }
+    
     var actionButtons: some View{
         
-        VStack{
+        ZStack(alignment: .bottomLeading){
+            //Color de fondo
+            Color(red: 0.113, green: 0.031, blue: 0.16)
+            //ignoresSafeArea() permite añadir el fondo en la parte superior
+                .ignoresSafeArea()
             
-            HStack(spacing:12){
+            VStack {
                 
-                Spacer()
-                
-                //Notificaciones
-                Image(systemName: "bell.badge")
-                    .font(.title3).padding(6)
-                    .overlay(Circle().stroke(Color.gray,lineWidth: 0.75))
-                
-                //Editar perfil
-                Button{
+                HStack{
                     
-                }label: {
-                    Text("Edit Profile")
-                        .font(.subheadline).bold()
-                        .frame(width: 120, height: 32)
-                        .foregroundColor(.black)
-                        .overlay(RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.gray,lineWidth: 0.75))
+                    //Nombre de usario
+                    Text(usuario.nombreCompleto)
+                        .font(.title)
+                        .foregroundColor(.white)
+                    Spacer()
                 }
-            }
-            //trailing darle relleno al borde
-            .padding(.trailing)
-        }
-        
-    }
-    
-    var userInfoDetailsInfo: some View{
-        VStack(alignment: .leading, spacing: 4){
-            
-            //Nombre completo + verficado
-            HStack {
-                //Nombre completo
-                Text(usuario.nombreCompleto).font(.title2).bold()
+                //trailing darle relleno al borde
+                .padding(.leading, 20)
+                .padding(.top, 15)
                 
-                Image(systemName: "checkmark.seal.fill").foregroundColor(Color(.systemBlue))
-            }
-            
-            //Nombre de usario
-            Text("@\(usuario.nombreUsuario)").font(.subheadline).foregroundColor(.gray)
-            
-            //Estado de usuario
-            Text("I´m defender of truth").font(.subheadline).padding(.vertical)
-            
-            //Ubicación y enlaces usuario
-            HStack(spacing: 24){
-                //Ubicación
-                HStack{
-                    Image(systemName: "mappin.and.ellipse")
-                    Text("Gothan, NY")
-                }
+                //Parte donde aparecen los seguidores y seguidos
+                HStack(spacing:40) {
+                    
+                    //Estado de usuario
+                    Text("seguidores").font(.subheadline)
+                        .foregroundColor(.white)
                 
-                //Enlaces usuario
-                HStack{
-                    Image(systemName: "link")
-                    Text("www.thebatman.com")
+                    Text("siguiendo").font(.subheadline)
+                        .foregroundColor(.white)
+                    
+                    Spacer()
                 }
+                //trailing darle relleno al borde
+                .padding(.leading, 20)
+                .padding(.top, 1)
+                
+                //Botones donde se puede seguir y donar
+                HStack(spacing:40) {
+                    
+                    //Botón para seguir o dejar de seguir
+                    //En caso del usuario tiene que aparecer editar perfil
+                    Button(action: {
+                        
+                        print("seguir")
+                    }, label: {
+                        
+                        Text("Seguir")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: 80)
+                            .frame(height: 6)
+                            .padding()
+                            .background(Color(red: 0.331, green: 0.074, blue: 0.423))
+                            .cornerRadius(10)
+                    })
+                
+                    Button(action: {
+                        
+                        print("donaciones")
+                    }, label: {
+                        
+                        Text("Donar")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: 80)
+                            .frame(height: 6)
+                            .padding()
+                            .background(Color(red: 0.331, green: 0.074, blue: 0.423))
+                            .cornerRadius(10)
+                    })
+                    
+                    Spacer()
+                }
+                //trailing darle relleno al borde
+                .padding(.leading, 20)
+                .padding(.top, 5)
+                .padding(.bottom, 20)
             }
-            .font(.caption)
-            .foregroundColor(.gray)
-            
-            
         }
-        .padding(.horizontal)
+        .frame(height: 100)
+        .padding(.top, 16)
     }
-    
 }
+
