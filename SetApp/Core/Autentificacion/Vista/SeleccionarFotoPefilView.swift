@@ -85,7 +85,7 @@ struct SeleccionarFotoPefilView: View {
     }
 }
 
-private struct ProfileImageModifier: ViewModifier {
+struct ProfileImageModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(Color(.systemBlue))

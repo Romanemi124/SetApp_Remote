@@ -110,7 +110,7 @@ struct RegistroView: View {
                 }
                 .padding(.bottom, 32)
                 .padding(.top, 40)
-                .foregroundColor(Color(.systemBlue))
+                .foregroundColor(Color(.white))
             }
         }
     }

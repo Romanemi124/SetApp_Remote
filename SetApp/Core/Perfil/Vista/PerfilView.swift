@@ -158,11 +158,13 @@ extension PerfilView {
                     
                     //Botón para seguir o dejar de seguir
                     //En caso del usuario tiene que aparecer editar perfil
-                    Button(action: {
+                    NavigationLink{
                         
-                        print("seguir")
-                    }, label: {
+                        EditPerfilView(usuario: usuario)
+                            .navigationBarHidden(true)
                         
+                    } label: {
+                            
                         Text("Seguir")
                             .font(.headline)
                             .fontWeight(.bold)
@@ -172,7 +174,7 @@ extension PerfilView {
                             .padding()
                             .background(Color(red: 0.331, green: 0.074, blue: 0.423))
                             .cornerRadius(10)
-                    })
+                    }
                 
                     Button(action: {
                         
