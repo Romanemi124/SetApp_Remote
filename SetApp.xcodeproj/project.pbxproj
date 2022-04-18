@@ -38,6 +38,8 @@
 		62605879280597C7009D2DC2 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 62605878280597C7009D2DC2 /* FirebaseFirestoreSwift-Beta */; };
 		6260587B280597C7009D2DC2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6260587A280597C7009D2DC2 /* FirebaseStorage */; };
 		6260587E280597E2009D2DC2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6260587D280597E2009D2DC2 /* Kingfisher */; };
+		B01BB2E3280DA34D00E38958 /* PublicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB2E2280DA34D00E38958 /* PublicationItem.swift */; };
+		B01BB2E9280E01B000E38958 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB2E8280E01B000E38958 /* CourseView.swift */; };
 		B027AD5528096C7F001345B2 /* EditPerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027AD5428096C7F001345B2 /* EditPerfilView.swift */; };
 		B027AD602809CB0B001345B2 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027AD5F2809CB0B001345B2 /* Tab.swift */; };
 		B075219627FA1B1A009386AB /* SetAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075219527FA1B1A009386AB /* SetAppApp.swift */; };
@@ -45,6 +47,7 @@
 		B075219A27FA1B1C009386AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B075219927FA1B1C009386AB /* Assets.xcassets */; };
 		B075219D27FA1B1C009386AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B075219C27FA1B1C009386AB /* Preview Assets.xcassets */; };
 		B0C75C1C2808147D00AA7A9B /* PublicacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C75C1B2808147D00AA7A9B /* PublicacionView.swift */; };
+		B0F61895280C9D49001712ED /* EditPubliView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F61894280C9D49001712ED /* EditPubliView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,8 @@
 		62605856280595E1009D2DC2 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		62605858280595E1009D2DC2 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		6260585C280595E1009D2DC2 /* MensajesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensajesView.swift; sourceTree = "<group>"; };
+		B01BB2E2280DA34D00E38958 /* PublicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationItem.swift; sourceTree = "<group>"; };
+		B01BB2E8280E01B000E38958 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 		B027AD5428096C7F001345B2 /* EditPerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPerfilView.swift; sourceTree = "<group>"; };
 		B027AD5F2809CB0B001345B2 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		B064F7BB27FDF5C9001811FE /* Script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Script.sh; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		B075219927FA1B1C009386AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B075219C27FA1B1C009386AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B0C75C1B2808147D00AA7A9B /* PublicacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicacionView.swift; sourceTree = "<group>"; };
+		B0F61894280C9D49001712ED /* EditPubliView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPubliView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,17 +306,10 @@
 		62605853280595E1009D2DC2 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				62605854280595E1009D2DC2 /* ViewModels */,
+				B01BB2DF280DA2F000E38958 /* ModeloVista */,
 				62605855280595E1009D2DC2 /* View */,
 			);
 			path = Feed;
-			sourceTree = "<group>";
-		};
-		62605854280595E1009D2DC2 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		62605855280595E1009D2DC2 /* View */ = {
@@ -352,6 +351,15 @@
 				6260585C280595E1009D2DC2 /* MensajesView.swift */,
 			);
 			path = Vista;
+			sourceTree = "<group>";
+		};
+		B01BB2DF280DA2F000E38958 /* ModeloVista */ = {
+			isa = PBXGroup;
+			children = (
+				B01BB2E2280DA34D00E38958 /* PublicationItem.swift */,
+				B01BB2E8280E01B000E38958 /* CourseView.swift */,
+			);
+			path = ModeloVista;
 			sourceTree = "<group>";
 		};
 		B027AD5A2809CAAA001345B2 /* ModeloVista */ = {
@@ -432,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				B0C75C1B2808147D00AA7A9B /* PublicacionView.swift */,
+				B0F61894280C9D49001712ED /* EditPubliView.swift */,
 			);
 			path = Vista;
 			sourceTree = "<group>";
@@ -525,6 +534,7 @@
 				62605830280595DB009D2DC2 /* SubirImagen.swift in Sources */,
 				62605864280595E1009D2DC2 /* MenuDeslizanteModeloView.swift in Sources */,
 				62605867280595E1009D2DC2 /* AutentificacionModelView.swift in Sources */,
+				B01BB2E3280DA34D00E38958 /* PublicationItem.swift in Sources */,
 				62605827280595C0009D2DC2 /* ImagePicker.swift in Sources */,
 				B075219827FA1B1A009386AB /* ContentView.swift in Sources */,
 				6260585D280595E1009D2DC2 /* NotificacionesView.swift in Sources */,
@@ -546,6 +556,8 @@
 				6260582C280595D3009D2DC2 /* Usuario.swift in Sources */,
 				62605869280595E1009D2DC2 /* LoginView.swift in Sources */,
 				B0C75C1C2808147D00AA7A9B /* PublicacionView.swift in Sources */,
+				B01BB2E9280E01B000E38958 /* CourseView.swift in Sources */,
+				B0F61895280C9D49001712ED /* EditPubliView.swift in Sources */,
 				B027AD5528096C7F001345B2 /* EditPerfilView.swift in Sources */,
 				B075219627FA1B1A009386AB /* SetAppApp.swift in Sources */,
 			);
