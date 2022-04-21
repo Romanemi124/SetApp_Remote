@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622AC09F2811B694002A2936 /* UsuarioFormulario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC08A2811B694002A2936 /* UsuarioFormulario.swift */; };
+		622AC0A02811B694002A2936 /* UsuarioRegistro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC08B2811B694002A2936 /* UsuarioRegistro.swift */; };
+		622AC0A12811B694002A2936 /* ElementoFormularioRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC08E2811B694002A2936 /* ElementoFormularioRegex.swift */; };
+		622AC0A22811B694002A2936 /* PatronesRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC0902811B694002A2936 /* PatronesRegex.swift */; };
+		622AC0A32811B694002A2936 /* FormularioEstado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC0922811B694002A2936 /* FormularioEstado.swift */; };
+		622AC0A42811B694002A2936 /* ValidarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC0942811B694002A2936 /* ValidarError.swift */; };
+		622AC0A52811B694002A2936 /* ElementoFormulario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC0962811B694002A2936 /* ElementoFormulario.swift */; };
+		622AC0A62811B694002A2936 /* FormularioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC0982811B694002A2936 /* FormularioView.swift */; };
+		622AC0A72811B694002A2936 /* SecureFieldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC0992811B694002A2936 /* SecureFieldFormView.swift */; };
+		622AC0A82811B694002A2936 /* ContenidoFormularioImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC09B2811B694002A2936 /* ContenidoFormularioImpl.swift */; };
+		622AC0A92811B694002A2936 /* DateFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC09C2811B694002A2936 /* DateFormView.swift */; };
+		622AC0AA2811B694002A2936 /* TextFieldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC09D2811B694002A2936 /* TextFieldFormView.swift */; };
+		622AC0AB2811B694002A2936 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AC09E2811B694002A2936 /* ButtonFormView.swift */; };
 		626058232805958F009D2DC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 626058222805958F009D2DC2 /* GoogleService-Info.plist */; };
 		62605827280595C0009D2DC2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62605825280595C0009D2DC2 /* ImagePicker.swift */; };
 		62605828280595C0009D2DC2 /* ParsearFecha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62605826280595C0009D2DC2 /* ParsearFecha.swift */; };
@@ -51,6 +64,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		622AC08A2811B694002A2936 /* UsuarioFormulario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsuarioFormulario.swift; sourceTree = "<group>"; };
+		622AC08B2811B694002A2936 /* UsuarioRegistro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsuarioRegistro.swift; sourceTree = "<group>"; };
+		622AC08E2811B694002A2936 /* ElementoFormularioRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementoFormularioRegex.swift; sourceTree = "<group>"; };
+		622AC0902811B694002A2936 /* PatronesRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatronesRegex.swift; sourceTree = "<group>"; };
+		622AC0922811B694002A2936 /* FormularioEstado.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormularioEstado.swift; sourceTree = "<group>"; };
+		622AC0942811B694002A2936 /* ValidarError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidarError.swift; sourceTree = "<group>"; };
+		622AC0962811B694002A2936 /* ElementoFormulario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementoFormulario.swift; sourceTree = "<group>"; };
+		622AC0982811B694002A2936 /* FormularioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormularioView.swift; sourceTree = "<group>"; };
+		622AC0992811B694002A2936 /* SecureFieldFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureFieldFormView.swift; sourceTree = "<group>"; };
+		622AC09B2811B694002A2936 /* ContenidoFormularioImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContenidoFormularioImpl.swift; sourceTree = "<group>"; };
+		622AC09C2811B694002A2936 /* DateFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormView.swift; sourceTree = "<group>"; };
+		622AC09D2811B694002A2936 /* TextFieldFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormView.swift; sourceTree = "<group>"; };
+		622AC09E2811B694002A2936 /* ButtonFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
 		626058222805958F009D2DC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62605825280595C0009D2DC2 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		62605826280595C0009D2DC2 /* ParsearFecha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsearFecha.swift; sourceTree = "<group>"; };
@@ -107,6 +133,106 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		622AC0872811B694002A2936 /* Verificacion */ = {
+			isa = PBXGroup;
+			children = (
+				622AC0882811B694002A2936 /* ModeloVista */,
+				622AC0972811B694002A2936 /* Vista */,
+			);
+			path = Verificacion;
+			sourceTree = "<group>";
+		};
+		622AC0882811B694002A2936 /* ModeloVista */ = {
+			isa = PBXGroup;
+			children = (
+				622AC0892811B694002A2936 /* UsuarioRegistro */,
+				622AC08C2811B694002A2936 /* Regex */,
+				622AC0952811B694002A2936 /* Formulario */,
+			);
+			path = ModeloVista;
+			sourceTree = "<group>";
+		};
+		622AC0892811B694002A2936 /* UsuarioRegistro */ = {
+			isa = PBXGroup;
+			children = (
+				622AC08A2811B694002A2936 /* UsuarioFormulario.swift */,
+				622AC08B2811B694002A2936 /* UsuarioRegistro.swift */,
+			);
+			path = UsuarioRegistro;
+			sourceTree = "<group>";
+		};
+		622AC08C2811B694002A2936 /* Regex */ = {
+			isa = PBXGroup;
+			children = (
+				622AC08D2811B694002A2936 /* Modelo */,
+				622AC08F2811B694002A2936 /* Patrones */,
+				622AC0912811B694002A2936 /* Eventos */,
+				622AC0932811B694002A2936 /* Errores */,
+			);
+			path = Regex;
+			sourceTree = "<group>";
+		};
+		622AC08D2811B694002A2936 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				622AC08E2811B694002A2936 /* ElementoFormularioRegex.swift */,
+			);
+			path = Modelo;
+			sourceTree = "<group>";
+		};
+		622AC08F2811B694002A2936 /* Patrones */ = {
+			isa = PBXGroup;
+			children = (
+				622AC0902811B694002A2936 /* PatronesRegex.swift */,
+			);
+			path = Patrones;
+			sourceTree = "<group>";
+		};
+		622AC0912811B694002A2936 /* Eventos */ = {
+			isa = PBXGroup;
+			children = (
+				622AC0922811B694002A2936 /* FormularioEstado.swift */,
+			);
+			path = Eventos;
+			sourceTree = "<group>";
+		};
+		622AC0932811B694002A2936 /* Errores */ = {
+			isa = PBXGroup;
+			children = (
+				622AC0942811B694002A2936 /* ValidarError.swift */,
+			);
+			path = Errores;
+			sourceTree = "<group>";
+		};
+		622AC0952811B694002A2936 /* Formulario */ = {
+			isa = PBXGroup;
+			children = (
+				622AC0962811B694002A2936 /* ElementoFormulario.swift */,
+			);
+			path = Formulario;
+			sourceTree = "<group>";
+		};
+		622AC0972811B694002A2936 /* Vista */ = {
+			isa = PBXGroup;
+			children = (
+				622AC0982811B694002A2936 /* FormularioView.swift */,
+				622AC0992811B694002A2936 /* SecureFieldFormView.swift */,
+				622AC09A2811B694002A2936 /* ModeloFormulario */,
+				622AC09C2811B694002A2936 /* DateFormView.swift */,
+				622AC09D2811B694002A2936 /* TextFieldFormView.swift */,
+				622AC09E2811B694002A2936 /* ButtonFormView.swift */,
+			);
+			path = Vista;
+			sourceTree = "<group>";
+		};
+		622AC09A2811B694002A2936 /* ModeloFormulario */ = {
+			isa = PBXGroup;
+			children = (
+				622AC09B2811B694002A2936 /* ContenidoFormularioImpl.swift */,
+			);
+			path = ModeloFormulario;
+			sourceTree = "<group>";
+		};
 		62605824280595C0009D2DC2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +295,7 @@
 		62605835280595E1009D2DC2 /* Componentes */ = {
 			isa = PBXGroup;
 			children = (
+				622AC0872811B694002A2936 /* Verificacion */,
 				62605836280595E1009D2DC2 /* Autentificacion */,
 				62605838280595E1009D2DC2 /* Elementos */,
 			);
@@ -533,6 +660,7 @@
 				62605868280595E1009D2DC2 /* SeleccionarFotoPefilView.swift in Sources */,
 				62605830280595DB009D2DC2 /* SubirImagen.swift in Sources */,
 				62605864280595E1009D2DC2 /* MenuDeslizanteModeloView.swift in Sources */,
+				622AC0A12811B694002A2936 /* ElementoFormularioRegex.swift in Sources */,
 				62605867280595E1009D2DC2 /* AutentificacionModelView.swift in Sources */,
 				B01BB2E3280DA34D00E38958 /* PublicationItem.swift in Sources */,
 				62605827280595C0009D2DC2 /* ImagePicker.swift in Sources */,
@@ -542,22 +670,34 @@
 				6260586E280595E1009D2DC2 /* MensajesView.swift in Sources */,
 				6260586A280595E1009D2DC2 /* RegistroView.swift in Sources */,
 				6260585E280595E1009D2DC2 /* CabeceraAutentificacionView.swift in Sources */,
+				622AC0AB2811B694002A2936 /* ButtonFormView.swift in Sources */,
 				6260586D280595E1009D2DC2 /* MainTabView.swift in Sources */,
 				62605860280595E1009D2DC2 /* CustomInputField.swift in Sources */,
 				6260586C280595E1009D2DC2 /* FeedView.swift in Sources */,
 				B027AD602809CB0B001345B2 /* Tab.swift in Sources */,
 				6260585F280595E1009D2DC2 /* CamposEntrada.swift in Sources */,
 				62605863280595E1009D2DC2 /* PerfilView.swift in Sources */,
+				622AC0A62811B694002A2936 /* FormularioView.swift in Sources */,
 				62605862280595E1009D2DC2 /* VistaPrincipalView.swift in Sources */,
+				622AC0A72811B694002A2936 /* SecureFieldFormView.swift in Sources */,
 				62605861280595E1009D2DC2 /* FormaCircular.swift in Sources */,
 				62605828280595C0009D2DC2 /* ParsearFecha.swift in Sources */,
 				6260586B280595E1009D2DC2 /* BuscadorView.swift in Sources */,
 				62605866280595E1009D2DC2 /* MenuDeslizanteFilaElementoView.swift in Sources */,
 				6260582C280595D3009D2DC2 /* Usuario.swift in Sources */,
 				62605869280595E1009D2DC2 /* LoginView.swift in Sources */,
+				622AC0A22811B694002A2936 /* PatronesRegex.swift in Sources */,
+				622AC09F2811B694002A2936 /* UsuarioFormulario.swift in Sources */,
 				B0C75C1C2808147D00AA7A9B /* PublicacionView.swift in Sources */,
+				622AC0A52811B694002A2936 /* ElementoFormulario.swift in Sources */,
+				622AC0A02811B694002A2936 /* UsuarioRegistro.swift in Sources */,
+				622AC0A92811B694002A2936 /* DateFormView.swift in Sources */,
 				B01BB2E9280E01B000E38958 /* CourseView.swift in Sources */,
+				622AC0AA2811B694002A2936 /* TextFieldFormView.swift in Sources */,
+				622AC0A82811B694002A2936 /* ContenidoFormularioImpl.swift in Sources */,
 				B0F61895280C9D49001712ED /* EditPubliView.swift in Sources */,
+				622AC0A42811B694002A2936 /* ValidarError.swift in Sources */,
+				622AC0A32811B694002A2936 /* FormularioEstado.swift in Sources */,
 				B027AD5528096C7F001345B2 /* EditPerfilView.swift in Sources */,
 				B075219627FA1B1A009386AB /* SetAppApp.swift in Sources */,
 			);
