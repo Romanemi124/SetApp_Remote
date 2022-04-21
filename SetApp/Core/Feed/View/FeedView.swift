@@ -23,13 +23,16 @@ struct FeedView: View {
                 .ignoresSafeArea()
              */
             
+            //Color de fondo de la vista
             Color(red: 0.113, green: 0.031, blue: 0.16).ignoresSafeArea()
             //Color(red: 0.331, green: 0.074, blue: 0.423).ignoresSafeArea()
             
+            //El ScrollView permite poner todas las publicaciones que se quieran ver y deslizar hacia abajo
             ScrollView {
                 
                 Spacer(minLength: 20)
                 
+                //En el caso de que se haya seleccionado una publicación y se quieran ver los detalles se redirigirá a otra vista
                 if !show {
                     
                     PublicationItem()

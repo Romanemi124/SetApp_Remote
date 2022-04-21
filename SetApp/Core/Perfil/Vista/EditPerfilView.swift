@@ -89,8 +89,10 @@ extension EditPerfilView {
                 }
                 HStack {
                     
+                    //Cuando se pulsa este botón se guardarán todos los datos modificados en la base de datos
                     Button{
-                        //Cambiamos el valor de la variable para que vuelva a la anterior vista
+                        
+                        //función que permitirá hacer la conexión con la base de datos y los cambios se reflejarán
                         saveUser()
                     }label: {
                         
@@ -120,12 +122,14 @@ extension EditPerfilView {
             
             VStack {
                 
+                //Cabezera principal de la vista de editar perfil
                 Text("Editar perfil")
                     .foregroundColor(.white)
                     .font(.largeTitle)
                     .padding(.bottom, 15)
                     .padding(.top, 25)
                 
+                //Se carga la imagen que tiene actualmente el usuario, en caso de cambiarlo se muestra en esta parte
                 KFImage(URL(string: usuario.UrlImagenPerfil))
                     .resizable()
                     .scaledToFill()
@@ -142,6 +146,7 @@ extension EditPerfilView {
                 }
                 .padding(.bottom, 15)
                 
+                //En este grupo se cargan todos los datos que están guardados en la base de datos, una vez cargados el usuario puede cambiarlos
                 Group{
                     
                     CamposEntrada(placeholder: "Nombre", isSecureField: false,text: $nombreCompleto)
@@ -163,7 +168,7 @@ extension EditPerfilView {
                         .labelsHidden()
                     }
     
-                    //Edad
+                    //Se despliega el calendario para modificar la fecha de nacimiento
                     DatePicker(selection: $fechaNacimiento, displayedComponents: .date){
                         
                         Text("Fecha de nacimiento").foregroundColor(Color.white)

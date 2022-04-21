@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Estructura que va a tener la barra de menú así como el nombre, icono y color
 struct TabItem: Identifiable {
     var id = UUID()
     var icon: String
@@ -14,6 +15,7 @@ struct TabItem: Identifiable {
     var color: Color
 }
 
+//Con la TabItem anteior, se despliegan los datos que se requieren rellenándolos con los datos de la barra
 var tabItems = [
     TabItem(icon: "house", tab: .home, color: Color(red: 0.721, green: 0.491, blue: 0.849)),
     TabItem(icon: "magnifyingglass", tab: .buscador, color: Color(red: 0.721, green: 0.491, blue: 0.849)),

@@ -71,7 +71,8 @@ extension EditPubliView {
                 HStack {
                     
                     Button{
-                        //Cambiamos el valor de la variable para que vuelva a la anterior vista
+                        
+                        //Una vez se hayan rellenado todos los campos, esta función se encargará de guardar esta publicación
                         savePubli()
                     }label: {
                         
@@ -91,8 +92,10 @@ extension EditPubliView {
         .frame(height: 30)
     }
     
+    //En esta parte de la vista, se podrán rellenar los datos de la publicación, así como ver la publicación que se quiere subir al perfil
     var editAccount: some View{
             
+        //Todo se colocará en la parte superior de la vista
         ZStack(alignment: .topLeading) {
             
             Color(red: 0.113, green: 0.031, blue: 0.16)
@@ -107,12 +110,14 @@ extension EditPubliView {
                     .padding(.bottom, 25)
                     .padding(.top, 25)
                 
+                //Se cargará la imagen anterior para poder ver la publicación
                 Image("publi")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 200, height: 200)
                     .cornerRadius(0)
                 
+                //Parte donde se encontrarán los campos a rellenar
                 GeometryReader{proxy in
                     
                     VStack {

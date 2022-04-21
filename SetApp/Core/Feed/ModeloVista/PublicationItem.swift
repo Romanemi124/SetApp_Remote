@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Esta es la estructura que va a tener la publicación y se cargará en la vista FeedView para ver todas las publicaciones de las personas que sigue
 struct PublicationItem: View {
     
     /*
@@ -20,6 +21,7 @@ struct PublicationItem: View {
             
             Spacer()
             
+            //Parte donde se cargará la foto de perfil del usuario y su nombre de usuario
             HStack {
                 
                 Image("publi")
@@ -37,12 +39,14 @@ struct PublicationItem: View {
                     .fontWeight(.semibold)
             }
             
+            //Textos donde cargarán las características de la publicación y la valoración por parte del usuario
             Text("Monitor LG UltraGear")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundStyle(.linearGradient(colors: [.primary,.primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .lineLimit(1)
             
+            //Cada uno de los textos tiene un estilo diferente así como el tamaño y color del texto
             Text("LG".uppercased())
                 .font(.title2)
                 .fontWeight(.semibold)
@@ -58,10 +62,12 @@ struct PublicationItem: View {
         .padding(.all, 20.0)
         .padding(.vertical, 5)
         .frame(height: 550.0)
+        //Fondo de la publicación con un borde redondeado
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         //.shadow(color: Color("Shadow").opacity(0.3), radius: 10, x: 0, y: 10)
         .padding(.horizontal, 20)
         .overlay(
+            //Foto de la publicación
             Image("publi")
                 .resizable()
                 .aspectRatio(contentMode: .fit)

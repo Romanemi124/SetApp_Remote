@@ -13,10 +13,13 @@ struct PublicacionView: View {
         
         ZStack {
             
+            //GeometryReader es un contenedor de vistas que permite acceder a su tamaño y posición
             GeometryReader {proxy in
                 
+                //Para poder establecer un tamaño idóneo a la foto de fondo
                 let fotoFondo = proxy.size
                 
+                //Foto de fondo con un fondo distorsionado, en este caso, se cargará de fondo la imagen que se ha seleccionado para publicar
                 Image("publi")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -26,6 +29,7 @@ struct PublicacionView: View {
             .ignoresSafeArea()
             .overlay(.ultraThinMaterial)
             
+            //Parte donde se encontrará la foto que se publicar y los botones para poder seleccionar galería o cámara
             VStack {
                 
                 Text("Publicar")
@@ -33,12 +37,14 @@ struct PublicacionView: View {
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
                 
+                //Para poder establecer un tamaño idóneo a la foto que se va publicar en la vista
                 GeometryReader{proxy in
                     
                     let size = proxy.size
                     
                     ZStack {
                         
+                        //Foto donde se cargará la imagen seleccionada para publicar en su perfil
                         Image("publi")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -46,8 +52,10 @@ struct PublicacionView: View {
                             .cornerRadius(12)
                     }
                     
+                    //Parte horizontal donde se encuentran los dos botones principales de la vista
                     HStack {
                         
+                        //En este caso se va a redirigir a la cámara para poder tomar una foto y publicarla
                         Button(action: {}, label: {
                             Text("Cámara")
                                 .fontWeight(.bold)
@@ -58,6 +66,7 @@ struct PublicacionView: View {
                                 .cornerRadius(12)
                         })
                         
+                        //En este caso accederá a la galería una vez dados los permisos, y se cargará en la foto de prueba
                         Button(action: {}, label: {
                             Text("Galería")
                                 .fontWeight(.bold)
@@ -76,8 +85,10 @@ struct PublicacionView: View {
                         
                         Spacer()
                         
+                        //Sólo se activará en el caso de que el usuario haya cargado una foto ya sea desde la galería o cámara
                         NavigationLink{
                             
+                            //Redirigirá a la vista donde se pondrán todas las características del componente
                             EditPubliView().navigationBarHidden(true)
                         }label: {
                             
