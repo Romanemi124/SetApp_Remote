@@ -51,6 +51,9 @@
 		62605879280597C7009D2DC2 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 62605878280597C7009D2DC2 /* FirebaseFirestoreSwift-Beta */; };
 		6260587B280597C7009D2DC2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6260587A280597C7009D2DC2 /* FirebaseStorage */; };
 		6260587E280597E2009D2DC2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6260587D280597E2009D2DC2 /* Kingfisher */; };
+		B001F62728157A9600303586 /* SeleccionarFoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001F62628157A9600303586 /* SeleccionarFoto.swift */; };
+		B001F6292815C42F00303586 /* ServicioProducto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001F6282815C42F00303586 /* ServicioProducto.swift */; };
+		B001F62B2815C85300303586 /* GuardarPublicacionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001F62A2815C85200303586 /* GuardarPublicacionViewModel.swift */; };
 		B01BB2E3280DA34D00E38958 /* PublicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB2E2280DA34D00E38958 /* PublicationItem.swift */; };
 		B01BB2E9280E01B000E38958 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB2E8280E01B000E38958 /* CourseView.swift */; };
 		B027AD5528096C7F001345B2 /* EditPerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027AD5428096C7F001345B2 /* EditPerfilView.swift */; };
@@ -101,6 +104,9 @@
 		62605856280595E1009D2DC2 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		62605858280595E1009D2DC2 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		6260585C280595E1009D2DC2 /* MensajesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensajesView.swift; sourceTree = "<group>"; };
+		B001F62628157A9600303586 /* SeleccionarFoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeleccionarFoto.swift; sourceTree = "<group>"; };
+		B001F6282815C42F00303586 /* ServicioProducto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicioProducto.swift; sourceTree = "<group>"; };
+		B001F62A2815C85200303586 /* GuardarPublicacionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardarPublicacionViewModel.swift; sourceTree = "<group>"; };
 		B01BB2E2280DA34D00E38958 /* PublicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationItem.swift; sourceTree = "<group>"; };
 		B01BB2E8280E01B000E38958 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 		B027AD5428096C7F001345B2 /* EditPerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPerfilView.swift; sourceTree = "<group>"; };
@@ -262,6 +268,9 @@
 			children = (
 				6260582E280595DB009D2DC2 /* SubirImagen.swift */,
 				6260582F280595DB009D2DC2 /* ServicioUsuario.swift */,
+				B001F62628157A9600303586 /* SeleccionarFoto.swift */,
+				B001F6282815C42F00303586 /* ServicioProducto.swift */,
+				B001F62A2815C85200303586 /* GuardarPublicacionViewModel.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -657,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62605831280595DB009D2DC2 /* ServicioUsuario.swift in Sources */,
+				B001F62728157A9600303586 /* SeleccionarFoto.swift in Sources */,
 				62605868280595E1009D2DC2 /* SeleccionarFotoPefilView.swift in Sources */,
 				62605830280595DB009D2DC2 /* SubirImagen.swift in Sources */,
 				62605864280595E1009D2DC2 /* MenuDeslizanteModeloView.swift in Sources */,
@@ -680,6 +690,7 @@
 				622AC0A62811B694002A2936 /* FormularioView.swift in Sources */,
 				62605862280595E1009D2DC2 /* VistaPrincipalView.swift in Sources */,
 				622AC0A72811B694002A2936 /* SecureFieldFormView.swift in Sources */,
+				B001F6292815C42F00303586 /* ServicioProducto.swift in Sources */,
 				62605861280595E1009D2DC2 /* FormaCircular.swift in Sources */,
 				62605828280595C0009D2DC2 /* ParsearFecha.swift in Sources */,
 				6260586B280595E1009D2DC2 /* BuscadorView.swift in Sources */,
@@ -693,6 +704,7 @@
 				622AC0A02811B694002A2936 /* UsuarioRegistro.swift in Sources */,
 				622AC0A92811B694002A2936 /* DateFormView.swift in Sources */,
 				B01BB2E9280E01B000E38958 /* CourseView.swift in Sources */,
+				B001F62B2815C85300303586 /* GuardarPublicacionViewModel.swift in Sources */,
 				622AC0AA2811B694002A2936 /* TextFieldFormView.swift in Sources */,
 				622AC0A82811B694002A2936 /* ContenidoFormularioImpl.swift in Sources */,
 				B0F61895280C9D49001712ED /* EditPubliView.swift in Sources */,

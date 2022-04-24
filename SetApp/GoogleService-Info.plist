@@ -18,6 +18,8 @@
 	<string>setapp-a2961</string>
 	<key>STORAGE_BUCKET</key>
 	<string>setapp-a2961.appspot.com</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Esta app requiere el uso de la cámara</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>

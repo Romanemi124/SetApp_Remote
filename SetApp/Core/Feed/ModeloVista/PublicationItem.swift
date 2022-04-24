@@ -39,6 +39,7 @@ struct PublicationItem: View {
                     .fontWeight(.semibold)
             }
             
+            
             //Textos donde cargarán las características de la publicación y la valoración por parte del usuario
             Text("Monitor LG UltraGear")
                 .font(.largeTitle)

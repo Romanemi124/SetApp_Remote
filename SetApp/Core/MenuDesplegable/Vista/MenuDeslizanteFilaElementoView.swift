@@ -12,16 +12,17 @@ struct MenuDeslizanteFilaElementoView: View {
     let vistaModelo : MenuDeslizanteModeloView
     
     var body: some View {
+            
         HStack(spacing: 16){
             
             //Mostramos la imagen de perfil
             Image(systemName: vistaModelo.imagenNombre)
                 .font(.headline)
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
             
             //Mostramos las opciones de navegación
             Text(vistaModelo.titulo)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .font(.subheadline)
             
             Spacer()
@@ -30,6 +31,7 @@ struct MenuDeslizanteFilaElementoView: View {
         .frame( height: 40)
         .padding(.horizontal)
     }
+    
 }
 
 struct MenuDeslizanteFilaElementoView_Previews: PreviewProvider {

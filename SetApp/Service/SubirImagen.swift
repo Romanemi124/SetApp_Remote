@@ -22,7 +22,7 @@ struct SubirImagen{
         
         //"/fotoPerfil/" será el nombre del directorio donde se alamcenará las fotos en el Storage de Firebase
         let ref = Storage.storage().reference(withPath: "/fotoPerfil/\(filename)")
-        
+          
         //Guardamos la imagen en Firebase
         ref.putData(imageData, metadata: nil){ _, error in
             

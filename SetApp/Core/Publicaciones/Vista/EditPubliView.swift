@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct EditPubliView: View {
     
+    //@Binding var image: UIImage?
+    @Binding var image: UIImage?
     @Environment(\.presentationMode) var mode
+    
+    //Atributos que tiene la publicación
+    @State private var categoria: String = ""
+    @State private var nombreProducto: String = ""
+    @State private var marca: String = ""
+    @State private var valoracion: String = ""
+    @State private var caracteristicas: String = ""
+    
+    @ObservedObject var viewModel = GuardarPublicacionViewModel()
     
     var body: some View {
         
@@ -38,7 +50,7 @@ struct EditPubliView: View {
 
 struct EditPubliView_Previews: PreviewProvider {
     static var previews: some View {
-        EditPubliView()
+        EditPubliView(image: .constant(UIImage(named: "publi")))
     }
 }
 
@@ -73,7 +85,7 @@ extension EditPubliView {
                     Button{
                         
                         //Una vez se hayan rellenado todos los campos, esta función se encargará de guardar esta publicación
-                        savePubli()
+                        viewModel.uploadPublicacion(withCategoria: categoria, withNombreProducto: nombreProducto, withMarca: marca, withValoracion: valoracion, withCaracteristicas: caracteristicas)
                     }label: {
                         
                         Image(systemName: "icloud.and.arrow.up.fill")
@@ -111,33 +123,30 @@ extension EditPubliView {
                     .padding(.top, 25)
                 
                 //Se cargará la imagen anterior para poder ver la publicación
-                Image("publi")
+                Image(uiImage: image ?? UIImage(named: "publi")!)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 200, height: 200)
                     .cornerRadius(0)
                 
                 //Parte donde se encontrarán los campos a rellenar
-                GeometryReader{proxy in
+                ScrollView {
                     
-                    VStack {
+                    Group{
                         
-                        Group{
-                            
-                            //CamposEntrada(placeholder: "Nombre", isSecureField: false,text: $nombreCompleto)
-                            
-                            //CamposEntrada(placeholder: "Nombre usuario", isSecureField: false,text: $nombreUsuario)
-                            
-                            //CamposEntrada(placeholder: "Correo electrónico",isSecureField: false, text: $email)
-                        }
+                        CamposEntrada(placeholder: "Categoría", isSecureField: false,text: $categoria)
+                        
+                        CamposEntrada(placeholder: "Nombre componente", isSecureField: false,text: $nombreProducto)
+                        
+                        CamposEntrada(placeholder: "Marca",isSecureField: false, text: $marca)
+                        
+                        CamposEntrada(placeholder: "Valoración", isSecureField: false,text: $valoracion)
+                        
+                        CamposEntrada(placeholder: "Características",isSecureField: false, text: $caracteristicas)
                     }
+                    .padding(.top, 30)
                 }
-                .padding(30)
             }
         }
-    }
-    
-    func savePubli(){
-        print("Usuario Guardado")
     }
 }

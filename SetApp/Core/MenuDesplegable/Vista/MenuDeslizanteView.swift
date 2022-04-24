@@ -16,70 +16,79 @@ struct MenuDeslizanteView: View {
     
     var body: some View {
         
-        if let usuario = autentificacionVistaModelo.usuarioActual{
+        ZStack {
             
-            //Vstack 1
-            VStack (alignment: .leading, spacing: 32){
-                //Vstack 2
-                VStack(alignment: .leading){
-                    //Foto de perfil
-                    /*KFImage(URL) realiza el tratamiento de la imagen como url */
-                    KFImage(URL(string: usuario.UrlImagenPerfil))
-                        .resizable()
-                        .scaledToFill()
-                        .clipShape(Circle())
-                        .frame(width: 48, height: 48)
-                    
-                    //Nombre completo
-                    VStack (alignment: .leading, spacing:4){
-                        Text(usuario.nombreCompleto).font(.headline)
-                        //Nombre de usario
-                        Text("@\(usuario.nombreUsuario)").font(.caption).foregroundColor(.gray)
-                    }
-                //END-Vstack 2
-                }
-                .padding(.leading)
+            Color(red: 0.331, green: 0.074, blue: 0.423)
+            //ignoresSafeArea() permite añadir el fondo en la parte superior
+                .ignoresSafeArea()
+            
+            if let usuario = autentificacionVistaModelo.usuarioActual{
                 
-                //ForEach
-                //Recorremos la imagen de perfil del usuario y las opciones de navegación entre vistas
-                ForEach(MenuDeslizanteModeloView.allCases, id: \.rawValue){ vistaModelo  in
-                    
-                    if vistaModelo == .perfil{
+                //Vstack 1
+                VStack (alignment: .leading, spacing: 32){
+                    //Vstack 2
+                    VStack(alignment: .leading){
                         
-                        //Nos dirigimos al perfil
-                        NavigationLink{
-                            //Mostramos el usuario gracias el usuario que hemos guardado de  le sesión
-                           PerfilView(usuario: usuario)
-                        }label: {
-                           MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
+                        //Foto de perfil
+                        /*KFImage(URL) realiza el tratamiento de la imagen como url */
+                        KFImage(URL(string: usuario.UrlImagenPerfil))
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 48, height: 48)
+                        
+                        //Nombre completo
+                        VStack (alignment: .leading, spacing:4){
+                            Text(usuario.nombreCompleto).font(.headline)
+                                .foregroundColor(.white)
+                            //Nombre de usario
+                            Text("@\(usuario.nombreUsuario)").font(.caption).foregroundColor(.white)
                         }
+                    //END-Vstack 2
+                    }
+                    .padding(.leading)
+                    
+                    //ForEach
+                    //Recorremos la imagen de perfil del usuario y las opciones de navegación entre vistas
+                    ForEach(MenuDeslizanteModeloView.allCases, id: \.rawValue){ vistaModelo  in
                         
-                    }else if(vistaModelo == .logout){
-                        
-                        //Cada vez que se cierre sesión se mostrá ese mensaje
-                        Button {
+                        if vistaModelo == .perfil{
                             
-                            /*!!!!!!!!*/
-                            autentificacionVistaModelo.cerrarSesion()
+                            //Nos dirigimos al perfil
+                            NavigationLink{
+                                //Mostramos el usuario gracias el usuario que hemos guardado de  le sesión
+                               PerfilView(usuario: usuario)
+                            }label: {
+                               MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
+                            }
                             
-                        }label: {
+                        }else if(vistaModelo == .logout){
                             
-                           
+                            //Cada vez que se cierre sesión se mostrá ese mensaje
+                            Button {
+                                
+                                /*!!!!!!!!*/
+                                autentificacionVistaModelo.cerrarSesion()
+                                
+                            }label: {
+                                
+                               
+                                MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
+                            }
+                            
+                        }else{
                             MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
                         }
                         
-                    }else{
-                        MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
+                    //END-ForEach
                     }
                     
-                //END-ForEach
+                    Spacer()
+               //END-Vstack 1
                 }
                 
-                Spacer()
-           //END-Vstack 1
+            //END-if
             }
-            
-        //END-if
         }
       
     }
