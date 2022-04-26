@@ -14,11 +14,17 @@ struct PerfilView: View {
     @Namespace var animation
     @Environment(\.presentationMode) var mode
     //Creamos el objeto usuario que luego se va mostrar sus datos
-    private let usuario:Usuario
+    //private let usuario:Usuario
+    
+    //Para poder ver las publicaciones que ha realizado el usuario
+    @ObservedObject var viewModel: PerfilViewModel
+    
+    @State var show = false
     
     //Inicializamos el usuario
     init(usuario: Usuario){
-        self.usuario = usuario
+        //self.usuario = usuario
+        self.viewModel = PerfilViewModel(user: usuario)
     }
     
     var body: some View {
@@ -34,8 +40,40 @@ struct PerfilView: View {
             userInfoDetailsInfo
             
             Spacer()
+            
+            ScrollView {
+                
+                Spacer(minLength: 20)
+                
+                LazyVStack {
+                    
+                    ForEach(viewModel.publicaciones) { publicacion in
+                        
+                        //En el caso de que se haya seleccionado una publicación y se quieran ver los detalles se redirigirá a otra vista
+                        if !show {
+                            
+                            PerfilPublicacion(publicacion: publicacion)
+                                .onTapGesture {
+                                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                        show.toggle()
+                                    }
+                                }
+                        }
+                    }
+                
+                }
+                
+                /*
+                Text("Courses".uppercased())
+                    .font(.footnote.weight(.semibold))
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20)
+                 */
+            }
         }
         .navigationBarHidden(true)
+        .background(Color(red: 0.113, green: 0.031, blue: 0.16))
     }
 }
 
@@ -89,10 +127,6 @@ extension PerfilView {
         
         ZStack(alignment: .center){
             
-            Color(red: 0.113, green: 0.031, blue: 0.16)
-            //ignoresSafeArea() permite añadir el fondo en la parte superior
-                .ignoresSafeArea()
-            
             /*
             KFImage(URL(string: usuario.UrlImagenPerfil))
                 .resizable()
@@ -103,20 +137,20 @@ extension PerfilView {
             
             //Nombre de usario
             
-            KFImage(URL(string: usuario.UrlImagenPerfil))
+            KFImage(URL(string: viewModel.user.UrlImagenPerfil))
                 .resizable()
                 .scaledToFill()
                 .clipShape(Circle())
                 .frame(width: 200, height: 200)
                 //.padding(.top, 40)
             
-            Text(usuario.nombreCompleto)
+            Text(viewModel.user.nombreCompleto)
                 .font(.title)
                 .foregroundColor(.white)
                 .padding(.bottom, 350)
             
             //Nombre de usuario
-            Text("@\(usuario.nombreUsuario)")
+            Text("@\(viewModel.user.nombreUsuario)")
                 .font(.title3).bold()
                 .foregroundColor(.white)
                 .padding(.bottom, 260)
@@ -143,8 +177,11 @@ extension PerfilView {
                 //En caso del usuario tiene que aparecer editar perfil
                 NavigationLink{
                     
-                    EditPerfilView(usuario: usuario)
+                    //EditPerfilView(usuario: usuario)
+                    /*
+                    EditPerfilView(viewModel : PerfilViewModel(user: usuario))
                         .navigationBarHidden(true)
+                     */
                     
                 } label: {
                         

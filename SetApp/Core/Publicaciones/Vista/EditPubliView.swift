@@ -21,6 +21,9 @@ struct EditPubliView: View {
     @State private var valoracion: String = ""
     @State private var caracteristicas: String = ""
     
+    //Para poder subir la foto y pasarla a la función de guardar
+    @State private var showImagePicker = false
+    @State private var publicationImage: Image?
     @ObservedObject var viewModel = GuardarPublicacionViewModel()
     
     var body: some View {
@@ -44,6 +47,11 @@ struct EditPubliView: View {
                 Spacer()
             }
             .navigationBarHidden(true)
+            .onReceive(viewModel.$didUploadPublication) { success in
+                if success {
+                    mode.wrappedValue.dismiss()
+                }
+            }
         }
     }
 }
@@ -84,8 +92,10 @@ extension EditPubliView {
                     
                     Button{
                         
-                        //Una vez se hayan rellenado todos los campos, esta función se encargará de guardar esta publicación
-                        viewModel.uploadPublicacion(withCategoria: categoria, withNombreProducto: nombreProducto, withMarca: marca, withValoracion: valoracion, withCaracteristicas: caracteristicas)
+                        if let selectedImage = image {
+                            
+                            viewModel.uploadPublicacion(withImage: selectedImage, withCategoria: categoria, withNombreProducto: nombreProducto, withMarca: marca, withValoracion: valoracion, withCaracteristicas: caracteristicas)
+                        }
                     }label: {
                         
                         Image(systemName: "icloud.and.arrow.up.fill")
@@ -93,6 +103,13 @@ extension EditPubliView {
                             .frame(width: 35, height: 30)
                             .foregroundColor(.white)
                             .padding(15)
+                    }
+                    .sheet(isPresented: $showImagePicker,
+                           onDismiss: loadImage){
+                        
+                        //Guardamos la imagen seleccionada
+                        ImagePicker(selectedImage: $image)
+                        
                     }
                 }
             }
@@ -148,5 +165,12 @@ extension EditPubliView {
                 }
             }
         }
+    }
+    
+    //Cargar las imágenes
+    func loadImage(){
+        //Guardamos la imagen en la variable
+        guard let selectedImage = image else { return }
+        publicationImage = Image(uiImage: selectedImage)
     }
 }

@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CourseView: View {
     
     var namespace: Namespace.ID
     @Binding var show: Bool
+    
+    let publicacion: Publicacion
     
     var body: some View {
         
@@ -18,7 +21,9 @@ struct CourseView: View {
             
             //Se pondrán las características y se podrá deslizar hacia abajo
             ScrollView {
+                
                 cover
+                contenido
             }
             .background(Color(red: 0.113, green: 0.031, blue: 0.16))
             .ignoresSafeArea()
@@ -54,46 +59,48 @@ struct CourseView: View {
         .frame(maxWidth: .infinity)
         .frame(height: 500)
         .foregroundStyle(.black)
-        /*
-        .background(
-            Image("publi")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .matchedGeometryEffect(id: "image", in: namespace)
-        )
-         */
         //Se pone de fondo la publicación del usuario
         .background(
-            Image("publi")
+            //Image("publi")
+            KFImage(URL(string: publicacion.UrlImagePublicacion))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .matchedGeometryEffect(id: "background", in: namespace)
         )
         .mask(
+            LinearGradient(gradient: Gradient(stops: [
+                .init(color: Color.black, location: 0),
+                .init(color: Color.black, location: 0.85),
+                .init(color: Color.black.opacity(0), location: 1)]),
+                           startPoint: .top, endPoint: .bottom))
+        
+    }
+    
+    var contenido: some View {
+        
+        VStack(spacing: 12) {
             
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .matchedGeometryEffect(id: "mask", in: namespace)
-        )
-        .overlay(
-            
-            VStack(alignment: .leading, spacing: 12) {
+            if let usuario = publicacion.user {
                 
                 //Cada texto tiene su estilo y se cargarán los datos anteriores
-                Text("SwiftUI")
+                Text(publicacion.nombreProducto)
                     .font(.largeTitle.weight(.bold))
                     .matchedGeometryEffect(id: "title", in: namespace)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("LG".uppercased())
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                Text(publicacion.valoracion.uppercased())
                     .font(.footnote.weight(.semibold))
                     .matchedGeometryEffect(id: "subtitle", in: namespace)
-                Text("UltraGear")
+                    .foregroundColor(.white)
+                Text(publicacion.marca)
                     .font(.footnote)
                     .matchedGeometryEffect(id: "text", in: namespace)
+                    .foregroundColor(.white)
                 Divider()
                 HStack {
                     
                     //Se carga la foto de pefil del usuario junto con su nombre
-                    Image("publi")
+                    KFImage(URL(string: usuario.UrlImagenPerfil))
                         .resizable()
                         .frame(width: 26.0, height: 26.0)
                         .cornerRadius(10)
@@ -101,30 +108,21 @@ struct CourseView: View {
                         .background(.ultraThinMaterial, in:
                                         RoundedRectangle(cornerRadius: 18, style: .continuous))
                     
-                    Text("By Emilio Roman")
+                    Text(usuario.nombreUsuario)
                         .font(.footnote)
+                        .foregroundColor(.white)
                 }
             }
-                .padding(20)
-                .background(
-                    
-                    //Fondo donde se encuentran los datos de la publicación
-                    Rectangle()
-                        .fill(.ultraThinMaterial)
-                        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                        .matchedGeometryEffect(id: "blur", in: namespace)
-                )
-                .offset(y: 250)
-                .padding(20)
-        )
+        }
     }
 }
-
+/*
 struct CourseView_Previews: PreviewProvider {
     
     @Namespace static var namespace
     
     static var previews: some View {
-        CourseView(namespace: namespace, show: .constant(true))
+        CourseView(namespace: namespace, show: .constant(true), publicacion: publicacion)
     }
 }
+*/

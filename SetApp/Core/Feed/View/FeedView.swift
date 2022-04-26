@@ -6,22 +6,20 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct FeedView: View {
     
     @Namespace var namespace
     @State var show = false
     
+    //Para mostrar las publicaciones guardadas en firebase
+    @ObservedObject var viewModel = FeedViewModel()
+    
     //Clase será la pantalla principal de la app
     var body: some View {
         
         ZStack {
-            
-            /*
-            Image("publi")
-                .resizable()
-                .ignoresSafeArea()
-             */
             
             //Color de fondo de la vista
             Color(red: 0.113, green: 0.031, blue: 0.16).ignoresSafeArea()
@@ -32,33 +30,29 @@ struct FeedView: View {
                 
                 Spacer(minLength: 20)
                 
-                //En el caso de que se haya seleccionado una publicación y se quieran ver los detalles se redirigirá a otra vista
-                if !show {
+                LazyVStack {
                     
-                    PublicationItem()
-                        .onTapGesture {
-                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                                show.toggle()
-                            }
+                    ForEach(viewModel.publicaciones) { publicacionItem in
+                        
+                        //En el caso de que se haya seleccionado una publicación y se quieran ver los detalles se redirigirá a otra vista
+                        if !show {
+                            
+                            PublicationItem(publicacion: publicacionItem)
+                                .onTapGesture {
+                                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                        show.toggle()
+                                    }
+                                }
                         }
-                    
-                    PublicationItem()
-                    PublicationItem()
+                    }
                 }
-                
-                /*
-                Text("Courses".uppercased())
-                    .font(.footnote.weight(.semibold))
-                    .foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 20)
-                 */
             }
             //.padding(top, 80)
-            
+            /*
             if show {
-                CourseView(namespace: namespace, show: $show)
+                CourseView(namespace: namespace, show: $show, publicacion: publicacionItem)
             }
+             */
         }
     }
 }

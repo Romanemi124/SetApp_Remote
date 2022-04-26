@@ -32,4 +32,13 @@ struct ServicioUsuario{
                 
             }
     }
+    
+    func mostrarUsuarios(completion: @escaping([Usuario]) -> Void) {
+        Firestore.firestore().collection("usuarios")
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let usuarios = documents.compactMap({ try? $0.data(as: Usuario.self) })
+                completion(usuarios)
+            }
+    }
 }

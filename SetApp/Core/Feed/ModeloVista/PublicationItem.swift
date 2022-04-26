@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 //Esta es la estructura que va a tener la publicación y se cargará en la vista FeedView para ver todas las publicaciones de las personas que sigue
 struct PublicationItem: View {
@@ -15,6 +16,8 @@ struct PublicationItem: View {
     @Binding var show: Bool
     */
     
+    let publicacion: Publicacion
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 8.0) {
@@ -22,38 +25,42 @@ struct PublicationItem: View {
             Spacer()
             
             //Parte donde se cargará la foto de perfil del usuario y su nombre de usuario
-            HStack {
+            if let usuario = publicacion.user {
                 
-                Image("publi")
-                    .resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 26.0, height: 26.0)
-                    .cornerRadius(10)
-                    .padding(9)
-                    .background(.ultraThinMaterial, in:
-                                    RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    //.strokeStyle(cornerRadius: 16)
+                HStack {
+                    
+                    //Image("publi")
+                    KFImage(URL(string: usuario.UrlImagenPerfil))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 26, height: 26)
+                        .cornerRadius(10)
+                        .padding(9)
+                        .background(.ultraThinMaterial, in:
+                                        RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        //.strokeStyle(cornerRadius: 16)
+                    
+                    Text(usuario.nombreUsuario)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
                 
-                Text("Emilio")
-                    .font(.title3)
-                    .fontWeight(.semibold)
             }
             
-            
             //Textos donde cargarán las características de la publicación y la valoración por parte del usuario
-            Text("Monitor LG UltraGear")
+            Text(publicacion.nombreProducto)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundStyle(.linearGradient(colors: [.primary,.primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .lineLimit(1)
             
             //Cada uno de los textos tiene un estilo diferente así como el tamaño y color del texto
-            Text("LG".uppercased())
+            Text(publicacion.marca)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .foregroundStyle(.secondary)
             
-            Text("Escritorio gaming 2022")
+            Text(publicacion.categoria)
                 .font(.footnote)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)
@@ -69,10 +76,11 @@ struct PublicationItem: View {
         .padding(.horizontal, 20)
         .overlay(
             //Foto de la publicación
-            Image("publi")
+            KFImage(URL(string: publicacion.UrlImagePublicacion))
+            //Image("publi")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 350)
+                .frame(width: 350, height: 350)
                 //.offset(x: 32, y: -60)
                 .padding(.bottom, 180)
                 .cornerRadius(20)
@@ -81,6 +89,7 @@ struct PublicationItem: View {
     }
 }
 
+/*
 struct PublicationItem_Previews: PreviewProvider {
     
     //@Namespace static var namespace
@@ -90,3 +99,4 @@ struct PublicationItem_Previews: PreviewProvider {
         //PublicationItem(namespace: namespace, show: .constant(true))
     }
 }
+*/
