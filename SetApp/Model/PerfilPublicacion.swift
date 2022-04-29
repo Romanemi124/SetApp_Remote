@@ -14,24 +14,25 @@ struct PerfilPublicacion: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 8.0) {
+        VStack(alignment: .leading) {
             
             Spacer()
             
             //Parte donde se cargarán las publicaciones que ha realizado el usuario
-            HStack(alignment: .center) {
+            HStack {
                 
                 //Image("publi")
                 KFImage(URL(string: publicacion.UrlImagePublicacion))
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 180, height: 180)
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
+                    .padding(.bottom, 10)
                 
                 //Textos donde cargarán las características de la publicación y la valoración por parte del usuario
                 VStack(alignment: .leading, spacing: 8.0) {
                     
                     Text(publicacion.nombreProducto)
-                        .font(.largeTitle)
+                        .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
@@ -52,7 +53,7 @@ struct PerfilPublicacion: View {
                 .padding(.leading, 20)
             }
         }
-        .frame(width: 380, height: 120)
+        .frame(width: 350, height: 120)
         .cornerRadius(0)
         .padding(.all, 10)
         .background(

@@ -38,8 +38,7 @@ struct PerfilView: View {
             
             //Botones de acciones(Notificaciones + editar perfil)
             userInfoDetailsInfo
-            
-            Spacer()
+                .padding(.bottom, 100)
             
             ScrollView {
                 
@@ -137,23 +136,24 @@ extension PerfilView {
             
             //Nombre de usario
             
-            KFImage(URL(string: viewModel.user.UrlImagenPerfil))
+            //KFImage(URL(string: viewModel.user.UrlImagenPerfil))
+            Image("publi")
                 .resizable()
                 .scaledToFill()
                 .clipShape(Circle())
-                .frame(width: 200, height: 200)
-                //.padding(.top, 40)
+                .frame(width: 120, height: 120)
+                .padding(.top, 60)
             
             Text(viewModel.user.nombreCompleto)
-                .font(.title)
+                .font(.title2)
                 .foregroundColor(.white)
-                .padding(.bottom, 350)
+                .padding(.bottom, 200)
             
             //Nombre de usuario
             Text("@\(viewModel.user.nombreUsuario)")
                 .font(.title3).bold()
                 .foregroundColor(.white)
-                .padding(.bottom, 260)
+                .padding(.bottom, 120)
             
             //Parte donde aparecen los seguidores y seguidos
             HStack(spacing:80) {
@@ -186,11 +186,11 @@ extension PerfilView {
                 } label: {
                         
                     Text("Seguir")
-                        .font(.headline)
-                        .fontWeight(.bold)
+                        //.font(.headline)
+                        //.fontWeight(.bold)
                         .foregroundColor(.white)
                         .frame(maxWidth: 80)
-                        .frame(height: 6)
+                        .frame(height: 5)
                         .padding()
                         .background(Color(red: 0.331, green: 0.074, blue: 0.423))
                         .cornerRadius(10)
@@ -202,11 +202,9 @@ extension PerfilView {
                 }, label: {
                     
                     Text("Donar")
-                        .font(.headline)
-                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .frame(maxWidth: 80)
-                        .frame(height: 6)
+                        .frame(height: 5)
                         .padding()
                         .background(Color(red: 0.331, green: 0.074, blue: 0.423))
                         .cornerRadius(10)
@@ -218,7 +216,7 @@ extension PerfilView {
             .padding(.leading, 75)
             .padding(.top, 360)
         }
-        .frame(height: 400)
+        .frame(height: 200)
     }
 }
 

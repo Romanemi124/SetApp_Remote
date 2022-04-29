@@ -32,10 +32,10 @@ struct PublicationItem: View {
                     //Image("publi")
                     KFImage(URL(string: usuario.UrlImagenPerfil))
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 26, height: 26)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 30, height: 30)
                         .cornerRadius(10)
-                        .padding(9)
+                        .padding(5)
                         .background(.ultraThinMaterial, in:
                                         RoundedRectangle(cornerRadius: 16, style: .continuous))
                         //.strokeStyle(cornerRadius: 16)
@@ -77,13 +77,11 @@ struct PublicationItem: View {
         .overlay(
             //Foto de la publicación
             KFImage(URL(string: publicacion.UrlImagePublicacion))
-            //Image("publi")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 350, height: 350)
-                //.offset(x: 32, y: -60)
-                .padding(.bottom, 180)
                 .cornerRadius(20)
+                .padding(.bottom, 180)
         )
         .padding(.bottom, 50)
     }
