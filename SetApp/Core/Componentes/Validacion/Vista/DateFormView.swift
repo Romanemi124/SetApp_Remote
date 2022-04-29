@@ -24,9 +24,11 @@ struct DateFormView: View {
                 
                 HStack {
                     
+                    Text("Fecha de nacimiento:        ").font(.system(size: 16)).foregroundColor(.white)
+                    
                     DatePicker("",
                                selection: $selectedDate,
-                           displayedComponents: [.date])
+                               displayedComponents: [.date])
                     //.labelsHidden() de esta forma la posciocionamos en la parte izquierda
                         .labelsHidden()
                         .fixedSize()
@@ -43,7 +45,10 @@ struct DateFormView: View {
                             formularioContenido.actualizar(val: selectedDate, in: dateComponent)
                         })
                     Spacer()
+                    
                 }
+                .padding(.leading, 30)
+                
                 
                 //Texto que muestra los errores
                 Text(validarError != nil ? validarError!.descripcionError : "")

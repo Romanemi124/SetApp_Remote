@@ -17,13 +17,14 @@ enum PatronesRegex {
     /* Nombre de usuario */
     /* - Un nombre de usuario válido debe comenzar con un alfabeto así, [A-Za-z].
      - Todos los demás caracteres pueden ser letras, números o guiones bajos, [A-Za-z0-9_].
-     - Dado que la restricción de longitud se dio como 8-30 y ya habíamos arreglado el primer carácter, le damos {7,29}. */
+     - Dado que la restricción de longitud se dio como 8-30 y ya habíamos arreglado el primer carácter, le damos {7,25}. */
     //Caracteres validos
-    static let nombreUsuarioCaracteresValidos = ".*[A-Za-z][A-Za-z0-9_]*."
+    static let nombreUsuarioCaracteresValidos = "^[A-Za-z].*"
+   // static let nombreUsuarioCaracteresValidos = ".*[A-Za-z][A-Za-z0-9_]*."
     //Longitud mínima y máxima
-    static let nombreUsuarioLongitud = "\\w{7,23}"
+    static let nombreUsuarioLongitud = "^.{8,25}"
     //Comprobar que el nombre de usuario es correcto,gracias a esto comprobamos que el usuario cumpla con la validación
-    static let nombreUsuarioCorrecto = "^[A-Za-z][A-Za-z0-9_]{7,23}$"
+    static let nombreUsuarioCorrecto = "^[A-Za-z][A-Za-z0-9_]{7,25}$"
     
     /* Email */
     //Necesario añdir ese caracter al email

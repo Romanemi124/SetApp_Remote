@@ -10,8 +10,7 @@ import Foundation
 /* Datos del usuario que se van a validar */
 struct UsuarioRegistro: Equatable {
     
-    var nombre: String
-    var apellido: String
+    var nombreCompleto: String
     var nombreUsuario: String
     var sexo: String
     var fechaNacimiento: String

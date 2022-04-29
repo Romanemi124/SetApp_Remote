@@ -24,8 +24,14 @@ class AutentificacionModelView: ObservableObject{
     @Published var usuarioActual: Usuario?
     //Esta variable almacenará las credenciales del usuario solo durante el proceso de registro, debido a que el proceso de guardar la foto de perfil se realiza en un método diferente al registro de datos del usuario
     private var sesionUsuarioTemporal: FirebaseAuth.User?
+    
     /* Objecto para acceder a los servicios del usuario, esto será util para mostrar los datos del usuario autentificado */
     private let service = ServicioUsuario()
+    
+    /* Objecto que almacena el usuario validado */
+    @Published var usuarioRegistro : UsuarioRegistro?
+    /* Objecto que valida si el usuario puede registrarse correctamente y pasar la vista seleccionar foto de perfil */
+    @Published var usuarioValidado = false
 
     /* init() La inicialización es el proceso de preparación de una instancia de una clase, estructura o enumeración para su uso*/
     //Creamos "el contructor" de la clase
@@ -161,6 +167,94 @@ class AutentificacionModelView: ObservableObject{
             self.usuarioActual = usuario
         }
     }
+    
+    
+    /*--- Validación del usuario---*/
+    
+    /* Guardar los datos del usuario validado */
+    func guardarDatosPersonales(withUsuarioRegistro nombreCompleto:String, nombreUsuario:String, sexo:String, fechaNacimiento:String, email:String, password: String){
+        
+        /* Añadimos los datos del formulario al usuario */
+        let usuarioRegistrar: UsuarioRegistro = UsuarioRegistro( nombreCompleto: nombreCompleto, nombreUsuario: nombreUsuario, sexo: sexo, fechaNacimiento: fechaNacimiento, email: email, password: password)
+        
+        /* Desempaquetamos el opcional */
+        guard var usuario = self.usuarioRegistro else{ return }
+        
+        /* Igualamos el usuario registrado con el usuario desempaquetado */
+        usuario = usuarioRegistrar
+        
+        print(usuario.nombreCompleto)
+        print(usuario.fechaNacimiento)
+        print(usuario.sexo)
+        print(usuario.email)
+        print(usuario.password)
+        
+        /* Igualamos a la variable de la clase */
+        self.usuarioRegistro = usuario
+        
+        //Dirgirse a la siguiente vista
+        self.usuarioValidado = true
+        
+    }
+    
+    
+    /* Buscar el email en la base de datos nos devolverá un booleano si lo encuentra o no */
+    func buscarEmail(withEmail email: String, completion:@escaping ((Bool)-> () )){
+        
+        Firestore.firestore().collection("usuarios").whereField("email".lowercased(), isEqualTo: email.lowercased()).getDocuments{ (resultado, error) in
+            
+            if let error = error{
+                
+                print("Error")
+                completion(false)
+                
+            }else{
+                
+                if (resultado!.count > 0){
+                    
+                    completion(true)
+                    print("Email encontrado")
+                    
+                }else{
+                    
+                    completion(false)
+                    print("Email NO encontrado")
+                }
+                
+            }
+            
+        }
+    }
+    /* Buscar el nombre de usuario en la base de datos nos devolverá un booleano si lo encuentra o no */
+    func buscarNombreUsuario(withNombreUsuario nombreUsuario: String, completion:@escaping ((Bool)-> () )){
+        
+        
+        Firestore.firestore().collection("usuarios").whereField("nombreUsuario", isEqualTo: nombreUsuario).getDocuments{ (resultado, error) in
+            
+            if let error = error {
+                
+                
+                print("Error")
+                completion(false)
+                
+            }else{
+                
+                if (resultado!.count > 0){
+                    
+                    completion(true)
+                    print("nombreUsuario encontrado")
+                    
+                }else{
+                    
+                    completion(false)
+                    print("nombreUsuario NO encontrado")
+                }
+                
+            }
+            
+        }
+    }
+    
     
 }
 

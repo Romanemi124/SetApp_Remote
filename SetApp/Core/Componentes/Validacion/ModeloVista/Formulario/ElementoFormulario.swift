@@ -29,8 +29,7 @@ protocol ElementoFormulario {
 
 /* Lista con los diferentes componentes que podemos añadir al formulario */
 enum CamposFormulario: String, CaseIterable {
-    case nombre
-    case apellido
+    case nombreCompleto
     case nombreUsuario
     case email
     case password

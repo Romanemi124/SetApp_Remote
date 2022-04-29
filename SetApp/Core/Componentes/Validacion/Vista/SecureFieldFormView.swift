@@ -23,7 +23,9 @@ struct SecureFieldFormView: View {
         
         VStack(alignment: .leading) {
             
-            SecureField(textComponent.placeholder, text: $text)
+            Text(textComponent.placeholder).font(.system(size: 16))
+            
+            SecureField("", text: $text)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
                        minHeight: 44,
                        alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

@@ -23,7 +23,9 @@ struct TextFieldFormView: View {
         
         VStack(alignment: .leading) {
             
-            TextField(textComponent.placeholder, text: $text)
+            Text(textComponent.placeholder).font(.system(size: 16))
+            
+            TextField("", text: $text)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
                        minHeight: 44,
                        alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
