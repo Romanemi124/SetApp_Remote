@@ -21,6 +21,12 @@ enum Sexo: String, CaseIterable {
 
 struct RegistroView: View {
     
+    //Para elegir la foto de usuario
+    @State private var showSheet: Bool = false
+    @State private var showImagePicker: Bool = false
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State var image: UIImage?
+    
     @State private var elegirSexo: Sexo = .hombre
     @State private var fechaNacimiento: Date  = Date()
     /* @Environment(\.presentationMode) Un enlace al modo de presentación de la vista actual asociada con el entorno*/
@@ -57,180 +63,216 @@ struct RegistroView: View {
             
             VStack{
                 
-                VStack{
+                CabeceraAutentificacionView(titulo1: "Crear cuenta", titulo2:"Únete ahora")
+                
+                ScrollView {
                     
-                    CabeceraAutentificacionView(titulo1: "Crear cuenta", titulo2:"").position(x: 260, y: 30)
-                    
-                    //Utilizamos LazyVGrid porque da mayor flexibilidad a la hora de mostrar los componentes
-                    LazyVGrid(columns: [GridItem(.flexible(minimum: 50))],  spacing: 20) {
+                    VStack{
                         
-                        //Recorremos el array con los componentes que forman el formulario
-                        ForEach(formularioContenidoImpl.contenidoFormulario) { component in
+                        Image(uiImage: image ?? UIImage(named: "user")!)
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 120, height: 120)
+                            .padding(.top, 10)
+                        
+                        HStack {
                             
-                            //Seleccionamos los componentes del array
-                            switch component {
+                            //En este caso se va a redirigir a la cámara para poder tomar una foto y publicarla
+                            Button("Elegir foto") {
+                                self.showSheet = true
+                            }.padding()
+                                .actionSheet(isPresented: $showSheet) {
+                                    ActionSheet(title: Text("Selecciona una opción"),
+                                        buttons: [
+                                            .default(Text("Galería")) {
+                                                self.showImagePicker = true
+                                                self.sourceType = .photoLibrary
+                                            },
+                                            .cancel()
+                                        ])
+                            }
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .cornerRadius(20)
+                            
+                        }
+                        .padding(.bottom, 20)
+                        .sheet(isPresented: $showImagePicker) {
+                            SeleccionarFoto(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
+                        }
+                        
+                        //Utilizamos LazyVGrid porque da mayor flexibilidad a la hora de mostrar los componentes
+                        LazyVGrid(columns: [GridItem(.flexible(minimum: 50))],  spacing: 20) {
+                            
+                            //Recorremos el array con los componentes que forman el formulario
+                            ForEach(formularioContenidoImpl.contenidoFormulario) { component in
                                 
-                                //Nombre, Apellidos y Email
-                            case is TextFormComponent:
-                                /* textComponent: component as! TextFormComponent indicamos la configuración del componente
-                                 as! forzamos la conversión del componente al tipo de componente que deseamos mostrar
-                                 .environmentObject(contentBuilder) pasamos la varible de entorno la cual se encargará de saber cuando cambiar la vista y mostra los textos de error */
-                                TextFieldFormView(textComponent: component as! TextFormComponent)
-                                    .environmentObject(formularioContenidoImpl).foregroundColor(.white)
-                                
-                                //Contraseña
-                            case is SecureTextFormComponent:
-                                /* textComponent: component as! TextFormComponent indicamos la configuración del componente
-                                 as! forzamos la conversión del componente al tipo de componente que deseamos mostrar
-                                 .environmentObject(contentBuilder) pasamos la varible de entorno la cual se encargará de saber cuando cambiar la vista y mostra los textos de error */
-                                SecureFieldFormView(textComponent: component as! SecureTextFormComponent)
-                                    .environmentObject(formularioContenidoImpl).foregroundColor(.white)
-                                
-                                //Fecha de nacimiento
-                            case is DateFormComponent:
-                                DateFormView(dateComponent: component as! DateFormComponent)
-                                    .environmentObject(formularioContenidoImpl)
-                                
-                                /* !!! Mejorar implementar en FormContentBuilder */
-                                //Elegir el sexo del usuario
-                                HStack(spacing:150){
-                                    Text("Seleccionar sexo:").foregroundColor(Color.white)
-                                    //Elegir el sexo
-                                    Picker(selection: $elegirSexo, label: Text("")) {
-                                        ForEach(Sexo.allCases, id: \.self) { sexo in
-                                            Text(sexo.sexo)
-                                        }
-                                    }.labelsHidden()
-                                        .padding(.leading,-43)
-                                }
-                                //Botón para registrarse
-                            case is ButtonFormItem:
-                                
-                                ButtonFormView(buttonComponent: component as! ButtonFormItem) { id in
+                                //Seleccionamos los componentes del array
+                                switch component {
                                     
-                                    /* La identificación es una enumeración */
-                                    switch id {
+                                    //Nombre, Apellidos y Email
+                                case is TextFormComponent:
+                                    /* textComponent: component as! TextFormComponent indicamos la configuración del componente
+                                     as! forzamos la conversión del componente al tipo de componente que deseamos mostrar
+                                     .environmentObject(contentBuilder) pasamos la varible de entorno la cual se encargará de saber cuando cambiar la vista y mostra los textos de error */
+                                    TextFieldFormView(textComponent: component as! TextFormComponent)
+                                        .environmentObject(formularioContenidoImpl).foregroundColor(.white)
+                                    
+                                    //Contraseña
+                                case is SecureTextFormComponent:
+                                    /* textComponent: component as! TextFormComponent indicamos la configuración del componente
+                                     as! forzamos la conversión del componente al tipo de componente que deseamos mostrar
+                                     .environmentObject(contentBuilder) pasamos la varible de entorno la cual se encargará de saber cuando cambiar la vista y mostra los textos de error */
+                                    SecureFieldFormView(textComponent: component as! SecureTextFormComponent)
+                                        .environmentObject(formularioContenidoImpl).foregroundColor(.white)
+                                    
+                                    //Fecha de nacimiento
+                                case is DateFormComponent:
+                                    DateFormView(dateComponent: component as! DateFormComponent)
+                                        .environmentObject(formularioContenidoImpl)
+                                    
+                                    /* !!! Mejorar implementar en FormContentBuilder */
+                                    //Elegir el sexo del usuario
+                                    HStack(spacing:150){
+                                        Text("Seleccionar sexo:").foregroundColor(Color.white)
+                                        //Elegir el sexo
+                                        Picker(selection: $elegirSexo, label: Text("")) {
+                                            ForEach(Sexo.allCases, id: \.self) { sexo in
+                                                Text(sexo.sexo)
+                                            }
+                                        }.labelsHidden()
+                                            .padding(.leading,-43)
+                                    }
+                                    //Botón para registrarse
+                                case is ButtonFormItem:
+                                    
+                                    ButtonFormView(buttonComponent: component as! ButtonFormItem) { id in
                                         
-                                    case .submit:
-                                        
-                                        //Validamos el formulario cuando se pulse el botón
-                                        formularioContenidoImpl.validacion()
-                                        
-                                        print(".submit self.noExisteEmail \(self.noExisteEmail)")
-                                        print(".submit self.noExisteNombreUsuario \(self.noExisteNombreUsuario)")
-                                        print(".submit formularioContenidoImpl.esValido \(formularioContenidoImpl.esValido)")
-                                        
-                                        /* Validamos que no existe el mismo email ni el nombre de usuario */
-                                        //Solo cuando el usuario esté validado
-                                        if formularioContenidoImpl.esValido == true {
+                                        /* La identificación es una enumeración */
+                                        switch id {
                                             
-                                            if self.noExisteEmail && self.noExisteNombreUsuario{
+                                        case .submit:
+                                            
+                                            //Validamos el formulario cuando se pulse el botón
+                                            formularioContenidoImpl.validacion()
+                                            
+                                            print(".submit self.noExisteEmail \(self.noExisteEmail)")
+                                            print(".submit self.noExisteNombreUsuario \(self.noExisteNombreUsuario)")
+                                            print(".submit formularioContenidoImpl.esValido \(formularioContenidoImpl.esValido)")
+                                            
+                                            /* Validamos que no existe el mismo email ni el nombre de usuario */
+                                            //Solo cuando el usuario esté validado
+                                            if formularioContenidoImpl.esValido == true {
                                                 
-                                                //Indicamos que el tipo de alert
-                                                alertType = .sucess
-                                                //Mostramos el alert
-                                                showAlert.toggle()
-                                                
-                                            }else{
-                                                if !self.noExisteEmail && self.noExisteNombreUsuario{
-                                                    tipoError = .mismoEmail
-                                                    mostrarError ()
-                                                }
-                                                if self.noExisteEmail && !self.noExisteNombreUsuario{
-                                                    tipoError = .mismoNombreUsuario
-                                                    mostrarError ()
-                                                }
-                                                if !self.noExisteEmail && !self.noExisteNombreUsuario{
-                                                    tipoError = .mismoEmailYNombreUsuario
-                                                    mostrarError ()
+                                                if self.noExisteEmail && self.noExisteNombreUsuario{
+                                                    
+                                                    //Indicamos que el tipo de alert
+                                                    alertType = .sucess
+                                                    //Mostramos el alert
+                                                    showAlert.toggle()
+                                                    
+                                                }else{
+                                                    if !self.noExisteEmail && self.noExisteNombreUsuario{
+                                                        tipoError = .mismoEmail
+                                                        mostrarError ()
+                                                    }
+                                                    if self.noExisteEmail && !self.noExisteNombreUsuario{
+                                                        tipoError = .mismoNombreUsuario
+                                                        mostrarError ()
+                                                    }
+                                                    if !self.noExisteEmail && !self.noExisteNombreUsuario{
+                                                        tipoError = .mismoEmailYNombreUsuario
+                                                        mostrarError ()
+                                                    }
                                                 }
                                             }
+                                            
+                                        default:
+                                            break
+                                            
+                                            //Fin switch id
                                         }
-                                        
-                                    default:
-                                        break
-                                        
-                                        //Fin switch id
+                                        //Fin ButtonFormView
                                     }
-                                    //Fin ButtonFormView
+                                    
+                                    //Sino encuentra ningún elemento mostrará una vista vacía
+                                default:
+                                    EmptyView()
+                                    
                                 }
                                 
-                                //Sino encuentra ningún elemento mostrará una vista vacía
-                            default:
-                                EmptyView()
+                                //Fin ForEach
+                            }
+                            .padding(.horizontal)
+                            //Fin LazySatack
+                        }
+                        //.padding(.top, -530)
+                        
+                        //Fin Vstack 2
+                    }
+                    .padding(.horizontal, 8)
+                    /* SOLO CUANDO HAY CAMBIOS */
+                    //Comprobamos si el estado del formulario ha cambiado, es decir, si es correcto o incorrecto
+                    .onChange(of: formularioContenidoImpl.estado,
+                              perform: { value in
+                        
+                        switch value {
+                            
+                        case .validar(let usuarioValidado):
+                            
+                            //No hay errores se puede crear un usuario
+                            print("Usuario creado:  \(usuarioValidado)")
+                            
+                            //Igualamos los datos del usuario que se ha validado correctamente
+                            usuarioValidadoCorrectamente = usuarioValidado
+                            
+                            print("Email\(usuarioValidadoCorrectamente.email)")
+                            print("Nombre de usuario\(usuarioValidadoCorrectamente.nombreUsuario)")
+                            
+                            //Cuando el usuario aha validado correctamente los datos del registro buscará en la base de datos si el nombre de usiario y el email están repetidos
+                            formularioContenidoImpl.esValido = true
+                            
+                            //1º. Buscar email
+                            vistaModelo.buscarEmail(withEmail: usuarioValidadoCorrectamente.email){ resultado in
                                 
+                                if(resultado == true){
+                                    print("Ya existe ese email")
+                                    self.noExisteEmail = false
+                                }else{
+                                    print("No existe ese nombreUsuario")
+                                    self.noExisteEmail = true
+                                }
                             }
                             
-                            //Fin ForEach
-                        }
-                        .padding(.horizontal)
-                        //Fin LazySatack
-                    }
-                    .padding(.top, -530)
-                    
-                    //Fin Vstack 2
-                }
-                .padding(.horizontal, 8)
-                /* SOLO CUANDO HAY CAMBIOS */
-                //Comprobamos si el estado del formulario ha cambiado, es decir, si es correcto o incorrecto
-                .onChange(of: formularioContenidoImpl.estado,
-                          perform: { value in
-                    
-                    switch value {
-                        
-                    case .validar(let usuarioValidado):
-                        
-                        //No hay errores se puede crear un usuario
-                        print("Usuario creado:  \(usuarioValidado)")
-                        
-                        //Igualamos los datos del usuario que se ha validado correctamente
-                        usuarioValidadoCorrectamente = usuarioValidado
-                        
-                        print("Email\(usuarioValidadoCorrectamente.email)")
-                        print("Nombre de usuario\(usuarioValidadoCorrectamente.nombreUsuario)")
-                        
-                        //Cuando el usuario aha validado correctamente los datos del registro buscará en la base de datos si el nombre de usiario y el email están repetidos
-                        formularioContenidoImpl.esValido = true
-                        
-                        //1º. Buscar email
-                        vistaModelo.buscarEmail(withEmail: usuarioValidadoCorrectamente.email){ resultado in
+                            //2º Buscar nombre usuario
+                            vistaModelo.buscarNombreUsuario(withNombreUsuario: usuarioValidadoCorrectamente.nombreUsuario){ resultado in
+                                if(resultado == true){
+                                    print("Ya existe ese nombreUsuario")
+                                    self.noExisteNombreUsuario = false
+                                }else{
+                                    print("No existe ese nombreUsuario")
+                                    self.noExisteNombreUsuario = true
+                                }
+                            }
                             
-                            if(resultado == true){
-                                print("Ya existe ese email")
-                                self.noExisteEmail = false
-                            }else{
-                                print("No existe ese nombreUsuario")
-                                self.noExisteEmail = true
-                            }
+                            break
+                            
+                        case .error(let message):
+                            //Existe algún error
+                            print("Failed: \(message)")
+                            //En el caso que haya error con las validaciones
+                            tipoError = .validaciones
+                            mostrarError ()
+                            //Cuando ocuura errores del tipo vlaidación de dato no se mostrá alert de busqueda en la base de datos
+                            formularioContenidoImpl.esValido = false
+                            break
+                            
+                        case .none:
+                            break
                         }
-                        
-                        //2º Buscar nombre usuario
-                        vistaModelo.buscarNombreUsuario(withNombreUsuario: usuarioValidadoCorrectamente.nombreUsuario){ resultado in
-                            if(resultado == true){
-                                print("Ya existe ese nombreUsuario")
-                                self.noExisteNombreUsuario = false
-                            }else{
-                                print("No existe ese nombreUsuario")
-                                self.noExisteNombreUsuario = true
-                            }
-                        }
-                        
-                        break
-                        
-                    case .error(let message):
-                        //Existe algún error
-                        print("Failed: \(message)")
-                        //En el caso que haya error con las validaciones
-                        tipoError = .validaciones
-                        mostrarError ()
-                        //Cuando ocuura errores del tipo vlaidación de dato no se mostrá alert de busqueda en la base de datos
-                        formularioContenidoImpl.esValido = false
-                        break
-                        
-                    case .none:
-                        break
-                    }
                 })
+                }
                 
                 //Link para ir a la vista iniciar sesión
                 Button{

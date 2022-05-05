@@ -65,7 +65,7 @@ struct MainTabView: View {
             }
             .padding(.horizontal, 8)
             .padding(.top, 14)
-            .frame(height: 88, alignment: .top)
+            .frame(height: 70, alignment: .top)
             //Rectángulo donde se agurpan las cuatro opciones de la barra de menú
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 34, style: .continuous))
             .background(

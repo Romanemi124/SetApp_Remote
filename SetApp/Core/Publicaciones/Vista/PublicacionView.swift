@@ -76,10 +76,12 @@ struct PublicacionView: View {
                                             self.showImagePicker = true
                                             self.sourceType = .photoLibrary
                                         },
+                                        /*
                                         .default(Text("Camera")) {
                                             self.showImagePicker = true
                                             self.sourceType = .camera
                                         },
+                                         */
                                         .cancel()
                                     ])
                         }
