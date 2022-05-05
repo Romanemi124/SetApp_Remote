@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Kingfisher
-
+/*
 struct PerfilPublicacion: View {
     
     let publicacion: Publicacion
@@ -69,3 +69,4 @@ struct PerfilPublicacion_Previews: PreviewProvider {
     }
 }
 */
+ */

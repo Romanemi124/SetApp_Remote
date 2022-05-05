@@ -28,19 +28,8 @@ struct CamposEntrada: View {
                 .scaleEffect(text.isEmpty ? 1 : 0.9, anchor: .leading)
                 
             //Nos mostrará diferentes campos de entrada de texto dependiendo del campo
-            if isSecureField ?? false{
-                
-                //Contraseña
-                SecureField("Contraseña", text: $text)
-                    .foregroundColor(.white)
-                
-            }else{
-                
-                //Email
-                TextField("Email", text: $text)
-                    .foregroundColor(.white)
-                
-            }
+            TextField("", text: $text)
+                .foregroundColor(.white)
             
         }
         .padding(.top, self.text.isEmpty ? 0 : 18)

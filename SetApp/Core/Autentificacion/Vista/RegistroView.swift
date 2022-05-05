@@ -140,6 +140,7 @@ struct RegistroView: View {
                                         Picker(selection: $elegirSexo, label: Text("")) {
                                             ForEach(Sexo.allCases, id: \.self) { sexo in
                                                 Text(sexo.sexo)
+                                                    .foregroundColor(.white)
                                             }
                                         }.labelsHidden()
                                             .padding(.leading,-43)

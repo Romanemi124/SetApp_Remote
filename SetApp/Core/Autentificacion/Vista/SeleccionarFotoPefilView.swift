@@ -53,7 +53,7 @@ struct SeleccionarFotoPefilView: View {
                        onDismiss: loadImage){
                     
                     //Guardamos la imagen seleccionada
-                    ImagePicker(selectedImage: $selectedImage)
+                    //ImagePicker(selectedImage: $selectedImage)
                     
                 }
             .padding(.top, 100)

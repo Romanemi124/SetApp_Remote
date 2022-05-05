@@ -53,7 +53,7 @@ struct MenuDeslizanteView: View {
                     ForEach(MenuDeslizanteModeloView.allCases, id: \.rawValue){ vistaModelo  in
                         
                         if vistaModelo == .perfil{
-                            
+                            /*
                             //Nos dirigimos al perfil
                             NavigationLink{
                                 //Mostramos el usuario gracias el usuario que hemos guardado de  le sesión
@@ -61,7 +61,7 @@ struct MenuDeslizanteView: View {
                             }label: {
                                MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
                             }
-                            
+                            */
                         }else if(vistaModelo == .logout){
                             
                             //Cada vez que se cierre sesión se mostrá ese mensaje

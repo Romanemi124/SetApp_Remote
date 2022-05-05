@@ -9,10 +9,8 @@ import Foundation
 
 class FeedViewModel: ObservableObject {
     
-    @Published var publicaciones = [Publicacion]()
-    let service = ServicioProducto()
     let userService = ServicioUsuario()
-    
+    /*
     init() {
         fetchPublications()
     }
@@ -30,4 +28,5 @@ class FeedViewModel: ObservableObject {
             }
         }
     }
+     */
 }
