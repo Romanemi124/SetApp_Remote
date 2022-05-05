@@ -11,7 +11,7 @@ import Foundation
 extension Encodable{
     
     //Realizar un diccionario de los usuarios
-    func asDictornary() throws -> [String: Any]{
+    func asDictionary() throws -> [String: Any]{
         
         let data =  try JSONEncoder().encode(self)
         

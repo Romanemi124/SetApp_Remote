@@ -2,9 +2,10 @@
 //  CourseView.swift
 //  SetApp
 //
-//  Created by Emilio Roman on 18/4/22.
+//  Created by Omar Bonilla Varela on 5/5/22.
 //
 
+import Foundation
 import SwiftUI
 import Kingfisher
 
@@ -24,3 +25,4 @@ struct CourseView_Previews: PreviewProvider {
         CourseView()
     }
 }
+

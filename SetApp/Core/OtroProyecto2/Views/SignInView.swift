@@ -12,7 +12,7 @@ struct SignInView: View {
     
     @State private var email : String = ""
     @State private var password : String = ""
-    //Compronar errores
+    //Comprobar errores
     @State private var error : String = ""
     @State private var showingAlert = false
     @State private var alertTitle: String = "Error"

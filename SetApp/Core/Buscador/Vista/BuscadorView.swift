@@ -2,6 +2,15 @@
 //  BuscadorView.swift
 //  SetApp
 //
+//  Created by Omar Bonilla Varela on 5/5/22.
+//
+
+import SwiftUI
+
+//
+//  BuscadorView.swift
+//  SetApp
+//
 //  Created by Omar Bonilla Varela on 11/4/22.
 //
 
@@ -30,11 +39,11 @@ struct BuscadorView: View {
                 PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in
                     
                     /*
-                    Image(categoria.artwork)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 300, height: 500)
-                        .cornerRadius(15)
+                     Image(categoria.artwork)
+                     .resizable()
+                     .aspectRatio(contentMode: .fill)
+                     .frame(width: 300, height: 500)
+                     .cornerRadius(15)
                      */
                     
                     GeometryReader { proxy in
@@ -55,7 +64,7 @@ struct BuscadorView: View {
                                 }
                             }
                     }
-                     
+                    
                 }
                 .padding(.top, 100)
                 
@@ -77,7 +86,7 @@ struct BuscadorView: View {
                     .padding()
                 }
                 .padding(.bottom, 50)
-                 
+                
             }
             .overlay {
                 

@@ -133,7 +133,7 @@ struct PublicacionView: View {
                                     }
                                 }
                                 .labelsHidden()
-                                    .padding(.leading,-43)
+                                .padding(.leading,-43)
                             }
                             
                             //CamposEntrada(placeholder: "Categoría", isSecureField: false,text: $categoria)
@@ -146,7 +146,7 @@ struct PublicacionView: View {
                                     }
                                 }
                                 .labelsHidden()
-                                    .padding(.leading,-43)
+                                .padding(.leading,-43)
                             }
                             
                             CamposEntrada(placeholder: "Valoración", isSecureField: false,text: $valoracion)
@@ -165,17 +165,17 @@ struct PublicacionView: View {
                 }
                 .actionSheet(isPresented: $showingActionSheet) {
                     ActionSheet(title: Text("Selecciona una opción"),
-                        buttons: [
-                            .default(Text("Galería")) {
-                                self.sourceType = .photoLibrary
-                                self.showingImagePicker = true
-                            },
-                            .default(Text("Camera")) {
-                                self.sourceType = .camera
-                                self.showingImagePicker = true
-                            },
-                            .cancel()
-                        ])
+                                buttons: [
+                                    .default(Text("Galería")) {
+                                        self.sourceType = .photoLibrary
+                                        self.showingImagePicker = true
+                                    },
+                                    .default(Text("Camera")) {
+                                        self.sourceType = .camera
+                                        self.showingImagePicker = true
+                                    },
+                                    .cancel()
+                                ])
                 }
             }
             .padding(30)

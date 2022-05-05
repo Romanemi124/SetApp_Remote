@@ -2,9 +2,10 @@
 //  Post.swift
 //  SetApp
 //
-//  Created by Emilio Roman on 3/5/22.
+//  Created by Emilio Roman on 5/5/22.
 //
 
+import Foundation
 import FirebaseFirestoreSwift
 import Firebase
 
@@ -24,5 +25,6 @@ struct Post: Encodable, Decodable {
     var marca: String
     var valoracion: String
     var caracteristicas: String
+    
 }
 

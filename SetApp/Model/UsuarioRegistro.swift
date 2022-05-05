@@ -7,6 +7,8 @@
 
 import Foundation
 
+/* DEPRECATED  */
+
 /* Datos del usuario que se van a validar */
 struct UsuarioRegistro: Equatable {
     

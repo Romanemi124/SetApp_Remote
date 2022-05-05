@@ -2,11 +2,12 @@
 //  PostCarrusel.swift
 //  SetApp
 //
-//  Created by Emilio Roman on 4/5/22.
+//  Created by Omar Bonilla Varela on 5/5/22.
 //
 
+import Foundation
 import SwiftUI
-
+ 
 struct PostCarrusel<Content: View,T: Identifiable>: View {
     
     var content: (T) -> Content
@@ -101,9 +102,10 @@ struct PostCarrusel<Content: View,T: Identifiable>: View {
         return index
     }
 }
-
+ 
 struct BuscadorView_PreviewsCarrusel: PreviewProvider {
     static var previews: some View {
         BuscadorView()
     }
 }
+

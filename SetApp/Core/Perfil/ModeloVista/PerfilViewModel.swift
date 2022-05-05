@@ -9,14 +9,15 @@ import Foundation
 
 class PerfilViewModel: ObservableObject {
     
+    @Published var publicaciones = [Publicacion]()
+    private let service = ServicioProducto()
     let user: Usuario
     
     init(user: Usuario) {
         self.user = user
-        //self.mostrarPublicUsuarios()
+        self.mostrarPublicUsuarios()
     }
     
-    /*
     func mostrarPublicUsuarios() {
         guard let uid = user.id else { return }
         service.fetchPublicationsUser(forUid: uid) { publicaciones in
@@ -27,5 +28,4 @@ class PerfilViewModel: ObservableObject {
             }
         }
     }
-     */
 }

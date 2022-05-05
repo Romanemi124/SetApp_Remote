@@ -2,10 +2,19 @@
 //  OpcionesCategoria.swift
 //  SetApp
 //
+//  Created by Omar Bonilla Varela on 5/5/22.
+//
+
+import Foundation
+
+//
+//  OpcionesCategoria.swift
+//  SetApp
+//
 //  Created by Emilio Roman on 2/5/22.
 //
 import SwiftUI
-
+ 
 enum TiposCategoria: String, CaseIterable {
     
     case monitor = "Monitor"
@@ -23,7 +32,7 @@ enum TiposCategoria: String, CaseIterable {
         return rawValue.capitalized
     }
 }
-
+ 
 enum NombreMarcas: String, CaseIterable {
     
     case life = "1Life"

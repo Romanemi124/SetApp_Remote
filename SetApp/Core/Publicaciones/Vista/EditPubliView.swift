@@ -2,17 +2,16 @@
 //  EditPubliView.swift
 //  SetApp
 //
-//  Created by Emilio Roman on 5/5/22.
+//  Created by Emilio Roman on 17/4/22.
 //
-
 import SwiftUI
-
+ 
 struct EditPubliView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Hello, World!")
     }
 }
-
+ 
 struct EditPubliView_Previews: PreviewProvider {
     static var previews: some View {
         EditPubliView()
