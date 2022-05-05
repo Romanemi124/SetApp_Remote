@@ -13,6 +13,7 @@ struct MenuDeslizanteView: View {
     
     //Importante llamarlo diferente de vista modelo porque o sino el programa confunde las variables autentificacionVistaModelo
     @EnvironmentObject var autentificacionVistaModelo: AutentificacionModelView
+    @EnvironmentObject var informacionUsuario: InformacionUsuario
     
     var body: some View {
         
@@ -67,8 +68,11 @@ struct MenuDeslizanteView: View {
                             //Cada vez que se cierre sesión se mostrá ese mensaje
                             Button {
                                 
-                                /*!!!!!!!!*/
+                                /* Cerramos la sesión del usuario */
                                 autentificacionVistaModelo.cerrarSesion()
+                                
+                                /* Indicamos que se ha cerrado la sesión */
+                                self.informacionUsuario.estaUsuarioAutentificado = .cerrarSesion
                                 
                             }label: {
                                 
