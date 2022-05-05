@@ -13,6 +13,7 @@ struct LoginView: View {
     @State private var password: String = ""
     //Variable para acceder a los datos para iniciar sesión
     @EnvironmentObject var vistaModelo: AutentificacionModelView
+    @EnvironmentObject var informacionUsuario: InformacionUsuario
     
     var body: some View {
         
@@ -61,6 +62,9 @@ struct LoginView: View {
                     
                     //Función para iniciar sesión
                     vistaModelo.iniciarSesion(withEmail: email, password: password)
+                    
+                    //Indicar que el usuario se ha autentificado
+                    self.informacionUsuario.estaUsuarioAutentificado = .iniciarSesion
                     
                 }label:{
                     

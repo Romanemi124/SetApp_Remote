@@ -8,8 +8,38 @@
 import SwiftUI
 
 struct BuscadorView: View {
+    
+    /* Variable de entorno para acceder a todos los usarios  */
+    @ObservedObject var vistaModelo = BuscadorModeloView()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+        VStack{
+            
+            //Mostramos el buscador
+            BuscadorBar(texto: $vistaModelo.textoBuscar)
+                .padding()
+            
+            ScrollView{
+                LazyVStack{
+                    ForEach(vistaModelo.searchableUsers){ user in
+                        
+                        NavigationLink{
+                            
+                         //ProfileView(user: user)
+                            
+                        }label: {
+                            //UserRowView(user: user)
+                        }
+                     
+                    }
+                }
+            }
+        }
+        .navigationTitle("Buscador")
+        .navigationBarTitleDisplayMode(.inline)
+        
+        
     }
 }
 

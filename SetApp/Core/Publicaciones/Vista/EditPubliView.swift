@@ -108,7 +108,7 @@ extension EditPubliView {
                            onDismiss: loadImage){
                         
                         //Guardamos la imagen seleccionada
-                        ImagePicker(selectedImage: $image)
+                        //ImagePicker(selectedImage: $image)
                         
                     }
                 }

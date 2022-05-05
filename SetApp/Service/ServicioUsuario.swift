@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 
 struct ServicioUsuario{
     
-    //Mostrar los datos del usuario según el id del usuario
+    //Mostrar los datos de un usuario según el id del usuario
     func mostrarUsuario(withUid uid:String, completion: @escaping(Usuario) -> Void){
         
         Firestore.firestore()
@@ -33,6 +33,7 @@ struct ServicioUsuario{
             }
     }
     
+    /* Mostrar todos los usuarios de la base de datos */
     func mostrarUsuarios(completion: @escaping([Usuario]) -> Void) {
         Firestore.firestore().collection("usuarios")
             .getDocuments { snapshot, _ in
