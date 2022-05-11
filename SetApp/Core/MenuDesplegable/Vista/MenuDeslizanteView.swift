@@ -32,8 +32,8 @@ struct MenuDeslizanteView: View {
                         
                         //Foto de perfil
                         /*KFImage(URL) realiza el tratamiento de la imagen como url */
-                        //KFImage(URL(string: usuario.urlImagenPerfil))
-                        Image("publi")
+                        KFImage(URL(string: usuario.urlImagenPerfil))
+                        //Image("publi")
                             .resizable()
                             .scaledToFill()
                             .clipShape(Circle())

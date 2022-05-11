@@ -17,24 +17,8 @@ struct FeedView: View {
             
             FondoPantallasApp()
             
+            //Se muestran las publicaciones de las personas a las que sigue el usuario
             ContentFeedView()
-            
-            VStack{
-                
-                Text("Holaa")
-                
-                Button{
-                    
-                    Autentificacion.cerrarSesion{ result in
-                        
-                        print("cerrando sesión")
-                        
-                    }
-                    
-                }label: {
-                    Text("Cerrar seión")
-                }
-            }
         }
     }
 }

@@ -30,7 +30,6 @@ struct MainTabView: View {
                     FeedView()
                 case .buscador:
                     BuscadorView()
-                        .navigationBarTitle("Buscador")
                 case .mensajes:
                     MensajesView()
                 case .newPublicacion:
