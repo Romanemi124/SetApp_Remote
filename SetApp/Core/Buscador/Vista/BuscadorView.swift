@@ -70,13 +70,14 @@ struct BuscadorView: View {
                 
                 CustomIndicator()
                 
+                //Parte donde aparecerán algunas de las marcas más famosas
                 ScrollView(.horizontal, showsIndicators: false) {
                     
                     HStack(spacing: 15) {
                         
-                        ForEach(categorias) { categoria in
+                        ForEach(marcas) { marca in
                             
-                            Image(categoria.artwork)
+                            Image(marca.artwork)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 100, height: 120)
@@ -125,7 +126,7 @@ struct BuscadorView: View {
             TabView(selection: $currentIndex) {
                 
                 ForEach(categorias.indices, id: \.self) { index in
-                    Image(categorias[index].artwork)
+                    Image(categorias[index].fondo)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: size.width, height: size.height)

@@ -12,12 +12,12 @@ struct FeedView: View {
     
     //Clase será la pantalla principal de la app
     var body: some View {
-        
+        //12:55
         ZStack {
             
             FondoPantallasApp()
             
-            //https://www.youtube.com/watch?v=GGYf8KrOQms&t=137s min 11 para amplicar caracteristicas de las publicaciones
+            ContentFeedView()
         }
     }
 }

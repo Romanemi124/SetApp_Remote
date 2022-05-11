@@ -13,6 +13,10 @@ struct MainTabView: View {
     @State var selectedTab: Tab = .home
     @State var color: Color = Color(red: 0.721, green: 0.491, blue: 0.849)
     
+    //Para el feed view
+    @Namespace var animation
+    @StateObject var detailObject = DetailsViewModel()
+    
     var body: some View {
         
         ZStack(alignment: .bottom) {
@@ -26,6 +30,7 @@ struct MainTabView: View {
                     FeedView()
                 case .buscador:
                     BuscadorView()
+                        .navigationBarTitle("Buscador")
                 case .mensajes:
                     MensajesView()
                 case .newPublicacion:

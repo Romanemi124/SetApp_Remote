@@ -8,8 +8,10 @@
 import Foundation
 import SwiftUI
  
+//Estructura donde se muestran las las distintas opciones principales del buscador como las marcas o los tipos de productos que hay
 struct PostCarrusel<Content: View,T: Identifiable>: View {
     
+    //Para retornar el objeto, en este caso la imagen
     var content: (T) -> Content
     var list: [T]
     

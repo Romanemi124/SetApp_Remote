@@ -35,37 +35,7 @@ struct PublicacionView: View {
         
         ZStack {
             
-            //GeometryReader es un contenedor de vistas que permite acceder a su tamaño y posición
-            GeometryReader {proxy in
-                
-                //Para poder establecer un tamaño idóneo a la foto de fondo
-                let fotoFondo = proxy.size
-                
-                
-                //Foto de fondo con un fondo distorsionado, en este caso, se cargará de fondo la imagen que se ha seleccionado para publicar
-                //Si ya se ha elegido una imagen
-                if postImage != nil {
-                    postImage!
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: fotoFondo.width, height: fotoFondo.height, alignment: .center)
-                        .cornerRadius(0)
-                        .onTapGesture {
-                            self.showingActionSheet = true
-                        }
-                } else {
-                    Image("publi")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: fotoFondo.width, height: fotoFondo.height, alignment: .center)
-                        .cornerRadius(0)
-                        .onTapGesture {
-                            self.showingActionSheet = true
-                        }
-                }
-            }
-            .ignoresSafeArea()
-            .overlay(.ultraThinMaterial)
+            FondoPantallaClaroApp()
             
             //Parte donde se encontrará la foto que se publicar y los botones para poder seleccionar galería o cámara
             VStack {

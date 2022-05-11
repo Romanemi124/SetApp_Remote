@@ -2,17 +2,10 @@
 //  OpcionesCategoria.swift
 //  SetApp
 //
-//  Created by Omar Bonilla Varela on 5/5/22.
+//  Created by Emilio Roman on 2/5/22.
 //
 
 import Foundation
-
-//
-//  OpcionesCategoria.swift
-//  SetApp
-//
-//  Created by Emilio Roman on 2/5/22.
-//
 import SwiftUI
  
 enum TiposCategoria: String, CaseIterable {
