@@ -96,12 +96,12 @@ struct Autentificacion {
             
             /* Subir imagen de perfil */
             guard let userId = authResult?.user.uid else{return}
-            let storageProfileUserId =  StorageService.storageProfileId(userId: userId)
+            let storageProfileUserId =  StorageService.storagePerfilId(idUsuario: userId)
             let metadata = StorageMetadata()
             //Tipo de dato que se va a almacenar
             metadata.contentType = "image/jpg"
             //Guardar la foto de perfil Storage de FireBase
-            StorageService2.guardarFotoPerfil(id: userId, imageData: imageData, metaData: metadata, storageProfileImageRef: storageProfileUserId)
+            StorageService.guardarFotoPerfil(id: userId, imageData: imageData, metaData: metadata, storageProfileImageRef: storageProfileUserId)
             
             //Si el registro ha sido correcto nos devolverá un true
             completionHandler(.success(true))

@@ -23,7 +23,7 @@ struct EditPerfilView: View {
     @Namespace var animation
     @Environment(\.presentationMode) var mode
     //Creamos el objeto usuario que luego se va mostrar sus datos
-    private let usuario:Usuario
+    private let usuario: Usuario
     
     //Inicializamos el usuario
     init(usuario: Usuario){

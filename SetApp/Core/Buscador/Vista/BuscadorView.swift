@@ -32,8 +32,11 @@ struct BuscadorView: View {
             
             //Parte donde se establece el fondo de las categorías
             BGView()
-            
+
             VStack {
+                
+                //Para la barra del buscador
+                Text("buscador")
                 
                 //Efecto del carrusel para saleccionar el tipo de categoría
                 PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in

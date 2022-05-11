@@ -1,5 +1,5 @@
 //
-//  StorageService2.swift
+//  StorageService.swift
 //  SetApp
 //
 //  Created by Omar Bonilla Varela on 10/5/22.
@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseStorage
 
 /* Clase para acceder al almacen de FireBase */
-class StorageService2 {
+class StorageService {
     
     //Acceso por referencia a la ubucación donde almancenaramos los datos
     static var storage =  Storage.storage()
@@ -20,6 +20,12 @@ class StorageService2 {
     //La carpeta donde almacenaremos los datos
     static var storagePerfil = storageRoot.child("perfil")
     static var storagePost = storageRoot.child("posts")
+    
+    static var storeRoot =  Firestore.firestore()
+    
+    static func getUserId(userId: String)-> DocumentReference{
+        return storeRoot.collection("usuarios").document(userId)
+    }
     
     /* Función para identificar la imagen con el id del usuario */
     static func storagePerfilId(idUsuario: String) -> StorageReference{

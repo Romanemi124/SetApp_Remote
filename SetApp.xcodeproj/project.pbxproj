@@ -35,32 +35,8 @@
 		B006D764282BD22C00D06A91 /* Autentificacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D761282BD22C00D06A91 /* Autentificacion.swift */; };
 		B006D768282BD23C00D06A91 /* StoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D766282BD23C00D06A91 /* StoreError.swift */; };
 		B006D769282BD23C00D06A91 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D767282BD23C00D06A91 /* Store.swift */; };
-		B006D76C282BD24500D06A91 /* StorageService2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D76B282BD24500D06A91 /* StorageService2.swift */; };
-		B006D790282BD2DB00D06A91 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D770282BD2DA00D06A91 /* ButtonModifiers.swift */; };
-		B006D791282BD2DB00D06A91 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D771282BD2DA00D06A91 /* FormField.swift */; };
 		B006D792282BD2DB00D06A91 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D773282BD2DA00D06A91 /* Extension.swift */; };
-		B006D793282BD2DB00D06A91 /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D775282BD2DA00D06A91 /* HomeView2.swift */; };
-		B006D794282BD2DB00D06A91 /* SignUpView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D776282BD2DA00D06A91 /* SignUpView2.swift */; };
-		B006D795282BD2DB00D06A91 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D777282BD2DA00D06A91 /* SignInView.swift */; };
-		B006D796282BD2DB00D06A91 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D778282BD2DA00D06A91 /* UserModel.swift */; };
-		B006D797282BD2DB00D06A91 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D77A282BD2DA00D06A91 /* SessionStore.swift */; };
 		B006D798282BD2DB00D06A91 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D77B282BD2DA00D06A91 /* StorageService.swift */; };
-		B006D799282BD2DB00D06A91 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D77C282BD2DA00D06A91 /* AuthService.swift */; };
-		B006D79A282BD2DB00D06A91 /* FBFireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D77F282BD2DB00D06A91 /* FBFireStore.swift */; };
-		B006D79B282BD2DB00D06A91 /* FBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D780282BD2DB00D06A91 /* FBKeys.swift */; };
-		B006D79C282BD2DB00D06A91 /* FBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D781282BD2DB00D06A91 /* FBUser.swift */; };
-		B006D79D282BD2DB00D06A91 /* FBFireStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D782282BD2DB00D06A91 /* FBFireStoreError.swift */; };
-		B006D79E282BD2DB00D06A91 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D784282BD2DB00D06A91 /* UserViewModel.swift */; };
-		B006D79F282BD2DB00D06A91 /* FBAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D785282BD2DB00D06A91 /* FBAuthError.swift */; };
-		B006D7A0282BD2DB00D06A91 /* FBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D786282BD2DB00D06A91 /* FBAuth.swift */; };
-		B006D7A1282BD2DB00D06A91 /* InformacionUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D787282BD2DB00D06A91 /* InformacionUsuario.swift */; };
-		B006D7A2282BD2DB00D06A91 /* SignInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D789282BD2DB00D06A91 /* SignInWithEmailView.swift */; };
-		B006D7A3282BD2DB00D06A91 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D78A282BD2DB00D06A91 /* ProfileView.swift */; };
-		B006D7A4282BD2DB00D06A91 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D78B282BD2DB00D06A91 /* HomeView.swift */; };
-		B006D7A5282BD2DB00D06A91 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D78C282BD2DB00D06A91 /* ForgotPasswordView.swift */; };
-		B006D7A6282BD2DB00D06A91 /* LoginView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D78D282BD2DB00D06A91 /* LoginView2.swift */; };
-		B006D7A7282BD2DB00D06A91 /* ReAuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D78E282BD2DB00D06A91 /* ReAuthenticateView.swift */; };
-		B006D7A8282BD2DB00D06A91 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D78F282BD2DB00D06A91 /* SignUpView.swift */; };
 		B006D7B5282BD36900D06A91 /* CabeceraAutentificacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D7AB282BD36800D06A91 /* CabeceraAutentificacionView.swift */; };
 		B006D7B6282BD36900D06A91 /* CamposEntrada.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D7AD282BD36800D06A91 /* CamposEntrada.swift */; };
 		B006D7B7282BD36900D06A91 /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D7AE282BD36800D06A91 /* CustomInputField.swift */; };
@@ -128,32 +104,8 @@
 		B006D761282BD22C00D06A91 /* Autentificacion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autentificacion.swift; sourceTree = "<group>"; };
 		B006D766282BD23C00D06A91 /* StoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreError.swift; sourceTree = "<group>"; };
 		B006D767282BD23C00D06A91 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		B006D76B282BD24500D06A91 /* StorageService2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService2.swift; sourceTree = "<group>"; };
-		B006D770282BD2DA00D06A91 /* ButtonModifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
-		B006D771282BD2DA00D06A91 /* FormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		B006D773282BD2DA00D06A91 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		B006D775282BD2DA00D06A91 /* HomeView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
-		B006D776282BD2DA00D06A91 /* SignUpView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView2.swift; sourceTree = "<group>"; };
-		B006D777282BD2DA00D06A91 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		B006D778282BD2DA00D06A91 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		B006D77A282BD2DA00D06A91 /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		B006D77B282BD2DA00D06A91 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		B006D77C282BD2DA00D06A91 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		B006D77F282BD2DB00D06A91 /* FBFireStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFireStore.swift; sourceTree = "<group>"; };
-		B006D780282BD2DB00D06A91 /* FBKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBKeys.swift; sourceTree = "<group>"; };
-		B006D781282BD2DB00D06A91 /* FBUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBUser.swift; sourceTree = "<group>"; };
-		B006D782282BD2DB00D06A91 /* FBFireStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFireStoreError.swift; sourceTree = "<group>"; };
-		B006D784282BD2DB00D06A91 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
-		B006D785282BD2DB00D06A91 /* FBAuthError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAuthError.swift; sourceTree = "<group>"; };
-		B006D786282BD2DB00D06A91 /* FBAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAuth.swift; sourceTree = "<group>"; };
-		B006D787282BD2DB00D06A91 /* InformacionUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformacionUsuario.swift; sourceTree = "<group>"; };
-		B006D789282BD2DB00D06A91 /* SignInWithEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithEmailView.swift; sourceTree = "<group>"; };
-		B006D78A282BD2DB00D06A91 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		B006D78B282BD2DB00D06A91 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		B006D78C282BD2DB00D06A91 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		B006D78D282BD2DB00D06A91 /* LoginView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView2.swift; sourceTree = "<group>"; };
-		B006D78E282BD2DB00D06A91 /* ReAuthenticateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReAuthenticateView.swift; sourceTree = "<group>"; };
-		B006D78F282BD2DB00D06A91 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		B006D7AB282BD36800D06A91 /* CabeceraAutentificacionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabeceraAutentificacionView.swift; sourceTree = "<group>"; };
 		B006D7AD282BD36800D06A91 /* CamposEntrada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamposEntrada.swift; sourceTree = "<group>"; };
 		B006D7AE282BD36800D06A91 /* CustomInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
@@ -230,7 +182,6 @@
 		62605832280595E1009D2DC2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				B006D76D282BD2DA00D06A91 /* FUTURE */,
 				6260583C280595E1009D2DC2 /* VistaPrincipal */,
 				B006D7A9282BD36800D06A91 /* Componentes */,
 				62605848280595E1009D2DC2 /* Autentificacion */,
@@ -432,113 +383,9 @@
 		B006D76A282BD24500D06A91 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				B006D76B282BD24500D06A91 /* StorageService2.swift */,
+				B006D77B282BD2DA00D06A91 /* StorageService.swift */,
 			);
 			path = Storage;
-			sourceTree = "<group>";
-		};
-		B006D76D282BD2DA00D06A91 /* FUTURE */ = {
-			isa = PBXGroup;
-			children = (
-				B006D76E282BD2DA00D06A91 /* OtroProyecto2 */,
-				B006D77D282BD2DA00D06A91 /* OtroProyecto */,
-			);
-			path = FUTURE;
-			sourceTree = "<group>";
-		};
-		B006D76E282BD2DA00D06A91 /* OtroProyecto2 */ = {
-			isa = PBXGroup;
-			children = (
-				B006D76F282BD2DA00D06A91 /* Component */,
-				B006D772282BD2DA00D06A91 /* Utilities */,
-				B006D774282BD2DA00D06A91 /* Views */,
-				B006D779282BD2DA00D06A91 /* Services */,
-			);
-			path = OtroProyecto2;
-			sourceTree = "<group>";
-		};
-		B006D76F282BD2DA00D06A91 /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				B006D770282BD2DA00D06A91 /* ButtonModifiers.swift */,
-				B006D771282BD2DA00D06A91 /* FormField.swift */,
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
-		B006D772282BD2DA00D06A91 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				B006D773282BD2DA00D06A91 /* Extension.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		B006D774282BD2DA00D06A91 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				B006D775282BD2DA00D06A91 /* HomeView2.swift */,
-				B006D776282BD2DA00D06A91 /* SignUpView2.swift */,
-				B006D777282BD2DA00D06A91 /* SignInView.swift */,
-				B006D778282BD2DA00D06A91 /* UserModel.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		B006D779282BD2DA00D06A91 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				B006D77A282BD2DA00D06A91 /* SessionStore.swift */,
-				B006D77B282BD2DA00D06A91 /* StorageService.swift */,
-				B006D77C282BD2DA00D06A91 /* AuthService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		B006D77D282BD2DA00D06A91 /* OtroProyecto */ = {
-			isa = PBXGroup;
-			children = (
-				B006D77E282BD2DB00D06A91 /* FireStore */,
-				B006D783282BD2DB00D06A91 /* Auth */,
-				B006D788282BD2DB00D06A91 /* Views */,
-			);
-			path = OtroProyecto;
-			sourceTree = "<group>";
-		};
-		B006D77E282BD2DB00D06A91 /* FireStore */ = {
-			isa = PBXGroup;
-			children = (
-				B006D77F282BD2DB00D06A91 /* FBFireStore.swift */,
-				B006D780282BD2DB00D06A91 /* FBKeys.swift */,
-				B006D781282BD2DB00D06A91 /* FBUser.swift */,
-				B006D782282BD2DB00D06A91 /* FBFireStoreError.swift */,
-			);
-			path = FireStore;
-			sourceTree = "<group>";
-		};
-		B006D783282BD2DB00D06A91 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				B006D784282BD2DB00D06A91 /* UserViewModel.swift */,
-				B006D785282BD2DB00D06A91 /* FBAuthError.swift */,
-				B006D786282BD2DB00D06A91 /* FBAuth.swift */,
-				B006D787282BD2DB00D06A91 /* InformacionUsuario.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		B006D788282BD2DB00D06A91 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				B006D789282BD2DB00D06A91 /* SignInWithEmailView.swift */,
-				B006D78A282BD2DB00D06A91 /* ProfileView.swift */,
-				B006D78B282BD2DB00D06A91 /* HomeView.swift */,
-				B006D78C282BD2DB00D06A91 /* ForgotPasswordView.swift */,
-				B006D78D282BD2DB00D06A91 /* LoginView2.swift */,
-				B006D78E282BD2DB00D06A91 /* ReAuthenticateView.swift */,
-				B006D78F282BD2DB00D06A91 /* SignUpView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B006D7A9282BD36800D06A91 /* Componentes */ = {
@@ -703,6 +550,7 @@
 		B0CE87BA28242F7600D1670A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B006D773282BD2DA00D06A91 /* Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -881,46 +729,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0CE87FD2824322200D1670A /* CategoriaView.swift in Sources */,
-				B006D79E282BD2DB00D06A91 /* UserViewModel.swift in Sources */,
 				B006D7BD282BD39300D06A91 /* IniciarSesionView.swift in Sources */,
-				B006D79C282BD2DB00D06A91 /* FBUser.swift in Sources */,
 				B0CE87C92824308F00D1670A /* SeleccionarFoto.swift in Sources */,
 				B0CF933A28251634004AA332 /* ScrollPostView.swift in Sources */,
-				B006D79B282BD2DB00D06A91 /* FBKeys.swift in Sources */,
 				62605864280595E1009D2DC2 /* MenuDeslizanteModeloView.swift in Sources */,
-				B006D7A1282BD2DB00D06A91 /* InformacionUsuario.swift in Sources */,
 				62605867280595E1009D2DC2 /* AutentificacionModelView.swift in Sources */,
 				B0EAEA5B28296F3100D29C14 /* StaggeredGrid.swift in Sources */,
-				B006D7A5282BD2DB00D06A91 /* ForgotPasswordView.swift in Sources */,
 				B0CE87F72824321B00D1670A /* PostCarrusel.swift in Sources */,
-				B006D76C282BD24500D06A91 /* StorageService2.swift in Sources */,
 				B075219827FA1B1A009386AB /* ContentView.swift in Sources */,
 				6260585D280595E1009D2DC2 /* NotificacionesView.swift in Sources */,
-				B006D7A8282BD2DB00D06A91 /* SignUpView.swift in Sources */,
-				B006D795282BD2DB00D06A91 /* SignInView.swift in Sources */,
 				B006D7B6282BD36900D06A91 /* CamposEntrada.swift in Sources */,
 				62605865280595E1009D2DC2 /* MenuDeslizanteView.swift in Sources */,
-				B006D7A2282BD2DB00D06A91 /* SignInWithEmailView.swift in Sources */,
 				6260586E280595E1009D2DC2 /* MensajesView.swift in Sources */,
 				B0CE87D3282430B200D1670A /* SubirImagen.swift in Sources */,
 				B006D762282BD22C00D06A91 /* AutentificacionError.swift in Sources */,
 				B0CE87EF282431EA00D1670A /* OpcionesCategoria.swift in Sources */,
 				B02D51FA2816B63F00AEAFAD /* FeedViewModel.swift in Sources */,
 				B0CE87C128242FF600D1670A /* Usuario.swift in Sources */,
-				B006D79F282BD2DB00D06A91 /* FBAuthError.swift in Sources */,
-				B006D7A0282BD2DB00D06A91 /* FBAuth.swift in Sources */,
 				B0CE87B728242F4A00D1670A /* ImagePicker.swift in Sources */,
 				B006D763282BD22C00D06A91 /* EstadoAutentificacionUsuario.swift in Sources */,
 				B0CE87D2282430B200D1670A /* ServicioUsuario.swift in Sources */,
 				6260586D280595E1009D2DC2 /* MainTabView.swift in Sources */,
-				B006D7A7282BD2DB00D06A91 /* ReAuthenticateView.swift in Sources */,
-				B006D793282BD2DB00D06A91 /* HomeView2.swift in Sources */,
-				B006D794282BD2DB00D06A91 /* SignUpView2.swift in Sources */,
-				B006D791282BD2DB00D06A91 /* FormField.swift in Sources */,
 				B0CE87C32824300900D1670A /* Publicacion.swift in Sources */,
-				B006D7A3282BD2DB00D06A91 /* ProfileView.swift in Sources */,
 				B006D764282BD22C00D06A91 /* Autentificacion.swift in Sources */,
-				B006D79A282BD2DB00D06A91 /* FBFireStore.swift in Sources */,
 				B006D798282BD2DB00D06A91 /* StorageService.swift in Sources */,
 				B0CE87E5282431C300D1670A /* PerfilPublicacion.swift in Sources */,
 				B006D7B8282BD36900D06A91 /* FormaCircular.swift in Sources */,
@@ -932,22 +763,17 @@
 				B006D75D282BD1F000D06A91 /* Claves.swift in Sources */,
 				B0CE87F82824321B00D1670A /* BuscadorModeloView.swift in Sources */,
 				B0AFAC4A28253D4E007E224B /* ContentFeedView.swift in Sources */,
-				B006D796282BD2DB00D06A91 /* UserModel.swift in Sources */,
 				62605862280595E1009D2DC2 /* VistaPrincipalView.swift in Sources */,
-				B006D790282BD2DB00D06A91 /* ButtonModifiers.swift in Sources */,
-				B006D797282BD2DB00D06A91 /* SessionStore.swift in Sources */,
 				B0CF933628250E47004AA332 /* DetailsViewModel.swift in Sources */,
 				62605866280595E1009D2DC2 /* MenuDeslizanteFilaElementoView.swift in Sources */,
 				B0EA4F1928245EF800B1D8F2 /* ArrayPost.swift in Sources */,
 				B0CE87CD282430A100D1670A /* ServicioProducto.swift in Sources */,
 				B006D7BA282BD36900D06A91 /* Validacion.swift in Sources */,
 				B0CE87EE282431EA00D1670A /* PublicationFeed.swift in Sources */,
-				B006D7A6282BD2DB00D06A91 /* LoginView2.swift in Sources */,
 				B0EAEA5D282970A600D29C14 /* PublicationCategoria.swift in Sources */,
 				B006D7B5282BD36900D06A91 /* CabeceraAutentificacionView.swift in Sources */,
 				B006D768282BD23C00D06A91 /* StoreError.swift in Sources */,
 				B0CE87FC2824322200D1670A /* BuscadorView.swift in Sources */,
-				B006D79D282BD2DB00D06A91 /* FBFireStoreError.swift in Sources */,
 				B0CE87C52824301700D1670A /* Post.swift in Sources */,
 				B0CE87E9282431CA00D1670A /* EditPerfilView.swift in Sources */,
 				B006D769282BD23C00D06A91 /* Store.swift in Sources */,
@@ -955,14 +781,12 @@
 				B0CE87E8282431CA00D1670A /* PerfilView.swift in Sources */,
 				B006D792282BD2DB00D06A91 /* Extension.swift in Sources */,
 				B0CE87B928242F6100D1670A /* ParsearFecha.swift in Sources */,
-				B006D7A4282BD2DB00D06A91 /* HomeView.swift in Sources */,
 				B006D7B7282BD36900D06A91 /* CustomInputField.swift in Sources */,
 				B0CE87CE282430A100D1670A /* GuardarPublicacionViewModel.swift in Sources */,
 				B0CE87F3282431F200D1670A /* PublicacionView.swift in Sources */,
 				B006D75B282BD1E300D06A91 /* UsuarioFireBase.swift in Sources */,
 				B0CE87F92824321B00D1670A /* CategoriasBuscador.swift in Sources */,
 				B0EAEA5F2829A9B600D29C14 /* PostPrueba.swift in Sources */,
-				B006D799282BD2DB00D06A91 /* AuthService.swift in Sources */,
 				B0CE87ED282431EA00D1670A /* CourseView.swift in Sources */,
 				B075219627FA1B1A009386AB /* SetAppApp.swift in Sources */,
 				B0CE87CF282430A100D1670A /* ServicioPost.swift in Sources */,

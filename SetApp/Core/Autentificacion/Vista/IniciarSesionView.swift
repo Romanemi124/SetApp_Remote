@@ -45,10 +45,10 @@ struct IniciarSesionView: View {
                     Spacer()
                     
                     NavigationLink{
-                        
+                        /*
                         ForgotPasswordView()
                             .navigationBarHidden(true)
-                        
+                        */
                     }label: {
                         Text("¿Has olvidado la contraseña?")
                             .font(.caption)
