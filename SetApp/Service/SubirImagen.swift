@@ -5,6 +5,9 @@
 //  Created by Omar Bonilla Varela on 5/4/22.
 //
 
+
+/*DEPRECATED*/
+
 import Firebase
 import UIKit
 

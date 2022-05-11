@@ -12,8 +12,8 @@ import Kingfisher
 struct MenuDeslizanteView: View {
     
     //Importante llamarlo diferente de vista modelo porque o sino el programa confunde las variables autentificacionVistaModelo
-    @EnvironmentObject var autentificacionVistaModelo: AutentificacionModelView
-    @EnvironmentObject var informacionUsuario: InformacionUsuario
+    //@EnvironmentObject var autentificacionVistaModelo: AutentificacionModelView
+    @EnvironmentObject var estadoUsuario: EstadoAutentificacionUsuario
     
     var body: some View {
         
@@ -22,8 +22,8 @@ struct MenuDeslizanteView: View {
             Color(red: 0.331, green: 0.074, blue: 0.423)
             //ignoresSafeArea() permite añadir el fondo en la parte superior
                 .ignoresSafeArea()
-            
-            if let usuario = autentificacionVistaModelo.usuarioActual{
+   
+            if let usuario = estadoUsuario.usuario{
                 
                 //Vstack 1
                 VStack (alignment: .leading, spacing: 32){
@@ -32,7 +32,7 @@ struct MenuDeslizanteView: View {
                         
                         //Foto de perfil
                         /*KFImage(URL) realiza el tratamiento de la imagen como url */
-                        KFImage(URL(string: usuario.UrlImagenPerfil))
+                        KFImage(URL(string: usuario.urlImagenPerfil))
                             .resizable()
                             .scaledToFill()
                             .clipShape(Circle())
@@ -54,25 +54,24 @@ struct MenuDeslizanteView: View {
                     ForEach(MenuDeslizanteModeloView.allCases, id: \.rawValue){ vistaModelo  in
                         
                         if vistaModelo == .perfil{
-                            /*
+                            
                             //Nos dirigimos al perfil
                             NavigationLink{
                                 //Mostramos el usuario gracias el usuario que hemos guardado de  le sesión
-                               PerfilView(usuario: usuario)
+                             //  PerfilView(usuario: usuario)
                             }label: {
                                MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
                             }
-                            */
+                            
                         }else if(vistaModelo == .logout){
                             
                             //Cada vez que se cierre sesión se mostrá ese mensaje
                             Button {
                                 
                                 /* Cerramos la sesión del usuario */
-                                autentificacionVistaModelo.cerrarSesion()
-                                
-                                /* Indicamos que se ha cerrado la sesión */
-                                self.informacionUsuario.estaUsuarioAutentificado = .cerrarSesion
+                                Autentificacion.cerrarSesion { (result) in
+                                    print("Logged out")
+                                }
                                 
                             }label: {
                                 

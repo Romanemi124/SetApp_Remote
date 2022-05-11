@@ -18,6 +18,23 @@ struct FeedView: View {
             FondoPantallasApp()
             
             ContentFeedView()
+            
+            VStack{
+                
+                Text("Holaa")
+                
+                Button{
+                    
+                    Autentificacion.cerrarSesion{ result in
+                        
+                        print("cerrando sesión")
+                        
+                    }
+                    
+                }label: {
+                    Text("Cerrar seión")
+                }
+            }
         }
     }
 }

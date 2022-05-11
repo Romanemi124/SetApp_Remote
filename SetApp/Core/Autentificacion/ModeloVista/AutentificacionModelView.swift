@@ -5,6 +5,8 @@
 //  Created by Omar Bonilla Varela on 1/4/22.
 //
 
+//DEPRECATED
+
 import SwiftUI
 import Firebase
 
@@ -28,8 +30,6 @@ class AutentificacionModelView: ObservableObject{
     /* Objecto para acceder a los servicios del usuario, esto será util para mostrar los datos del usuario autentificado */
     private let service = ServicioUsuario()
     
-    /* Objecto que almacena el usuario validado */
-    @Published var usuarioRegistro : UsuarioRegistro?
     /* Objecto que valida si el usuario puede registrarse correctamente y pasar la vista seleccionar foto de perfil */
     @Published var usuarioValidado = false
 
@@ -167,36 +167,6 @@ class AutentificacionModelView: ObservableObject{
             self.usuarioActual = usuario
         }
     }
-    
-    
-    /*--- Validación del usuario---*/
-    
-    /* Guardar los datos del usuario validado */
-    func guardarDatosPersonales(withUsuarioRegistro nombreCompleto:String, nombreUsuario:String, sexo:String, fechaNacimiento:String, email:String, password: String){
-        
-        /* Añadimos los datos del formulario al usuario */
-        let usuarioRegistrar: UsuarioRegistro = UsuarioRegistro( nombreCompleto: nombreCompleto, nombreUsuario: nombreUsuario, sexo: sexo, fechaNacimiento: fechaNacimiento, email: email, password: password)
-        
-        /* Desempaquetamos el opcional */
-        guard var usuario = self.usuarioRegistro else{ return }
-        
-        /* Igualamos el usuario registrado con el usuario desempaquetado */
-        usuario = usuarioRegistrar
-        
-        print(usuario.nombreCompleto)
-        print(usuario.fechaNacimiento)
-        print(usuario.sexo)
-        print(usuario.email)
-        print(usuario.password)
-        
-        /* Igualamos a la variable de la clase */
-        self.usuarioRegistro = usuario
-        
-        //Dirgirse a la siguiente vista
-        self.usuarioValidado = true
-        
-    }
-    
     
     /* Buscar el email en la base de datos nos devolverá un booleano si lo encuentra o no */
     func buscarEmail(withEmail email: String, completion:@escaping ((Bool)-> () )){

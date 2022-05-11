@@ -15,7 +15,10 @@ struct SetAppApp: App {
     @StateObject var vistaModelo = AutentificacionModelView()
 
     //Variable para saber el estado de autentificación del usuario
-    @StateObject var estadoAutentificacionUsuario = InformacionUsuario()
+   // @StateObject var estadoAutentificacionUsuario = InformacionUsuario()
+    
+    //Variable para saber el estado de autentificación del usuario
+    @StateObject var estadoUsuario = EstadoAutentificacionUsuario()
     
     
     //Cada vez que se cargue la app realizará este método
@@ -28,11 +31,12 @@ struct SetAppApp: App {
         WindowGroup {
             NavigationView{
                 //Instanciamos la variable de sesión de usuario
-                ContentView().environmentObject(SessionStore())
+                ContentView()
             }
             //Para que el objeto puede ser leído por cualquier clase inferior
             .environmentObject(vistaModelo)
-            .environmentObject(estadoAutentificacionUsuario)
+            .environmentObject(estadoUsuario)
+            //.environmentObject(estadoAutentificacionUsuario)
         }
     }
 }
