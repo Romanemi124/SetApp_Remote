@@ -8,6 +8,8 @@
 import FirebaseFirestoreSwift
 import Firebase
 
+//DEPRECATED
+
 struct Publicacion: Identifiable, Decodable {
     
     /* @DocumentID indicar que se trata del id del usuario */

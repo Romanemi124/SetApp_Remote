@@ -58,8 +58,9 @@ struct MenuDeslizanteView: View {
                             
                             //Nos dirigimos al perfil
                             NavigationLink{
-                                //Mostramos el usuario gracias el usuario que hemos guardado de  le sesión
-                             //  PerfilView(usuario: usuario)
+                                //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                                PerfilView()
+                                    .navigationBarHidden(true)
                             }label: {
                                MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
                             }

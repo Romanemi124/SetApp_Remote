@@ -15,7 +15,6 @@ struct MainTabView: View {
     
     //Para el feed view
     @Namespace var animation
-    @StateObject var detailObject = DetailsViewModel()
     
     var body: some View {
         

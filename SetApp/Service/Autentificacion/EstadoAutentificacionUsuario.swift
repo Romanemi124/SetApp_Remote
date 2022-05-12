@@ -26,6 +26,10 @@ class EstadoAutentificacionUsuario: ObservableObject {
     //Variable que almacena los cambios en el estado de autentificación del usuario
     var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
     
+    //Para cargar las publicaciones
+    @Published var posts: [Post] = []
+    @Published var isLoading = false
+    
     /* Función para saber el estado de autentificación del usuario  */
     func configuracionFireBaseCambioEstado() {
         
@@ -55,6 +59,15 @@ class EstadoAutentificacionUsuario: ObservableObject {
             
         })
         
+    }
+    
+    
+    //Para mostrar las publicaciones del usuario
+    func loadUserPosts(userId: String) {
+        
+        ServicioPost.loadUserPosts(userId: userId) { (posts) in
+            self.posts = posts
+        }
     }
     
 }

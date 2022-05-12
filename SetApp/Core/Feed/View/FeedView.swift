@@ -16,9 +16,6 @@ struct FeedView: View {
         ZStack {
             
             FondoPantallasApp()
-            
-            //Se muestran las publicaciones de las personas a las que sigue el usuario
-            ContentFeedView()
         }
     }
 }

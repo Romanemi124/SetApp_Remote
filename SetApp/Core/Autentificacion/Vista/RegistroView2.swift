@@ -282,7 +282,9 @@ struct RegistroView2: View {
                     .padding(.top, 40)
                     .foregroundColor(Color(.white))
                     
-                }.padding(.top)
+                }
+                .padding(.top)
+                .accentColor(.white)
                 
                 //El alert de la vista, servirá para mostrar errores
                 /*------------------------------------*/

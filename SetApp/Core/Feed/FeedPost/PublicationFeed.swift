@@ -7,19 +7,19 @@
 
 import Foundation
 import SwiftUI
-
+import Kingfisher
 
 //Esta estructura se usa en la vista principal para poder ver la foto de la publicación con el nombre de usuario y nombre del producto
 struct PostItem: View {
     
-    var post: ArrayPost
+    var post: Post
     //var animation: Namespace.ID
     
     var body: some View {
         
         VStack {
             
-            Image(post.contentImage)
+            KFImage(URL(string: post.mediaUrl))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 //Para la animación
@@ -28,7 +28,7 @@ struct PostItem: View {
             
             HStack {
                 
-                Image(post.logo)
+                Image("publi")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 65, height: 65)
@@ -36,11 +36,11 @@ struct PostItem: View {
                 
                 VStack(alignment: .leading, spacing: 6) {
                     
-                    Text(post.title)
+                    Text(post.nombreProducto)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
-                    Text(post.category)
+                    Text(post.categoria)
                         .font(.caption)
                         .foregroundColor(.white)
                 }

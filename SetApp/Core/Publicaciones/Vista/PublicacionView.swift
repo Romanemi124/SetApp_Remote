@@ -147,6 +147,7 @@ struct PublicacionView: View {
                                     .cancel()
                                 ])
                 }
+                .accentColor(.white)
             }
             .padding(30)
         }

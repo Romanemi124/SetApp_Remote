@@ -5,120 +5,113 @@
 //  Created by Emilio Roman on 6/5/22.
 //
 
-import Foundation
 import SwiftUI
-
+import Kingfisher
 
 //Vista usada  en todas las publicaciones de la app donde aparecerán las distintas especificaciones de cada publicación, como los comentarios, likes y atributos de la publicación
 struct CourseView: View {
     
-    @ObservedObject var detail : DetailsViewModel
-    //var animation: Namespace.ID
+    var post: Post
     
-    //@State var scale : CGFloat = 1
+    //Para volver la vista hacia atrás
+    @Environment(\.presentationMode) var mode
     
     var body: some View {
         
-        ScrollView {
+        ZStack {
             
-            VStack {
+            FondoPantallasApp()
+            
+            ScrollView {
                 
-                ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
+                VStack {
                     
-                    Image(detail.selectedPost.contentImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        //.matchedGeometryEffect(id: detail.selectedPost.contentImage, in: animation)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2.5)
-                    
-                    HStack {
+                    ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
                         
-                        Spacer()
+                        KFImage(URL(string: post.mediaUrl))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            //.matchedGeometryEffect(id: detail.selectedPost.contentImage, in: animation)
+                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2.5)
                         
-                        Button(action: {
+                        HStack {
                             
-                            withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                                detail.show.toggle()
+                            Spacer()
+                         
+                            Button(action: {
+                                
+                                //Cambiamos el valor de la variable para que vuelva a la anterior vista
+                                mode.wrappedValue.dismiss()
+                            }) {
+                                Image(systemName: "arrow.left.circle.fill")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.white)
                             }
-                        } ) {
-                            
-                            Image(systemName: "xmark")
-                                .foregroundColor(Color.black.opacity(0.7))
-                                .padding()
-                                .background(Color.gray.opacity(0.8))
-                                .clipShape(Circle())
                         }
+                        .padding(.horizontal)
+                        .padding(.top, 300)
                     }
-                    .padding(.horizontal)
-                    .padding(.top, 300)
-                }
-                //.gesture(DragGesture(minimumDistance: 0).onChanged(onChanged(value:)).onEnded(onEnded(value:)))
-                
-                HStack {
+                    //.gesture(DragGesture(minimumDistance: 0).onChanged(onChanged(value:)).onEnded(onEnded(value:)))
                     
-                    Image(detail.selectedPost.logo)
+                    Text(post.nombreProducto)
+                        .font(.title)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.top, 20)
+                    
+                    HStack(alignment: .center, spacing: 10) {
+                            
+                        Text(post.categoria)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        
+                        Text("/")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        
+                        Text(post.marca)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                    }
+                    .padding(.top, 2)
+                    
+                    PostCardLikes(post: post)
+                        .padding(.top, 2)
+                    
+                    Text(post.caracteristicas)
+                        .padding()
+                        .foregroundColor(.white)
+                    
+                    KFImage(URL(string: post.mediaUrl))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 65, height: 65)
                         .cornerRadius(15)
                     
-                    VStack(alignment: .leading, spacing: 6) {
+                    Button(action: {}) {
                         
-                        Text(detail.selectedPost.title)
-                            .font(.title)
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                        
-                        Text(detail.selectedPost.category)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                        
-                        Text(detail.selectedPost.overlay)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
+                        Label(title: {
+                            Text("Share")
+                                .foregroundColor(.white)
+                        }) {
+                            Image(systemName: "square.and.arrow.up.fill")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 25)
+                        .background(Color.primary.opacity(0.1))
+                        .cornerRadius(10)
                     }
-                    .padding(.leading, 15)
-                    
-                    Spacer(minLength: 0)
-                    
-                    VStack {
-                        
-                        //Barra para poner el corazón de MeGusta
-                        Text("Ver más")
-                            .font(.caption)
-                            .foregroundColor(.white)
-                    }
-                }
-                //.matchedGeometryEffect(id: detail.selectedPost.id, in: animation)
-                .padding()
-                .background(Color.gray.opacity(0.5))
-                
-                Text(detail.selectedPost.title)
                     .padding()
-                    .foregroundColor(.white)
-                
-                Button(action: {}) {
-                    
-                    Label(title: {
-                        Text("Share")
-                            .foregroundColor(.white)
-                    }) {
-                        Image(systemName: "square.and.arrow.up.fill")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 25)
-                    .background(Color.primary.opacity(0.1))
-                    .cornerRadius(10)
                 }
-                .padding()
             }
+            //.scaleEffect(scale)
+            .ignoresSafeArea(.all, edges: .top)
         }
-        //.scaleEffect(scale)
-        .ignoresSafeArea(.all, edges: .top)
     }
 }
 
