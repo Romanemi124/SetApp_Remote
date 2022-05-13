@@ -27,6 +27,13 @@ class PerfilViewModel: ObservableObject {
         return followers.document(userId).collection("followers")
     }
     
+    let user: UsuarioFireBase
+    
+    //Inicializamos la clase con un usuario, esto permitirá reutilizar la clase en el buscador de personas y en la de editar o revisar el perfil
+    init(user: UsuarioFireBase){
+        self.user =  user
+    }
+    
     //Cragar los datos recogidos en objetos de tipo Post para luego mostrarlos por pantalla
     func cargarPostUser(userId: String) {
         

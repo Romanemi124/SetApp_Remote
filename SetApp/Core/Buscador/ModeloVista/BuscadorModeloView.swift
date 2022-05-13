@@ -33,8 +33,8 @@ class BuscadorModeloView: ObservableObject{
             let lowercasedQuery = textoBuscar.lowercased()
             
             return usuarios.filter({
-                $0.nombreUsuario.contains(lowercasedQuery) ||
-                //$0.fullname.lowercased().contains(lowercasedQuery) Mejorar el nivel de la busqueda (HABÍA PROBLEMAS con fullname)
+                //$0.nombreUsuario.lowercased().contains(lowercasedQuery) Al transformar todo a minúsculas mejorar el nivel de la busqueda, puesto que solo habra´distinción entre diferenteres caracteres sin imporatr la mayusculas o minúsculas
+                $0.nombreUsuario.lowercased().contains(lowercasedQuery) ||
                 $0.nombreCompleto.lowercased().contains(lowercasedQuery)
             })
         }

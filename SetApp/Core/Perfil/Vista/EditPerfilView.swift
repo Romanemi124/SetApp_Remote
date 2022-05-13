@@ -22,8 +22,9 @@ struct EditPerfilView: View {
     //Varibale necesario para la animación
     @Namespace var animation
     @Environment(\.presentationMode) var mode
+    
     //Creamos el objeto usuario que luego se va mostrar sus datos
-    private let usuario: Usuario
+    let usuario: Usuario
     
     //Inicializamos el usuario
     init(usuario: Usuario){
@@ -57,7 +58,7 @@ struct EditPerfilView: View {
 
 struct EditPerfilView_Previews: PreviewProvider {
     static var previews: some View {
-        EditPerfilView(usuario: Usuario(id: NSUUID().uuidString, nombreUsuario: "", nombreCompleto: "", email: "", sexo: "", fechaNacimiento: "", UrlImagenPerfil: ""))
+        EditPerfilView(usuario: Usuario(id: NSUUID().uuidString, nombreUsuario: "h", nombreCompleto: "h", email: "h", sexo: "h", fechaNacimiento: "h", UrlImagenPerfil: "h"))
     }
 }
 

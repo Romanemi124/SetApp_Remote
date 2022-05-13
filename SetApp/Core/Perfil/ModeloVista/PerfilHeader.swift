@@ -9,6 +9,8 @@ import Kingfisher
 import SwiftUI
 import SDWebImageSwiftUI
 
+/* Deprecated */
+
 //Cabezera de la vista del perfil donde se muestra su nombre, usuario, y datos principales como el número de publicaciones totales, sus seguidores y seguidos
 struct PerfilHeader: View {
     
@@ -23,7 +25,7 @@ struct PerfilHeader: View {
     
     //Para volver la vista hacia atrás
     @Environment(\.presentationMode) var mode
-    
+  
     var body: some View {
         
         HStack(spacing: 20) {
@@ -126,11 +128,3 @@ struct PerfilHeader: View {
         }
     }
 }
-
-/*
-struct PerfilHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        PerfilHeader()
-    }
-}
- */
