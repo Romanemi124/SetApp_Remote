@@ -26,6 +26,10 @@ struct BuscadorView: View {
     @State var currentCardSize: CGSize = .zero
     
     @Environment(\.colorScheme) var scheme
+    
+    /* Variable de entorno para acceder a todos los usarios  */
+    @ObservedObject var viewModel = BuscadorModeloView()
+    
     var body: some View {
         
         ZStack {
@@ -35,8 +39,28 @@ struct BuscadorView: View {
 
             VStack {
                 
-                //Para la barra del buscador
-                Text("buscador")
+//                VStack{
+//
+//                    //Mostramos el buscador
+//                    BuscadorBar(texto: $viewModel.textoBuscar)
+//                        .padding()
+//
+//                    ScrollView{
+//                        LazyVStack{
+//                            ForEach(viewModel.searchableUsers){ user in
+//
+//                                NavigationLink{
+//
+//
+//
+//                                }label: {
+//                                    UserRowView(user: user)
+//                                }
+//
+//                            }
+//                        }
+//                    }
+//                }
                 
                 //Efecto del carrusel para saleccionar el tipo de categoría
                 PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in

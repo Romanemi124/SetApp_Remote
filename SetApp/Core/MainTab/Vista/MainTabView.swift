@@ -28,7 +28,8 @@ struct MainTabView: View {
                 case .home:
                     FeedView()
                 case .buscador:
-                    BuscadorView()
+                    //BuscadorView()
+                    BuscadorPersonaView()
                 case .mensajes:
                     MensajesView()
                 case .newPublicacion:
