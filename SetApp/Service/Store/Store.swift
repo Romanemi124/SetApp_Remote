@@ -13,20 +13,22 @@ import FirebaseStorage
 
 /*  Clase permite recuparar el usuario e inyectarlo a la variable de entorno que utilizamos en toda la aplicación */
 enum Store {
-
+    
     /* Función pasar la referencia de la ruta del usuario */
     static func referenciaUsuario(id: String) -> DocumentReference {
         return Firestore.firestore().collection(Claves.RutaColeccion.usuarios).document(id)
     }
     
+    static let rutaUsuarios = Firestore.firestore().collection(Claves.RutaColeccion.usuarios)
+    
     /* Buscamos un usuario en la colección de usuarios según su id
      (Result<UsuarioFireBase, Error>) -> () devuelve como resultado un objecto UsuarioFireBase o un Error. Los errores que que devuelvan se tratarán con la clase StoreError */
     static func recuperarUsuarioFB(id: String, completion: @escaping (Result<UsuarioFireBase, Error>) -> ()) {
         
-//        let reference = Firestore
-//            .firestore()
-//            .collection(Claves.RutaColeccion.usuarios)
-//            .document(id)
+        //        let reference = Firestore
+        //            .firestore()
+        //            .collection(Claves.RutaColeccion.usuarios)
+        //            .document(id)
         
         //Tratamiento de documentos se realiza en la función getDocument()
         getDocument(for: referenciaUsuario(id: id)) { (result) in
@@ -103,4 +105,71 @@ enum Store {
             }
         }
     }
+    
+    /* Buscar usuarios */
+    /* Buscamos un usuario en la colección de usuarios según su id
+     (Result<UsuarioFireBase, Error>) -> () devuelve como resultado un objecto UsuarioFireBase o un Error. Los errores que que devuelvan se tratarán con la clase StoreError */
+    static func recuperarTodosUsuarioFB(completion: @escaping (Result<[UsuarioFireBase], Error>) -> ()) {
+        
+        //        let reference = Firestore
+        //            .firestore()
+        //            .collection(Claves.RutaColeccion.usuarios)
+        //            .document(id)
+        
+        //Tratamiento de documentos se realiza en la función getDocument()
+        rutaUsuarios.getDocuments{ querySnapshot, error in
+            
+            if let error = error {
+                
+                print("Error retreiving collection: \(error)")
+                completion(.failure(error))
+                return
+                
+            }else{
+                
+                guard let snapshot = querySnapshot else {
+                    print("Error fetching snapshots: \(error!)")
+                    completion(.failure(StoreError.noDocumentSnapshot))
+                    return
+                }
+
+                
+                guard let documentsData = querySnapshot?.documents else {
+                    
+                        print("Error fetching documents: \(error!)")
+                        completion(.failure(StoreError.noSnapshotData))
+                        return
+                }
+                
+                //Variable que almacena los usuarios de FireBase
+                var usuariosFireBase = [UsuarioFireBase]()
+                
+                //Recorremos los documentos
+                for document in documentsData {
+                    
+                    //Cojemos los datos de un usuario
+                    let dict = document.data()
+                    
+                    
+                    //Decodificamos los datos según el diccionario de clase UsuarioFireBase
+                    guard let usuarioFb = UsuarioFireBase(documentData: dict) else {
+                        //Mostramos el error
+                        completion(.failure(StoreError.noUser))
+                        return
+                    }
+                    
+                    //Añadimos los usuarios decodificados
+                    usuariosFireBase.append(usuarioFb)
+                    
+                    //Devolvemos los usuarios
+                    completion(.success(usuariosFireBase))
+                    
+                }
+                
+            }
+      
+        }
+        
+    }
+    
 }

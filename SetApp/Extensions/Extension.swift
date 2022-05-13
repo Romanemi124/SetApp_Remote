@@ -53,6 +53,12 @@ extension String {
         return stringArray
         
     }
+    
+    //Borrar los espacios en blanco
+    func removeWhiteSpace() -> String{
+        return components(separatedBy: .whitespaces).joined()
+    }
+    
 }
 
 
