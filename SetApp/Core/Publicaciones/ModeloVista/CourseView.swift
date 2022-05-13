@@ -60,7 +60,7 @@ struct CourseView: View {
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-                        .padding(.top, 20)
+                        .padding(.top, 40)
                     
                     HStack(alignment: .center, spacing: 10) {
                             
@@ -79,17 +79,86 @@ struct CourseView: View {
                     .padding(.top, 2)
                     
                     PostCardLikes(post: post)
-                        .padding(.top, 2)
+                        .padding(.top, 3)
                     
-                    Text(post.caracteristicas)
+                    HStack(spacing: 0) {
+                        
+                        Text("Valoración: \(post.valoracion)" + "/10")
+                            .padding()
+                            .foregroundColor(.white)
+                        
+                        Image(systemName: "star.fill")
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(.white)
+                    }
+                    
+                    /*
+                    Text("Valoración: \(post.valoracion)" + "/10")
                         .padding()
                         .foregroundColor(.white)
+                    */
                     
-                    KFImage(URL(string: post.mediaUrl))
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 65, height: 65)
-                        .cornerRadius(15)
+                    HStack {
+                        
+                        VStack(alignment: .leading, spacing: 6) {
+                            
+                            Text("Ventajas")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                            
+                            //Para saber ha cuanto se subió la publicación
+                            Text(post.puntosPositivos)
+                                .foregroundColor(.white)
+                        }
+                        
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.horizontal, 30)
+                    
+                    HStack {
+                        
+                        VStack(alignment: .leading, spacing: 6) {
+                            
+                            Text("Desventajas")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                            
+                            //Para saber ha cuanto se subió la publicación
+                            Text(post.puntosNegativos)
+                                .foregroundColor(.white)
+                        }
+                        
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 20)
+                    
+                    HStack {
+                        
+                        KFImage(URL(string: post.profile))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 65, height: 65)
+                            .cornerRadius(15)
+                        
+                        VStack(alignment: .leading, spacing: 6) {
+                            
+                            Text(post.username)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                            
+                            //Para saber ha cuanto se subió la publicación
+                            Text((Date(timeIntervalSince1970: post.date)).timeAgo() + " ago").font(.subheadline)
+                                .foregroundColor(.white)
+                        }
+                        
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.leading, 30)
+                    .padding(.top, 20)
                     
                     Button(action: {}) {
                         

@@ -16,6 +16,7 @@ struct PerfilPublicacion: View {
         
         HStack(spacing: 12) {
             
+            //Cargamos la foto de la publicación
             KFImage(URL(string: post.mediaUrl))
                 .resizable()
                 .aspectRatio(contentMode: .fill)

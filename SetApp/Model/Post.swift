@@ -15,8 +15,8 @@ struct Post: Encodable, Decodable {
     var geoLocation: String
     var OwnerId: String
     var postId: String
-    //var username: String
-    //var profile: String
+    var username: String
+    var profile: String
     var mediaUrl: String
     var date: Double
     var likeCount: Int
@@ -24,7 +24,7 @@ struct Post: Encodable, Decodable {
     var nombreProducto: String
     var marca: String
     var valoracion: String
-    var caracteristicas: String
-    
+    var puntosPositivos: String
+    var puntosNegativos: String
 }
 

@@ -23,20 +23,22 @@ class ServicioPost: ObservableObject {
     }
 
     static func timelineUserId(userId: String) -> DocumentReference {
-        
+         
         return Timeline.document(userId)
     }
     
-    static func uploadPost(imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, caracteristicas: String, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
-
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        let postId = ServicioPost.PostUserId(userId: userId).collection("posts").document().documentID
-        let storagePostRef = StorageService.storagePerfilId(idUsuario: postId)
-        let metadata = StorageMetadata()
+    static func uploadPost(imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, puntosPositivos: String, puntosNegativos: String, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
         
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let postId = ServicioPost.PostUserId(userId: userId).collection("posts").document().documentID
+        let storagePostRef = StorageService.storagePostId(postId: postId)
+        let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
         
-        StorageService.savePostPhoto(imageData: imageData, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, caracteristicas: caracteristicas, userId: userId, postId: postId, metadata: metadata, storagePostRef: storagePostRef, onSuccess: onSuccess, onError: onError)
+        StorageService.savePostPhoto(userId: userId, imageData: imageData, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos, postId: postId, metadata: metadata, storagePostRef: storagePostRef, usuario: usuario, onSuccess: onSuccess, onError: onError)
     }
     
     //Cargar los datos para luego pasarlo a objetos de tipo post

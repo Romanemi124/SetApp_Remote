@@ -5,6 +5,8 @@
 //  Created by Omar Bonilla Varela on 10/5/22.
 //
 
+import SwiftUI
+import Kingfisher
 import Foundation
 import Firebase
 import FirebaseAuth
@@ -14,7 +16,7 @@ import FirebaseStorage
 class StorageService {
     
     //Acceso por referencia a la ubucación donde almancenaramos los datos
-    static var storage =  Storage.storage()
+    static var storage = Storage.storage()
     //Seleccianamos el sitio donde almacenaremos los datos
     static var storageRoot = storage.reference(forURL: "gs://setapp-a2961.appspot.com")
     //La carpeta donde almacenaremos los datos
@@ -58,11 +60,9 @@ class StorageService {
         
     }
     
-    //Guardar publicación
-    static func savePostPhoto(imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, caracteristicas: String, userId: String, postId: String, metadata: StorageMetadata, storagePostRef: StorageReference, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
+    static func savePostPhoto(userId: String, imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, puntosPositivos: String, puntosNegativos: String, postId: String, metadata: StorageMetadata, storagePostRef: StorageReference, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         
-        storagePostRef.putData(imageData, metadata: metadata) {
-            (StorageMetadata, error) in
+        storagePostRef.putData(imageData, metadata: metadata) { (StorageMetadata, error) in
             
             if error != nil {
                 onError(error!.localizedDescription)
@@ -78,19 +78,15 @@ class StorageService {
                     return
                 }
                 
-                storagePostRef.downloadURL {
-                    
-                    (url, error) in
+                storagePostRef.downloadURL { (url, error) in
                     if let metaImageUrl = url?.absoluteString {
                         let firestorePostRef = ServicioPost.PostUserId(userId: userId).collection("posts").document(postId)
                         
-                        let post = Post.init(likes: [:], geoLocation: "", OwnerId: userId, postId: postId, /*username: Auth.auth().currentUser!.displayName!,*/ mediaUrl: metaImageUrl, date: Date().timeIntervalSince1970, likeCount: 0, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, caracteristicas: caracteristicas)
+                        let post = Post.init(likes: [:], geoLocation: "", OwnerId: userId, postId: postId, username: usuario!.nombreUsuario, profile: usuario!.urlImagenPerfil, mediaUrl: metaImageUrl, date: Date().timeIntervalSince1970, likeCount: 0, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos)
                         
                         guard let dict = try? post.asDictionary() else { return }
                         
-                        firestorePostRef.setData(dict) {
-                            
-                            (error) in
+                        firestorePostRef.setData(dict) { (error) in
                             if error != nil {
                                 onError(error!.localizedDescription)
                                 return
@@ -135,5 +131,3 @@ struct SubirImagen2{
         }
     }
 }
-
-

@@ -13,14 +13,33 @@ enum TiposCategoria: String, CaseIterable {
     case monitor = "Monitor"
     case teclado = "Teclado"
     case raton = "Raton"
-    case sonido  = "Sonido"
+    case sonido = "Sonido"
     case audio = "Audio"
     case camara = "Camara"
-    case pc  = "PC"
+    case pc = "PC"
     case accesorios = "Accesorios"
     case otro = "Otro"
     
     var tiposCategoria: String{
+        
+        return rawValue.capitalized
+    }
+}
+
+enum NumValoracion: String, CaseIterable {
+    
+    case uno = "1"
+    case dos = "2"
+    case tres = "3"
+    case cuatro = "4"
+    case cinco = "5"
+    case seis = "6"
+    case siete = "7"
+    case ocho = "8"
+    case nueve = "9"
+    case diez = "10"
+    
+    var numValoracion: String{
         
         return rawValue.capitalized
     }
