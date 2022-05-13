@@ -25,7 +25,7 @@ struct BuscadorPersonaView: View {
                         
                         NavigationLink{
                             
-                         //ProfileView(user: user)
+                        //PerfilView(user: user)
                             
                         }label: {
                             UserRowView(user: user)
