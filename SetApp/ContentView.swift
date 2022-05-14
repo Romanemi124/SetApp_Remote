@@ -55,6 +55,7 @@ extension ContentView {
         
         /* Un tipo que recopila varias instancias de un tipo de contenido, como vistas, escenas o comandos, en una sola unidad. */
         Group{
+            
             ZStack(alignment: .topLeading){
                 
                 MainTabView()

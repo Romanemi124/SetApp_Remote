@@ -41,6 +41,7 @@ struct BuscadorPersonaView: View {
         }
         .navigationTitle("Buscador")
         .navigationBarTitleDisplayMode(.inline)
+
     }
 }
 

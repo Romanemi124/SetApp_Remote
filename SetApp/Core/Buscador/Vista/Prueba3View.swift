@@ -1,22 +1,13 @@
 //
-//  BuscadorView.swift
+//  Prueba3View.swift
 //  SetApp
 //
-//  Created by Omar Bonilla Varela on 5/5/22.
+//  Created by Omar Bonilla Varela on 14/5/22.
 //
 
 import SwiftUI
 
-//
-//  BuscadorView.swift
-//  SetApp
-//
-//  Created by Omar Bonilla Varela on 11/4/22.
-//
-
-import SwiftUI
-
-struct BuscadorView: View {
+struct Prueba3View: View {
     
     @State var currentIndex: Int = 0
     @State var currentTab: String = "Categorias"
@@ -27,8 +18,11 @@ struct BuscadorView: View {
     
     @Environment(\.colorScheme) var scheme
     
+    @State var txt = ""
+    
     /* Variable de entorno para acceder a todos los usarios  */
     @ObservedObject var viewModel = BuscadorModeloView()
+    
     
     var body: some View {
         
@@ -36,35 +30,10 @@ struct BuscadorView: View {
             
             //Parte donde se establece el fondo de las categorías
             BGView()
-
+            
+            
             VStack {
                 
-                //Buscador
-                VStack{
-                    
-                    //Mostramos el buscador
-                    SearchBar(value: $viewModel.textoBuscar).padding()
-                    
-                    ScrollView{
-                        
-                        LazyVStack{
-                            
-                            ForEach(viewModel.searchableUsers){ user in
-                                
-                                NavigationLink{
-                                    
-                                    //.navigationBarHidden(true) quitamos el link de navegación
-                                    PerfilView(user: user).navigationBarHidden(true)
-                                    
-                                }label: {
-                                    UserRowView(user: user)
-                        
-                                }
-                             
-                            }
-                        }
-                    }
-                }
                 
                 //Efecto del carrusel para saleccionar el tipo de categoría
                 PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in
@@ -84,7 +53,7 @@ struct BuscadorView: View {
                         Image(categoria.artwork)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: size.width, height: size.height)
+                            .frame(width: 320, height: 400)
                             .cornerRadius(15)
                             .onTapGesture {
                                 currentCardSize = size
@@ -97,7 +66,7 @@ struct BuscadorView: View {
                     }
                     
                 }
-                .padding(.top, 100)
+                .padding(.top, 200)
                 
                 CustomIndicator()
                 
@@ -126,7 +95,11 @@ struct BuscadorView: View {
                     
                     CategoriaView()
                 }
+                
             }
+            
+            //Buscador
+            SearchView(data: data, txt: $txt ).offset(x: 0, y: 0)
         }
     }
     
@@ -183,8 +156,50 @@ struct BuscadorView: View {
     }
 }
 
-struct BuscadorView_Previews: PreviewProvider {
+
+struct Prueba3View_Previews: PreviewProvider {
     static var previews: some View {
-        BuscadorView()
+        Prueba3View()
     }
 }
+
+struct SearchView : View {
+    
+    var data : [String]
+    @Binding var txt : String
+    
+    var body: some View {
+        
+        VStack(spacing :0) {
+            ZStack {
+                HStack {
+                    TextField("Search", text: $txt)
+                        .padding(.trailing, 75)
+                }.padding()
+                    .background(Color.white)
+                
+                if self.txt != "" {
+                    HStack {
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            self.txt = ""
+                        }) {
+                            Text("Cancel")
+                        }.foregroundColor(.black)
+                    }.padding()
+                }
+            }
+            
+            if self.txt != "" {
+                List(self.data.filter{$0.lowercased().contains(self.txt.lowercased())},id: \.self) { rs in
+                    Text(rs)
+                }.frame(height:250).listStyle(PlainListStyle())
+            }
+            
+            Spacer()
+        }.padding()
+    }
+}
+
