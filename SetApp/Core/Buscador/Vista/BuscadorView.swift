@@ -6,17 +6,12 @@
 //
 
 import SwiftUI
-
-//
-//  BuscadorView.swift
-//  SetApp
-//
-//  Created by Omar Bonilla Varela on 11/4/22.
-//
-
-import SwiftUI
+import Foundation
 
 struct BuscadorView: View {
+    
+    //Para mostrar la barra de búsqueda
+    @Namespace var animation
     
     @State var currentIndex: Int = 0
     @State var currentTab: String = "Categorias"
@@ -27,8 +22,11 @@ struct BuscadorView: View {
     
     @Environment(\.colorScheme) var scheme
     
+    @State var txt = ""
+    
     /* Variable de entorno para acceder a todos los usarios  */
     @ObservedObject var viewModel = BuscadorModeloView()
+    
     
     var body: some View {
         
@@ -36,35 +34,29 @@ struct BuscadorView: View {
             
             //Parte donde se establece el fondo de las categorías
             BGView()
-
+            
             VStack {
                 
-                //Buscador
-                VStack{
+                //Parte donde se encuentra el buscador de las personas
+                ZStack {
                     
-                    //Mostramos el buscador
-                    SearchBar(value: $viewModel.textoBuscar).padding()
-                    
-                    ScrollView{
+                    if viewModel.searchActivated {
+                        SearchBar()
+                    } else {
                         
-                        LazyVStack{
-                            
-                            ForEach(viewModel.searchableUsers){ user in
-                                
-                                NavigationLink{
-                                    
-                                    //.navigationBarHidden(true) quitamos el link de navegación
-                                    PerfilView(user: user).navigationBarHidden(true)
-                                    
-                                }label: {
-                                    UserRowView(user: user)
-                        
-                                }
-                             
-                            }
-                        }
+                        SearchBar()
+                            .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
                     }
                 }
+                //.frame(width: getRect().width / 1.6)
+                .padding(.horizontal, 25)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        viewModel.searchActivated = true
+                    }
+                }
+                .padding(.top, 20)
                 
                 //Efecto del carrusel para saleccionar el tipo de categoría
                 PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in
@@ -84,7 +76,7 @@ struct BuscadorView: View {
                         Image(categoria.artwork)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: size.width, height: size.height)
+                            .frame(width: 290, height: 390)
                             .cornerRadius(15)
                             .onTapGesture {
                                 currentCardSize = size
@@ -97,7 +89,8 @@ struct BuscadorView: View {
                     }
                     
                 }
-                .padding(.top, 100)
+                .padding(.top, 80)
+                .padding(.bottom, 20)
                 
                 CustomIndicator()
                 
@@ -126,8 +119,39 @@ struct BuscadorView: View {
                     
                     CategoriaView()
                 }
+                
             }
         }
+        .overlay(
+        
+            ZStack {
+                
+                if viewModel.searchActivated {
+                    SearchView(animation: animation)
+                        .environmentObject(viewModel)
+                }
+            }
+        )
+    }
+    
+    //La barra de búsqueda
+    @ViewBuilder
+    func SearchBar() -> some View {
+        
+        HStack(spacing: 15) {
+            
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 23, weight: .bold))
+                .foregroundColor(.gray)
+            
+            TextField("Search", text: .constant(""))
+                .disabled(true)
+        }
+        .padding(.vertical, 12)
+        .padding(.horizontal)
+        .background(Color.primary.opacity(0.2))
+        .cornerRadius(15)
+        .padding(.horizontal)
     }
     
     //Para saber cuántas categorías hay, cuando se va pasando de una categoría a otra, los círculos de abajo cambian

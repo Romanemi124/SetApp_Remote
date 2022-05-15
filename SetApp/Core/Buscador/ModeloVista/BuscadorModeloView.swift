@@ -8,6 +8,10 @@
 import Foundation
 
 class BuscadorModeloView: ObservableObject{
+    
+    //Para mostrar y dejar de mostrar la barra de búsqueda de la vista
+    @Published var searchText: String = ""
+    @Published var searchActivated: Bool = false
 
     /*!!![User]() buscar esa estructura*/
     @Published var usuarios = [UsuarioFireBase]()

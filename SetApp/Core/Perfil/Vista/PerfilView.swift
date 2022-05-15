@@ -35,7 +35,7 @@ struct PerfilView: View {
                 VStack {
                     
                     //Vista superior del perfil
-                    headerView
+                    PerfilHeader(usuario: viewModel.user, postCount: viewModel.posts.count, seguidos: $viewModel.seguidos, seguidores: $viewModel.seguidores)
                     
                     //Botón para editar el perfil en caso de su cuenta, o seguir a la persona en caso de otro usuario de la app
                     HStack {
@@ -81,7 +81,7 @@ struct PerfilView: View {
                 }
             }
             .onAppear {
-                self.viewModel.cargarPostUser(userId: Auth.auth().currentUser!.uid)
+                viewModel.cargarPostUser(userId: viewModel.user.id!)
             }
         }
     }
@@ -100,112 +100,4 @@ struct PerfilView_Previews: PreviewProvider {
     static var previews: some View {
         PerfilView(user: UsuarioFireBase(id: NSUUID().uuidString, nombreCompleto: "j", nombreUsuario: "j", email: "j", sexo: "j", fechaNacimiento: "j", urlImagenPerfil: "j"))
     }
-}
-
-
-extension PerfilView {
-    
-    //Variable guardará a la parte superior de la vista
-    var headerView: some View{
-        
-        VStack{
-            
-            HStack(spacing: 20) {
-                
-                Button(action: {
-                    
-                    //Cambiamos el valor de la variable para que vuelva a la anterior vista
-                    mode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "arrow.left.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                }
-                
-                Text("@\(viewModel.user.nombreUsuario)")
-                    .font(.headline)
-                    .bold()
-                    .foregroundColor(.white)
-            }
-            .padding(.top, 15)
-            
-            HStack {
-                
-                VStack {
-                    
-                    //WebImage(url: URL(string: usuario!.urlImagenPerfil)!)
-                    KFImage(URL(string:viewModel.user.urlImagenPerfil))
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(Circle())
-                        .frame(width: 100, height: 100, alignment: .trailing)
-                        .padding(.leading)
-                    
-                    
-                    Text(viewModel.user.nombreCompleto)
-                        .font(.headline)
-                        .bold()
-                        .padding(.leading)
-                        .foregroundColor(.white)
-                }
-                .navigationTitle("Perfil")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(leading: Button(action: {
-                    
-                    //Cambiamos el valor de la variable para que vuelva a la anterior vista
-                    mode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "arrow.left.circle.fill")
-                        .foregroundColor(.red)
-                })
-                
-                /* Aquí hay Falloooooooooos */
-                
-                VStack {
-                    
-                    HStack {
-                        
-                        Spacer()
-                        
-                        VStack {
-                            
-                            Text("\(viewModel.posts.count)").font(.title3)
-                                .foregroundColor(.white)
-                            Text("Publicaciones")
-                                .font(.subheadline)
-                                .foregroundColor(.white)
-                        }
-                        //.padding(.top, 30)
-                        
-                        Spacer()
-                        
-                        VStack {
-                            Text("\(viewModel.seguidos)").font(.title3)
-                                .foregroundColor(.white)
-                            Text("Seguidores")
-                                .font(.subheadline)
-                                .foregroundColor(.white)
-                        }
-                        //.padding(.top, 30)
-                        
-                        Spacer()
-                        
-                        VStack {
-                            
-                            Text("\(viewModel.seguidores)").font(.title3)
-                                .foregroundColor(.white)
-                            Text("Seguidos")
-                                .font(.subheadline)
-                                .foregroundColor(.white)
-                        }
-                        //.padding(.top, 30)
-                        
-                        Spacer()
-                    }
-                }
-            }
-        }
-    }
-    
 }

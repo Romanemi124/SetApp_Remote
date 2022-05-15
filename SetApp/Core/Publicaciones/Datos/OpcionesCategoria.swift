@@ -149,6 +149,7 @@ enum NombreMarcas: String, CaseIterable {
     //S
     case samsung = "Samsung"
     case sony = "Sony"
+    case secretlab = "Secretlab"
     case schneider = "Schneider"
     case steelseries = "Steelseries"
     case subblim = "Subblim"
