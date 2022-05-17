@@ -19,4 +19,13 @@ class ParsearFecha{
         return dateFormatter.string(from: fecha)
     }
     
+    //Método para pasar de String a Date con un formato de fecha
+    static func asDate(fecha: String) -> Date?{
+        //Cremos un objecto DateFormatter para elegir el formato de fecha
+        let dateFormatter = DateFormatter()
+        //Indicamos el formato de fecha querido
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        //Pasamos de String a Date
+        return dateFormatter.date(from: fecha)
+    }
 }

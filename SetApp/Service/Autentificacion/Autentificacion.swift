@@ -130,6 +130,45 @@ struct Autentificacion {
             }
         }
     }
+    
+    // MARK: - Modificar perfil
+    static func modificarUsuario( id:String, nombreCompleto: String,sexo: String, fechaNacimiento: String, imageData:Data,
+                                  completionHandler:@escaping (Result<Bool,Error>) -> Void) {
+
+        let data = ["nombreCompleto" : nombreCompleto, "sexo" :sexo, "fechaNacimiento" : fechaNacimiento]
+        
+        //Si hay algún error nos devolverá el error producido
+        Store.subirDatosFireBase(data, id: id) { (result) in
+            completionHandler(result)
+        }
+        
+        /* Subir imagen de perfil */
+        let storageProfileUserId =  StorageService.storagePerfilId(idUsuario: id)
+        let metadata = StorageMetadata()
+        //Tipo de dato que se va a almacenar
+        metadata.contentType = "image/jpg"
+        //Guardar la foto de perfil Storage de FireBase
+        StorageService.guardarFotoPerfil(id: id, imageData: imageData, metaData: metadata, storageProfileImageRef: storageProfileUserId)
+        
+        //Si el registro ha sido correcto nos devolverá un true
+        completionHandler(.success(true))
+        
+    }
+    
+    static func modificarUsuarioSinImagen( id:String, nombreCompleto: String,sexo: String, fechaNacimiento: String,
+                                  completionHandler:@escaping (Result<Bool,Error>) -> Void) {
+
+        let data = ["nombreCompleto" : nombreCompleto, "sexo" :sexo, "fechaNacimiento" : fechaNacimiento]
+        
+        //Si hay algún error nos devolverá el error producido
+        Store.subirDatosFireBase(data, id: id) { (result) in
+            completionHandler(result)
+        }
+        
+        //Si el registro ha sido correcto nos devolverá un true
+        completionHandler(.success(true))
+        
+    }
 
     
     // MARK: - Cerrar sesión

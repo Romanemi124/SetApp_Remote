@@ -21,6 +21,7 @@ enum Store {
     
     static let rutaUsuarios = Firestore.firestore().collection(Claves.RutaColeccion.usuarios)
     
+    // MARK: - Autentificación/Registro
     /* Buscamos un usuario en la colección de usuarios según su id
      (Result<UsuarioFireBase, Error>) -> () devuelve como resultado un objecto UsuarioFireBase o un Error. Los errores que que devuelvan se tratarán con la clase StoreError */
     static func recuperarUsuarioFB(id: String, completion: @escaping (Result<UsuarioFireBase, Error>) -> ()) {
@@ -94,41 +95,22 @@ enum Store {
         }
     }
     
-    /* Borrar los datos de los usuarios */
-    static func borrarDatosUsuario(id: String, completion: @escaping (Result<Bool,Error>) -> Void) {
-        
-        referenciaUsuario(id: id).delete { error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(true))
-            }
-        }
-    }
-    
-    /* Buscar usuarios */
     /* Buscamos un usuario en la colección de usuarios según su id
      (Result<UsuarioFireBase, Error>) -> () devuelve como resultado un objecto UsuarioFireBase o un Error. Los errores que que devuelvan se tratarán con la clase StoreError */
     static func recuperarTodosUsuarioFB(completion: @escaping (Result<[UsuarioFireBase], Error>) -> ()) {
         
-        //        let reference = Firestore
-        //            .firestore()
-        //            .collection(Claves.RutaColeccion.usuarios)
-        //            .document(id)
-        
-        //Tratamiento de documentos se realiza en la función getDocument()
         rutaUsuarios.getDocuments{ querySnapshot, error in
             
             if let error = error {
                 
-                print("Error retreiving collection: \(error)")
+                print("Error al obtener la colección: \(error)")
                 completion(.failure(error))
                 return
                 
             }else{
                 
                 guard let snapshot = querySnapshot else {
-                    print("Error fetching snapshots: \(error!)")
+                    print("Error mostrar snapshots: \(error!)")
                     completion(.failure(StoreError.noDocumentSnapshot))
                     return
                 }
@@ -136,7 +118,7 @@ enum Store {
                 
                 guard let documentsData = querySnapshot?.documents else {
                     
-                        print("Error fetching documents: \(error!)")
+                        print("Error mostrar documents: \(error!)")
                         completion(.failure(StoreError.noSnapshotData))
                         return
                 }
@@ -171,5 +153,19 @@ enum Store {
         }
         
     }
+    
+    // MARK: - Borrar usuario
+    /* Borrar los datos de los usuarios */
+    static func borrarDatosUsuario(id: String, completion: @escaping (Result<Bool,Error>) -> Void) {
+        
+        referenciaUsuario(id: id).delete { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
+            }
+        }
+    }
+
     
 }
