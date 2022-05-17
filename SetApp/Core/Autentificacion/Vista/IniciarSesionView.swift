@@ -97,7 +97,7 @@ struct IniciarSesionView: View {
                 
                 NavigationLink{
                     
-                    RegistroView2()
+                    RegistroView()
                         .navigationBarHidden(true)
                     
                 }label: {

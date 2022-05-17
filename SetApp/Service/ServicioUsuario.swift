@@ -8,6 +8,9 @@
 import Firebase
 import FirebaseFirestoreSwift
 
+
+//Deprecated
+
 struct ServicioUsuario{
     
     //Mostrar los datos de un usuario según el id del usuario

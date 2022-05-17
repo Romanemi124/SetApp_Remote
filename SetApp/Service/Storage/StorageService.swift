@@ -48,7 +48,7 @@ class StorageService {
          En este caso lo utilizaremso para alamcenar la foto de perfil
          - storageProfileImageRef sitio donde se almacenará la imagen */
         
-        SubirImagen2.subirImagen(imageData: imageData, metaData: metaData, storageProfileImageRef: storageProfileImageRef){ urlImagenPerfil in
+        SubirImagen.subirImagen(imageData: imageData, metaData: metaData, storageProfileImageRef: storageProfileImageRef){ urlImagenPerfil in
             
             //Seleccionamos la colección donde se guardará el usuario ha registrar
             Firestore.firestore().collection(Claves.RutaColeccion.usuarios)
@@ -99,34 +99,6 @@ class StorageService {
                         }
                     }
                 }
-            }
-        }
-    }
-}
-
-/* Estructura para subir la imagen de peril */
-struct SubirImagen2{
-    
-    /*  @escaping son aquellos que pueden ser ejecutados o llamados más tarde, después de que la función que los contiene haya terminado de ejecutarse */
-    static func subirImagen(imageData: Data, metaData: StorageMetadata, storageProfileImageRef: StorageReference,completion: @escaping(String) -> Void){
-        
-        //Guardamos la imagen en Firebase
-        storageProfileImageRef.putData(imageData, metadata: metaData){ (StorageMetadata, error) in
-            
-            //Mostramos los errores
-            if let error = error{
-                print("Debug: Failerd to uplad with error: \(error.localizedDescription)")
-                return
-            }
-            
-            storageProfileImageRef.downloadURL{ (url, error)in
-                
-                //Evaluamos si la imagen es una URL de tipo String, el caso que no lo sea sala de la función
-                guard let imageUrl = url?.absoluteString else { return }
-                
-                //Guardamos la imagen
-                completion(imageUrl)
-                
             }
         }
     }

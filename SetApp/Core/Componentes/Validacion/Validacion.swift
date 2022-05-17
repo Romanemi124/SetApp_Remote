@@ -212,3 +212,117 @@ struct Validacion {
         }
     }
 }
+
+class ValidacionEditarPerfil {
+    
+    // MARK: - Comprobar Validación
+    /* PatronesRegex obtenemos las expresiones reguales necesario */
+    //Validar nombre y apellidos
+    func estaValidoNombreCompleto(nombreCompleto: String) -> Bool {
+        // Password must be 8 chars, contain a capital letter and a number
+        let passwordTest =  NSPredicate(format: "SELF MATCHES %@",
+                                        PatronesRegex.comprobarNombreApellidos)
+        return passwordTest.evaluate(with: nombreCompleto)
+    }
+    
+    //Función para validar edad
+    func validarEdad(_ val: Date) -> String? {
+        
+        //Indicamos la edad mínima para registrarse
+        let edadLimite: Int = 18
+        
+        //Castear el valor, si no se pude nos mostrará un error
+        guard let date = val as? Date else {
+            return  "No se ha podido pasar la fecha de nacimiento"
+        }
+        
+        //Evalumos que el usuario debe ser mayor de 18 años
+        if let calcularEdad = Calendar.current.dateComponents([.year], from: date, to: Date()).year,
+           
+            calcularEdad < edadLimite {
+            
+            //Devuelve el error si es menor de 18 años
+            return "El usuario debe ser mayor de 18 para registrarse"
+            
+        }
+        //En el caso que nos devuelva null, significa que es un fecha valida
+        return nil
+    }
+    
+    //Validamos la edad devolviendo un booleano
+    func estaValidaEdad(fechaNacimiento: Date)->Bool{
+        if  validarEdad(fechaNacimiento) == nil{
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // MARK: - Validación errores
+
+    //Validación de texto error nombre completo
+    func validarTextoNombreCompleto(nombreCompleto2: String) -> String {
+        //Validamos que el nombre completo no sea mayor de <= 50
+        if estaValidoNombreCompleto(nombreCompleto: nombreCompleto2) && nombreCompleto2.count <= 50{
+            return ""
+        } else {
+            return "Formato de nombre completo incorrecto"
+        }
+    }
+
+    //Validacion de fecha de nacimiento
+    func validarTextoFechaNacimiento(fechaNacimiento2: Date) -> String {
+        //Si es diferente de nulo significa que la edad no es superior a 18
+        if  estaValidaEdad(fechaNacimiento: fechaNacimiento2){
+            return ""
+        } else {
+            return "El usuario debe ser mayor de 18 para registrarse"
+            
+        }
+    }
+    
+    // MARK: - Validación final de editar perfil
+    /* Permite actualizar el perfil si el resultado es verdadero */
+    func actualizarPerfil(nombreCompleto2: String, fechaNacimiento2: Date)->Bool{
+        
+        //Si alguno de ellos no es verdadero
+        if !estaValidoNombreCompleto(nombreCompleto: nombreCompleto2) || !estaValidaEdad(fechaNacimiento: fechaNacimiento2){
+            return false
+        }
+        return true
+    }
+    
+    //Sustuir en primer lugar el sexo elegido por el usuario
+    func sexoPredeterminado(sexoUsuario:String) -> [String]{
+       
+        var sexosOrden = [""]
+        
+        if sexoUsuario == "Hombre"{
+            sexosOrden = ["Hombre", "Mujer", "Otro"]
+        }
+        
+        if sexoUsuario == "Mujer"{
+            sexosOrden = ["Mujer", "Hombre", "Otro"]
+        }
+        
+        if sexoUsuario == "Otro"{
+            sexosOrden = ["Otro", "Hombre", "Mujer"]
+        }
+        
+        return sexosOrden
+    }
+    
+    //Buscar el sexo en el array
+    func find(value searchValue: String, in array: [String]) -> Int?
+    {
+        for (index, value) in array.enumerated()
+        {
+            if value == searchValue {
+                return index
+            }
+        }
+        
+        return nil
+    }
+}
+

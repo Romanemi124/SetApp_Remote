@@ -18,7 +18,7 @@ enum Sexo: String, CaseIterable {
         return rawValue.capitalized
     }
 }
-struct RegistroView2: View {
+struct RegistroView: View {
     
     @State private var userName : String = ""
     @State private var elegirSexo: Sexo = .hombre
@@ -326,8 +326,8 @@ struct RegistroView2: View {
     
 }
 
-struct RegistroView2_Previews: PreviewProvider {
+struct RegistroView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistroView2()
+        RegistroView()
     }
 }
