@@ -12,6 +12,7 @@ import FirebaseAuth
 struct PerfilUserView: View {
     
     var user: UsuarioFireBase
+    var boolCheck: Bool
     @StateObject var viewModel = PerfilViewModel()
     
     @State private var selection = 0
@@ -32,7 +33,7 @@ struct PerfilUserView: View {
                     //Botón para editar el perfil en caso de su cuenta, o seguir a la persona en caso de otro usuario de la app
                     HStack {
                         
-                        FollowButton(user: user, followCheck: $viewModel.followCheck, followingCount: $viewModel.seguidos, followersCount: $viewModel.seguidores)
+                        FollowButton(user: user, followCheck: boolCheck, followingCount: $viewModel.seguidos, followersCount: $viewModel.seguidores)
                     }
                     .padding(.bottom, 10)
                     

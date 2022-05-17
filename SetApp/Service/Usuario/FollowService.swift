@@ -10,28 +10,9 @@ import Firebase
 
 class FollowService: ObservableObject {
     
-    func updateFollowCount(userId: String, followingCount: @escaping (_
-        followingCount: Int) -> Void, followersCount: @escaping (_
-        followingCount: Int) -> Void) {
-           
-            PerfilViewModel.followingCollection(userId: userId).getDocuments { (snap, error) in
-                
-                if let doc = snap?.documents {
-                    followingCount(doc.count)
-                }
-            }
-            
-            PerfilViewModel.followersCollection(userId: userId).getDocuments { (snap, error) in
-                
-                if let doc = snap?.documents {
-                    followersCount(doc.count)
-                }
-            }
-    }
-    
     func manageFollow(userId: String, followCheck: Bool,
         followingCount: @escaping (_ followingCount: Int) -> Void,
-        followersCount: @escaping (_ followingCount: Int) -> Void) {
+        followersCount: @escaping (_ followersCount: Int) -> Void) {
         
         if !followCheck {
             follow(userId: userId, followingCount: followingCount, followersCount: followersCount)
@@ -40,9 +21,10 @@ class FollowService: ObservableObject {
         }
     }
     
+    //2º En el caso de siga  a la persona, se le pasa el id, y sus contadores en cuanto a seguidores
     func follow(userId: String, followingCount: @escaping (_
         followingCount: Int) -> Void, followersCount: @escaping (_
-        followingCount: Int) -> Void) {
+        followersCount: Int) -> Void) {
         
         PerfilViewModel.followingId(userId: userId).setData([:]) { (err) in
             
@@ -59,9 +41,10 @@ class FollowService: ObservableObject {
         }
     }
     
+    //2º En el caso de que deje de seguir a la persona, se le pasa el id, y sus contadores en cuanto a seguidores
     func unfollow(userId: String, followingCount: @escaping (_
         followingCount: Int) -> Void, followersCount: @escaping (_
-        followingCount: Int) -> Void) {
+        followersCount: Int) -> Void) {
         
         PerfilViewModel.followingId(userId: userId).getDocument { (document, err) in
             
@@ -78,6 +61,52 @@ class FollowService: ObservableObject {
                 
                 doc.reference.delete()
                 self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
+            }
+        }
+    }
+    
+    //1º Actualizamos el contador de usuarios de las personas a las que sigue y deja de seguir
+    func updateFollowCount(userId: String, followingCount: @escaping (_
+        followingCount: Int) -> Void, followersCount: @escaping (_
+        followersCount: Int) -> Void) {
+           
+        //Se añade el id del usuario en la coleccion de personas que sigue
+            PerfilViewModel.followingCollection(userId: userId).getDocuments { (snap, error) in
+                
+                if let doc = snap?.documents {
+                    followingCount(doc.count)
+                }
+            }
+            
+            PerfilViewModel.followersCollection(userId: userId).getDocuments { (snap, error) in
+                
+                if let doc = snap?.documents {
+                    followersCount(doc.count)
+                }
+            }
+    }
+    
+    //Comprobar si ya sigue al usuario o todavía no
+    static func buscarSeguimientoUser(withIdUsuario userId: String, completionHandler:@escaping (Result<Bool,Error>) -> Void){
+        
+        //"nombreUsuario".lowercased(), isEqualTo: nombreUsuario.lowercased() para pasar todo a minúsculas para que en la busqueda de igual si está mayusculas
+        Firestore.firestore().collection("followers").whereField("followers", isEqualTo: userId).getDocuments{ (resultado, error) in
+            
+            //Firestore.firestore().collection("followers").document(userId).collection("followers").document(Auth.auth().currentUser!.uid).getDocuments { (resultado, error) in
+            //PerfilViewModel.followingId(userId: userId).getDocuments { (resultado, error) in
+            
+            if let error = error {
+                print("Follow: error al encontrar el usuario \(error.localizedDescription)")
+            }else{
+                //Si encuentra al usuario
+                if (resultado!.documents.count > 0){
+                    completionHandler(.success(true))
+                    print("follower encontrado")
+                }else{
+                    //No encuentra al usuario
+                    completionHandler(.success(false))
+                    print("follower No encontrado")
+                }
             }
         }
     }

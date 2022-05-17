@@ -17,6 +17,17 @@ class ServicioPost: ObservableObject {
     static var AllPosts = StorageService.storeRoot.collection("allPosts")
     static var Timeline = StorageService.storeRoot.collection("timeline")
     
+    //--Para el feed
+    static var following = StorageService.storeRoot.collection("following")
+    
+    static func followingCollection(userId: String) -> CollectionReference {
+        return following.document(userId).collection("following")
+    }
+    static func followingId(userId: String) -> DocumentReference {
+        return following.document(Auth.auth().currentUser!.uid).collection("following").document(userId)
+    }
+    //--Para el feed
+    
     static func PostUserId(userId: String) -> DocumentReference {
         
         return Posts.document(userId)

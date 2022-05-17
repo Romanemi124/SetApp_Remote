@@ -27,7 +27,6 @@ struct BuscadorView: View {
     /* Variable de entorno para acceder a todos los usarios  */
     @ObservedObject var viewModel = BuscadorModeloView()
     
-    
     var body: some View {
         
         ZStack {

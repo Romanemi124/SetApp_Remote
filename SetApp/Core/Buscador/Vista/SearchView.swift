@@ -11,6 +11,11 @@ struct SearchView: View {
     
     var animation: Namespace.ID
     @EnvironmentObject var viewModel: BuscadorModeloView
+    @State private var followCheck: Bool = false
+    
+    //de prueba para mostrar la vista del usuario: PROBLEMA
+    @State private var showlink = false
+    @Environment(\.presentationMode) private var presentation
     
     var body: some View {
         
@@ -63,15 +68,33 @@ struct SearchView: View {
                     
                     ForEach(viewModel.searchableUsers){ user in
                         
+                        // PROBLEMA
+                        /*
+                        Button(action:{
+                            self.followPrueba(userid: user.id!)
+                            //self.presentation.wrappedValue.dismiss()
+                            self.showlink = true
+                        }) {
+                            UserRowView(user: user)
+                                               
+                        }
+                        .background(NavigationLink("", destination: PerfilUserView(user: user, boolCheck: followCheck).navigationBarHidden(true), isActive: $showlink))
+                        */
+                        /*
+                        NavigationLink(destination: PerfilUserView(user: user, boolCheck: followCheck).onAppear {
+                            self.followPrueba(userid: user.id!)
+                                    }) {
+                                        UserRowView(user: user)
+                                    }
+                        */
                         NavigationLink{
                             
                             //.navigationBarHidden(true) quitamos el link de navegación
-                            PerfilUserView(user: user).navigationBarHidden(true)
+                            PerfilUserView(user: user, boolCheck: followCheck).navigationBarHidden(true)
                             
                         }label: {
                             UserRowView(user: user)
                         }
-                     
                     }
                 }
             }
@@ -83,6 +106,21 @@ struct SearchView: View {
             Color(.white)
                 .ignoresSafeArea()
         )
+    }
+    
+    func followPrueba(userid: String) {
+        
+        PerfilViewModel.followingId(userId: userid).getDocument { (document, error) in
+            
+            if let doc = document, doc.exists {
+                self.followCheck = true
+                print("Valor del followCheck en search si existe en switch = \(followCheck)")
+                
+            } else {
+                self.followCheck = false
+                print("Valor del followCheck en search si no existe en switch = \(followCheck)")
+            }
+        }
     }
 }
 

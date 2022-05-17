@@ -16,7 +16,7 @@ class PerfilViewModel: ObservableObject {
     @Published var seguidos = 0
     @Published var seguidores = 0
     
-    @Published var followCheck = false
+    //@Published var followCheck = false
     
     static var following = StorageService.storeRoot.collection("following")
     static var followers = StorageService.storeRoot.collection("followers")
@@ -37,9 +37,22 @@ class PerfilViewModel: ObservableObject {
         return followers.document(userId).collection("followers").document(Auth.auth().currentUser!.uid)
     }
     
+    /*
     func followState(userid: String) {
-        
         PerfilViewModel.followingId(userId: userid).getDocument { (document, error) in
+            
+            if let doc = document, doc.exists {
+                self.followCheck = true
+            } else {
+                self.followCheck = true
+            }
+        }
+    }
+     */
+    /*
+    func followState(userid: String) {
+     
+        PerfilViewModel.followingId(userId: userid).getDocuments { (document, error) in
             
             if let doc = document, doc.exists {
                 self.followCheck = true
@@ -48,6 +61,7 @@ class PerfilViewModel: ObservableObject {
             }
         }
     }
+     */
     
     /*
     let user: UsuarioFireBase

@@ -72,16 +72,6 @@ struct PerfilHeader: View {
                     .padding(.leading)
                     .foregroundColor(.white)
             }
-            .navigationTitle("Perfil")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button(action: {
-                
-                //Cambiamos el valor de la variable para que vuelva a la anterior vista
-                mode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "arrow.left.circle.fill")
-                    .foregroundColor(.red)
-            })
             
             VStack {
                 
