@@ -5,7 +5,6 @@
 //  Created by Emilio Roman on 5/5/22.
 //
 
-import Foundation
 import FirebaseFirestoreSwift
 import Firebase
 
@@ -27,4 +26,3 @@ struct Post: Encodable, Decodable {
     var puntosPositivos: String
     var puntosNegativos: String
 }
-

@@ -77,10 +77,10 @@ struct CourseView: View {
                             .foregroundColor(.white)
                     }
                     .padding(.top, 2)
-                    
+                    /*
                     PostCardLikes(post: post)
                         .padding(.top, 3)
-                    
+                    */
                     HStack(spacing: 0) {
                         
                         Text("Valoración: \(post.valoracion)" + "/10")

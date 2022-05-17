@@ -11,6 +11,13 @@ import Kingfisher
 struct PerfilPublicacion: View {
     
     var post: Post
+    /*
+    @ObservedObject var viewModel: ServicioPostCard
+    
+    init(post: Post) {
+        self.viewModel = ServicioPostCard(post: post)
+    }
+     */
     
     var body: some View {
         
@@ -36,21 +43,22 @@ struct PerfilPublicacion: View {
                     Image(systemName: "gamecontroller.fill")
                         .foregroundColor(.white)
                 }
-                
+                /*
+                Button(action: {
+                    viewModel.post.didLike ?? false ?
+                    viewModel.unlikePost() :
+                    viewModel.likePost()
+                }) {
+                    
+                    Image(systemName: viewModel.post.didLike ?? false ? "heart.fill" : "heart")
+                        .font(.subheadline)
+                        .font(.title3)
+                        .foregroundColor(viewModel.post.didLike ?? false ? .red : .gray)
+                }
+                 */
                 PostCardLikes(post: post)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
-            /*
-            Button {
-                
-            } label: {
-                
-                Image(systemName: "suit.heart")
-                    .font(.title3)
-                    .foregroundColor(.white)
-            }
-             */
             
             NavigationLink{
                 //Mostramos el usuario gracias el usuario que hemos guardado de la sesión

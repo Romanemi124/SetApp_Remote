@@ -11,7 +11,7 @@ import FirebaseAuth
 
 struct PerfilView: View {
     
-    @ObservedObject var viewModel:  PerfilViewModel
+    @StateObject var viewModel = PerfilViewModel()
     
     @EnvironmentObject var session: EstadoAutentificacionUsuario
     @State private var selection = 0
@@ -20,9 +20,12 @@ struct PerfilView: View {
     @Environment(\.presentationMode) var mode
     
     //Inicilizamos la clase con el objeto usuario que pasamos por parámetro
+    /*
+    @ObservedObject var viewModel:  PerfilViewModel
+     
     init(user: UsuarioFireBase) {
-        self.viewModel =  PerfilViewModel(user:user)
-    }
+        self.viewModel = PerfilViewModel(user: user)
+    }*/
     
     var body: some View {
         
@@ -35,7 +38,7 @@ struct PerfilView: View {
                 VStack {
                     
                     //Vista superior del perfil
-                    PerfilHeader(usuario: viewModel.user, postCount: viewModel.posts.count, seguidos: $viewModel.seguidos, seguidores: $viewModel.seguidores)
+                    PerfilHeader(usuario: self.session.usuario, postCount: viewModel.posts.count, seguidos: $viewModel.seguidos, seguidores: $viewModel.seguidores)
                     
                     //Botón para editar el perfil en caso de su cuenta, o seguir a la persona en caso de otro usuario de la app
                     HStack {
@@ -81,7 +84,7 @@ struct PerfilView: View {
                 }
             }
             .onAppear {
-                viewModel.cargarPostUser(userId: viewModel.user.id!)
+                viewModel.cargarPostUser(userId: self.session.usuario.id!)
             }
         }
     }
@@ -98,6 +101,7 @@ struct PerfilView: View {
 
 struct PerfilView_Previews: PreviewProvider {
     static var previews: some View {
-        PerfilView(user: UsuarioFireBase(id: NSUUID().uuidString, nombreCompleto: "j", nombreUsuario: "j", email: "j", sexo: "j", fechaNacimiento: "j", urlImagenPerfil: "j"))
+        //PerfilView(user: UsuarioFireBase(id: NSUUID().uuidString, nombreCompleto: "j", nombreUsuario: "j", email: "j", sexo: "j", fechaNacimiento: "j", urlImagenPerfil: "j")
+        PerfilView()
     }
 }

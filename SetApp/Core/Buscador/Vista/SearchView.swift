@@ -66,11 +66,10 @@ struct SearchView: View {
                         NavigationLink{
                             
                             //.navigationBarHidden(true) quitamos el link de navegación
-                            PerfilView(user: user).navigationBarHidden(true)
+                            PerfilUserView(user: user).navigationBarHidden(true)
                             
                         }label: {
                             UserRowView(user: user)
-                
                         }
                      
                     }

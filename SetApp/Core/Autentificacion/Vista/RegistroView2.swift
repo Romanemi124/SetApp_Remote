@@ -315,6 +315,7 @@ struct RegistroView2: View {
                 
             }
         }
+        .accentColor(.white)
     }
     
     //Cargar Imagen
