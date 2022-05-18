@@ -20,6 +20,9 @@ struct BuscadorView: View {
     @State var showDetailView: Bool = false
     @State var currentCardSize: CGSize = .zero
     
+    @State var detailMarca: MarcasBuscador?
+    @State var showMarcaView: Bool = false
+    
     @Environment(\.colorScheme) var scheme
     
     @State var txt = "Raton"
@@ -60,14 +63,21 @@ struct BuscadorView: View {
                 //Efecto del carrusel para saleccionar el tipo de categoría
                 PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in
                     
+                    //1º opción
                     /*
-                     Image(categoria.artwork)
-                     .resizable()
-                     .aspectRatio(contentMode: .fill)
-                     .frame(width: 300, height: 500)
-                     .cornerRadius(15)
+                    NavigationLink{
+                        //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                        CategoriaView(categoria: categoria.nombreCategoria, categoriaTxt: categoria.nombreCategoria)
+                    }label: {
+                        Image(categoria.artwork)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 290, height: 390)
+                            .cornerRadius(15)
+                    }
                      */
                     
+                    //2º opción
                     GeometryReader { proxy in
                         
                         let size = proxy.size
@@ -100,11 +110,34 @@ struct BuscadorView: View {
                         
                         ForEach(marcas) { marca in
                             
+                            //1º opción
+                            /*
+                            NavigationLink{
+                                //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                                MarcaView(marca: marca.nombreCategoria, marcaTxt: marca.nombreCategoria)
+                            }label: {
+                                Image(marca.artwork)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 120)
+                                    .cornerRadius(15)
+                            }
+                             */
+                            
+                            //2º opción
                             Image(marca.artwork)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 100, height: 120)
                                 .cornerRadius(15)
+                                .onTapGesture {
+                                    //currentCardSize = size
+                                    detailMarca = marca
+                                    
+                                    withAnimation(.easeOut) {
+                                        showMarcaView = true
+                                    }
+                                }
                         }
                     }
                     .padding()
@@ -112,11 +145,15 @@ struct BuscadorView: View {
                 .padding(.bottom, 50)
                 
             }
+            
             .overlay {
                 
                 if let categoria = detailCategoria, showDetailView {
-                    
                     CategoriaView(categoria: categoria.nombreCategoria, categoriaTxt: categoria.nombreCategoria)
+                }
+                
+                if let marca = detailMarca, showMarcaView {
+                    MarcaView(marca: marca.nombreMarca, marcaTxt: marca.nombreMarca)
                 }
                 
             }

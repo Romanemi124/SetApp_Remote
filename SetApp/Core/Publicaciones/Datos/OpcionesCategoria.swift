@@ -11,14 +11,45 @@ import SwiftUI
 enum TiposCategoria: String, CaseIterable {
     
     case monitor = "Monitor"
+    case raton = "Ratón"
     case teclado = "Teclado"
-    case raton = "Raton"
-    case sonido = "Sonido"
-    case audio = "Audio"
-    case camara = "Camara"
+    case auriculares = "Auriculares"
+    case altavoz = "Altavoz"
+    case microfono = "Micrófono"
+    case webcam = "Webcam/Cámara Web"
+    case mando = "Mando"
+    case consola = "Consola"
+    case juegos = "Juegos"
+    case racing = "Racing"
     case pc = "PC"
+    case componentePC = "Componente PC"
+    case portatil = "Portátil"
+    case silla = "Silla"
+    case mesa = "Mesa"
+    case alfombrilla = "Alfombrilla"
     case accesorios = "Accesorios"
-    case otro = "Otro"
+    case almacenamiento = "Almacenamiento"
+    case telefono = "Teléfono"
+    case tablet = "Tablet"
+    case audio = "Audio"
+    case foto = "Foto"
+    case video = "Video"
+    case tv = "TV"
+    case impresora = "Impresora"
+    case software = "Software"
+    case red = "Red"
+    case hogar = "Hogar"
+    case robotica = "Robótica"
+    case figura = "Figura"
+    case reloj = "Reloj"
+    case ocio = "Ocio y tiempo libre"
+    
+    /*
+    CategoriasBuscador(nombreCategoria: "Figura", artwork: "", fondo: ""),
+    CategoriasBuscador(nombreCategoria: "Reloj", artwork: "", fondo: ""),
+    CategoriasBuscador(nombreCategoria: "Ocio y tiempo libre", artwork: "", fondo: ""),
+    CategoriasBuscador(nombreCategoria: "", artwork: "", fondo: ""),
+    */
     
     var tiposCategoria: String{
         
