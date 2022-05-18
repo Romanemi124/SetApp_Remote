@@ -5,93 +5,81 @@
 //  Created by Omar Bonilla Varela on 5/5/22.
 //
 
-
 import SwiftUI
+import Kingfisher
 
 struct CategoriaView: View {
-   
-   /*
-   var categoria: CategoriasBuscador
-   @Binding var showVistaCategoria: Bool
-   @Binding var detailCategoria: CategoriasBuscador?
-   @Binding var currentCardSize: CGSize
-   
-   var animation: Namespace.ID
-    */
     
-   @State var posts: [PostPrueba] = []
+    let categoriaTxt: String
     
-   //Para las columnas y distribuir las imágenes en ellas
-   @State var columns: Int = 2
+    @ObservedObject var viewModel: CategoriaViewModel
+    let threeColumn = [GridItem(), GridItem(), GridItem()]
     
-   //Para la animación
-   @Namespace var animation
+    //private let categoria: String
+    
+    init(categoria: String, categoriaTxt: String) {
+        self.viewModel = CategoriaViewModel(categoria: categoria)
+        self.categoriaTxt = categoriaTxt
+    }
+    
+    //Para volver la vista hacia atrás
+    @Environment(\.presentationMode) var mode
     
    var body: some View {
        
        ZStack {
            
-           NavigationView {
+           FondoPantallasApp()
+           
+           ScrollView {
                
-               //Obtenemos el objeto para luego mostrarlo en forma de carta
-               StaggeredGrid(colums: columns, list: posts, content: { post in
-                   //Se mostrarán las imágenes que se van a ver de cada categoría
-                   //A cada imagen que se recoge del bucle se le aplica la card con los estilos que tienen pasando el post por parámetro
-                   PublicationCategoria(post: post)
-                       .matchedGeometryEffect(id: post.id, in: animation)
-                       .onAppear {
-                           print(post.imageURL)
-                       }
+               VStack {
                    
-               })
-               .background(Color(red: 0.331, green: 0.074, blue: 0.423))
-               .padding(.horizontal)
-               .navigationTitle("Categoria")
-               .toolbar {
+                   Text(categoriaTxt)
+                       .font(.title)
+                       .fontWeight(.heavy)
+                       .foregroundColor(.white)
+                       .fontWeight(.bold)
+                       .foregroundColor(.white)
+                       .padding(.top, 15)
                    
-                   ToolbarItem(placement: .navigationBarTrailing) {
-                          
-                       Button {
-                           columns += 1
-                       } label: {
-                           Image(systemName: "plus")
-                               .foregroundColor(.white)
+                   LazyVGrid(columns: threeColumn) {
+                       
+                       ForEach(viewModel.posts) { post in
+                           
+                           NavigationLink{
+                               //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                               CoursePostView(post: post)
+                                   .navigationBarHidden(true)
+                           }label: {
+                               PostCategoria(post: post)
+                           }
                        }
                    }
-                   
-                   ToolbarItem(placement: .navigationBarTrailing) {
-                          
-                       Button {
-                           columns = max(columns - 1, 1)
-                       } label: {
-                           Image(systemName: "minus")
-                               .foregroundColor(.white)
-                       }
-                   }
-               }
-               //animación para desplazar las imágenes de un número de columnas
-               .animation(.easeInOut, value: columns)
-               .background(Color(red: 0.331, green: 0.074, blue: 0.423))
-           }
-           .onAppear {
-               
-               //Recorre el bucle de las imágenes que queremos mostrar
-               for index in 1...10 {
-                   posts.append(PostPrueba(imageURL: "desk"))
+                   .padding()
+                   .padding(.bottom, 150)
                }
            }
-           .foregroundColor(.white)
-           .padding(.bottom, 30)
-           .background(Color(red: 0.331, green: 0.074, blue: 0.423))
        }
    }
 }
 
 struct CategoriaView_Previews: PreviewProvider {
    static var previews: some View {
-       CategoriaView()
+       CategoriaView(categoria: "", categoriaTxt: "")
    }
 }
 
-//Pasamos el array de las imágenes para poder mostrarlas
+struct PostCategoria: View {
+    
+    let post: PostCateg
+    
+    var body: some View {
+        
+        KFImage(URL(string: post.mediaUrl))
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(10)
+    }
+}
 

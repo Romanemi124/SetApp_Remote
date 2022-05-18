@@ -22,7 +22,7 @@ struct BuscadorView: View {
     
     @Environment(\.colorScheme) var scheme
     
-    @State var txt = ""
+    @State var txt = "Raton"
     
     /* Variable de entorno para acceder a todos los usarios  */
     @ObservedObject var viewModel = BuscadorModeloView()
@@ -116,7 +116,7 @@ struct BuscadorView: View {
                 
                 if let categoria = detailCategoria, showDetailView {
                     
-                    CategoriaView()
+                    CategoriaView(categoria: categoria.nombreCategoria, categoriaTxt: categoria.nombreCategoria)
                 }
                 
             }

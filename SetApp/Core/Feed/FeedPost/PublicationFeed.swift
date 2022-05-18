@@ -12,7 +12,7 @@ import Kingfisher
 //Esta estructura se usa en la vista principal para poder ver la foto de la publicación con el nombre de usuario y nombre del producto
 struct PostItem: View {
     
-    var post: Post
+    let post: PostCateg
     //var animation: Namespace.ID
     
     var body: some View {

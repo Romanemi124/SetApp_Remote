@@ -79,6 +79,42 @@ class ServicioPost: ObservableObject {
         }
     }
     
+    //Se muestran todas las fotos de los usuarios de la aplicación
+    func fetchPosts(completion: @escaping([PostCateg]) -> Void) {
+        
+        Firestore.firestore().collection("allPosts").getDocuments { snapshot, _ in
+            
+            guard let documents = snapshot?.documents else { return }
+            let posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
+            
+            completion(posts)
+        }
+    }
+    
+    //Se muestran todas las fotos filtradas por categoria
+    func fetchPostsCategoria(categoria: String, completion: @escaping([PostCateg]) -> Void) {
+        
+        Firestore.firestore().collection("allPosts")/*.order(by: "date", descending: true)*/.whereField("categoria", isEqualTo: categoria).getDocuments { snapshot, _ in
+            
+            guard let documents = snapshot?.documents else { return }
+            let posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
+            
+            completion(posts)
+        }
+    }
+    
+    //Se muestran todas las fotos filtradas por marca
+    func fetchPostsMarcas(marca: String, completion: @escaping([PostCateg]) -> Void) {
+        
+        Firestore.firestore().collection("allPosts")/*.order(by: "date", descending: true)*/.whereField("marca", isEqualTo: marca).getDocuments { snapshot, _ in
+            
+            guard let documents = snapshot?.documents else { return }
+            let posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
+            
+            completion(posts)
+        }
+    }
+    
     /*-------------------*/
     /*-------------------*/
     /*-------------------*/

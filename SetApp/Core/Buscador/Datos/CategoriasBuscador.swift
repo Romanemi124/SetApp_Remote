@@ -19,8 +19,8 @@ var categorias = [
     
     CategoriasBuscador(nombreCategoria: "Monitor", artwork: "monitorLogo", fondo: "monitor"),
     CategoriasBuscador(nombreCategoria: "Teclado", artwork: "tecladoLogo", fondo: "teclado"),
-    CategoriasBuscador(nombreCategoria: "Ratón", artwork: "ratonLogo", fondo: "raton"),
-    CategoriasBuscador(nombreCategoria: "Componentes PC", artwork: "pcLogo", fondo: "pc"),
+    CategoriasBuscador(nombreCategoria: "Raton", artwork: "ratonLogo", fondo: "raton"),
+    CategoriasBuscador(nombreCategoria: "PC", artwork: "pcLogo", fondo: "pc"),
     
     /*
      CategoriasBuscador(nombreCategoria: "Auriculares", artwork: "auriculares"),
