@@ -46,4 +46,21 @@ extension EmailAutentificacionError: LocalizedError {
     }
 }
 
+/* Mensajes de errores los tratamos para enviar el mensaje que deseamos */
+enum ErroresString{
+    
+    enum ErroresRegistrar{
+        static let existeEmail = "The email address is already in use by another account."
+        static let existeEmailTraduccion =  "La dirección de correo electrónico introducida ya existe"
+    }
+    enum ErroresCambiarContraseña{
+        static let noExisteUsuario = "There is no user record corresponding to this identifier. The user may have been deleted."
+        static let noExisteUsuarioTraduccion = "No existe registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado"
+    }
+    enum ErroresReAutentificacion{
+        static let passwordIncorrecta = "The password is invalid or the user does not have a password."
+        static let passwordIncorrectaTraduccion = "La contraseña no es válida o el usuario no tiene contraseña."
+    }
+}
+
 

@@ -12,8 +12,10 @@ enum Claves {
     
     //El nombre de la colección en firebase
     enum RutaColeccion {
-        //Seleccionamos el nombre
+        //Para los usuarios
         static let usuarios = "usuarios"
+        //Para la foto de perfil de los usuarios
+        static let usuarioImagenPerfil = "perfil"
     }
     
     // Los atributos que tendrán el usuario

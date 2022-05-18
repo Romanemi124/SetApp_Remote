@@ -59,6 +59,20 @@ class StorageService {
         }
         
     }
+    //completion: @escaping (Result<Bool,Error>) -> Void
+    static func eliminarFotoPerfil(id:String,completion: @escaping (Result<Bool,Error>) -> Void){
+        
+        storageRoot.child(Claves.RutaColeccion.usuarioImagenPerfil).child(id).delete{ error in
+            
+            if let error = error{
+                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
+                completion(.failure(error))
+            }else{
+                print("Se ha borrado correctamente")
+                completion(.success(true))
+            }
+        }
+    }
     
     static func savePostPhoto(userId: String, imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, puntosPositivos: String, puntosNegativos: String, postId: String, metadata: StorageMetadata, storagePostRef: StorageReference, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         

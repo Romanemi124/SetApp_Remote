@@ -43,30 +43,62 @@ struct PerfilView: View {
                     //Vista superior del perfil
                     PerfilHeader(usuario: self.session.usuario, postCount: viewModel.posts.count, seguidos: $viewModel.seguidos, seguidores: $viewModel.seguidores)
                     
-                    //Botón para editar el perfil en caso de su cuenta, o seguir a la persona en caso de otro usuario de la app
-                    HStack {
-             
-                        NavigationLink{
+                    //Editar y Eliminar Cuenta
+                    HStack{
+                        
+                        //Botón para editar el perfil en caso de su cuenta, o seguir a la persona en caso de otro usuario de la app
+                        HStack {
                             
-                            EditarPerfilView(user: self.session.usuario)
+                            NavigationLink{
+                                
+                                EditarPerfilView(user: self.session.usuario)
+                                
+                            }label: {
+                                Text("Editar").foregroundColor(.white)
+                            }
                             
-                        }label: {
-                            Text("Editar").foregroundColor(.white)
                         }
-                   
+                        .padding()
+                        //Recuadro que enmarca el texto
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                            //Quitar el fondo del rectángulo con la opacidad del color
+                                .stroke(.white, lineWidth: 2)
+                        )
+                        //Separación de los laterales de la vista
+                        .cornerRadius(10)
+                        .padding(35)
+                        //Para que sólo se mueva uno
+                        .frame(height: 70)
+                        
+                        //Botón para ajustes de perfil(cambiar de contraseña y eliminar cuenta)
+                        HStack {
+                            
+                            NavigationLink{
+                                
+                                AjustePerfilView()
+                                
+                            }label: {
+                                Text("Ajustes").foregroundColor(.white)
+                            }
+                            
+                        }
+                        .padding()
+                        //Recuadro que enmarca el texto
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                            //Quitar el fondo del rectángulo con la opacidad del color
+                                .stroke(.white, lineWidth: 2)
+                        )
+                        //Separación de los laterales de la vista
+                        .cornerRadius(10)
+                        .padding(35)
+                        //Para que sólo se mueva uno
+                        .frame(height: 70)
+                        
+                        
                     }
-                    .padding()
-                    //Recuadro que enmarca el texto
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                        //Quitar el fondo del rectángulo con la opacidad del color
-                            .stroke(.white, lineWidth: 2)
-                    )
-                    //Separación de los laterales de la vista
-                    .cornerRadius(10)
-                    .padding(35)
-                    //Para que sólo se mueva uno
-                    .frame(height: 70)
+
                 }
                 .padding(.bottom, 10)
                 
