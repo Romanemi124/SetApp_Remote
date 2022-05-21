@@ -28,7 +28,7 @@ struct ContentView: View {
                 mainInterfaceView
             }else if estadoUsuario.estaUsuarioAutentificado == .cerrarSesion{
                 /* Cuando el usuario no está logeado nos mostrará la pantalla de Login */
-                IniciarSesionView()
+                IniciarSesionView().navigationBarHidden(true)
             }
             //Escuchará los cambios que se producirán en las vistas
         }.onAppear{

@@ -39,8 +39,8 @@ struct PerfilUserView: View {
                     
                     Picker("", selection: $selection) {
                         Image(systemName: "circle.grid.2x2.fill").tag(0)
-                        Image(systemName: "suit.heart.fill").tag(1)
-                        Image(systemName: "star.fill").tag(2)
+//                        Image(systemName: "suit.heart.fill").tag(1)
+//                        Image(systemName: "star.fill").tag(2)
                     }
                     .pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
                     

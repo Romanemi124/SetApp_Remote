@@ -1,14 +1,14 @@
 //
-//  PerfilViewModel.swift
+//  PerfilInformacionViewModel.swift
 //  SetApp
 //
-//  Created by Emilio Roman on 25/4/22.
+//  Created by Omar Bonilla Varela on 21/5/22.
 //
 
 import Foundation
 import Firebase
-
-class PerfilViewModel: ObservableObject {
+class PerfilInformacionViewModel: ObservableObject{
+    
     
     //Para recogeer los posts ya sea para mostrarlos en el perfil o en otras vistas
     @Published var posts: [Post] = []
@@ -37,33 +37,13 @@ class PerfilViewModel: ObservableObject {
         return followers.document(userId).collection("followers").document(Auth.auth().currentUser!.uid)
     }
     
-    /*
-    func followState(userid: String) {
-        PerfilViewModel.followingId(userId: userid).getDocument { (document, error) in
-            
-            if let doc = document, doc.exists {
-                self.followCheck = true
-            } else {
-                self.followCheck = true
-            }
-        }
-    }
-     */
-    /*
-    func followState(userid: String) {
-     
-        PerfilViewModel.followingId(userId: userid).getDocuments { (document, error) in
-            
-            if let doc = document, doc.exists {
-                self.followCheck = true
-            } else {
-                self.followCheck = false
-            }
-        }
-    }
-     */
     
+    let user: UsuarioFireBase
     
+    //Inicializamos la clase con un usuario, esto permitirá reutilizar la clase en el buscador de personas y en la de editar o revisar el perfil
+    init(user: UsuarioFireBase){
+        self.user =  user
+    }
     //Cragar los datos recogidos en objetos de tipo Post para luego mostrarlos por pantalla
     func cargarPostUser(userId: String) {
         
@@ -95,25 +75,3 @@ class PerfilViewModel: ObservableObject {
         }
     }
 }
-
-/*
- @Published var publicaciones = [Publicacion]()
- private let service = ServicioProducto()
- let user: Usuario
- 
- init(user: Usuario) {
-     self.user = user
-     self.mostrarPublicUsuarios()
- }
- 
- func mostrarPublicUsuarios() {
-     guard let uid = user.id else { return }
-     service.fetchPublicationsUser(forUid: uid) { publicaciones in
-         self.publicaciones = publicaciones
-         
-         for i in 0 ..< publicaciones.count {
-             self.publicaciones[i].user = self.user
-         }
-     }
- }
- */

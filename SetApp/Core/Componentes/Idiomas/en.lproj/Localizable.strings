@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  SetApp
+
+  Created by Omar Bonilla Varela on 20/5/22.
+  
+ Aquí haremos la traducción de los textos
+*/
+
+"form-name-key" = "Name";
+//Con el porcentaje indicamos que se pasa un parametro dinámico
+"form-phone-user %@" = "User Phone %@ Mobile";

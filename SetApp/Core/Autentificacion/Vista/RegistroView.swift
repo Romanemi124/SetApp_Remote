@@ -292,11 +292,7 @@ struct RegistroView: View {
                         //El alert que se va mostrar
                         Alert(title: Text("Error al crear cuenta"), message: Text(self.errorString), dismissButton: .default(Text("OK")))
                     }
-                    .navigationBarTitle("Sign Up", displayMode: .inline)
-                    .navigationBarItems(trailing: Button("Dismiss") {
-                        self.presentationMode.wrappedValue.dismiss()
-                        
-                    })
+                    .navigationBarTitle("Registrar", displayMode: .inline)
                 
                 /* Para cargar la imagen */
                 /*------------------------------------*/

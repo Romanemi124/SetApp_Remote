@@ -36,6 +36,10 @@
 		628647532833B7D600B1DA11 /* EditarPerfilModeloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628647502833B7D600B1DA11 /* EditarPerfilModeloView.swift */; };
 		628647542833B7D600B1DA11 /* EditarPerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628647522833B7D600B1DA11 /* EditarPerfilView.swift */; };
 		628647562833CC7B00B1DA11 /* SubirImagen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628647552833CC7B00B1DA11 /* SubirImagen.swift */; };
+		62AD862828380FE30077ECA1 /* PruebaIdiomasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AD862728380FE30077ECA1 /* PruebaIdiomasView.swift */; };
+		62AD862B2838135D0077ECA1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62AD862D2838135D0077ECA1 /* Localizable.strings */; };
+		62AD86312838FBEF0077ECA1 /* PerfilInformacionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AD86302838FBEF0077ECA1 /* PerfilInformacionViewModel.swift */; };
+		62AD86332839037B0077ECA1 /* PerfilSeguidoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AD86322839037B0077ECA1 /* PerfilSeguidoresView.swift */; };
 		B006D75B282BD1E300D06A91 /* UsuarioFireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D75A282BD1E300D06A91 /* UsuarioFireBase.swift */; };
 		B006D75D282BD1F000D06A91 /* Claves.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D75C282BD1F000D06A91 /* Claves.swift */; };
 		B006D762282BD22C00D06A91 /* AutentificacionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D75F282BD22C00D06A91 /* AutentificacionError.swift */; };
@@ -113,6 +117,11 @@
 		628647502833B7D600B1DA11 /* EditarPerfilModeloView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarPerfilModeloView.swift; sourceTree = "<group>"; };
 		628647522833B7D600B1DA11 /* EditarPerfilView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarPerfilView.swift; sourceTree = "<group>"; };
 		628647552833CC7B00B1DA11 /* SubirImagen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubirImagen.swift; sourceTree = "<group>"; };
+		62AD862728380FE30077ECA1 /* PruebaIdiomasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaIdiomasView.swift; sourceTree = "<group>"; };
+		62AD862C2838135D0077ECA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		62AD862E283813910077ECA1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		62AD86302838FBEF0077ECA1 /* PerfilInformacionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilInformacionViewModel.swift; sourceTree = "<group>"; };
+		62AD86322839037B0077ECA1 /* PerfilSeguidoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilSeguidoresView.swift; sourceTree = "<group>"; };
 		B006D75A282BD1E300D06A91 /* UsuarioFireBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsuarioFireBase.swift; sourceTree = "<group>"; };
 		B006D75C282BD1F000D06A91 /* Claves.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Claves.swift; sourceTree = "<group>"; };
 		B006D75F282BD22C00D06A91 /* AutentificacionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutentificacionError.swift; sourceTree = "<group>"; };
@@ -271,6 +280,8 @@
 			children = (
 				B0CE87E2282431C200D1670A /* PerfilViewModel.swift */,
 				B0F7138B282C42670024112A /* PerfilHeader.swift */,
+				62AD86302838FBEF0077ECA1 /* PerfilInformacionViewModel.swift */,
+				62AD86322839037B0077ECA1 /* PerfilSeguidoresView.swift */,
 			);
 			path = ModeloVista;
 			sourceTree = "<group>";
@@ -316,6 +327,7 @@
 				B006D7C0282BD3AD00D06A91 /* Vista */,
 				622286D628357CA500FA8F87 /* CambioPassword */,
 				622286D928357CAE00FA8F87 /* EliminarCuenta */,
+				62AD862728380FE30077ECA1 /* PruebaIdiomasView.swift */,
 			);
 			path = Autentificacion;
 			sourceTree = "<group>";
@@ -425,6 +437,14 @@
 			path = Vista;
 			sourceTree = "<group>";
 		};
+		62AD862F2838F2AF0077ECA1 /* Idiomas */ = {
+			isa = PBXGroup;
+			children = (
+				62AD862D2838135D0077ECA1 /* Localizable.strings */,
+			);
+			path = Idiomas;
+			sourceTree = "<group>";
+		};
 		B006D75E282BD22C00D06A91 /* Autentificacion */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +475,7 @@
 		B006D7A9282BD36800D06A91 /* Componentes */ = {
 			isa = PBXGroup;
 			children = (
+				62AD862F2838F2AF0077ECA1 /* Idiomas */,
 				B006D7AA282BD36800D06A91 /* Autentificacion */,
 				B006D7AC282BD36800D06A91 /* Elementos */,
 				B006D7B1282BD36800D06A91 /* Validacion */,
@@ -780,6 +801,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = B075218927FA1B1A009386AB;
 			packageReferences = (
@@ -804,6 +826,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B075219D27FA1B1C009386AB /* Preview Assets.xcassets in Resources */,
+				62AD862B2838135D0077ECA1 /* Localizable.strings in Resources */,
 				B075219A27FA1B1C009386AB /* Assets.xcassets in Resources */,
 				626058232805958F009D2DC2 /* GoogleService-Info.plist in Resources */,
 			);
@@ -819,6 +842,7 @@
 				B0CE87FD2824322200D1670A /* CategoriaView.swift in Sources */,
 				B006D7BD282BD39300D06A91 /* IniciarSesionView.swift in Sources */,
 				B0CE87C92824308F00D1670A /* SeleccionarFoto.swift in Sources */,
+				62AD86332839037B0077ECA1 /* PerfilSeguidoresView.swift in Sources */,
 				628647542833B7D600B1DA11 /* EditarPerfilView.swift in Sources */,
 				62605864280595E1009D2DC2 /* MenuDeslizanteModeloView.swift in Sources */,
 				B0CE87F72824321B00D1670A /* PostCarrusel.swift in Sources */,
@@ -833,6 +857,7 @@
 				B0CE87EF282431EA00D1670A /* OpcionesCategoria.swift in Sources */,
 				B02D51FA2816B63F00AEAFAD /* FeedViewModel.swift in Sources */,
 				B0CE87C128242FF600D1670A /* Usuario.swift in Sources */,
+				62AD862828380FE30077ECA1 /* PruebaIdiomasView.swift in Sources */,
 				B0CE87B728242F4A00D1670A /* ImagePicker.swift in Sources */,
 				6222DB1D282D74B5006C08B1 /* UserRowView.swift in Sources */,
 				B0A734772835076A00163138 /* CategoriaViewModel.swift in Sources */,
@@ -867,6 +892,7 @@
 				B006D7B5282BD36900D06A91 /* CabeceraAutentificacionView.swift in Sources */,
 				B006D768282BD23C00D06A91 /* StoreError.swift in Sources */,
 				B0CE87FC2824322200D1670A /* BuscadorView.swift in Sources */,
+				62AD86312838FBEF0077ECA1 /* PerfilInformacionViewModel.swift in Sources */,
 				B0CE87C52824301700D1670A /* Post.swift in Sources */,
 				B006D769282BD23C00D06A91 /* Store.swift in Sources */,
 				B0A7347F2835412600163138 /* MarcaView.swift in Sources */,
@@ -891,11 +917,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		62AD862D2838135D0077ECA1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62AD862C2838135D0077ECA1 /* en */,
+				62AD862E283813910077ECA1 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		B075219E27FA1B1C009386AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -956,6 +995,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

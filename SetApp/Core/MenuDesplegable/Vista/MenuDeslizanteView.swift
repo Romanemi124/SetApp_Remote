@@ -60,7 +60,7 @@ struct MenuDeslizanteView: View {
                             NavigationLink{
                                 
                                 //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
-                                PerfilView(/*user: estadoUsuario.usuario*/)
+                                PerfilView(user: usuario)
                                     .navigationBarHidden(true)
                             }label: {
                                MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)

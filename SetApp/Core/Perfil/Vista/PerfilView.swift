@@ -1,34 +1,21 @@
-//
-//  ProfileView.swift
-//  TwitterSwiftUI
-//
-//  Created by Omar Bonilla Varela on 2/4/22.
-//
-
 import SwiftUI
 import Kingfisher
 import FirebaseAuth
 
 struct PerfilView: View {
     
-    @StateObject var viewModel = PerfilViewModel()
+    @ObservedObject var informacionPerfil:  PerfilInformacionViewModel
     
-    @EnvironmentObject var session: EstadoAutentificacionUsuario
+    @EnvironmentObject var usuarioSesion: EstadoAutentificacionUsuario
     @State private var selection = 0
     
     //Para volver la vista hacia atrás
     @Environment(\.presentationMode) var mode
     
-    //Irse a otra vista
-    private var editarPerfil = false
-    
     //Inicilizamos la clase con el objeto usuario que pasamos por parámetro
-    /*
-     @ObservedObject var viewModel:  PerfilViewModel
-     
-     init(user: UsuarioFireBase) {
-     self.viewModel = PerfilViewModel(user: user)
-     }*/
+    init(user: UsuarioFireBase) {
+        self.informacionPerfil =  PerfilInformacionViewModel(user:user)
+    }
     
     var body: some View {
         
@@ -41,7 +28,9 @@ struct PerfilView: View {
                 VStack {
                     
                     //Vista superior del perfil
-                    PerfilHeader(usuario: self.session.usuario, postCount: viewModel.posts.count, seguidos: $viewModel.seguidos, seguidores: $viewModel.seguidores)
+                    //PerfilHeader(usuario: usuarioSesion.usuario, postCount: informacionPerfil.posts.count, seguidos: $informacionPerfil.seguidos, seguidores: $informacionPerfil.seguidores)
+                    headerPerfil
+                    
                     
                     //Editar y Eliminar Cuenta
                     HStack{
@@ -51,7 +40,7 @@ struct PerfilView: View {
                             
                             NavigationLink{
                                 
-                                EditarPerfilView(user: self.session.usuario)
+                                EditarPerfilView(user: self.usuarioSesion.usuario)
                                 
                             }label: {
                                 Text("Editar").foregroundColor(.white)
@@ -98,14 +87,14 @@ struct PerfilView: View {
                         
                         
                     }
-
+                    
                 }
                 .padding(.bottom, 10)
                 
                 Picker("", selection: $selection) {
                     Image(systemName: "circle.grid.2x2.fill").tag(0)
-                    Image(systemName: "suit.heart.fill").tag(1)
-                    Image(systemName: "star.fill").tag(2)
+//                    Image(systemName: "suit.heart.fill").tag(1)
+//                    Image(systemName: "star.fill").tag(2)
                 }
                 .pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
                 
@@ -114,7 +103,7 @@ struct PerfilView: View {
                     
                     VStack {
                         
-                        ForEach(self.viewModel.posts, id:\.postId) { (post) in
+                        ForEach(self.informacionPerfil.posts, id:\.postId) { (post) in
                             
                             PerfilPublicacion(post: post)
                         }
@@ -125,7 +114,7 @@ struct PerfilView: View {
             }
         }
         .onAppear {
-            viewModel.cargarPostUser(userId: self.session.usuario.id!)
+            informacionPerfil.cargarPostUser(userId: self.usuarioSesion.usuario.id!)
         }
     }
 }
@@ -139,9 +128,68 @@ struct PerfilView: View {
  } ?? 0
  }*/
 
+
+
+
 struct PerfilView_Previews: PreviewProvider {
     static var previews: some View {
-        //PerfilView(user: UsuarioFireBase(id: NSUUID().uuidString, nombreCompleto: "j", nombreUsuario: "j", email: "j", sexo: "j", fechaNacimiento: "j", urlImagenPerfil: "j")
-        PerfilView()
+        PerfilView(user: UsuarioFireBase(id: NSUUID().uuidString, nombreCompleto: "j", nombreUsuario: "j", email: "j", sexo: "j", fechaNacimiento: "j", urlImagenPerfil: "j"))
     }
+}
+
+extension PerfilView{
+    
+    
+    var headerPerfil: some View{
+        
+        VStack{
+            
+            HStack(spacing: 20) {
+                
+                Button(action: {
+                    
+                    //Cambiamos el valor de la variable para que vuelva a la anterior vista
+                    mode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "arrow.left.circle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
+                }
+                
+                Text("@\(informacionPerfil.user.nombreUsuario)")
+                    .font(.headline)
+                    .bold()
+                    .foregroundColor(.white)
+            }
+            .padding(.top, 15)
+            
+            HStack {
+                
+                VStack {
+                    
+                    //WebImage(url: URL(string: usuario!.urlImagenPerfil)!)
+                    KFImage(URL(string: informacionPerfil.user.urlImagenPerfil))
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 100, height: 100, alignment: .trailing)
+                        .padding(.leading)
+                    
+                    Text(informacionPerfil.user.nombreCompleto)
+                        .font(.headline)
+                        .bold()
+                        .padding(.leading)
+                        .foregroundColor(.white)
+                }
+                
+                
+                //Seguidores
+                PerfilSeguidoresView(postCount: informacionPerfil.posts.count, seguidos: $informacionPerfil.seguidos, seguidores: $informacionPerfil.seguidores)
+            }
+            
+        }
+        
+    }
+    
 }

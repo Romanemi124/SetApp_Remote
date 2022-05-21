@@ -228,11 +228,6 @@ struct EditarPerfilView: View {
                 //El alert que se va mostrar
                 Alert(title: Text("Error al crear cuenta"), message: Text(self.errorString), dismissButton: .default(Text("OK")))
             }
-            .navigationBarTitle("Sign Up", displayMode: .inline)
-            .navigationBarItems(trailing: Button("Dismiss") {
-                self.presentationMode.wrappedValue.dismiss()
-                
-            })
             
             /* Para cargar la imagen */
             /*------------------------------------*/
@@ -249,7 +244,7 @@ struct EditarPerfilView: View {
                 self.showingImagePicker = true
             },.cancel()])
             
-        }
+        }.accentColor(.white)
         
     }
     
