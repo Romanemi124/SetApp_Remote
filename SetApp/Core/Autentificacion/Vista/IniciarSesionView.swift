@@ -31,7 +31,12 @@ struct IniciarSesionView: View {
                 //Título
                 /*------------------------------------*/
                 CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "¡Bienvenido de nuevo!")
-                Spacer(minLength: 220)
+                    .padding(.top, 20)
+                
+                Image("SetApp")
+                    .resizable()
+                    .frame(width: 170, height: 170)
+                    .padding(.bottom, 20)
                 
                 //Email y contraseña
                 /*------------------------------------*/
