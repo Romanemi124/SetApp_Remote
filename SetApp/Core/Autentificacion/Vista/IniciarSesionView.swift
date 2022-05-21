@@ -51,7 +51,6 @@ struct IniciarSesionView: View {
                     
                     NavigationLink{
                         CambiarPasswordView()
-                            .navigationBarHidden(true)
                     }label: {
                         Text("¿Has olvidado la contraseña?")
                             .font(.caption)

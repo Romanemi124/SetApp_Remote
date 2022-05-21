@@ -17,11 +17,23 @@ struct EliminarCuentaView: View {
     @State private var provedores: [Autentificacion.ProviderType] = []
     
     var body: some View {
-        ZStack {
+        
+        ZStack{
+            
+            //Imagen de fondo de la vista
+            EstablecerFondoPrincipal()
+            
             VStack {
+                
                 Text(estadoUsuario.usuario.nombreCompleto)
                     .font(.title)
+                    .padding(.bottom, 20)
+                    .foregroundColor(.white)
+                
                 Text(poderEliminar ? "¿Estás seguro que quieres eliminar tu cuenta?" : "Has iniciado sesión con \(estadoUsuario.usuario.email). Para eliminar tu cuenta antes tienes que reautentificarte. Al eliminar tu cuenta se borrara todas tus publicaciones e información personal")
+                    .padding(.bottom, 50)
+                    .foregroundColor(.white)
+                
                 HStack {
                     //Cancelar
                     Button("Cancel") {
@@ -34,6 +46,7 @@ struct EliminarCuentaView: View {
                     .cornerRadius(8)
                     .foregroundColor(Color(.label))
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                    
                     Button(poderEliminar ? "ELIMINAR CUENTA" : "Autentificarte") {
                         
                         if poderEliminar {
@@ -77,14 +90,14 @@ struct EliminarCuentaView: View {
                         }
                     }
                     .padding(.vertical, 15)
-                    .frame(width: 179)
-                    .background(Color.red)
+                    .frame(width: 150)
+                    .background(Color(red: 0.331, green: 0.074, blue: 0.423))
                     .cornerRadius(8)
                     .foregroundColor(.white)
                 }
                 Spacer()
             }
-            .padding(.top, 40)
+            .padding(.top, 220)
             .padding(.horizontal,10)
             if !provedores.isEmpty {
                 ReAutentificacionView(provedores: $provedores, poderEliminar: $poderEliminar)

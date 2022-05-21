@@ -17,6 +17,7 @@ struct ReAutentificacionView: View {
     
     var body: some View {
         ZStack {
+            
             Color(.gray).opacity(0.4)
                 .ignoresSafeArea()
             
@@ -45,7 +46,7 @@ struct ReAutentificacionView: View {
                             }
                             .padding(.vertical, 15)
                             .frame(width: 200)
-                            .background(Color.blue)
+                            .background(Color(red: 0.331, green: 0.074, blue: 0.423))
                             .cornerRadius(8)
                             .foregroundColor(.white)
                             .opacity(password.isEmpty ? 0.6 : 1)

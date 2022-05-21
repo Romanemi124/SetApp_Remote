@@ -58,24 +58,20 @@ struct RegistroView: View {
                 
                 VStack {
                     
-                    //Título
-                    /*------------------------------------*/
-                    Text("Crear cuenta")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .offset(x: 35).padding(.top,5).padding(.horizontal, 60)
-                    
                     //Imagen
                     /*------------------------------------*/
                     VStack{
+                        
+                        Text("Crear cuenta")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .padding(10)
                         
                         if profileImage != nil {
                             profileImage!.resizable()
                                 .clipShape(Circle())
                                 .frame(width: 200, height: 190)
-                                .padding(.top, 20)
+                                .padding(.top, 10)
                                 .onTapGesture {
                                     self.showingActionSheet = true
                                 }
@@ -87,7 +83,7 @@ struct RegistroView: View {
                                 .foregroundColor(Color(.white))
                                 .clipShape(Circle())
                                 .frame(width: 200, height: 190)
-                                .padding(.top, 20)
+                                .padding(.top, 10)
                                 .onTapGesture {
                                     self.showingActionSheet = true
                                 }
