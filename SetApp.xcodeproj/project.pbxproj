@@ -327,7 +327,6 @@
 				B006D7C0282BD3AD00D06A91 /* Vista */,
 				622286D628357CA500FA8F87 /* CambioPassword */,
 				622286D928357CAE00FA8F87 /* EliminarCuenta */,
-				62AD862728380FE30077ECA1 /* PruebaIdiomasView.swift */,
 			);
 			path = Autentificacion;
 			sourceTree = "<group>";
@@ -440,6 +439,7 @@
 		62AD862F2838F2AF0077ECA1 /* Idiomas */ = {
 			isa = PBXGroup;
 			children = (
+				62AD862728380FE30077ECA1 /* PruebaIdiomasView.swift */,
 				62AD862D2838135D0077ECA1 /* Localizable.strings */,
 			);
 			path = Idiomas;

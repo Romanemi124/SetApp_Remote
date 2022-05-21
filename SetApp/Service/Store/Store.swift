@@ -26,11 +26,6 @@ enum Store {
      (Result<UsuarioFireBase, Error>) -> () devuelve como resultado un objecto UsuarioFireBase o un Error. Los errores que que devuelvan se tratarán con la clase StoreError */
     static func recuperarUsuarioFB(id: String, completion: @escaping (Result<UsuarioFireBase, Error>) -> ()) {
         
-        //        let reference = Firestore
-        //            .firestore()
-        //            .collection(Claves.RutaColeccion.usuarios)
-        //            .document(id)
-        
         //Tratamiento de documentos se realiza en la función getDocument()
         getDocument(for: referenciaUsuario(id: id)) { (result) in
             switch result {
@@ -117,7 +112,6 @@ enum Store {
 
                 
                 guard let documentsData = querySnapshot?.documents else {
-                    
                         print("Error mostrar documents: \(error!)")
                         completion(.failure(StoreError.noSnapshotData))
                         return
@@ -131,7 +125,6 @@ enum Store {
                     
                     //Cojemos los datos de un usuario
                     let dict = document.data()
-                    
                     
                     //Decodificamos los datos según el diccionario de clase UsuarioFireBase
                     guard let usuarioFb = UsuarioFireBase(documentData: dict) else {
