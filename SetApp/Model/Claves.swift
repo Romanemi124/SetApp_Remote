@@ -15,7 +15,7 @@ enum Claves {
         //Para los usuarios
         static let usuarios = "usuarios"
         //Para la foto de perfil de los usuarios
-        static let usuarioImagenPerfil = "perfil"
+        static let usuarioImagenPerfil = "fotoPerfil"
     }
     
     // Los atributos que tendrán el usuario

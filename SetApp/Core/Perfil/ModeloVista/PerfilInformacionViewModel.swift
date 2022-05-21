@@ -7,14 +7,23 @@
 
 import Foundation
 import Firebase
+
+/* Recogeremos los datos de los seguidores, seguidos y publicaciones */
 class PerfilInformacionViewModel: ObservableObject{
-    
     
     //Para recogeer los posts ya sea para mostrarlos en el perfil o en otras vistas
     @Published var posts: [Post] = []
     
     @Published var seguidos = 0
     @Published var seguidores = 0
+    
+    //Usuario de la clase
+    let user: UsuarioFireBase
+    
+    //Inicializamos la clase con un usuario, esto permitirá reutilizar la clase en el buscador de personas y en la de editar o revisar el perfil
+    init(user: UsuarioFireBase){
+        self.user =  user
+    }
     
     //@Published var followCheck = false
     
@@ -37,13 +46,6 @@ class PerfilInformacionViewModel: ObservableObject{
         return followers.document(userId).collection("followers").document(Auth.auth().currentUser!.uid)
     }
     
-    
-    let user: UsuarioFireBase
-    
-    //Inicializamos la clase con un usuario, esto permitirá reutilizar la clase en el buscador de personas y en la de editar o revisar el perfil
-    init(user: UsuarioFireBase){
-        self.user =  user
-    }
     //Cragar los datos recogidos en objetos de tipo Post para luego mostrarlos por pantalla
     func cargarPostUser(userId: String) {
         

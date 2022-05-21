@@ -12,7 +12,7 @@ struct PerfilView: View {
     //Para volver la vista hacia atrás
     @Environment(\.presentationMode) var mode
     
-    //Inicilizamos la clase con el objeto usuario que pasamos por parámetro
+    //Inicializamos la clase con el objeto usuario que pasamos por parámetro
     init(user: UsuarioFireBase) {
         self.informacionPerfil =  PerfilInformacionViewModel(user:user)
     }
@@ -139,7 +139,7 @@ struct PerfilView_Previews: PreviewProvider {
 
 extension PerfilView{
     
-    
+    //Vista superior del perfil(informacion del usuario) y los seguidores, seguidos y publicaciones
     var headerPerfil: some View{
         
         VStack{

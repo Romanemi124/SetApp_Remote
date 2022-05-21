@@ -9,9 +9,8 @@ import Kingfisher
 import SwiftUI
 import SDWebImageSwiftUI
 
-/* Deprecated */
-
 //Cabezera de la vista del perfil donde se muestra su nombre, usuario, y datos principales como el número de publicaciones totales, sus seguidores y seguidos
+//Para el buscador
 struct PerfilHeader: View {
     
     var usuario: UsuarioFireBase?

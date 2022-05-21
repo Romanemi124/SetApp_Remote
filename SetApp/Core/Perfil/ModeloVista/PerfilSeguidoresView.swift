@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/* Vista para mostrar los seguidores, seguidos y publicaciones del usuario que iniciado sesión */
 struct PerfilSeguidoresView: View {
     
     //Para mostrar el número de publicaciones que ha subido el usuario

@@ -20,13 +20,13 @@ class StorageService {
     //Seleccianamos el sitio donde almacenaremos los datos
     static var storageRoot = storage.reference(forURL: "gs://setapp-a2961.appspot.com")
     //La carpeta donde almacenaremos los datos
-    static var storagePerfil = storageRoot.child("perfil")
+    static var storagePerfil = storageRoot.child(Claves.RutaColeccion.usuarioImagenPerfil)
     static var storagePost = storageRoot.child("posts")
     
     static var storeRoot =  Firestore.firestore()
     
     static func getUserId(userId: String)-> DocumentReference{
-        return storeRoot.collection("usuarios").document(userId)
+        return storeRoot.collection(Claves.RutaColeccion.usuarios).document(userId)
     }
     
     /* Función para identificar la imagen con el id del usuario */
