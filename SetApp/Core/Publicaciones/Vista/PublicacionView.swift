@@ -9,9 +9,10 @@ import SwiftUI
 
 struct PublicacionView: View {
     
-    @EnvironmentObject var session: EstadoAutentificacionUsuario
+    //Controlar que esté conectado a Internet
+    @ObservedObject var networkManager = NetworkManager()
     
-    @Environment(\.presentationMode) var mode
+    @EnvironmentObject var session: EstadoAutentificacionUsuario
     
     @State private var postImage: Image?
     @State private var pickedImage: Image?
@@ -22,6 +23,7 @@ struct PublicacionView: View {
     @State private var error:String = ""
     @State private var showingAlert = false
     @State private var alertTitle: String = "¡Ups!"
+    @Environment(\.presentationMode) var mode
     
     //Atributos que tiene la publicación
     @State private var categoria: TiposCategoria = .monitor
@@ -33,192 +35,205 @@ struct PublicacionView: View {
     @State private var puntosPositivos: String = ""
     @State private var puntosNegativos: String = ""
     
+    
     var body: some View {
         
-        ZStack {
+        //Verficamos que esté conectado a Internet
+        if !networkManager.isConnected {
             
-            FondoPantallaClaroApp()
+            //Mostramos la vista de fallo de conexión a Internet
+            ConexionInternetFallidaView(networkManager: networkManager)
             
-            //Parte donde se encontrará la foto que se publicar y los botones para poder seleccionar galería o cámara
-            VStack {
+        }else{
+        
+            //Mostramos la vista deseada
+            ZStack {
                 
-                //Este link se muestra en el momento en el que ya se ha seleccionado una foto para publicar
-                HStack{
-                    
-                    Text("Publicar")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
-                    
-                    Button(action: uploadPost) {
-                        Image(systemName: "icloud.and.arrow.up.fill")
-                            .resizable()
-                            .frame(width: 35, height: 30)
-                            .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
-                            .padding(.top, 15)
-                            .padding(.bottom, 15)
-                            .padding(.leading, 15)
-                    }.alert(isPresented: $showingAlert) {
-                        Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
-                    }
-                }
+                FondoPantallaClaroApp()
                 
+                //Parte donde se encontrará la foto que se publicar y los botones para poder seleccionar galería o cámara
                 VStack {
                     
-                    //Parte donde se encontrarán los campos a rellenar
-                    ScrollView {
+                    //Este link se muestra en el momento en el que ya se ha seleccionado una foto para publicar
+                    HStack{
                         
-                        Group{
+                        Text("Publicar")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
+                        
+                        Button(action: uploadPost) {
+                            Image(systemName: "icloud.and.arrow.up.fill")
+                                .resizable()
+                                .frame(width: 35, height: 30)
+                                .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
+                                .padding(.top, 15)
+                                .padding(.bottom, 15)
+                                .padding(.leading, 15)
+                        }.alert(isPresented: $showingAlert) {
+                            Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
+                        }
+                    }
+                    
+                    VStack {
+                        
+                        //Parte donde se encontrarán los campos a rellenar
+                        ScrollView {
                             
-                            //Se cargará la imagen anterior para poder ver la publicación
-                            if postImage != nil {
-                                postImage!
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 250, height: 250)
-                                    .cornerRadius(10)
-                                    .padding(.bottom, 15)
-                                    .onTapGesture {
-                                        self.showingActionSheet = true
-                                    }
-                            } else {
-                                Image("camaraFondo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 250, height: 250)
-                                    .cornerRadius(10)
-                                    .padding(.bottom, 15)
-                                    .onTapGesture {
-                                        self.showingActionSheet = true
-                                    }
-                            }
-                            
-                            //Se despliegan las distintas marcas que existen dentro del fichero de Xcode
-                            HStack {
+                            Group{
                                 
-                                Text("Seleccionar Marca:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                //Se cargará la imagen anterior para poder ver la publicación
+                                if postImage != nil {
+                                    postImage!
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 250, height: 250)
+                                        .cornerRadius(10)
+                                        .padding(.bottom, 15)
+                                        .onTapGesture {
+                                            self.showingActionSheet = true
+                                        }
+                                } else {
+                                    Image("camaraFondo")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 250, height: 250)
+                                        .cornerRadius(10)
+                                        .padding(.bottom, 15)
+                                        .onTapGesture {
+                                            self.showingActionSheet = true
+                                        }
+                                }
                                 
-                                VStack(alignment: .leading, spacing: 6) {
+                                //Se despliegan las distintas marcas que existen dentro del fichero de Xcode
+                                HStack {
                                     
-                                    Picker(selection: $marca, label: Text("")) {
-                                        ForEach(NombreMarcas.allCases, id: \.self) { marca in
-                                            Text(marca.nombreMarcas)
+                                    Text("Seleccionar Marca:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                    
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        
+                                        Picker(selection: $marca, label: Text("")) {
+                                            ForEach(NombreMarcas.allCases, id: \.self) { marca in
+                                                Text(marca.nombreMarcas)
+                                            }
                                         }
                                     }
-                                }
-                                
-                                Spacer(minLength: 0)
-                            }
-                            .padding(.leading, 35)
-                            
-                            //Se despliegan las distintas categorías que hay dentro del fichero
-                            HStack {
-                                
-                                Text("Seleccionar Categoría:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
-                                
-                                VStack(alignment: .leading, spacing: 6) {
                                     
-                                    Picker(selection: $categoria, label: Text("")) {
-                                        ForEach(TiposCategoria.allCases, id: \.self) { categoria in
-                                            Text(categoria.tiposCategoria)
+                                    Spacer(minLength: 0)
+                                }
+                                .padding(.leading, 35)
+                                
+                                //Se despliegan las distintas categorías que hay dentro del fichero
+                                HStack {
+                                    
+                                    Text("Seleccionar Categoría:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                    
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        
+                                        Picker(selection: $categoria, label: Text("")) {
+                                            ForEach(TiposCategoria.allCases, id: \.self) { categoria in
+                                                Text(categoria.tiposCategoria)
+                                            }
                                         }
                                     }
-                                }
-                                
-                                Spacer(minLength: 0)
-                            }
-                            .padding(.leading, 35)
-                            
-                            //Se selecciona una valoración entre el 1 al 10
-                            HStack {
-                                
-                                Text("Seleccionar Valoración:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
-                                
-                                VStack(alignment: .leading, spacing: 6) {
                                     
-                                    Picker(selection: $valoracion, label: Text("")) {
-                                        ForEach(NumValoracion.allCases, id: \.self) { valoracion in
-                                            Text(valoracion.numValoracion)
+                                    Spacer(minLength: 0)
+                                }
+                                .padding(.leading, 35)
+                                
+                                //Se selecciona una valoración entre el 1 al 10
+                                HStack {
+                                    
+                                    Text("Seleccionar Valoración:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                    
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        
+                                        Picker(selection: $valoracion, label: Text("")) {
+                                            ForEach(NumValoracion.allCases, id: \.self) { valoracion in
+                                                Text(valoracion.numValoracion)
+                                            }
                                         }
                                     }
+                                    
+                                    Spacer(minLength: 0)
                                 }
+                                .padding(.leading, 35)
                                 
-                                Spacer(minLength: 0)
-                            }
-                            .padding(.leading, 35)
-                            
-                            CamposPost(placeholder: "Nombre componente", isSecureField: false,text: $nombreProducto)
-                            
-                            HStack {
+                                CamposPost(placeholder: "Nombre componente", isSecureField: false,text: $nombreProducto)
                                 
-                                VStack(alignment: .leading, spacing: 6) {
+                                HStack {
                                     
-                                    Text("Ventajas:")
-                                        .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        
+                                        Text("Ventajas:")
+                                            .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                        
+                                        TextEditor(text: $puntosPositivos)
+                                            .frame(height: 120)
+                                            .padding(4)
+                                            .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
+                                            .background(RoundedRectangle(cornerRadius: 8).stroke(Color(red: 0.331, green: 0.074, blue: 0.423)))
+                                            .padding(.top, 10)
+                                    }
                                     
-                                    TextEditor(text: $puntosPositivos)
-                                        .frame(height: 120)
-                                        .padding(4)
-                                        .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
-                                        .background(RoundedRectangle(cornerRadius: 8).stroke(Color(red: 0.331, green: 0.074, blue: 0.423)))
-                                        .padding(.top, 10)
+                                    Spacer(minLength: 0)
                                 }
-                                
-                                Spacer(minLength: 0)
-                            }
-                            .padding(.horizontal, 35)
-                            .padding(.top, 20)
-                            
-                            HStack {
-                                
-                                VStack(alignment: .leading, spacing: 6) {
-                                    
-                                    Text("Desventajas:")
-                                        .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
-                                    
-                                    TextEditor(text: $puntosNegativos)
-                                        .frame(height: 120)
-                                        .padding(4)
-                                        .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
-                                        .background(RoundedRectangle(cornerRadius: 8).stroke(Color(red: 0.331, green: 0.074, blue: 0.423)))
-                                        .padding(.top, 10)
-                                }
-                                
-                                Spacer(minLength: 0)
-                            }
-                            .padding(.horizontal, 35)
-                            .padding(.top, 20)
-                            
-                            CamposPost(placeholder: "Link componente", isSecureField: false,text: $linkProducto)
+                                .padding(.horizontal, 35)
                                 .padding(.top, 20)
-                                .padding(.bottom, 40)
+                                
+                                HStack {
+                                    
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        
+                                        Text("Desventajas:")
+                                            .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                        
+                                        TextEditor(text: $puntosNegativos)
+                                            .frame(height: 120)
+                                            .padding(4)
+                                            .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
+                                            .background(RoundedRectangle(cornerRadius: 8).stroke(Color(red: 0.331, green: 0.074, blue: 0.423)))
+                                            .padding(.top, 10)
+                                    }
+                                    
+                                    Spacer(minLength: 0)
+                                }
+                                .padding(.horizontal, 35)
+                                .padding(.top, 20)
+                                
+                                CamposPost(placeholder: "Link componente", isSecureField: false,text: $linkProducto)
+                                    .padding(.top, 20)
+                                    .padding(.bottom, 40)
+                                
+                            }
                             
                         }
-                        
+                        .padding(.bottom, 30)
                     }
-                    .padding(.bottom, 30)
+                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                        ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$imageData)
+                    }
+                    .actionSheet(isPresented: $showingActionSheet) {
+                        ActionSheet(title: Text("Selecciona una opción"),
+                                    buttons: [
+                                        .default(Text("Galería")) {
+                                            self.sourceType = .photoLibrary
+                                            self.showingImagePicker = true
+                                        },
+                                        .default(Text("Camera")) {
+                                            self.sourceType = .camera
+                                            self.showingImagePicker = true
+                                        },
+                                        .cancel()
+                                    ])
+                    }
+                    .accentColor(Color(red: 0.331, green: 0.074, blue: 0.423))
                 }
-                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                    ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$imageData)
-                }
-                .actionSheet(isPresented: $showingActionSheet) {
-                    ActionSheet(title: Text("Selecciona una opción"),
-                                buttons: [
-                                    .default(Text("Galería")) {
-                                        self.sourceType = .photoLibrary
-                                        self.showingImagePicker = true
-                                    },
-                                    .default(Text("Camera")) {
-                                        self.sourceType = .camera
-                                        self.showingImagePicker = true
-                                    },
-                                    .cancel()
-                                ])
-                }
-                .accentColor(Color(red: 0.331, green: 0.074, blue: 0.423))
+                .padding(30)
             }
-            .padding(30)
+            
         }
+        
     }
     
     func loadImage() {

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct EliminarCuentaView: View {
     
+    //Controlar que esté conectado a Internet
+    @ObservedObject var networkManager = NetworkManager()
+    
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var estadoUsuario: EstadoAutentificacionUsuario
     //Controlamos que se puda borrar o no la cuenta
@@ -18,89 +21,99 @@ struct EliminarCuentaView: View {
     
     var body: some View {
         
-        ZStack{
+        //Verficamos que esté conectado a Internet
+        if !networkManager.isConnected {
             
-            //Imagen de fondo de la vista
-            EstablecerFondoPrincipal()
+            //Mostramos la vista de fallo de conexión a Internet
+            ConexionInternetFallidaView(networkManager: networkManager)
             
-            VStack {
+        }else{
+            
+            //Mostramos la vista deseada
+            ZStack{
                 
-                Text(estadoUsuario.usuario.nombreCompleto)
-                    .font(.title)
-                    .padding(.bottom, 20)
-                    .foregroundColor(.white)
+                //Imagen de fondo de la vista
+                EstablecerFondoPrincipal()
                 
-                Text(poderEliminar ? "¿Estás seguro que quieres eliminar tu cuenta?" : "Has iniciado sesión con \(estadoUsuario.usuario.email). Para eliminar tu cuenta antes tienes que reautentificarte. Al eliminar tu cuenta se borrara todas tus publicaciones e información personal")
-                    .padding(.bottom, 50)
-                    .foregroundColor(.white)
-                
-                HStack {
-                    //Cancelar
-                    Button("Cancel") {
-                        poderEliminar = false
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    .padding(.vertical, 15)
-                    .frame(width: 100)
-                    .background(Color(.systemBackground))
-                    .cornerRadius(8)
-                    .foregroundColor(Color(.label))
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                VStack {
                     
-                    Button(poderEliminar ? "ELIMINAR CUENTA" : "Autentificarte") {
+                    Text(estadoUsuario.usuario.nombreCompleto)
+                        .font(.title)
+                        .padding(.bottom, 20)
+                        .foregroundColor(.white)
+                    
+                    Text(poderEliminar ? "¿Estás seguro que quieres eliminar tu cuenta?" : "Has iniciado sesión con \(estadoUsuario.usuario.email). Para eliminar tu cuenta antes tienes que reautentificarte. Al eliminar tu cuenta se borrara todas tus publicaciones e información personal")
+                        .padding(.bottom, 50)
+                        .foregroundColor(.white)
+                    
+                    HStack {
+                        //Cancelar
+                        Button("Cancel") {
+                            poderEliminar = false
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        .padding(.vertical, 15)
+                        .frame(width: 100)
+                        .background(Color(.systemBackground))
+                        .cornerRadius(8)
+                        .foregroundColor(Color(.label))
+                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
                         
-                        if poderEliminar {
+                        Button(poderEliminar ? "ELIMINAR CUENTA" : "Autentificarte") {
                             
-                            print("DELETE ACCOUNT")
-                            
-                            StorageService.eliminarFotoPerfil(id: estadoUsuario.usuario.id!){ result in
-                                // Mostramos los resultados de la busqueda
-                                switch result {
-                                    
-                                    //En caso de error o que no haya encontrado
-                                case .failure(let error):
-                                    //Mostraremos un alert indicando que ha habido alñgún error al borrar la foto
-                                    print("Error: Al borrar foto de perfil \(error.localizedDescription)")
-                                    //En caso de que se haya borrado correcatmente
-                                case .success(_):
-                                    print("Se ha borrado la foto correctamente")
-                                    
-                                    Store.borrarDatosUsuario(id: estadoUsuario.usuario.id!){ result in
-                                        switch result {
-                                        case .success:
-                                            Autentificacion.eliminarUsuario{ result in
-                                                if case let .failure(error) = result {
-                                                    print(error.localizedDescription)
+                            if poderEliminar {
+                                
+                                print("DELETE ACCOUNT")
+                                
+                                StorageService.eliminarFotoPerfil(id: estadoUsuario.usuario.id!){ result in
+                                    // Mostramos los resultados de la busqueda
+                                    switch result {
+                                        
+                                        //En caso de error o que no haya encontrado
+                                    case .failure(let error):
+                                        //Mostraremos un alert indicando que ha habido alñgún error al borrar la foto
+                                        print("Error: Al borrar foto de perfil \(error.localizedDescription)")
+                                        //En caso de que se haya borrado correcatmente
+                                    case .success(_):
+                                        print("Se ha borrado la foto correctamente")
+                                        
+                                        Store.borrarDatosUsuario(id: estadoUsuario.usuario.id!){ result in
+                                            switch result {
+                                            case .success:
+                                                Autentificacion.eliminarUsuario{ result in
+                                                    if case let .failure(error) = result {
+                                                        print(error.localizedDescription)
+                                                    }
                                                 }
+                                            case .failure(let error):
+                                                print(error.localizedDescription)
                                             }
-                                        case .failure(let error):
-                                            print(error.localizedDescription)
+                                            
                                         }
                                         
                                     }
-                                    
+                                }
+                                
+                            } else {
+                                print("Autenticando")
+                                withAnimation {
+                                    provedores = Autentificacion.getProviders()
                                 }
                             }
-                            
-                        } else {
-                            print("Autenticando")
-                            withAnimation {
-                                provedores = Autentificacion.getProviders()
-                            }
                         }
+                        .padding(.vertical, 15)
+                        .frame(width: 150)
+                        .background(Color(red: 0.331, green: 0.074, blue: 0.423))
+                        .cornerRadius(8)
+                        .foregroundColor(.white)
                     }
-                    .padding(.vertical, 15)
-                    .frame(width: 150)
-                    .background(Color(red: 0.331, green: 0.074, blue: 0.423))
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
+                    Spacer()
                 }
-                Spacer()
-            }
-            .padding(.top, 220)
-            .padding(.horizontal,10)
-            if !provedores.isEmpty {
-                ReAutentificacionView(provedores: $provedores, poderEliminar: $poderEliminar)
+                .padding(.top, 220)
+                .padding(.horizontal,10)
+                if !provedores.isEmpty {
+                    ReAutentificacionView(provedores: $provedores, poderEliminar: $poderEliminar)
+                }
             }
         }
     }

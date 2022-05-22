@@ -10,6 +10,9 @@ import Kingfisher
 
 struct FeedView: View {
     
+    //Controlar que esté conectado a Internet
+    @ObservedObject var networkManager = NetworkManager()
+    
     @ObservedObject var viewModel: FeedViewModel
     let threeColumn = [GridItem()]
     
@@ -17,44 +20,54 @@ struct FeedView: View {
         self.viewModel = FeedViewModel()
     }
     
-    
     //Clase será la pantalla principal de la app
     var body: some View {
-        //12:55
-        ZStack {
+        
+        //Verficamos que esté conectado a Internet
+        if !networkManager.isConnected {
             
-            FondoPantallasApp()
+            //Mostramos la vista de fallo de conexión a Internet
+            ConexionInternetFallidaView(networkManager: networkManager)
             
-            ScrollView {
+        }else{
+        
+            //Mostramos la vista deseada
+            ZStack {
                 
-                VStack {
+                FondoPantallasApp()
+                
+                ScrollView {
                     
-                    Text("Descubre")
-                        .font(.title)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding(.top, 15)
-                    
-                    LazyVGrid(columns: threeColumn) {
+                    VStack {
                         
-                        ForEach(viewModel.posts) { post in
+                        Text("Descubre")
+                            .font(.title)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding(.top, 15)
+                        
+                        LazyVGrid(columns: threeColumn) {
                             
-                            NavigationLink{
-                                //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
-                                CoursePostView(post: post)
-                                    .navigationBarHidden(true)
-                            }label: {
-                                PostItem(post: post)
+                            ForEach(viewModel.posts) { post in
+                                
+                                NavigationLink{
+                                    //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                                    CoursePostView(post: post)
+                                        .navigationBarHidden(true)
+                                }label: {
+                                    PostItem(post: post)
+                                }
                             }
                         }
+                        .padding()
+                        .padding(.bottom, 150)
                     }
-                    .padding()
-                    .padding(.bottom, 150)
                 }
+                
+                
             }
-            
             
         }
     }

@@ -1,13 +1,15 @@
 //
-//  ForgotPasswordView.swift
-//  Signin With Apple
+//  CambiarPasswordView.swift
+//  SetApp
 //
-//  Created by Stewart Lynch on 2020-03-19.
-//  Copyright © 2020 CreaTECH Solutions. All rights reserved.
+//  Created by Omar Bonilla Varela on 10/5/22.
 //
 import SwiftUI
 
 struct CambiarPasswordView: View {
+    
+    //Controlar que esté conectado a Internet
+    @ObservedObject var networkManager = NetworkManager()
     
     @EnvironmentObject var estadoUsuario: EstadoAutentificacionUsuario
     @State var usuarioValidacion: Validacion = Validacion()
@@ -22,75 +24,86 @@ struct CambiarPasswordView: View {
     @State private var errorString: String?
     
     var body: some View {
-        //a@gmail.com
         
-        ZStack{
+        //Verficamos que esté conectado a Internet
+        if !networkManager.isConnected {
             
-            //Imagen de fondo de la vista
-            EstablecerFondoPrincipal()
+            //Mostramos la vista de fallo de conexión a Internet
+            ConexionInternetFallidaView(networkManager: networkManager)
             
-            VStack {
+        }else{
+        
+            //Mostramos la vista deseada
+            ZStack{
                 
-                //Título
-                /*------------------------------------*/
-                CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "Cambia la contraseña")
-                
-                Image("SetApp")
-                    .resizable()
-                    .frame(width: 120, height: 120)
-                    .padding(.bottom, 60)
-                
-                Spacer()
+                //Imagen de fondo de la vista
+                EstablecerFondoPrincipal()
                 
                 VStack {
                     
-                    TextField("Introduce tu correo electrónico", text: $usuarioValidacion.email).autocapitalization(.none).keyboardType(.emailAddress)
+                    //Título
+                    /*------------------------------------*/
+                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "Cambia la contraseña")
                     
-                    Button(action: {
+                    Image("SetApp")
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .padding(.bottom, 60)
+                    
+                    Spacer()
+                    
+                    VStack {
                         
-                        Autentificacion.cambiarPassword(email:  self.usuarioValidacion.email){ (result) in
-                            switch result {
-                            case .failure(let error):
-                                //Elegimos el texto de error a mostrar, controlamos el tipo de error
-                                switch error.localizedDescription{
-                                    //En caso que el ya exista el email introducido
-                                case ErroresString.ErroresCambiarContraseña.noExisteUsuario:
-                                    self.errorString = ErroresString.ErroresCambiarContraseña.noExisteUsuarioTraduccion
-                                    //Mostramos cualquier tipo de error sucedido
-                                default:
-                                    self.errorString = error.localizedDescription
+                        TextField("Introduce tu correo electrónico", text: $usuarioValidacion.email).autocapitalization(.none).keyboardType(.emailAddress)
+                        
+                        Button(action: {
+                            
+                            Autentificacion.cambiarPassword(email:  self.usuarioValidacion.email){ (result) in
+                                switch result {
+                                case .failure(let error):
+                                    //Elegimos el texto de error a mostrar, controlamos el tipo de error
+                                    switch error.localizedDescription{
+                                        //En caso que el ya exista el email introducido
+                                    case ErroresString.ErroresCambiarContraseña.noExisteUsuario:
+                                        self.errorString = ErroresString.ErroresCambiarContraseña.noExisteUsuarioTraduccion
+                                        //Mostramos cualquier tipo de error sucedido
+                                    default:
+                                        self.errorString = error.localizedDescription
+                                    }
+                                    //Seleccionamos el tipo de alert a mostrar
+                                    alertType = .error
+                                case .success( _):
+                                    //Cuando haya cambiado de contraseña se cerrará la sesión
+                                    print("Exito")
+                                    alertType = .sucess
                                 }
-                                //Seleccionamos el tipo de alert a mostrar
-                                alertType = .error
-                            case .success( _):
-                                //Cuando haya cambiado de contraseña se cerrará la sesión
-                                print("Exito")
-                                alertType = .sucess
+                                self.showAlert = true
                             }
-                            self.showAlert = true
+                        }) {
+                            Text("Cambiar")
+                                .frame(width: 180)
+                                .padding(.vertical, 15)
+                                .background(Color(red: 0.331, green: 0.074, blue: 0.423))
+                                .cornerRadius(8)
+                                .foregroundColor(.white)
+                            //.opacity(user.isEmailValid(_email: user.email) ? 1 : 0.75)
+                                .opacity(usuarioValidacion.estaValidoEmail(_email: usuarioValidacion.email) ? 1 : 0.75)
                         }
-                    }) {
-                        Text("Cambiar")
-                            .frame(width: 180)
-                            .padding(.vertical, 15)
-                            .background(Color(red: 0.331, green: 0.074, blue: 0.423))
-                            .cornerRadius(8)
-                            .foregroundColor(.white)
-                        //.opacity(user.isEmailValid(_email: user.email) ? 1 : 0.75)
-                            .opacity(usuarioValidacion.estaValidoEmail(_email: usuarioValidacion.email) ? 1 : 0.75)
+                        .disabled(!usuarioValidacion.estaValidoEmail(_email: usuarioValidacion.email))
+                        .padding(.top, 50)
+                        Spacer(minLength: 50)
                     }
-                    .disabled(!usuarioValidacion.estaValidoEmail(_email: usuarioValidacion.email))
-                    .padding(.top, 50)
-                    Spacer(minLength: 50)
+                        .frame(width: 300)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        //.navigationBarTitle("Volver", displayMode: .inline)
+                        .alert(isPresented: $showAlert, content: {
+                            getAlert()
+                        })
                 }
-                    .frame(width: 300)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    //.navigationBarTitle("Volver", displayMode: .inline)
-                    .alert(isPresented: $showAlert, content: {
-                        getAlert()
-                    })
             }
+            
         }
+        
     }
     
     /* Mostrar alert */
