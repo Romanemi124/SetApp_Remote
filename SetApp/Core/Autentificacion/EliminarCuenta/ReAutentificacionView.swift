@@ -10,73 +10,88 @@ import SwiftUI
 
 struct ReAutentificacionView: View {
     
+    //Controlar que esté conectado a Internet
+    @ObservedObject var networkManager = NetworkManager()
+    
     @Binding var provedores: [Autentificacion.ProviderType]
     @Binding var poderEliminar: Bool
     @State private var password = ""
     @State private var textError = ""
     
     var body: some View {
-        ZStack {
+        
+        //Verficamos que esté conectado a Internet
+        if !networkManager.isConnected {
             
-            Color(.gray).opacity(0.4)
-                .ignoresSafeArea()
+            //Mostramos la vista de fallo de conexión a Internet
+            ConexionInternetFallidaView(networkManager: networkManager)
             
-            VStack {
+        }else{
+            
+            //Mostramos la vista deseada
+            ZStack {
                 
-                if provedores.count == 1 {
-                    Text("Autentificate")
-                        .frame(height: 60)
-                        .padding(.horizontal)
-                }
+                Color(.gray).opacity(0.4)
+                    .ignoresSafeArea()
                 
-                ForEach(provedores, id: \.self) { provider in
+                VStack {
                     
-                    if provider == .password{
+                    if provedores.count == 1 {
+                        Text("Autentificate")
+                            .frame(height: 60)
+                            .padding(.horizontal)
+                    }
+                    
+                    ForEach(provedores, id: \.self) { provider in
                         
-                        VStack {
+                        if provider == .password{
                             
-                            SecureField("Introduce tu contraseña", text: $password)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            Button("Terminar") {
-                                Autentificacion.reautenticacionConPassword(password: password) { result in
-                                    handleResult(result: result)
-                                }
+                            VStack {
                                 
+                                SecureField("Introduce tu contraseña", text: $password)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                
+                                Button("Terminar") {
+                                    Autentificacion.reautenticacionConPassword(password: password) { result in
+                                        handleResult(result: result)
+                                    }
+                                    
+                                }
+                                .padding(.vertical, 15)
+                                .frame(width: 200)
+                                .background(Color(red: 0.331, green: 0.074, blue: 0.423))
+                                .cornerRadius(8)
+                                .foregroundColor(.white)
+                                .opacity(password.isEmpty ? 0.6 : 1)
+                                .disabled(password.isEmpty)
                             }
-                            .padding(.vertical, 15)
-                            .frame(width: 200)
-                            .background(Color(red: 0.331, green: 0.074, blue: 0.423))
-                            .cornerRadius(8)
-                            .foregroundColor(.white)
-                            .opacity(password.isEmpty ? 0.6 : 1)
-                            .disabled(password.isEmpty)
+                            
                         }
-                        
                     }
-                }
-                //Texto de error
-                Text(textError)
-                    .foregroundColor(.red)
-                    .fixedSize(horizontal: false, vertical: true)
-                
-                Button("Cancel") {
-                    withAnimation {
-                        provedores = []
+                    //Texto de error
+                    Text(textError)
+                        .foregroundColor(.red)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    Button("Cancel") {
+                        withAnimation {
+                            provedores = []
+                        }
                     }
+                    .padding(8)
+                    .foregroundColor(.primary)
+                    .background(Color(.secondarySystemBackground))
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                    Spacer()
                 }
-                .padding(8)
-                .foregroundColor(.primary)
-                .background(Color(.secondarySystemBackground))
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                Spacer()
+                //height: providers.count == 2 ? 350 : 230 elegimos el ancho en función del número de porvedores de auntetificación
+                .frame(width: 250, height: provedores.count == 2 ? 350 : 260)
+                .background(Color(.systemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 20)
             }
-            //height: providers.count == 2 ? 350 : 230 elegimos el ancho en función del número de porvedores de auntetificación
-            .frame(width: 250, height: provedores.count == 2 ? 350 : 260)
-            .background(Color(.systemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-            .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 20)
         }
+        
     }
     
     func handleResult(result: Result<Bool,Error>) {

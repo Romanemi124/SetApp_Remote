@@ -9,85 +9,99 @@ import SwiftUI
 
 struct AjustePerfilView: View {
     
+    //Controlar que esté conectado a Internet
+    @ObservedObject var networkManager = NetworkManager()
+    
     @State private var poderEliminar = false
     
     var body: some View {
         
-        ZStack{
+        //Verficamos que esté conectado a Internet
+        if !networkManager.isConnected {
             
-            //Imagen de fondo de la vista
-            EstablecerFondoPrincipal()
+            //Mostramos la vista de fallo de conexión a Internet
+            ConexionInternetFallidaView(networkManager: networkManager)
             
-            VStack {
+        }else{
+        
+            //Mostramos la vista deseada
+            ZStack{
                 
-                //Título
-                /*------------------------------------*/
-                CabeceraAutentificacionView(titulo1: "Ajustes", titulo2: "")
+                //Imagen de fondo de la vista
+                EstablecerFondoPrincipal()
                 
-                Image("SetApp")
-                    .resizable()
-                    .frame(width: 120, height: 120)
-                
-                Spacer()
-             
-                VStack{
+                VStack {
                     
-                    //Cambiar contraseña
-                    HStack {
+                    //Título
+                    /*------------------------------------*/
+                    CabeceraAutentificacionView(titulo1: "Ajustes", titulo2: "")
+                    
+                    Image("SetApp")
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                    
+                    Spacer()
+                 
+                    VStack{
                         
-                        NavigationLink{
+                        //Cambiar contraseña
+                        HStack {
                             
-                            CambiarPasswordView()
-                            
-                        }label: {
-                            Text("Cambiar contraseña")
-                                .foregroundColor(.white)
-                                .scaleEffect(anchor: .leading)
-                                .foregroundColor(.white)
+                            NavigationLink{
+                                
+                                CambiarPasswordView()
+                                
+                            }label: {
+                                Text("Cambiar contraseña")
+                                    .foregroundColor(.white)
+                                    .scaleEffect(anchor: .leading)
+                                    .foregroundColor(.white)
+                            }
+                            .frame(width: 250)
                         }
-                        .frame(width: 250)
-                    }
-                    .padding()
-                    //Recuadro que enmarca el texto
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                        //Quitar el fondo del rectángulo con la opacidad del color
-                            .stroke(.white, lineWidth: 2)
-                    )
-                    //Separación de los laterales de la vista
-                    .cornerRadius(10)
-                    .padding(35)
-                    //Para que sólo se mueva uno
-                    
-                    
-                    //Eliminar cuenta
-                    HStack {
+                        .padding()
+                        //Recuadro que enmarca el texto
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                            //Quitar el fondo del rectángulo con la opacidad del color
+                                .stroke(.white, lineWidth: 2)
+                        )
+                        //Separación de los laterales de la vista
+                        .cornerRadius(10)
+                        .padding(35)
+                        //Para que sólo se mueva uno
                         
-                        NavigationLink{
+                        
+                        //Eliminar cuenta
+                        HStack {
                             
-                            EliminarCuentaView(poderEliminar: $poderEliminar)
-                            
-                        }label: {
-                            Text("Eliminar cuenta").foregroundColor(.white)
+                            NavigationLink{
+                                
+                                EliminarCuentaView(poderEliminar: $poderEliminar)
+                                
+                            }label: {
+                                Text("Eliminar cuenta").foregroundColor(.white)
+                            }
+                            .frame(width: 250)
                         }
-                        .frame(width: 250)
+                        .padding()
+                        //Recuadro que enmarca el texto
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                            //Quitar el fondo del rectángulo con la opacidad del color
+                                .stroke(.white, lineWidth: 2)
+                        )
+                        //Separación de los laterales de la vista
+                        .cornerRadius(10)
+                        .padding(35)
+                        //Para que sólo se mueva uno
+                        .frame(height: 100)
+                        
                     }
-                    .padding()
-                    //Recuadro que enmarca el texto
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                        //Quitar el fondo del rectángulo con la opacidad del color
-                            .stroke(.white, lineWidth: 2)
-                    )
-                    //Separación de los laterales de la vista
-                    .cornerRadius(10)
-                    .padding(35)
-                    //Para que sólo se mueva uno
-                    .frame(height: 100)
-                    
+                    Spacer(minLength: 50)
                 }
-                Spacer(minLength: 50)
             }
+            
         }
     }
 }

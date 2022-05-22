@@ -9,7 +9,7 @@ import SwiftUI
 
 //Esta clase nos servirá de navegador entre clases
 struct MainTabView: View {
-    
+ 
     @State var selectedTab: Tab = .home
     @State var color: Color = Color(red: 0.721, green: 0.491, blue: 0.849)
     
@@ -18,34 +18,35 @@ struct MainTabView: View {
     
     var body: some View {
         
+        //Mostramos la vista deseada
         ZStack(alignment: .bottom) {
             
             //Grupo donde se encuntran las distintas vistas a las que se quiere acceder cuando se selecciona otra opción en la barra de menú
             Group {
                 switch selectedTab {
-                    
                     //Dependiendo del nombre de la opción accede a una vista u otra
                 case .home:
                     FeedView()
+                    
                 case .buscador:
-    
                     BuscadorView()
+                    
                 case .mensajes:
-                    //MensajesView()
-                   // PruebaIdiomasView()
-                  PruebaInternet2View()
+                    ChatView()
+                    
                 case .newPublicacion:
                     PublicacionView()
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
+            
             //Parte donde se pondrán los estilos de la barra de menú
             HStack {
                 
                 //Recorre la parte donde se encuentran los datos de las opción de la barra
                 ForEach(tabItems) { item in
-
+                    
                     //Estilo de los botones donde se encontrarán las opciones
                     Button {
                         
@@ -93,7 +94,7 @@ struct MainTabView: View {
                     }
                     if selectedTab == .mensajes { Spacer() }
                 }
-                .padding(.horizontal, 15)
+                    .padding(.horizontal, 15)
             )
             .overlay(
                 
@@ -119,7 +120,7 @@ struct MainTabView: View {
                     }
                     if selectedTab == .mensajes { Spacer() }
                 }
-                .padding(.horizontal, 8)
+                    .padding(.horizontal, 8)
             )
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
