@@ -20,7 +20,7 @@ struct FeedView: View {
     
     //Clase será la pantalla principal de la app
     var body: some View {
-        //12:55
+        
         ZStack {
             
             FondoPantallasApp()
@@ -54,8 +54,6 @@ struct FeedView: View {
                     .padding(.bottom, 150)
                 }
             }
-            
-            
         }
     }
 }

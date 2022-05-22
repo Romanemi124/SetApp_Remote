@@ -37,7 +37,7 @@ struct PerfilPublicacion: View {
                     .foregroundColor(.white)
                 
                 Label {
-                    Text(post.categoria)
+                    Text("\(post.categoria.uppercased())" + " / " + "\(post.marca.uppercased())")
                         .foregroundColor(.white)
                 } icon: {
                     Image(systemName: "gamecontroller.fill")
@@ -59,25 +59,6 @@ struct PerfilPublicacion: View {
                 PostCardLikes(post: post)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
-            NavigationLink{
-                //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
-                CourseView(post: post)
-                    .navigationBarHidden(true)
-            }label: {
-                Image(systemName: "ellipsis")
-                    .font(.title3)
-                    .foregroundColor(.white)
-            }
-            /*
-            Button {
-                
-            } label: {
-                
-                Image(systemName: "ellipsis")
-                    .font(.title3)
-                    .foregroundColor(.white)
-            }*/
         }
     }
 }

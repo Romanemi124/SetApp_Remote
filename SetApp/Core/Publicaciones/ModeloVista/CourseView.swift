@@ -13,6 +13,8 @@ struct CourseView: View {
     
     var post: Post
     
+    @State private var selection = 0
+    
     //Para volver la vista hacia atrás
     @Environment(\.presentationMode) var mode
     
@@ -77,10 +79,7 @@ struct CourseView: View {
                             .foregroundColor(.white)
                     }
                     .padding(.top, 2)
-                    /*
-                     PostCardLikes(post: post)
-                     .padding(.top, 3)
-                     */
+                    
                     HStack(spacing: 0) {
                         
                         Text("Valoración: \(post.valoracion)" + "/10")
@@ -92,12 +91,6 @@ struct CourseView: View {
                             .frame(width: 15, height: 15)
                             .foregroundColor(.white)
                     }
-                    
-                    /*
-                     Text("Valoración: \(post.valoracion)" + "/10")
-                     .padding()
-                     .foregroundColor(.white)
-                     */
                     
                     HStack {
                         
@@ -172,7 +165,6 @@ struct CourseView: View {
                             .cornerRadius(10)
                     })
                     .padding()
-                    
                 }
             }
             //.scaleEffect(scale)

@@ -12,6 +12,8 @@ struct CoursePostView: View {
     
     var post: PostCateg
     
+    @State private var selection = 0
+    
     //Para volver la vista hacia atrás
     @Environment(\.presentationMode) var mode
     
@@ -76,10 +78,7 @@ struct CoursePostView: View {
                             .foregroundColor(.white)
                     }
                     .padding(.top, 2)
-                    /*
-                     PostCardLikes(post: post)
-                     .padding(.top, 3)
-                     */
+                    
                     HStack(spacing: 0) {
                         
                         Text("Valoración: \(post.valoracion)" + "/10")

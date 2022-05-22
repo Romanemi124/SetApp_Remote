@@ -108,6 +108,18 @@ struct BuscadorView: View {
                     
                     HStack(spacing: 15) {
                         
+                        NavigationLink {
+                            
+                            AllCategoriasView()
+                        } label: {
+                            
+                            Image("masCategorias")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 100, height: 120)
+                                .cornerRadius(15)
+                        }
+                        
                         ForEach(marcas) { marca in
                             
                             //1º opción
