@@ -23,6 +23,7 @@ struct Post: Encodable, Decodable {
     var nombreProducto: String
     var marca: String
     var valoracion: String
+    var link: String
     var puntosPositivos: String
     var puntosNegativos: String
 }

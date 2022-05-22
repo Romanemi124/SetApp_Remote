@@ -74,7 +74,8 @@ class StorageService {
         }
     }
     
-    static func savePostPhoto(userId: String, imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, puntosPositivos: String, puntosNegativos: String, postId: String, metadata: StorageMetadata, storagePostRef: StorageReference, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
+    static func savePostPhoto(userId: String, imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String,
+                              link:String, puntosPositivos: String, puntosNegativos: String, postId: String, metadata: StorageMetadata, storagePostRef: StorageReference, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         
         storagePostRef.putData(imageData, metadata: metadata) { (StorageMetadata, error) in
             
@@ -96,7 +97,7 @@ class StorageService {
                     if let metaImageUrl = url?.absoluteString {
                         let firestorePostRef = ServicioPost.PostUserId(userId: userId).collection("posts").document(postId)
                         
-                        let post = Post.init(likes: [:], geoLocation: "", OwnerId: userId, postId: postId, username: usuario!.nombreUsuario, profile: usuario!.urlImagenPerfil, mediaUrl: metaImageUrl, date: Date().timeIntervalSince1970, likeCount: 0, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos)
+                        let post = Post.init(likes: [:], geoLocation: "", OwnerId: userId, postId: postId, username: usuario!.nombreUsuario, profile: usuario!.urlImagenPerfil, mediaUrl: metaImageUrl, date: Date().timeIntervalSince1970, likeCount: 0, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, link: link, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos)
                         
                         guard let dict = try? post.asDictionary() else { return }
                         

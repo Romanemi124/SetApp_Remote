@@ -706,10 +706,10 @@
 		B0CE87BD28242FC600D1670A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B0CE87C028242FF600D1670A /* Usuario.swift */,
 				B006D75C282BD1F000D06A91 /* Claves.swift */,
-				B0CE87C42824301700D1670A /* Post.swift */,
+				B0CE87C028242FF600D1670A /* Usuario.swift */,
 				B006D75A282BD1E300D06A91 /* UsuarioFireBase.swift */,
+				B0CE87C42824301700D1670A /* Post.swift */,
 				B0A734742834E68D00163138 /* PostCateg.swift */,
 			);
 			path = Model;

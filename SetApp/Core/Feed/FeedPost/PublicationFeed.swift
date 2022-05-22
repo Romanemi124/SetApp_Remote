@@ -13,64 +13,71 @@ import Kingfisher
 struct PostItem: View {
     
     let post: PostCateg
-    //var animation: Namespace.ID
     
     var body: some View {
         
-        VStack {
+        VStack(alignment: .leading, spacing: 15) {
             
-            KFImage(URL(string: post.mediaUrl))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                //Para la animación
-                //.matchedGeometryEffect(id: post.contentImage, in: animation)
-                .frame(width: UIScreen.main.bounds.width - 30, height: 300)
-            
-            HStack {
+            ZStack(alignment: .topLeading) {
                 
-                Image("publi")
+                GeometryReader { proxy in
+                    
+                    let size = proxy.size
+                    
+                    KFImage(URL(string: post.mediaUrl))
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: size.width, height: size.height)
+                        .clipShape(CustomCorner(corners: [.topLeft, .topRight], radius: 15))
+                }
+                .frame(height: 400)
+            }
+            
+            HStack(spacing: 12) {
+                
+                KFImage(URL(string: post.profile))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 65, height: 65)
-                    .cornerRadius(15)
+                    .frame(width: 60, height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 4) {
                     
-                    Text(post.nombreProducto)
+                    Text("\(post.categoria.uppercased())" + " / " + "\(post.marca.uppercased())")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                    
+                    Text(post.nombreProducto.uppercased())
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
-                    Text(post.categoria)
+                    Text("@" + "\(post.username)")
                         .font(.caption)
                         .foregroundColor(.white)
                 }
-                
-                Spacer(minLength: 0)
-                
-                VStack {
-                    /*
-                    Button(action: {}) {
-                        
-                        Text("Get")
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 25)
-                            .background(Color.primary.opacity(0.1))
-                            .clipShape(Capsule())
-                            .foregroundColor(.white)
-                    }
-                     */
-                    
-                    Text("Ver más")
-                        .font(.caption)
-                        .foregroundColor(.white)
-                } 
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            //.matchedGeometryEffect(id: post.id, in: animation)
-            .padding()
-            .background(Color.gray.opacity(0.5))
+            .padding([.horizontal, .bottom])
         }
-        .cornerRadius(15)
-        .padding(.horizontal)
-        .padding(.top)
+        .background {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Color(red: 0.113, green: 0.031, blue: 0.16))
+        }
+        .padding(.bottom, 20)
     }
+}
+
+//Para dar la forma a la imagen principal de la publicación
+struct CustomCorner: Shape {
+    
+    var corners: UIRectCorner
+    var radius: CGFloat
+    
+    func path(in rect: CGRect) -> Path {
+        
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        
+        return Path(path.cgPath)
+    }
+    
 }

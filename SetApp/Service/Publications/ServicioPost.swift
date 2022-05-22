@@ -12,7 +12,7 @@ import FirebaseStorage
 import FirebaseFirestore
 
 class ServicioPost: ObservableObject {
- 
+    
     static var Posts = StorageService.storeRoot.collection("posts")
     static var AllPosts = StorageService.storeRoot.collection("allPosts")
     static var Timeline = StorageService.storeRoot.collection("timeline")
@@ -32,13 +32,13 @@ class ServicioPost: ObservableObject {
         
         return Posts.document(userId)
     }
-
+    
     static func timelineUserId(userId: String) -> DocumentReference {
-         
+        
         return Timeline.document(userId)
     }
     
-    static func uploadPost(imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, puntosPositivos: String, puntosNegativos: String, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
+    static func uploadPost(imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, link: String, puntosPositivos: String, puntosNegativos: String, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
         
         guard let userId = Auth.auth().currentUser?.uid else {
             return
@@ -49,13 +49,14 @@ class ServicioPost: ObservableObject {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
         
-        StorageService.savePostPhoto(userId: userId, imageData: imageData, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos, postId: postId, metadata: metadata, storagePostRef: storagePostRef, usuario: usuario, onSuccess: onSuccess, onError: onError)
+        StorageService.savePostPhoto(userId: userId, imageData: imageData, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, link: link, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos, postId: postId, metadata: metadata, storagePostRef: storagePostRef, usuario: usuario, onSuccess: onSuccess, onError: onError)
     }
+    
     
     //Cargar los datos para luego pasarlo a objetos de tipo post
     static func loadUserPosts(userId: String, onSuccess: @escaping(_ posts: [Post]) -> Void) {
         
-        ServicioPost.PostUserId(userId: userId).collection("posts").getDocuments {
+        ServicioPost.PostUserId(userId: userId).collection("posts").order(by: "date", descending: true).getDocuments {
             (snapshot, error) in
             
             guard let snap = snapshot else {
@@ -82,7 +83,7 @@ class ServicioPost: ObservableObject {
     //Se muestran todas las fotos de los usuarios de la aplicación
     func fetchPosts(completion: @escaping([PostCateg]) -> Void) {
         
-        Firestore.firestore().collection("allPosts").getDocuments { snapshot, _ in
+        Firestore.firestore().collection("allPosts").order(by: "date", descending: true).getDocuments { snapshot, _ in
             
             guard let documents = snapshot?.documents else { return }
             let posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
@@ -94,7 +95,7 @@ class ServicioPost: ObservableObject {
     //Se muestran todas las fotos filtradas por categoria
     func fetchPostsCategoria(categoria: String, completion: @escaping([PostCateg]) -> Void) {
         
-        Firestore.firestore().collection("allPosts")/*.order(by: "date", descending: true)*/.whereField("categoria", isEqualTo: categoria).getDocuments { snapshot, _ in
+        Firestore.firestore().collection("allPosts").whereField("categoria", isEqualTo: categoria)/*.order(by: "date", descending: true)*/.getDocuments { snapshot, _ in
             
             guard let documents = snapshot?.documents else { return }
             let posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
@@ -120,52 +121,52 @@ class ServicioPost: ObservableObject {
     /*-------------------*/
     /*-------------------*/
     /*
-    func likePost(_ post: Post, completion: @escaping() -> Void) {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        guard let postId = post.postId else { return }
-        
-        let userLikesRef = Firestore.firestore().collection("usuarios").document(uid).collection("user-likes")
-        
-        Firestore.firestore().collection("allPosts").document(postId)
-            .updateData(["likeCount": post.likeCount + 1]) { _ in
-                userLikesRef.document(postId).setData([:]) { _ in
-                    completion()
-                }
-            }
-    }
-    
-    func unlikePost(_ post: Post, completion: @escaping() -> Void) {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        guard let postId = post.postId else { return }
-        guard post.likeCount > 0 else { return }
-        
-        let userLikesRef = Firestore.firestore().collection("usuarios").document(uid).collection("user-likes")
-        
-        Firestore.firestore().collection("allPosts").document(postId)
-            .updateData(["likeCount": post.likeCount - 1]) { _ in
-                userLikesRef.document(postId).delete { _ in
-                    completion()
-                }
-            }
-    }
-    
-    func checkIfUserLikedTweet(_ post: Post, completion: @escaping(Bool) -> Void) {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        guard let postId = post.postId else { return }
-        
-        Firestore.firestore().collection("usuarios")
-            .document(uid)
-            .collection("user-likes")
-            .document(postId).getDocument { snapshot, _ in
-                
-                guard let snapshot = snapshot else { return }
-                completion(snapshot.exists)
-            }
-    }
-    */
+     func likePost(_ post: Post, completion: @escaping() -> Void) {
+     
+     guard let uid = Auth.auth().currentUser?.uid else { return }
+     guard let postId = post.postId else { return }
+     
+     let userLikesRef = Firestore.firestore().collection("usuarios").document(uid).collection("user-likes")
+     
+     Firestore.firestore().collection("allPosts").document(postId)
+     .updateData(["likeCount": post.likeCount + 1]) { _ in
+     userLikesRef.document(postId).setData([:]) { _ in
+     completion()
+     }
+     }
+     }
+     
+     func unlikePost(_ post: Post, completion: @escaping() -> Void) {
+     
+     guard let uid = Auth.auth().currentUser?.uid else { return }
+     guard let postId = post.postId else { return }
+     guard post.likeCount > 0 else { return }
+     
+     let userLikesRef = Firestore.firestore().collection("usuarios").document(uid).collection("user-likes")
+     
+     Firestore.firestore().collection("allPosts").document(postId)
+     .updateData(["likeCount": post.likeCount - 1]) { _ in
+     userLikesRef.document(postId).delete { _ in
+     completion()
+     }
+     }
+     }
+     
+     func checkIfUserLikedTweet(_ post: Post, completion: @escaping(Bool) -> Void) {
+     
+     guard let uid = Auth.auth().currentUser?.uid else { return }
+     guard let postId = post.postId else { return }
+     
+     Firestore.firestore().collection("usuarios")
+     .document(uid)
+     .collection("user-likes")
+     .document(postId).getDocument { snapshot, _ in
+     
+     guard let snapshot = snapshot else { return }
+     completion(snapshot.exists)
+     }
+     }
+     */
     /*-------------------*/
     /*-------------------*/
     /*-------------------*/

@@ -30,13 +30,13 @@ struct CoursePostView: View {
                         KFImage(URL(string: post.mediaUrl))
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            //.matchedGeometryEffect(id: detail.selectedPost.contentImage, in: animation)
+                        //.matchedGeometryEffect(id: detail.selectedPost.contentImage, in: animation)
                             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2.5)
                         
                         HStack {
                             
                             Spacer()
-                         
+                            
                             Button(action: {
                                 
                                 //Cambiamos el valor de la variable para que vuelva a la anterior vista
@@ -62,7 +62,7 @@ struct CoursePostView: View {
                         .padding(.top, 40)
                     
                     HStack(alignment: .center, spacing: 10) {
-                            
+                        
                         Text(post.categoria)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -77,9 +77,9 @@ struct CoursePostView: View {
                     }
                     .padding(.top, 2)
                     /*
-                    PostCardLikes(post: post)
-                        .padding(.top, 3)
-                    */
+                     PostCardLikes(post: post)
+                     .padding(.top, 3)
+                     */
                     HStack(spacing: 0) {
                         
                         Text("Valoración: \(post.valoracion)" + "/10")
@@ -93,10 +93,10 @@ struct CoursePostView: View {
                     }
                     
                     /*
-                    Text("Valoración: \(post.valoracion)" + "/10")
-                        .padding()
-                        .foregroundColor(.white)
-                    */
+                     Text("Valoración: \(post.valoracion)" + "/10")
+                     .padding()
+                     .foregroundColor(.white)
+                     */
                     
                     HStack {
                         
@@ -158,22 +158,18 @@ struct CoursePostView: View {
                     }
                     .padding(.leading, 30)
                     .padding(.top, 20)
+                    .padding(.bottom, 20)
                     
-                    Button(action: {}) {
-                        
-                        Label(title: {
-                            Text("Share")
-                                .foregroundColor(.white)
-                        }) {
-                            Image(systemName: "square.and.arrow.up.fill")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                        }
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 25)
-                        .background(Color.primary.opacity(0.1))
-                        .cornerRadius(10)
-                    }
+                    //El link de la publicacion en caso de tenerlo
+                    Link(destination: URL(string: post.link)!, label: {
+                        Label("Abrir en Safari", systemImage: "safari.fill")
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 25)
+                            .background(Color.primary.opacity(0.1))
+                            .cornerRadius(10)
+                    })
                     .padding()
                 }
             }
@@ -184,9 +180,9 @@ struct CoursePostView: View {
 }
 
 /*
-struct CoursePostView_Previews: PreviewProvider {
-    static var previews: some View {
-        CoursePostView()
-    }
-}
-*/
+ struct CoursePostView_Previews: PreviewProvider {
+ static var previews: some View {
+ CoursePostView()
+ }
+ }
+ */

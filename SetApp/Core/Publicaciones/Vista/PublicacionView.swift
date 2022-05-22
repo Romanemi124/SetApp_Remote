@@ -28,6 +28,7 @@ struct PublicacionView: View {
     @State private var marca: NombreMarcas = .life
     @State private var valoracion: NumValoracion = .diez
     @State private var nombreProducto: String = ""
+    @State private var linkProducto: String = ""
     //@State private var valoracion: String = ""
     @State private var puntosPositivos: String = ""
     @State private var puntosNegativos: String = ""
@@ -187,7 +188,13 @@ struct PublicacionView: View {
                             }
                             .padding(.horizontal, 35)
                             .padding(.top, 20)
+                            
+                            CamposPost(placeholder: "Link componente", isSecureField: false,text: $linkProducto)
+                                .padding(.top, 20)
+                                .padding(.bottom, 40)
+                            
                         }
+                        
                     }
                     .padding(.bottom, 30)
                 }
@@ -228,7 +235,7 @@ struct PublicacionView: View {
             return
         }
         
-        ServicioPost.uploadPost(imageData: imageData, categoria: categoria.tiposCategoria, nombreProducto: nombreProducto, marca: marca.nombreMarcas, valoracion: valoracion.numValoracion, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos, usuario: self.session.usuario, onSuccess: {
+        ServicioPost.uploadPost(imageData: imageData, categoria: categoria.tiposCategoria, nombreProducto: nombreProducto, marca: marca.nombreMarcas, valoracion: valoracion.numValoracion, link: linkProducto, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos, usuario: self.session.usuario, onSuccess: {
             self.clear()
         }) {
             (errorMessage) in
@@ -241,6 +248,7 @@ struct PublicacionView: View {
     
     func clear() {
         self.nombreProducto = ""
+        self.linkProducto = ""
         self.puntosPositivos = ""
         self.puntosNegativos = ""
         self.imageData = Data()
@@ -249,7 +257,7 @@ struct PublicacionView: View {
     
     func errorCheck() -> String? {
         
-        if nombreProducto.trimmingCharacters(in: .whitespaces).isEmpty || puntosPositivos.trimmingCharacters(in: .whitespaces).isEmpty || puntosNegativos.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty {
+        if nombreProducto.trimmingCharacters(in: .whitespaces).isEmpty || linkProducto.trimmingCharacters(in: .whitespaces).isEmpty || puntosPositivos.trimmingCharacters(in: .whitespaces).isEmpty || puntosNegativos.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty {
             
             return "Faltan datos por rellenar"
         }
