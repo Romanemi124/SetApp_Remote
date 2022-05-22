@@ -36,6 +36,10 @@
 		628647532833B7D600B1DA11 /* EditarPerfilModeloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628647502833B7D600B1DA11 /* EditarPerfilModeloView.swift */; };
 		628647542833B7D600B1DA11 /* EditarPerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628647522833B7D600B1DA11 /* EditarPerfilView.swift */; };
 		628647562833CC7B00B1DA11 /* SubirImagen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628647552833CC7B00B1DA11 /* SubirImagen.swift */; };
+		628749E7283952E200F14B44 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628749E4283952E200F14B44 /* NetworkManager.swift */; };
+		628749E8283952E200F14B44 /* PruebaInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628749E6283952E200F14B44 /* PruebaInternetView.swift */; };
+		628749EA2839532B00F14B44 /* ConexionInternetFallidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628749E92839532B00F14B44 /* ConexionInternetFallidaView.swift */; };
+		628749EC283955CA00F14B44 /* PruebaInternet2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628749EB283955CA00F14B44 /* PruebaInternet2View.swift */; };
 		62AD862828380FE30077ECA1 /* PruebaIdiomasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AD862728380FE30077ECA1 /* PruebaIdiomasView.swift */; };
 		62AD862B2838135D0077ECA1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62AD862D2838135D0077ECA1 /* Localizable.strings */; };
 		62AD86312838FBEF0077ECA1 /* PerfilInformacionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AD86302838FBEF0077ECA1 /* PerfilInformacionViewModel.swift */; };
@@ -117,6 +121,10 @@
 		628647502833B7D600B1DA11 /* EditarPerfilModeloView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarPerfilModeloView.swift; sourceTree = "<group>"; };
 		628647522833B7D600B1DA11 /* EditarPerfilView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarPerfilView.swift; sourceTree = "<group>"; };
 		628647552833CC7B00B1DA11 /* SubirImagen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubirImagen.swift; sourceTree = "<group>"; };
+		628749E4283952E200F14B44 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		628749E6283952E200F14B44 /* PruebaInternetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PruebaInternetView.swift; sourceTree = "<group>"; };
+		628749E92839532B00F14B44 /* ConexionInternetFallidaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConexionInternetFallidaView.swift; sourceTree = "<group>"; };
+		628749EB283955CA00F14B44 /* PruebaInternet2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaInternet2View.swift; sourceTree = "<group>"; };
 		62AD862728380FE30077ECA1 /* PruebaIdiomasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaIdiomasView.swift; sourceTree = "<group>"; };
 		62AD862C2838135D0077ECA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		62AD862E283813910077ECA1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -436,6 +444,33 @@
 			path = Vista;
 			sourceTree = "<group>";
 		};
+		628749E2283952E100F14B44 /* ConexionInternet */ = {
+			isa = PBXGroup;
+			children = (
+				628749E3283952E100F14B44 /* ModeloVista */,
+				628749E5283952E200F14B44 /* Vista */,
+			);
+			path = ConexionInternet;
+			sourceTree = "<group>";
+		};
+		628749E3283952E100F14B44 /* ModeloVista */ = {
+			isa = PBXGroup;
+			children = (
+				628749E4283952E200F14B44 /* NetworkManager.swift */,
+			);
+			path = ModeloVista;
+			sourceTree = "<group>";
+		};
+		628749E5283952E200F14B44 /* Vista */ = {
+			isa = PBXGroup;
+			children = (
+				628749E6283952E200F14B44 /* PruebaInternetView.swift */,
+				628749E92839532B00F14B44 /* ConexionInternetFallidaView.swift */,
+				628749EB283955CA00F14B44 /* PruebaInternet2View.swift */,
+			);
+			path = Vista;
+			sourceTree = "<group>";
+		};
 		62AD862F2838F2AF0077ECA1 /* Idiomas */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				62AD862F2838F2AF0077ECA1 /* Idiomas */,
+				628749E2283952E100F14B44 /* ConexionInternet */,
 				B006D7AA282BD36800D06A91 /* Autentificacion */,
 				B006D7AC282BD36800D06A91 /* Elementos */,
 				B006D7B1282BD36800D06A91 /* Validacion */,
@@ -885,6 +921,7 @@
 				62605862280595E1009D2DC2 /* VistaPrincipalView.swift in Sources */,
 				62605866280595E1009D2DC2 /* MenuDeslizanteFilaElementoView.swift in Sources */,
 				B006D7BA282BD36900D06A91 /* Validacion.swift in Sources */,
+				628749E8283952E200F14B44 /* PruebaInternetView.swift in Sources */,
 				622286E228357D2000FA8F87 /* AjustePerfilView.swift in Sources */,
 				622286DD28357CAE00FA8F87 /* EliminarCuentaView.swift in Sources */,
 				B0CE87EE282431EA00D1670A /* PublicationFeed.swift in Sources */,
@@ -895,6 +932,7 @@
 				62AD86312838FBEF0077ECA1 /* PerfilInformacionViewModel.swift in Sources */,
 				B0CE87C52824301700D1670A /* Post.swift in Sources */,
 				B006D769282BD23C00D06A91 /* Store.swift in Sources */,
+				628749E7283952E200F14B44 /* NetworkManager.swift in Sources */,
 				B0A7347F2835412600163138 /* MarcaView.swift in Sources */,
 				B026B2662831433A000CA61C /* FollowService.swift in Sources */,
 				B0CE87E4282431C300D1670A /* PerfilViewModel.swift in Sources */,
@@ -905,6 +943,8 @@
 				B0CE87F3282431F200D1670A /* PublicacionView.swift in Sources */,
 				B006D75B282BD1E300D06A91 /* UsuarioFireBase.swift in Sources */,
 				B0CE87F92824321B00D1670A /* CategoriasBuscador.swift in Sources */,
+				628749EA2839532B00F14B44 /* ConexionInternetFallidaView.swift in Sources */,
+				628749EC283955CA00F14B44 /* PruebaInternet2View.swift in Sources */,
 				628647562833CC7B00B1DA11 /* SubirImagen.swift in Sources */,
 				B0A7347928350B5200163138 /* MarcaViewModel.swift in Sources */,
 				628647532833B7D600B1DA11 /* EditarPerfilModeloView.swift in Sources */,
@@ -1053,7 +1093,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FQ27MS4JLZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1066,7 +1106,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SetApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SetApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1081,7 +1121,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FQ27MS4JLZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1094,7 +1134,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SetApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SetApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

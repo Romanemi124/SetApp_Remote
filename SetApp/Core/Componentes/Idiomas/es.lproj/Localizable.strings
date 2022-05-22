@@ -1,12 +1,16 @@
 /* 
-  Localizable.strings
-  SetApp
+ Localizable.strings
+ SetApp
+ 
+ Created by Omar Bonilla Varela on 20/5/22.
+ 
+ Aquí haremos la traducción de los textos
+ */
 
-  Created by Omar Bonilla Varela on 20/5/22.
-  
- AQuí haremos la traducción de los textos
-*/
 /* Para las cambiar de idioma según el país deben ser las mismas Keys lo único que cambian son su traducción */
 "form-name-key" = "Nombre";
 //Con el porcentaje indicamos que se pasa un parametro dinámico
 "form-phone-user %@" = "Télefono del User %@";
+
+//Conexión a Internet fallida
+"conexion-internet-fallida" = "Parece que no estás conectado a Internet. Asegúrate de que WiFi esté habilitado e inténtalo de nuevo";

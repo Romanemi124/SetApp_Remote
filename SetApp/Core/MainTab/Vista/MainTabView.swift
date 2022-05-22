@@ -32,7 +32,8 @@ struct MainTabView: View {
                     BuscadorView()
                 case .mensajes:
                     //MensajesView()
-                    PruebaIdiomasView()
+                   // PruebaIdiomasView()
+                  PruebaInternet2View()
                 case .newPublicacion:
                     PublicacionView()
                 }

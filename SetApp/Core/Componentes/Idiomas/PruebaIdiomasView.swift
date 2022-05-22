@@ -30,7 +30,10 @@ struct PruebaIdiomasView: View {
                         .tint(.blue)
                     }
                 }header: {
-                    Text("contact Form")
+                   
+                    Text("conexion-internet-fallida")
+                    Text("form-name-key")
+                   
                 }footer: {
                     Text("*All the information  will be confident")
                 }
@@ -52,3 +55,11 @@ struct PruebaIdiomasView_Previews: PreviewProvider {
         PruebaIdiomasView()
     }
 }
+
+//Ver toda la viusta en español
+/* struct ContentView_Previews: PreviewProvider {
+ static var previews some View {
+     ContentView()
+         .environment(\.locale, .init(identifier: "en"))
+ }
+} */
