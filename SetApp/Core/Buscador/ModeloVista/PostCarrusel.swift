@@ -104,10 +104,11 @@ struct PostCarrusel<Content: View,T: Identifiable>: View {
         return index
     }
 }
- 
+
+/*
 struct BuscadorView_PreviewsCarrusel: PreviewProvider {
     static var previews: some View {
         BuscadorView()
     }
 }
-
+ */

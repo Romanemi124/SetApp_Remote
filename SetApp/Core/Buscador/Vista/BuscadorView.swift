@@ -30,6 +30,13 @@ struct BuscadorView: View {
     /* Variable de entorno para acceder a todos los usarios  */
     @ObservedObject var viewModel = BuscadorModeloView()
     
+    //Usuario que a iniciado sesion
+    @State var usuario = UsuarioFireBase(id: NSUUID().uuidString, nombreCompleto: "j", nombreUsuario: "j", email: "j", sexo: "j", fechaNacimiento: "j", urlImagenPerfil: "j")
+        
+    init(usuariofb: UsuarioFireBase){
+        _usuario = State(initialValue: usuariofb)
+    }
+
     var body: some View {
         
         ZStack {
@@ -54,28 +61,21 @@ struct BuscadorView: View {
                 .padding(.horizontal, 25)
                 .contentShape(Rectangle())
                 .onTapGesture {
+                    
                     withAnimation(.easeInOut) {
                         viewModel.searchActivated = true
+                        print("Array de usuarios de searh bar \(viewModel.usuarios)")
+                        print("El usuario2 es \(usuario)")
+                        print("La posiciondel usuario que ha iniciado sesión es\(self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios))")
+                        
+                        //Borramos el usuario que ha iniciado sesión del buscador
+                        self.viewModel.usuarios.remove(at: self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios)!)
                     }
                 }
                 .padding(.top, 20)
                 
                 //Efecto del carrusel para saleccionar el tipo de categoría
                 PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in
-                    
-                    //1º opción
-                    /*
-                    NavigationLink{
-                        //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
-                        CategoriaView(categoria: categoria.nombreCategoria, categoriaTxt: categoria.nombreCategoria)
-                    }label: {
-                        Image(categoria.artwork)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 290, height: 390)
-                            .cornerRadius(15)
-                    }
-                     */
                     
                     //2º opción
                     GeometryReader { proxy in
@@ -94,7 +94,7 @@ struct BuscadorView: View {
                                 withAnimation(.easeOut) {
                                     showDetailView = true
                                 }
-                            }
+                        }
                     }
                     
                 }
@@ -257,6 +257,7 @@ struct BuscadorView: View {
 
 struct BuscadorView_Previews: PreviewProvider {
     static var previews: some View {
-        BuscadorView()
+        BuscadorView(usuariofb: UsuarioFireBase(id: NSUUID().uuidString, nombreCompleto: "j", nombreUsuario: "j", email: "j", sexo: "j", fechaNacimiento: "j", urlImagenPerfil: "j") )
+        
     }
 }

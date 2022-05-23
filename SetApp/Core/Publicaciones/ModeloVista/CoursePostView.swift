@@ -47,7 +47,7 @@ struct CoursePostView: View {
                                 Image(systemName: "arrow.left.circle.fill")
                                     .resizable()
                                     .frame(width: 30, height: 30)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
                             }
                         }
                         .padding(.horizontal)

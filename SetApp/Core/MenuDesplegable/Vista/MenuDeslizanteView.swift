@@ -54,19 +54,29 @@ struct MenuDeslizanteView: View {
                     //Recorremos la imagen de perfil del usuario y las opciones de navegación entre vistas
                     ForEach(MenuDeslizanteModeloView.allCases, id: \.rawValue){ vistaModelo  in
                         
-                        if vistaModelo == .perfil{
+                        if vistaModelo == .perfil {
                             
                             //Nos dirigimos al perfil
-                            NavigationLink{
+                            NavigationLink {
                                 
                                 //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
                                 PerfilView(user: usuario)
                                     .navigationBarHidden(true)
-                            }label: {
+                            } label: {
                                MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
                             }
                             
-                        }else if(vistaModelo == .logout){
+                        } else if (vistaModelo == .categorias) {
+                            
+                            NavigationLink {
+                                
+                                //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                                AllCategoriasView()
+                            } label: {
+                               MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
+                            }
+                            
+                        } else if (vistaModelo == .logout) {
                             
                             //Cada vez que se cierre sesión se mostrá ese mensaje
                             Button {
@@ -76,12 +86,12 @@ struct MenuDeslizanteView: View {
                                     print("Logged out")
                                 }
                                 
-                            }label: {
+                            } label: {
                                
                                 MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
                             }
                             
-                        }else{
+                        } else {
                             MenuDeslizanteFilaElementoView(vistaModelo: vistaModelo)
                         }
                         

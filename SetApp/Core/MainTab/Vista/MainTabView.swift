@@ -16,6 +16,9 @@ struct MainTabView: View {
     //Para el feed view
     @Namespace var animation
     
+    //Almacenar las credenciales del usuario, escuchando cuando inicia sesión
+    @EnvironmentObject var estadoUsuario: EstadoAutentificacionUsuario
+
     var body: some View {
         
         //Mostramos la vista deseada
@@ -28,14 +31,11 @@ struct MainTabView: View {
                 case .home:
                     FeedView()
                     
-                case .buscador:
-                    BuscadorView()
-                    
-                case .mensajes:
-                    ChatView()
-                    
                 case .newPublicacion:
                     PublicacionView()
+                    
+                case .buscador:
+                    BuscadorView(usuariofb: self.estadoUsuario.usuario)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -78,9 +78,9 @@ struct MainTabView: View {
             .background(
                 //Fondo del RoundedRectangle
                 HStack {
-                    if selectedTab == .newPublicacion { Spacer() }
+                    //if selectedTab == .newPublicacion { Spacer() }
                     if selectedTab == .buscador { Spacer() }
-                    if selectedTab == .mensajes {
+                    if selectedTab == .newPublicacion {
                         Spacer()
                         Spacer()
                     }
@@ -88,11 +88,11 @@ struct MainTabView: View {
                     //Forma que se muestra para que se vea un círculo a la hora de que alguna opción sea seleccionada
                     Circle().fill(color).frame(width: 80)
                     if selectedTab == .home { Spacer() }
-                    if selectedTab == .buscador {
+                    if selectedTab == .newPublicacion {
                         Spacer()
                         Spacer()
                     }
-                    if selectedTab == .mensajes { Spacer() }
+                    //if selectedTab == .mensajes { Spacer() }
                 }
                     .padding(.horizontal, 15)
             )
@@ -100,9 +100,8 @@ struct MainTabView: View {
                 
                 //Parte de cada una de  las opciones donde se pondrán los estilos
                 HStack {
-                    if selectedTab == .newPublicacion { Spacer() }
                     if selectedTab == .buscador { Spacer() }
-                    if selectedTab == .mensajes {
+                    if selectedTab == .newPublicacion {
                         Spacer()
                         Spacer()
                     }
@@ -111,14 +110,13 @@ struct MainTabView: View {
                         .fill(color)
                         .frame(width: 50, height: 5)
                         .cornerRadius(3)
-                        .frame(width: 88)
+                        .frame(width: 130)
                         .frame(maxHeight: .infinity, alignment: .top)
                     if selectedTab == .home { Spacer() }
-                    if selectedTab == .buscador {
+                    if selectedTab == .newPublicacion {
                         Spacer()
                         Spacer()
                     }
-                    if selectedTab == .mensajes { Spacer() }
                 }
                     .padding(.horizontal, 8)
             )

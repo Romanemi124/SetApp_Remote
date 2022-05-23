@@ -95,11 +95,14 @@ class ServicioPost: ObservableObject {
     //Se muestran todas las fotos filtradas por categoria
     func fetchPostsCategoria(categoria: String, completion: @escaping([PostCateg]) -> Void) {
         
-        Firestore.firestore().collection("allPosts").whereField("categoria", isEqualTo: categoria)/*.order(by: "date", descending: true)*/.getDocuments { snapshot, _ in
+        Firestore.firestore().collection("allPosts").whereField("categoria", isEqualTo: categoria).getDocuments { snapshot, _ in
             
             guard let documents = snapshot?.documents else { return }
-            let posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
-            
+            var posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
+                        
+            //Ordenamos los documentos por fecha
+            posts.sort(by: {$0.date > $1.date})
+
             completion(posts)
         }
     }
@@ -107,10 +110,13 @@ class ServicioPost: ObservableObject {
     //Se muestran todas las fotos filtradas por marca
     func fetchPostsMarcas(marca: String, completion: @escaping([PostCateg]) -> Void) {
         
-        Firestore.firestore().collection("allPosts")/*.order(by: "date", descending: true)*/.whereField("marca", isEqualTo: marca).getDocuments { snapshot, _ in
+        Firestore.firestore().collection("allPosts").whereField("marca", isEqualTo: marca).getDocuments { snapshot, _ in
             
             guard let documents = snapshot?.documents else { return }
-            let posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
+            var posts = documents.compactMap({ try? $0.data(as: PostCateg.self) })
+                        
+            //Ordenamos los documentos por fecha
+            posts.sort(by: {$0.date > $1.date})
             
             completion(posts)
         }

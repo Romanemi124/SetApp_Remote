@@ -61,4 +61,12 @@ class BuscadorModeloView: ObservableObject{
         }
     }
 
+    func posicionUsuario(usuario:UsuarioFireBase, arrayUsuarioFireBase: [UsuarioFireBase] )-> Int?{
+        
+       return arrayUsuarioFireBase.firstIndex(where: { $0.nombreUsuario == usuario.nombreUsuario })
+        
+//        //Me devuelva la posición del usuario que tenga ese nombre de usuario
+//        return arrayUsuarioFireBase.firstIndex { user in user.nombreUsuario == usuario.nombreUsuario  } ?? -1
+        
+    }
 }

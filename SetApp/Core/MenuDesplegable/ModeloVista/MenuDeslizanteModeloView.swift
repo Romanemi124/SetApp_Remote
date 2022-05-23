@@ -13,16 +13,14 @@ enum MenuDeslizanteModeloView: Int, CaseIterable{
     
     //Opciones de las acciones disponibles
     case perfil
-//    case listas
-//    case guardados
+    case categorias
     case logout
     
     //Título de las acciones disponibles
     var titulo: String{
         switch self{
         case .perfil: return  "Perfil"
-//        case .listas: return  "Listas"
-//        case .guardados: return  "Guardados"
+        case .categorias: return  "Categorias"
         case .logout: return "Cerrar sesión"
         }
     }
@@ -30,9 +28,8 @@ enum MenuDeslizanteModeloView: Int, CaseIterable{
     //Ícono de los títulos correspondientes
     var imagenNombre: String{
         switch self{
-        case .perfil: return  "person"
-//        case .listas: return  "list.bullet"
-//        case .guardados: return  "bookmark"
+        case .perfil: return "person"
+        case .categorias: return "list.bullet"
         case .logout: return "arrow.left.square"
         }
     }
