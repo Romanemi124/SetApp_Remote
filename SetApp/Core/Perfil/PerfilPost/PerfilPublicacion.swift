@@ -59,6 +59,67 @@ struct PerfilPublicacion: View {
                 PostCardLikes(post: post)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            
+            //Eliminar publiacion
+            Button{
+                print("Id del post \(post.postId)")
+                print("Id del OwnerId \(post.OwnerId)")
+                
+                /*  Eliminar la publicación de Storage */
+                StorageService.eliminarPublicacion(idPublicacion: post.postId){ result in
+                    switch result {
+                        //En caso de error o que no haya encontrado
+                    case .failure(let error):
+                        
+                        //Mostraremos un alert indicando que ha habido alñgún error al borrar la foto
+                        print("Error: Publicacion Storage \(error.localizedDescription)")
+                        //En caso de que se haya borrado correcatmente
+                    case .success(_):
+                        
+                        print("Se ha borrado la publicación Storage correctamente")
+                        
+                        /*  Eliminar la publicación de Cloud Firestore */
+                        
+                        //1º Borramos de la colección de todas las publicaciones
+                        Store.eliminarColeccionAllPost(idPublicacion: post.postId){ result in
+                            switch result {
+                                //En caso de error o que no haya encontrado
+                            case .failure(let error):
+                                //Mostraremos un alert indicando que ha habido alñgún error al borrar la foto
+                                print("Error: Publicacion eliminarColeccionAllPost \(error.localizedDescription)")
+                                //En caso de que se haya borrado correcatmente
+                            case .success(_):
+                                print("Se ha borrado la publicación eliminarColeccionAllPost correctamente")
+                                
+                                //2º Borramos de la publicacion de cada usuario
+                                Store.eliminarColeccionPost(idUsuario: post.OwnerId, idPublicacion: post.postId){ result in
+                                    switch result {
+                                        //En caso de error o que no haya encontrado
+                                    case .failure(let error):
+                                        
+                                        //Mostraremos un alert indicando que ha habido alñgún error al borrar la foto
+                                        print("Error: Publicacion eliminarColeccionPost \(error.localizedDescription)")
+                                        //En caso de que se haya borrado correcatmente
+                                    case .success(_):
+                                        print("Se ha borrado la publicación eliminarColeccionPost correctamente")
+                                    }
+                                    
+                                }
+                                
+                            }
+                        }
+            
+                        
+                    }
+                    
+                }
+                
+            }label: {
+                Image(systemName: "trash")
+                    .font(.title3)
+                    .foregroundColor(.white)
+            }
+            
         }
     }
 }

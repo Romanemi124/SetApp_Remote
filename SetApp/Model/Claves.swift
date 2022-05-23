@@ -16,6 +16,10 @@ enum Claves {
         static let usuarios = "usuarios"
         //Para la foto de perfil de los usuarios
         static let usuarioImagenPerfil = "fotoPerfil"
+        //Para la coleccion post
+        static let allPost = "allPosts"
+        //Para la coleccion post
+        static let post = "posts"
     }
     
     // Los atributos que tendrán el usuario
@@ -28,4 +32,5 @@ enum Claves {
         static let fechaNacimiento = "fechaNacimiento"
         static let urlImagenPerfil = "urlImagenPerfil"
     }
+    
 }

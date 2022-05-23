@@ -14,12 +14,24 @@ import FirebaseStorage
 /*  Clase permite recuparar el usuario e inyectarlo a la variable de entorno que utilizamos en toda la aplicación */
 enum Store {
     
+    static let rutaUsuarios = Firestore.firestore().collection(Claves.RutaColeccion.usuarios)
+    static let rutaPublicacionAllPost = Firestore.firestore().collection(Claves.RutaColeccion.allPost)
+    static let rutaPublicacionPost = Firestore.firestore().collection(Claves.RutaColeccion.post)
+    
     /* Función pasar la referencia de la ruta del usuario */
     static func referenciaUsuario(id: String) -> DocumentReference {
         return Firestore.firestore().collection(Claves.RutaColeccion.usuarios).document(id)
     }
     
-    static let rutaUsuarios = Firestore.firestore().collection(Claves.RutaColeccion.usuarios)
+    /* Función pasar la referencia de la ruta de la coleccion todas las publicaciones */
+    static func referenciaAllPost(id: String) -> DocumentReference {
+        return rutaPublicacionAllPost.document(id)
+    }
+    
+    /* Función pasar la referencia de la ruta de las publicaciones de cada usuario*/
+    static func referenciaPost(id: String) -> DocumentReference {
+        return rutaPublicacionPost.document(id)
+    }
     
     // MARK: - Autentificación/Registro
     /* Buscamos un usuario en la colección de usuarios según su id
@@ -160,5 +172,40 @@ enum Store {
         }
     }
 
+    // MARK: - Borrar publicaciones
+    //Borrar de la coleccion allpost (todas las publicaciones)
+    static func eliminarColeccionAllPost(idPublicacion:String,completion: @escaping (Result<Bool,Error>) -> Void){
+        
+        //Seleccionamos la ruta de la publicación a borrar
+        referenciaAllPost(id: idPublicacion).delete{ error in
+            
+            if let error = error{
+                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
+                completion(.failure(error))
+            }else{
+                print("Se ha borrado correctamente")
+                completion(.success(true))
+            }
+        }
+        
+    }
+    
+    //Borrar de la coleccion post (publicaciones de cada usuario)
+    static func eliminarColeccionPost(idUsuario:String, idPublicacion:String,completion: @escaping (Result<Bool,Error>) -> Void){
+        
+        // referenciaPost(id: idUsuario) seleccionamos la ruta del usuario que ha subido publicaciones
+        //collection("posts").document(idPublicacion) dentro de las publicaciones del usuario seleccionamos la publicación a borrar
+        referenciaPost(id: idUsuario).collection("posts").document(idPublicacion).delete{ error in
+            
+            if let error = error{
+                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
+                completion(.failure(error))
+            }else{
+                print("Se ha borrado correctamente")
+                completion(.success(true))
+            }
+        }
+      
+    }
     
 }

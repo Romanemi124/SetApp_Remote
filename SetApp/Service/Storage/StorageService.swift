@@ -74,6 +74,22 @@ class StorageService {
         }
     }
     
+    // MARK: - Borrar publicaciones
+    /* Eliminar publicacion storage */
+    static func eliminarPublicacion(idPublicacion:String,completion: @escaping (Result<Bool,Error>) -> Void){
+        //storageRoot.child("posts").child(idPublicacion) seleccionamos la publicacion
+        storageRoot.child("posts").child(idPublicacion).delete{ error in
+            
+            if let error = error{
+                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
+                completion(.failure(error))
+            }else{
+                print("Se ha borrado correctamente")
+                completion(.success(true))
+            }
+        }
+    }
+    
     static func savePostPhoto(userId: String, imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String,
                               link:String, puntosPositivos: String, puntosNegativos: String, postId: String, metadata: StorageMetadata, storagePostRef: StorageReference, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         
