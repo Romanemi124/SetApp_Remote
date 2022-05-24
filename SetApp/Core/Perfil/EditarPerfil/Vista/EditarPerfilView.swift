@@ -22,7 +22,7 @@ struct EditarPerfilView: View {
     @State private var showingActionSheet = false
     @State private var showingImagePicker = false
     @State private var imageData: Data = Data()
-    @State private var sourceType:UIImagePickerController.SourceType = .photoLibrary
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
     
     /* Manejo de errores */
     //Mostrar o no los errores
@@ -260,7 +260,28 @@ struct EditarPerfilView: View {
                 
                 /* Para cargar la imagen */
                 /*------------------------------------*/
-            }.sheet(isPresented: $showingImagePicker, onDismiss: cargarImagen){
+            }
+            .sheet(isPresented: $showingImagePicker, onDismiss: cargarImagen) {
+                ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$fotoPerfil, sourceType: self.sourceType)
+                //SeleccionarFoto(image: self.$pickedImage, isShown: self.$showingImagePicker, sourceType: self.sourceType)
+            }
+            .actionSheet(isPresented: $showingActionSheet) {
+                ActionSheet(title: Text(LocalizedStringKey("registrarCuenta-notificacion")),
+                            buttons: [
+                                .default(Text("Galería")) {
+                                    //vm.source = .library
+                                    self.sourceType = .photoLibrary
+                                    self.showingImagePicker = true
+                                },
+                                .default(Text("Camera")) {
+                                    //vm.source = .camera
+                                    self.sourceType = .camera
+                                    self.showingImagePicker = true
+                                },
+                                .cancel()
+                            ])
+            }
+            /*.sheet(isPresented: $showingImagePicker, onDismiss: cargarImagen){
                 
                 //Selección de la foto
                 ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$fotoPerfil)
@@ -273,10 +294,10 @@ struct EditarPerfilView: View {
                     self.showingImagePicker = true
                 },.cancel()])
                 
-            }.accentColor(.white)
-            
+            }
+             */
+            .accentColor(.white)
         }
-        
     }
     
     //Cargar Imagen
