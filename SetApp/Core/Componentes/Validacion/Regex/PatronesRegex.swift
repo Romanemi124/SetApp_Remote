@@ -50,6 +50,6 @@ enum PatronesRegex {
     // Longitud de la contraseña 9
     static let soloNueveCaracteres = "^.{9,}"
     //---- Comprobación contraseña entera
-    static let comprobarPassword = "^[A-Za-z0-9!@#$&*]{5,21}$"
+    static let comprobarPassword = "^[A-Za-z0-9!@#$&*]{6,21}$"
    
 }
