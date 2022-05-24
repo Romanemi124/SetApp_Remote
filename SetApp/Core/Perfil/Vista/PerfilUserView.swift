@@ -51,7 +51,13 @@ struct PerfilUserView: View {
                             
                             ForEach(self.viewModel.posts, id:\.postId) { (post) in
                                 
-                                PerfilPublicacion(post: post)
+                                NavigationLink{
+                                    //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                                    CourseView(post: post)
+                                        .navigationBarHidden(true)
+                                }label: {
+                                    PerfilUserPublicacion(post: post)
+                                }
                             }
                         }
                         .padding()

@@ -16,10 +16,10 @@ struct PublicacionView: View {
     
     @State private var postImage: Image?
     @State private var pickedImage: Image?
-    @State private var showingActionSheet = false
-    @State private var showingImagePicker = false
+    @State private var showingActionSheet: Bool = false
+    @State private var showingImagePicker: Bool = false
     @State private var imageData: Data = Data()
-    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var error:String = ""
     @State private var showingAlert = false
     @State private var alertTitle: String = "¡Ups!"
@@ -211,16 +211,19 @@ struct PublicacionView: View {
                         .padding(.bottom, 30)
                     }
                     .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                        ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$imageData)
+                        ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$imageData, sourceType: self.sourceType)
+                        //SeleccionarFoto(image: self.$pickedImage, isShown: self.$showingImagePicker, sourceType: self.sourceType)
                     }
                     .actionSheet(isPresented: $showingActionSheet) {
                         ActionSheet(title: Text("Selecciona una opción"),
                                     buttons: [
                                         .default(Text("Galería")) {
+                                            //vm.source = .library
                                             self.sourceType = .photoLibrary
                                             self.showingImagePicker = true
                                         },
                                         .default(Text("Camera")) {
+                                            //vm.source = .camera
                                             self.sourceType = .camera
                                             self.showingImagePicker = true
                                         },
@@ -228,6 +231,13 @@ struct PublicacionView: View {
                                     ])
                     }
                     .accentColor(Color(red: 0.331, green: 0.074, blue: 0.423))
+                    /*
+                    .alert("Error", isPresented: $vm.showCameraAlert, presenting: vm.cameraError, actions: { cameraError in
+                        cameraError.button
+                    }, message: { cameraError in
+                        Text(cameraError.message)
+                    })
+                     */
                 }
                 .padding(30)
             }

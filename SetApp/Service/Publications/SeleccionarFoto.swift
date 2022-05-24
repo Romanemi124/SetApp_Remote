@@ -10,17 +10,17 @@ import SwiftUI
 
 class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    @Binding var image: UIImage?
+    @Binding var image: Image?
     @Binding var isShown: Bool
     
-    init(image: Binding<UIImage?>, isShown: Binding<Bool>) {
+    init(image: Binding<Image?>, isShown: Binding<Bool>) {
         _image = image
         _isShown = isShown
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
                                [UIImagePickerController.InfoKey : Any]) {
-        if let uiImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        if let uiImage = info[UIImagePickerController.InfoKey.originalImage] as? Image {
             image = uiImage
             isShown = false
         }
@@ -36,7 +36,7 @@ struct SeleccionarFoto: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIImagePickerController
     typealias Coordinator = ImagePickerCoordinator
     
-    @Binding var image: UIImage?
+    @Binding var image: Image?
     @Binding var isShown: Bool
     var sourceType: UIImagePickerController.SourceType = .camera
     

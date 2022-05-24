@@ -14,6 +14,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var pickedImage : Image?
     @Binding var showImagePicker : Bool
     @Binding var imageData : Data
+    var sourceType: UIImagePickerController.SourceType = .camera
     
     func makeCoordinator() -> ImagePicker.Coordinator {
         Coordinator(self)
@@ -21,6 +22,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> some UIImagePickerController {
         let picker = UIImagePickerController()
+        picker.sourceType = sourceType
         picker.delegate  = context.coordinator
         picker.allowsEditing =  true
         return picker
