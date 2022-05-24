@@ -73,4 +73,13 @@
 "editar-boton" = "Modify";
 
 
+/* Ajustes Perfil */
+"ajustes-cambiar-pasword" = "Change Password";
+"ajustes-eliminar-cuenta" = "Delete account";
+
+/* Eliminar Cuenta */
+"eliminarCuenta-pregunta-seguridad" = "Are you sure you want to delete your account?";
+"eliminarCuenta-inicio" = "To delete your account, you must first re-authenticate yourself. Deleting your account will delete all your posts and personal information.";
+"eliminarCuenta-boton-eliminar" = "DELETE ACCOUNT";
+"eliminarCuenta-boton-autentificarte" = "Authenticate";
 

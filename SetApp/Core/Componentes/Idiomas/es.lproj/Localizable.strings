@@ -72,3 +72,13 @@
 "editar-sexo-elegir" = "Modificar sexo:";
 "editar-edad-elegir" = "Modificar edad:";
 "editar-boton" = "Cambiar";
+
+/* Ajustes Perfil */
+"ajustes-cambiar-pasword" = "Cambiar contraseña";
+"ajustes-eliminar-cuenta" = "Eliminar cuenta";
+
+/* Eliminar Cuenta */
+"eliminarCuenta-pregunta-seguridad" = "¿Estás seguro que quieres eliminar tu cuenta?";
+"eliminarCuenta-inicio" = "Para eliminar tu cuenta antes tienes que reautentificarte. Al eliminar tu cuenta se borrara todas tus publicaciones e información personal";
+"eliminarCuenta-boton-eliminar" = "ELIMINAR CUENTA";
+"eliminarCuenta-boton-autentificarte" = "Autentificarte";

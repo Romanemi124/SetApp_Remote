@@ -52,7 +52,7 @@ struct AjustePerfilView: View {
                                 CambiarPasswordView()
                                 
                             }label: {
-                                Text("Cambiar contraseña")
+                                Text("ajustes-cambiar-pasword")
                                     .foregroundColor(.white)
                                     .scaleEffect(anchor: .leading)
                                     .foregroundColor(.white)
@@ -80,7 +80,7 @@ struct AjustePerfilView: View {
                                 EliminarCuentaView(poderEliminar: $poderEliminar)
                                 
                             }label: {
-                                Text("Eliminar cuenta").foregroundColor(.white)
+                                Text("ajustes-eliminar-cuenta").foregroundColor(.white)
                             }
                             .frame(width: 250)
                         }

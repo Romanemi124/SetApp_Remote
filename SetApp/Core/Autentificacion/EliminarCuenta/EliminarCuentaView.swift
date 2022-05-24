@@ -34,15 +34,22 @@ struct EliminarCuentaView: View {
                 
                 //Imagen de fondo de la vista
                 EstablecerFondoPrincipal()
-                
                 VStack {
+                    //Título
+                    /*------------------------------------*/
+                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "Eliminar cuenta")
+                    
+                    Image("SetApp")
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .padding(.bottom, 60)
                     
                     Text(estadoUsuario.usuario.nombreCompleto)
                         .font(.title)
                         .padding(.bottom, 20)
                         .foregroundColor(.white)
                     
-                    Text(poderEliminar ? "¿Estás seguro que quieres eliminar tu cuenta?" : "Has iniciado sesión con \(estadoUsuario.usuario.email). Para eliminar tu cuenta antes tienes que reautentificarte. Al eliminar tu cuenta se borrara todas tus publicaciones e información personal")
+                    Text(poderEliminar ? LocalizedStringKey("eliminarCuenta-pregunta-seguridad") : LocalizedStringKey("eliminarCuenta-inicio"))
                         .padding(.bottom, 50)
                         .foregroundColor(.white)
                     
@@ -59,7 +66,7 @@ struct EliminarCuentaView: View {
                         .foregroundColor(Color(.label))
                         .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
                         
-                        Button(poderEliminar ? "ELIMINAR CUENTA" : "Autentificarte") {
+                        Button(poderEliminar ? "eliminarCuenta-boton-eliminar" : "eliminarCuenta-boton-autentificarte") {
                             
                             if poderEliminar {
                                 
@@ -80,6 +87,7 @@ struct EliminarCuentaView: View {
                                         Store.borrarDatosUsuario(id: estadoUsuario.usuario.id!){ result in
                                             switch result {
                                             case .success:
+                                                //Eliminamos el usuario
                                                 Autentificacion.eliminarUsuario{ result in
                                                     if case let .failure(error) = result {
                                                         print(error.localizedDescription)
@@ -109,7 +117,7 @@ struct EliminarCuentaView: View {
                     }
                     Spacer()
                 }
-                .padding(.top, 220)
+                .padding(.top, 30)
                 .padding(.horizontal,10)
                 if !provedores.isEmpty {
                     ReAutentificacionView(provedores: $provedores, poderEliminar: $poderEliminar)
