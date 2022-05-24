@@ -197,7 +197,7 @@ extension PerfilView{
                         .padding(.leading)
                     
                     Text(informacionPerfil.user.nombreCompleto)
-                        .font(.headline)
+                        .font(.subheadline)
                         .bold()
                         .padding(.leading)
                         .foregroundColor(.white)

@@ -10,6 +10,9 @@ import Foundation
 
 struct BuscadorView: View {
     
+    //Controlar que esté conectado a Internet
+    @ObservedObject var networkManager = NetworkManager()
+    
     //Para mostrar la barra de búsqueda
     @Namespace var animation
     
@@ -39,147 +42,156 @@ struct BuscadorView: View {
 
     var body: some View {
         
-        ZStack {
+        //Verficamos que esté conectado a Internet
+        if !networkManager.isConnected {
             
-            //Parte donde se establece el fondo de las categorías
-            BGView()
+            //Mostramos la vista de fallo de conexión a Internet
+            ConexionInternetFallidaView(networkManager: networkManager)
             
-            VStack {
+        }else{
+            
+            ZStack {
                 
-                //Parte donde se encuentra el buscador de las personas
-                ZStack {
-                    
-                    if viewModel.searchActivated {
-                        SearchBar()
-                    } else {
-                        
-                        SearchBar()
-                            .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
-                    }
-                }
-                //.frame(width: getRect().width / 1.6)
-                .padding(.horizontal, 25)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    
-                    withAnimation(.easeInOut) {
-                        viewModel.searchActivated = true
-                        print("Array de usuarios de searh bar \(viewModel.usuarios)")
-                        print("El usuario2 es \(usuario)")
-                        print("La posiciondel usuario que ha iniciado sesión es\(self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios))")
-                        
-                        //Borramos el usuario que ha iniciado sesión del buscador
-                        self.viewModel.usuarios.remove(at: self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios)!)
-                    }
-                }
-                .padding(.top, 20)
+                //Parte donde se establece el fondo de las categorías
+                BGView()
                 
-                //Efecto del carrusel para saleccionar el tipo de categoría
-                PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in
+                VStack {
                     
-                    //2º opción
-                    GeometryReader { proxy in
+                    //Parte donde se encuentra el buscador de las personas
+                    ZStack {
                         
-                        let size = proxy.size
-                        
-                        Image(categoria.artwork)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 290, height: 390)
-                            .cornerRadius(15)
-                            .onTapGesture {
-                                currentCardSize = size
-                                detailCategoria = categoria
-                                
-                                withAnimation(.easeOut) {
-                                    showDetailView = true
-                                }
+                        if viewModel.searchActivated {
+                            SearchBar()
+                        } else {
+                            
+                            SearchBar()
+                                .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
                         }
                     }
-                    
-                }
-                .padding(.top, 80)
-                .padding(.bottom, 20)
-                
-                CustomIndicator()
-                
-                //Parte donde aparecerán algunas de las marcas más famosas
-                ScrollView(.horizontal, showsIndicators: false) {
-                    
-                    HStack(spacing: 15) {
+                    //.frame(width: getRect().width / 1.6)
+                    .padding(.horizontal, 25)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
                         
-                        NavigationLink {
+                        withAnimation(.easeInOut) {
+                            viewModel.searchActivated = true
+                            print("Array de usuarios de searh bar \(viewModel.usuarios)")
+                            print("El usuario2 es \(usuario)")
+                            print("La posicion del usuario que ha iniciado sesión es\(self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios))")
                             
-                            AllCategoriasView()
-                        } label: {
+                            //Borramos el usuario que ha iniciado sesión del buscador
+                            self.viewModel.usuarios.remove(at: self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios)!)
+                        }
+                    }
+                    .padding(.top, 20)
+                    
+                    //Efecto del carrusel para saleccionar el tipo de categoría
+                    PostCarrusel(spacing: 20, trailingSpace: 110, index: $currentIndex, items: categorias) { categoria in
+                        
+                        //2º opción
+                        GeometryReader { proxy in
                             
-                            Image("masCategorias")
+                            let size = proxy.size
+                            
+                            Image(categoria.artwork)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 120)
+                                .frame(width: 270, height: 330)
                                 .cornerRadius(15)
+                                .onTapGesture {
+                                    currentCardSize = size
+                                    detailCategoria = categoria
+                                    
+                                    withAnimation(.easeOut) {
+                                        showDetailView = true
+                                    }
+                            }
                         }
                         
-                        ForEach(marcas) { marca in
+                    }
+                    .padding(.top, 80)
+                    .padding(.bottom, 20)
+                    
+                    CustomIndicator()
+                    
+                    //Parte donde aparecerán algunas de las marcas más famosas
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        
+                        HStack(spacing: 15) {
                             
-                            //1º opción
-                            /*
-                            NavigationLink{
-                                //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
-                                MarcaView(marca: marca.nombreCategoria, marcaTxt: marca.nombreCategoria)
-                            }label: {
-                                Image(marca.artwork)
+                            NavigationLink {
+                                
+                                AllCategoriasView()
+                            } label: {
+                                
+                                Image("masCategorias")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 100, height: 120)
                                     .cornerRadius(15)
                             }
-                             */
                             
-                            //2º opción
-                            Image(marca.artwork)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 120)
-                                .cornerRadius(15)
-                                .onTapGesture {
-                                    //currentCardSize = size
-                                    detailMarca = marca
-                                    
-                                    withAnimation(.easeOut) {
-                                        showMarcaView = true
-                                    }
+                            ForEach(marcas) { marca in
+                                
+                                //1º opción
+                                /*
+                                NavigationLink{
+                                    //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
+                                    MarcaView(marca: marca.nombreCategoria, marcaTxt: marca.nombreCategoria)
+                                }label: {
+                                    Image(marca.artwork)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 120)
+                                        .cornerRadius(15)
                                 }
+                                 */
+                                
+                                //2º opción
+                                Image(marca.artwork)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 120)
+                                    .cornerRadius(15)
+                                    .onTapGesture {
+                                        //currentCardSize = size
+                                        detailMarca = marca
+                                        
+                                        withAnimation(.easeOut) {
+                                            showMarcaView = true
+                                        }
+                                    }
+                            }
                         }
+                        .padding()
                     }
-                    .padding()
+                    .padding(.bottom, 50)
+                    
                 }
-                .padding(.bottom, 50)
                 
+                .overlay {
+                    
+                    if let categoria = detailCategoria, showDetailView {
+                        CategoriaView(categoria: categoria.nombreCategoria, categoriaTxt: categoria.nombreCategoria)
+                    }
+                    
+                    if let marca = detailMarca, showMarcaView {
+                        MarcaView(marca: marca.nombreMarca, marcaTxt: marca.nombreMarca)
+                    }
+                    
+                }
             }
+            .overlay(
             
-            .overlay {
-                
-                if let categoria = detailCategoria, showDetailView {
-                    CategoriaView(categoria: categoria.nombreCategoria, categoriaTxt: categoria.nombreCategoria)
+                ZStack {
+                    
+                    if viewModel.searchActivated {
+                        SearchView(animation: animation)
+                            .environmentObject(viewModel)
+                    }
                 }
-                
-                if let marca = detailMarca, showMarcaView {
-                    MarcaView(marca: marca.nombreMarca, marcaTxt: marca.nombreMarca)
-                }
-                
-            }
+            )
         }
-        .overlay(
-        
-            ZStack {
-                
-                if viewModel.searchActivated {
-                    SearchView(animation: animation)
-                        .environmentObject(viewModel)
-                }
-            }
-        )
     }
     
     //La barra de búsqueda
@@ -226,6 +238,13 @@ struct BuscadorView: View {
             
             let size = proxy.size
             
+            Image("fondoBuscador")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: size.width, height: size.height)
+                .cornerRadius(0)
+            
+            /*
             TabView(selection: $currentIndex) {
                 
                 ForEach(categorias.indices, id: \.self) { index in
@@ -240,17 +259,20 @@ struct BuscadorView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut, value: currentIndex)
             
-            let color: Color = (scheme == .dark ? .black : .white)
+            let color: Color = (scheme == .light ? .black : .white)
             
             LinearGradient(colors: [
                 .black,
                 .clear,
-                color.opacity(0.15),
+                color.opacity(1),
             ], startPoint: .top, endPoint: .bottom)
             
             Rectangle()
                 .fill(.ultraThinMaterial)
+             */
         }
+        //.overlay()
+        .overlay(.ultraThinMaterial)
         .ignoresSafeArea()
     }
 }

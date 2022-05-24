@@ -15,14 +15,21 @@ struct ConexionInternetFallidaView: View {
         
         ZStack {
             
-            Color(.systemBlue).ignoresSafeArea()
+            Color(red: 0.331, green: 0.074, blue: 0.423).ignoresSafeArea()
             
             VStack {
-                Image(systemName: networkManager.imageName)
+                
+                Image("logoWifi")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                     .foregroundColor(.white)
+                
+                Text("Ups!")
+                    .font(.system(size: 30, weight: .semibold))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding()
                 
                 Text("conexion-internet-fallida")
                     .font(.system(size: 18, weight: .semibold))

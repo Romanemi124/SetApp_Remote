@@ -17,10 +17,10 @@ struct CategoriasBuscador: Identifiable {
 
 var categorias = [
 
-    CategoriasBuscador(nombreCategoria: "Monitor", artwork: "monitorLogo", fondo: "sillas"),
-    CategoriasBuscador(nombreCategoria: "Ratón", artwork: "ratonLogo", fondo: "sillas"),
-    CategoriasBuscador(nombreCategoria: "Teclado", artwork: "tecladoLogo", fondo: "sillas"),
-    CategoriasBuscador(nombreCategoria: "Auriculares", artwork: "pcLogo", fondo: "sillas"),
+    CategoriasBuscador(nombreCategoria: "Monitor", artwork: "monitorLogo", fondo: "fondoBuscador"),
+    CategoriasBuscador(nombreCategoria: "Ratón", artwork: "ratonLogo", fondo: "fondoBuscador"),
+    CategoriasBuscador(nombreCategoria: "Teclado", artwork: "tecladoLogo", fondo: "fondoBuscador"),
+    CategoriasBuscador(nombreCategoria: "Auriculares", artwork: "pcLogo", fondo: "fondoBuscador"),
     
     /*
     CategoriasBuscador(nombreCategoria: "Altavoz", artwork: "", fondo: ""),

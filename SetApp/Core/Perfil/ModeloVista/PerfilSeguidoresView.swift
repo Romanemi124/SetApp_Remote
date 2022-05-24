@@ -29,7 +29,7 @@ struct PerfilSeguidoresView: View {
                     
                     Text("\(postCount)").font(.title3)
                         .foregroundColor(.white)
-                    Text("Publicaciones")
+                    Text("Posts")
                         .font(.subheadline)
                         .foregroundColor(.white)
                 }
