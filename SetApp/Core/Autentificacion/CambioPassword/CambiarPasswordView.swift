@@ -43,7 +43,7 @@ struct CambiarPasswordView: View {
                     
                     //Título
                     /*------------------------------------*/
-                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "Cambia la contraseña")
+                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "cambiar-password-titulo")
                     
                     Image("SetApp")
                         .resizable()
@@ -113,11 +113,11 @@ struct CambiarPasswordView: View {
         switch alertType{
             
         case .error:
-            return Alert(title: Text("Notificación"), message: Text(self.errorString!), dismissButton: .default(Text("Ok"), action: {
+            return Alert(title: Text(LocalizedStringKey("alert-notificacion")), message: Text(LocalizedStringKey(self.errorString!)), dismissButton: .default(Text("Ok"), action: {
                 self.presentationMode.wrappedValue.dismiss()
             }))
         case .sucess:
-            return Alert(title: Text("Notificación"), message: Text("Petición de cambio de contraseña aceptado. Se te ha enviado un correo para cambiarla"), dismissButton: .default(Text("Ok"), action: {
+            return Alert(title: Text(LocalizedStringKey("alert-notificacion")), message: Text(LocalizedStringKey("cambiar-password-aceptado")), dismissButton: .default(Text("Ok"), action: {
                 Autentificacion.cerrarSesion{ result in
                     print("Cerrando sesión...")
                 }

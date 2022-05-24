@@ -10,6 +10,9 @@
 /* Conexión a Internet */
 "conexion-internet-fallida" = "It looks like you're not connected to the internet. Make sure WiFi is enabled and try again";
 
+/* Alerts */
+"alert-notificacion" = "Notification";
+
 /* Iniciar Sesión */
 "iniciarSesion-titulo" = "Welcome back!";
 "iniciarSesion-campo-password" = "Password";
@@ -53,7 +56,9 @@
 "validacion-clase-edad" = "User must be over 18 to register";
 
 /* Cambiar contraseña */
+"cambiar-password-titulo" = "Change Password";
 "cambiar-password" = "Introduce your email address";
+"cambiar-password-aceptado" = "Password change request accepted. An email has been sent to you to change it";
 
 /* Menu desplegable */
 "menuDesplegable-perfil" = "Profile";
@@ -72,7 +77,6 @@
 "editar-edad-elegir" = "Change age:";
 "editar-boton" = "Modify";
 
-
 /* Ajustes Perfil */
 "ajustes-cambiar-pasword" = "Change Password";
 "ajustes-eliminar-cuenta" = "Delete account";
@@ -83,3 +87,7 @@
 "eliminarCuenta-boton-eliminar" = "DELETE ACCOUNT";
 "eliminarCuenta-boton-autentificarte" = "Authenticate";
 
+/* Reautentificacion */
+"reautentificacion-password" = "Enter your password";
+"reautentificacion-terminar" = "Done";
+"reautentificacion-cancelar" = "Cancel";

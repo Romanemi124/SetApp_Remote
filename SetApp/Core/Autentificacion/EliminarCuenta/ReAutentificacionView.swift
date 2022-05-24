@@ -48,10 +48,10 @@ struct ReAutentificacionView: View {
                             
                             VStack {
                                 
-                                SecureField("Introduce tu contraseña", text: $password)
+                                SecureField("reautentificacion-password", text: $password)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                 
-                                Button("Terminar") {
+                                Button(LocalizedStringKey("reautentificacion-terminar")) {
                                     Autentificacion.reautenticacionConPassword(password: password) { result in
                                         handleResult(result: result)
                                     }
@@ -73,7 +73,7 @@ struct ReAutentificacionView: View {
                         .foregroundColor(.red)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    Button("Cancel") {
+                    Button(LocalizedStringKey("reautentificacion-cancelar")) {
                         withAnimation {
                             provedores = []
                         }

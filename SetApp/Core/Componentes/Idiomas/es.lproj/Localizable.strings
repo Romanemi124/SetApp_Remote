@@ -10,6 +10,9 @@
 /* Conexión a Internet */
 "conexion-internet-fallida" = "Parece que no estás conectado a Internet. Asegúrate de que WiFi esté habilitado e inténtalo de nuevo";
 
+/* Alerts */
+"alert-notificacion" = "Notificación";
+
 /* Iniciar Sesión */
 //Vista
 "iniciarSesion-titulo" = "¡Bienvenido de nuevo!";
@@ -54,7 +57,9 @@
 "validacion-clase-edad" = "El usuario debe ser mayor de 18 para registrarse";
 
 /* Cambiar contraseña */
+"cambiar-password-titulo" = "Cambiar Contraseña";
 "cambiar-password" = "Introduce tu correo electrónico";
+"cambiar-password-aceptado" = "Petición de cambio de contraseña aceptado. Se te ha enviado un correo para cambiarla";
 
 /* Menu desplegable */
 "menuDesplegable-perfil" = "Perfil";
@@ -82,3 +87,8 @@
 "eliminarCuenta-inicio" = "Para eliminar tu cuenta antes tienes que reautentificarte. Al eliminar tu cuenta se borrara todas tus publicaciones e información personal";
 "eliminarCuenta-boton-eliminar" = "ELIMINAR CUENTA";
 "eliminarCuenta-boton-autentificarte" = "Autentificarte";
+
+/* Reautentificacion */
+"reautentificacion-password" = "Introduce tu contraseña";
+"reautentificacion-terminar" = "Terminar";
+"reautentificacion-cancelar" = "Cancelar";
