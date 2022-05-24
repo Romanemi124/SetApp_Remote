@@ -21,7 +21,7 @@ struct MenuDeslizanteFilaElementoView: View {
                 .foregroundColor(.white)
             
             //Mostramos las opciones de navegación
-            Text(vistaModelo.titulo)
+            Text(LocalizedStringKey(vistaModelo.titulo))
                 .foregroundColor(.white)
                 .font(.subheadline)
             

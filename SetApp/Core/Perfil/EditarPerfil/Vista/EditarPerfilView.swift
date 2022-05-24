@@ -75,10 +75,10 @@ struct EditarPerfilView: View {
                 EstablecerFondoPrincipal()
                 
                 VStack {
-                    
+                  
                     //Título
                     /*------------------------------------*/
-                    Text("Editar Perfil")
+                    Text("editar-titulo")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .padding(10)
@@ -121,17 +121,14 @@ struct EditarPerfilView: View {
                         //Nombre completo
                         VStack(alignment: .leading) {
                             
-                            CamposEntrada(placeholder: "Modificar nombre completo ", text: self.$nombreCompleto)
-                            
-                            //Validación
-                            if !nombreCompleto.isEmpty {
-                                Text(validacionEditarPerfil.validarTextoNombreCompleto(nombreCompleto2: nombreCompleto)).font(.caption).foregroundColor(.red).padding(.horizontal,40)
-                            }
+                            CamposEntrada(placeholder: "editar-nombreCompleto", text: self.$nombreCompleto)
+                            //Validacion de errores
+                            ValidacionError(textStart: nombreCompleto, textError: validacionEditarPerfil.validarTextoNombreCompleto(nombreCompleto2: nombreCompleto))
                         }
                         
                         //Nombre de usuario
                         VStack(alignment: .leading){
-                            CamposEntradaMostrar(placeholder: "Nombre de usuario:", text: estadoUsuario.usuario.nombreUsuario, paddingLeading: -170, paddingHorizontal: 170)
+                            CamposEntradaMostrar(placeholder: "editar-nombreUsuario", text: estadoUsuario.usuario.nombreUsuario, paddingLeading: -170, paddingHorizontal: 170)
                         }
                     }
                     
@@ -151,20 +148,35 @@ struct EditarPerfilView: View {
                         //Sexo
                         VStack(alignment: .leading) {
                             HStack(spacing:180){
-                                Text("Modificar sexo usuario:").foregroundColor(Color.white)
+                                Text("editar-sexo-elegir").foregroundColor(Color.white)
                                 Picker("", selection: $seleccionarSexo, content: {
                                     ForEach(0..<sexoOrden.count, content: { index in
-                                        Text(sexoOrden[index])
+                                        
+                                        //Evaluamos las opciones del sexo y mostramos el sexo elegido con LocalizedStringKey para luego su posible traducción
+                                        if sexoOrden[index] == "Hombre"{
+                                            
+                                            Text(LocalizedStringKey("registrarCuenta-sexo_hombre"))
+                                            
+                                        }else if(sexoOrden[index] == "Mujer"){
+                                            
+                                            Text(LocalizedStringKey("registrarCuenta-sexo_mujer"))
+                                            
+                                        }else if(sexoOrden[index] == "Otro"){
+                                            
+                                            Text(LocalizedStringKey("registrarCuenta-sexo_otro"))
+                                        }
+                                        
                                     })
                                 }) .padding(.leading,-100)
                             }
-                        }
+                        }.padding(.horizontal,40)
+                       
                         
                         //Fecha de nacimiento
                         VStack(alignment: .leading){
                             
                             HStack{
-                                Text("Modificar edad usuario:").foregroundColor(.white)
+                                Text("editar-edad-elegir").foregroundColor(.white)
                                 //Edad
                                 DatePicker(selection: self.$fechaNacimiento, displayedComponents: .date){
                                 }
@@ -176,7 +188,7 @@ struct EditarPerfilView: View {
                             //Texto que muestra los errores
                             Text(validacionEditarPerfil.validarTextoFechaNacimiento(fechaNacimiento2: fechaNacimiento)).font(.caption).foregroundColor(.red)
                             
-                        }.padding(.horizontal,40)
+                        }.padding(.horizontal,70)
                     }
                     
                     /* Botón de registrarse */
@@ -198,8 +210,11 @@ struct EditarPerfilView: View {
                                     //Mostramos el error
                                     self.showError = true
                                 case .success( _):
+                                    
                                     print("modificarUsuario con imagen")
                                     //Vista de cargar, para que se cargue los datos actualizados
+                                    //Cambiamos el valor de la variable para que vuelva a la anterior vista
+                                    presentationMode.wrappedValue.dismiss()
                                 }
                             }
                             
@@ -216,13 +231,15 @@ struct EditarPerfilView: View {
                                 case .success( _):
                                     print("modificarUsuario sin imagen")
                                     //Vista de cargar, para que se cargue los datos actualizados
+                                    //Cambiamos el valor de la variable para que vuelva a la anterior vista
+                                    presentationMode.wrappedValue.dismiss()
                                 }
                             }
                             
                         }
                         
                     }) {
-                        PrimaryButton(title: "Editar Perfil")
+                        PrimaryButton(title: "editar-boton")
                         //La opacidad se modifica según la validación de los campos
                             .opacity(validacionEditarPerfil.actualizarPerfil(nombreCompleto2: nombreCompleto, fechaNacimiento2: fechaNacimiento) ? 1 : 0.50)
                     }
@@ -250,8 +267,8 @@ struct EditarPerfilView: View {
                 
             }.actionSheet(isPresented: $showingActionSheet){
                 //Menu elegir la foto de perfil
-                ActionSheet(title: Text("Notificación"),
-                            buttons: [.default(Text("Seleccionar Imagen")){
+                ActionSheet(title: Text(LocalizedStringKey("registrarCuenta-notificacion")),
+                            buttons: [.default(Text(LocalizedStringKey("registrarCuenta-notificacion-camara"))){
                     self.sourceType = .photoLibrary
                     self.showingImagePicker = true
                 },.cancel()])

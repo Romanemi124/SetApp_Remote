@@ -54,7 +54,7 @@ struct CambiarPasswordView: View {
                     
                     VStack {
                         
-                        TextField("Introduce tu correo electrónico", text: $usuarioValidacion.email).autocapitalization(.none).keyboardType(.emailAddress)
+                        TextField("cambiar-password", text: $usuarioValidacion.email).autocapitalization(.none).keyboardType(.emailAddress)
                         
                         Button(action: {
                             

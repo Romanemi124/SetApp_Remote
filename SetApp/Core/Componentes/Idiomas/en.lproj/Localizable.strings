@@ -43,7 +43,6 @@
 "registrarCuenta-ya-cuenta" = "Do you already have an account?";
 "registrarCuenta-link-iniciarSesion" = "Login here";
 "registrarCuenta-error" = "Failed to create account";
-
 //Validación Clase
 "validacion-clase-foto" = "You must choose a profile picture";
 "validacion-clase-nombreCompleto" = "Wrong full name format";
@@ -52,5 +51,26 @@
 "validacion-clase-password" = "Format error. It must have between 6 to 20 characters, accepted characters are: uppercase and lowercase letters, digits and only these special characters !@#$&*";
 "validacion-clase-password-coincidencia" = "Passwords do not match";
 "validacion-clase-edad" = "User must be over 18 to register";
+
+/* Cambiar contraseña */
+"cambiar-password" = "Introduce your email address";
+
+/* Menu desplegable */
+"menuDesplegable-perfil" = "Profile";
+"menuDesplegable-categorias" = "Categories";
+"menuDesplegable-cerrarSesion" = "Log out";
+
+/* Perfil */
+"perfil-editar" = "Edit";
+"perfil-ajustes" = "Settings";
+
+/* Editar Perfil */
+"editar-titulo" = "Edit Profile";
+"editar-nombreCompleto" = "Change full name:";
+"editar-nombreUsuario" = "Username:";
+"editar-sexo-elegir" = "Change sex:";
+"editar-edad-elegir" = "Change age:";
+"editar-boton" = "Modify";
+
 
 

@@ -44,7 +44,6 @@
 "registrarCuenta-ya-cuenta" = "¿Ya tienes cuenta?";
 "registrarCuenta-link-iniciarSesion" = "Inicia Sesión aquí";
 "registrarCuenta-error" = "Error al crear cuenta";
-
 //Validación Clase
 "validacion-clase-foto" = "Debes elegir una foto de perfil";
 "validacion-clase-nombreCompleto" = "Formato de nombre completo incorrecto";
@@ -53,3 +52,23 @@
 "validacion-clase-password" = "Error formato. Debe tener entre 6 a 20 caracteres, caracteres aceptados son: letras mayuscula y minúscula, dígitos y solo estos carcteres espciales !@#$&*";
 "validacion-clase-password-coincidencia" = "Las contraseñas no coinciden";
 "validacion-clase-edad" = "El usuario debe ser mayor de 18 para registrarse";
+
+/* Cambiar contraseña */
+"cambiar-password" = "Introduce tu correo electrónico";
+
+/* Menu desplegable */
+"menuDesplegable-perfil" = "Perfil";
+"menuDesplegable-categorias" = "Categorías";
+"menuDesplegable-cerrarSesion" = "Cerrar sesión";
+
+/* Perfil */
+"perfil-editar" = "Editar";
+"perfil-ajustes" = "Ajustes";
+
+/* Editar Perfil */
+"editar-titulo" = "Editar Perfil";
+"editar-nombreCompleto" = "Modificar nombre completo";
+"editar-nombreUsuario" = "Nombre de usuario:";
+"editar-sexo-elegir" = "Modificar sexo:";
+"editar-edad-elegir" = "Modificar edad:";
+"editar-boton" = "Cambiar";

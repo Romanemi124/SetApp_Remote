@@ -18,10 +18,11 @@ enum MenuDeslizanteModeloView: Int, CaseIterable{
     
     //Título de las acciones disponibles
     var titulo: String{
+        //Añdimos que devuelva el nombre de las claves de LocalizedStringKey, posteriormente se hará el tratamiento para mostrar su valor
         switch self{
-        case .perfil: return  "Perfil"
-        case .categorias: return  "Categorias"
-        case .logout: return "Cerrar sesión"
+        case .perfil: return  "menuDesplegable-perfil"
+        case .categorias: return  "menuDesplegable-categorias"
+        case .logout: return "menuDesplegable-cerrarSesion"
         }
     }
     

@@ -43,7 +43,6 @@ struct PerfilView: View {
                         //PerfilHeader(usuario: usuarioSesion.usuario, postCount: informacionPerfil.posts.count, seguidos: $informacionPerfil.seguidos, seguidores: $informacionPerfil.seguidores)
                         headerPerfil
                         
-                        
                         //Editar y Eliminar Cuenta
                         HStack{
                             
@@ -55,7 +54,7 @@ struct PerfilView: View {
                                     EditarPerfilView(user: self.usuarioSesion.usuario)
                                     
                                 }label: {
-                                    Text("Editar").foregroundColor(.white)
+                                    Text("perfil-editar").foregroundColor(.white)
                                 }
                                 
                             }
@@ -80,7 +79,7 @@ struct PerfilView: View {
                                     AjustePerfilView()
                                     
                                 }label: {
-                                    Text("Ajustes").foregroundColor(.white)
+                                    Text("perfil-ajustes").foregroundColor(.white)
                                 }
                                 
                             }
