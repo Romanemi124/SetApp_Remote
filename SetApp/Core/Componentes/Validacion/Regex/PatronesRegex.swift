@@ -25,7 +25,7 @@ enum PatronesRegex {
     //Longitud mínima y máxima
     static let nombreUsuarioLongitud = "^.{8,25}"
     //--- Comprobar que el nombre de usuario es correcto,gracias a esto comprobamos que el usuario cumpla con la validación
-    static let comprobarNombreUsuario = "^[A-Za-z][A-Za-z0-9_]{7,25}$"
+    static let comprobarNombreUsuario = "^[A-Za-z][A-Za-z0-9_]{3,12}$"
     
     /* Email */
     //Necesario añdir ese caracter al email
@@ -50,6 +50,6 @@ enum PatronesRegex {
     // Longitud de la contraseña 9
     static let soloNueveCaracteres = "^.{9,}"
     //---- Comprobación contraseña entera
-    static let comprobarPassword = "^[A-Za-z0-9!@#$&*]{9}$"
+    static let comprobarPassword = "^[A-Za-z0-9!@#$&*]{5,21}$"
    
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  Localizable.strings
  SetApp
  
@@ -6,11 +6,51 @@
  
  Aquí haremos la traducción de los textos
  */
-"form-name-key" = "Name";
-//Con el porcentaje indicamos que se pasa un parametro dinámico
-"form-phone-user %@" = "User Phone %@ Mobile";
 
-//Conexión a Internet
+/* Conexión a Internet */
 "conexion-internet-fallida" = "It looks like you're not connected to the internet. Make sure WiFi is enabled and try again";
+
+/* Iniciar Sesión */
+"iniciarSesion-titulo" = "Welcome back!";
+"iniciarSesion-campo-password" = "Password";
+"iniciarSesion-olvido-password" = "Have you forgotten the password?";
+"iniciarSesion" = "Sign in";
+"iniciarSesion-no-cuenta" = "Don´t you have an account?";
+"iniciarSesion-link-registrar" = "Sign up here";
+"iniciarSesion-error-notificacion" = "Login Failed";
+"iniciarSesion-error-desconocido" = "Unknown Error";
+//Fallos inicio de sesión
+"iniciarSesion-password-incorrecta" = "The entered password is incorrect";
+"iniciarSesion-email-incorrecto" = "Enter a valid email address";
+"iniciarSesion-email-no-existe" = "The email address entered does not match any account";
+"iniciarSesion-error-desconocido-validacion" = "Unknown error. Unable to login, please contact customer service";
+
+/* Registrar cuenta */
+//Vista
+"registrarCuenta-nombreCompleto" = "Full Name";
+"registrarCuenta-nombreUsuario" = "Username";
+"registrarCuenta-password" = "Password";
+"registrarCuenta-edad" = "Enter your age:";
+"registrarCuenta-sexo_elegir" = "Select your sex:";
+"registrarCuenta-sexo_hombre" = "Man";
+"registrarCuenta-sexo_mujer" = "Women";
+"registrarCuenta-sexo_otro" = "Other";
+"registrarCuenta-foto" = "Select image";
+"registrarCuenta-notificacion" = "Select an option";
+"registrarCuenta-notificacion-galeria" = "Gallery";
+"registrarCuenta-notificacion-camara" = "Camera";
+"registrarCuenta" = "Sign Up";
+"registrarCuenta-ya-cuenta" = "Do you already have an account?";
+"registrarCuenta-link-iniciarSesion" = "Login here";
+"registrarCuenta-error" = "Failed to create account";
+
+//Validación Clase
+"validacion-clase-foto" = "You must choose a profile picture";
+"validacion-clase-nombreCompleto" = "Wrong full name format";
+"validacion-clase-nombreUsuario" = "Wrong username format. It must have between 4 to 13 characters, if a number is entered it must be preceded by a letter";
+"validacion-clase-email" = "Wrong email address format";
+"validacion-clase-password" = "Format error. It must have between 6 to 20 characters, accepted characters are: uppercase and lowercase letters, digits and only these special characters !@#$&*";
+"validacion-clase-password-coincidencia" = "Passwords do not match";
+"validacion-clase-edad" = "User must be over 18 to register";
 
 

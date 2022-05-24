@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+
 struct CamposEntrada: View {
     
     //Los datos rellenados
     let placeholder: String
-    //Para evaluar si el campo elegido 
+    //Para evaluar si el campo elegido
     var isSecureField: Bool? = false
     //Nombre del dato que queremos que rellene
     @Binding var text: String
@@ -22,22 +23,23 @@ struct CamposEntrada: View {
         //Todo se coloca a la derecha de la pantalla
         ZStack (alignment: .leading) {
             
-            Text(placeholder)
+            //LocalizedStringKey identificar la palabra clave para las traducciones
+            Text(LocalizedStringKey(placeholder))
                 .foregroundColor(.white)
                 .offset(y: text.isEmpty ? 0 : -25)
                 .scaleEffect(text.isEmpty ? 1 : 0.9, anchor: .leading)
-                
+            
             //Nos mostrará diferentes campos de entrada de texto dependiendo del campo
             if isSecureField ?? false{
                 
                 //Contraseña
-                SecureField(placeholder, text: $text)
-                    .foregroundColor(.white)
+                SecureField(LocalizedStringKey(placeholder), text: $text)
+                    .foregroundColor(.white).keyboardType(.default)
                 
             }else{
                 
                 //Email
-                TextField(placeholder, text: $text)
+                TextField(LocalizedStringKey(placeholder), text: $text)
                     .foregroundColor(.white)
                 
             }
@@ -50,7 +52,7 @@ struct CamposEntrada: View {
         //Recuadro que enmarca el texto
         .background(
             RoundedRectangle(cornerRadius: 10)
-                //Quitar el fondo del rectángulo con la opacidad del color
+            //Quitar el fondo del rectángulo con la opacidad del color
                 .stroke(text.isEmpty ? .white : .white, lineWidth: 2)
         )
         //Separación de los laterales de la vista
@@ -58,7 +60,7 @@ struct CamposEntrada: View {
         .padding(35)
         //Para que sólo se mueva uno
         .frame(height: 70)
-    
+        
     }
 }
 
@@ -86,14 +88,15 @@ struct CamposEntradaMostrar: View {
         //Todo se coloca a la derecha de la pantalla
         ZStack (alignment: .leading) {
             
-            Text(placeholder)
+            //LocalizedStringKey(placeholder)
+            Text(LocalizedStringKey(placeholder))
                 .foregroundColor(.white)
                 .offset(y: text.isEmpty ? 0 : -25)
                 .scaleEffect(text.isEmpty ? 1 : 0.9, anchor: .leading).padding(.leading, paddingLeading).padding(.horizontal,paddingHorizontal)
-
+            
             //Email
-            Text(text).foregroundColor(.white)
-                
+            Text(LocalizedStringKey(text)).foregroundColor(.white)
+            
             
         }
         .padding(.top, self.text.isEmpty ? 0 : 18)
@@ -103,7 +106,7 @@ struct CamposEntradaMostrar: View {
         //Recuadro que enmarca el texto
         .background(
             RoundedRectangle(cornerRadius: 10)
-                //Quitar el fondo del rectángulo con la opacidad del color
+            //Quitar el fondo del rectángulo con la opacidad del color
                 .stroke(text.isEmpty ? .white : .white, lineWidth: 2)
         )
         //Separación de los laterales de la vista
@@ -111,13 +114,36 @@ struct CamposEntradaMostrar: View {
         .padding(35)
         //Para que sólo se mueva uno
         .frame(height: 70)
-    
+        
     }
 }
 
 struct CamposEntradaMostrar_Previews: PreviewProvider {
     static var previews: some View {
         CamposEntradaMostrar(placeholder: "email", text: "algo", paddingLeading: 1, paddingHorizontal: 2)
+    }
+}
+
+/* Solo mostrar no modificar datos en le campo */
+struct ValidacionError: View {
+    
+    //Validador que no mostrar al principio
+    let textStart:String
+    //Tipo de error
+    let textError: String
+    
+    var body: some View{
+        //Validación al pincipio empty
+        if !textStart.isEmpty {
+            //Mostrar error validación
+            Text(LocalizedStringKey(textError)).font(.caption).foregroundColor(.red).padding(.horizontal,40)
+        }
+    }
+}
+
+struct ValidacionError_Previews: PreviewProvider {
+    static var previews: some View {
+        ValidacionError(textStart: "textStart", textError: "textError")
     }
 }
 

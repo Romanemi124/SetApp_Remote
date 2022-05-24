@@ -14,14 +14,14 @@ struct CabeceraAutentificacionView: View {
     
     var body: some View {
         
-        Text(titulo1)
+        Text(LocalizedStringKey(titulo1))
             .font(.largeTitle)
             .foregroundColor(.white)
             .padding(10)
             .frame(maxWidth: .infinity, alignment: .leading)
             .offset(x: 35)
         
-        Text(titulo2)
+        Text(LocalizedStringKey(titulo2))
             .font(.title2)
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .leading)

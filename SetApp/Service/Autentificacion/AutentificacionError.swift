@@ -52,6 +52,7 @@ enum ErroresString{
     enum ErroresRegistrar{
         static let existeEmail = "The email address is already in use by another account."
         static let existeEmailTraduccion =  "La dirección de correo electrónico introducida ya existe"
+        static let existeNombreUsuario = "El nombre de usuario introducido ya existe, añade otro"
     }
     enum ErroresCambiarContraseña{
         static let noExisteUsuario = "There is no user record corresponding to this identifier. The user may have been deleted."
@@ -62,5 +63,4 @@ enum ErroresString{
         static let passwordIncorrectaTraduccion = "La contraseña no es válida o el usuario no tiene contraseña."
     }
 }
-
 

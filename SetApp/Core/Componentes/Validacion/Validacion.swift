@@ -145,7 +145,7 @@ struct Validacion {
         if estaValidaFotoPerfil(_fotoPerfil: fotoPerfil){
             return ""
         }else{
-            return "Debes elegir una foto de perfil"
+            return "validacion-clase-foto"
         }
     }
     
@@ -158,7 +158,7 @@ struct Validacion {
             return ""
             
         } else {
-            return "Formato de nombre completo incorrecto"
+            return "validacion-clase-nombreCompleto"
         }
         
     }
@@ -168,7 +168,7 @@ struct Validacion {
         if estaValidoNombreUsuario(_nombreUsuario: nombreUsuario){
             return ""
         } else {
-            return "Formato de nombre de usuario incorrecto. Debe tener 8 caracteres, 1º caracter una letra, después acepta cualquier letra y números "
+            return "validacion-clase-nombreUsuario"
         }
         
     }
@@ -179,7 +179,7 @@ struct Validacion {
         if  estaValidaEdad(_Edad: fechaNacimiento){
             return ""
         } else {
-            return "El usuario debe ser mayor de 18 para registrarse"
+            return "validacion-clase-edad"
             
         }
     }
@@ -189,7 +189,7 @@ struct Validacion {
         if estaValidoEmail(_email: email) {
             return ""
         } else {
-            return "Formato dirección de correo electrónico incorrecto"
+            return "validacion-clase-email"
         }
     }
     
@@ -198,8 +198,7 @@ struct Validacion {
         if estaValidoPassword(_password: password) {
             return ""
         } else {
-            //Must be 8 characters containing at least one number and one Capital letter.
-            return "La contraseña debe tener 8 caracteres, 1 letra mayuscula y minúscula, 3 dígitos y 1 caracter especial ej:!@#$&*."
+            return "validacion-clase-password"
         }
     }
     
@@ -208,7 +207,7 @@ struct Validacion {
         if passwordsCoinciden(_coincidenPw: confirmarPassword) {
             return ""
         } else {
-            return "Las contraseñas no coinciden"
+            return "validacion-clase-password-coincidencia"
         }
     }
 }
@@ -266,7 +265,7 @@ class ValidacionEditarPerfil {
         if estaValidoNombreCompleto(nombreCompleto: nombreCompleto2) && nombreCompleto2.count <= 50{
             return ""
         } else {
-            return "Formato de nombre completo incorrecto"
+            return "validacion-clase-nombreCompleto"
         }
     }
 
@@ -276,7 +275,7 @@ class ValidacionEditarPerfil {
         if  estaValidaEdad(fechaNacimiento: fechaNacimiento2){
             return ""
         } else {
-            return "El usuario debe ser mayor de 18 para registrarse"
+            return "validacion-clase-edad"
             
         }
     }

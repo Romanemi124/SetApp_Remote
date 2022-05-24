@@ -1,4 +1,4 @@
-/* 
+/*
  Localizable.strings
  SetApp
  
@@ -7,10 +7,49 @@
  Aquí haremos la traducción de los textos
  */
 
-/* Para las cambiar de idioma según el país deben ser las mismas Keys lo único que cambian son su traducción */
-"form-name-key" = "Nombre";
-//Con el porcentaje indicamos que se pasa un parametro dinámico
-"form-phone-user %@" = "Télefono del User %@";
-
-//Conexión a Internet fallida
+/* Conexión a Internet */
 "conexion-internet-fallida" = "Parece que no estás conectado a Internet. Asegúrate de que WiFi esté habilitado e inténtalo de nuevo";
+
+/* Iniciar Sesión */
+//Vista
+"iniciarSesion-titulo" = "¡Bienvenido de nuevo!";
+"iniciarSesion-campo-password" = "Contraseña";
+"iniciarSesion-olvido-password" = "¿Has olvidado la contraseña?";
+"iniciarSesion" = "Iniciar Sesión";
+"iniciarSesion-no-cuenta" = "¿No tienes cuenta?";
+"iniciarSesion-link-registrar" = "Registrate aquí";
+"iniciarSesion-error-notificacion" = "Error inicio de sesión";
+"iniciarSesion-error-desconocido" = "Error desconocido";
+//Fallos inicio de sesión
+"iniciarSesion-password-incorrecta" = "La contraseña introducida es incorrecta";
+"iniciarSesion-email-incorrecto" = "Introduce una dirección de email válida";
+"iniciarSesion-email-no-existe" = "La dirección de email introducida no coincide con ninguna cuenta";
+"iniciarSesion-error-desconocido-validacion" = "Error desconocido. No es posible iniciar sesión, por favor contacta con servicio al cliente";
+
+/* Registrar cuenta */
+//Vista
+"registrarCuenta-nombreCompleto" = "Nombre completo";
+"registrarCuenta-nombreUsuario" = "Nombre de usuario";
+"registrarCuenta-password" = "Contraseña";
+"registrarCuenta-edad" = "Introduce tu edad:";
+"registrarCuenta-sexo_elegir" = "Seleccionar tu sexo:";
+"registrarCuenta-sexo_hombre" = "Hombre";
+"registrarCuenta-sexo_mujer" = "Mujer";
+"registrarCuenta-sexo_otro" = "Otro";
+"registrarCuenta-foto" = "Seleccionar Imagen";
+"registrarCuenta-notificacion" = "Selecciona una opción";
+"registrarCuenta-notificacion-galeria" = "Galería";
+"registrarCuenta-notificacion-camara" = "Cámara";
+"registrarCuenta" = "Registrarse";
+"registrarCuenta-ya-cuenta" = "¿Ya tienes cuenta?";
+"registrarCuenta-link-iniciarSesion" = "Inicia Sesión aquí";
+"registrarCuenta-error" = "Error al crear cuenta";
+
+//Validación Clase
+"validacion-clase-foto" = "Debes elegir una foto de perfil";
+"validacion-clase-nombreCompleto" = "Formato de nombre completo incorrecto";
+"validacion-clase-nombreUsuario" = "Formato de nombre de usuario incorrecto. Debe tener entre 4 a 13 caracteres, si se introuduce un número debe ir precedido de una letra";
+"validacion-clase-email" = "Formato dirección de correo electrónico incorrecto";
+"validacion-clase-password" = "Error formato. Debe tener entre 6 a 20 caracteres, caracteres aceptados son: letras mayuscula y minúscula, dígitos y solo estos carcteres espciales !@#$&*";
+"validacion-clase-password-coincidencia" = "Las contraseñas no coinciden";
+"validacion-clase-edad" = "El usuario debe ser mayor de 18 para registrarse";

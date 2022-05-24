@@ -23,7 +23,7 @@ struct PrimaryButton: View {
     var title: String
     
     var body: some View {
-        Text(title)
+        Text(LocalizedStringKey(title))
             .fontWeight(.bold)
             .foregroundColor(.white)
             .frame(maxWidth: 280)

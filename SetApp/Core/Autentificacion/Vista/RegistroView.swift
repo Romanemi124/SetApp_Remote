@@ -91,7 +91,7 @@ struct RegistroView: View {
                                     }
                             }
                             //Errores imagen foto de perfil
-                            Text(usuarioValidacion.validaFotoPerfil).font(.caption).foregroundColor(.red).padding(.horizontal,40)
+                            Text(LocalizedStringKey(usuarioValidacion.validaFotoPerfil)).font(.caption).foregroundColor(.red).padding(.horizontal,40)
                             
                         }.padding(.bottom, 10)
                         
@@ -102,22 +102,17 @@ struct RegistroView: View {
                             //Nombre completo
                             VStack(alignment: .leading) {
                                 
-                                CamposEntrada(placeholder: "Nombre completo", isSecureField: false, text: self.$usuarioValidacion.nombreCompleto)
-                                
-                                //Validación
-                                if !usuarioValidacion.nombreCompleto.isEmpty {
-                                    Text(usuarioValidacion.validoTextoNombreCompleto).font(.caption).foregroundColor(.red).padding(.horizontal,40)
-                                }
+                                CamposEntrada(placeholder: "registrarCuenta-nombreCompleto", isSecureField: false, text: self.$usuarioValidacion.nombreCompleto)
+                                //Validacion de errores
+                                ValidacionError(textStart: usuarioValidacion.nombreCompleto, textError: usuarioValidacion.validoTextoNombreCompleto)
                             }
                             
                             //Nombre de usuario
                             VStack(alignment: .leading) {
                                 
-                                CamposEntrada(placeholder: "Nombre de usuario", isSecureField: false, text: self.$usuarioValidacion.nombreUsuario)
-                                
-                                if !usuarioValidacion.nombreUsuario.isEmpty {
-                                    Text(usuarioValidacion.validoTextoNombreUsuario).font(.caption).foregroundColor(.red).padding(.horizontal,40)
-                                }
+                                CamposEntrada(placeholder: "registrarCuenta-nombreUsuario", isSecureField: false, text: self.$usuarioValidacion.nombreUsuario)
+                                //Validacion de errores
+                                ValidacionError(textStart: usuarioValidacion.nombreUsuario, textError: usuarioValidacion.validoTextoNombreUsuario)
                             }
                         }
                         
@@ -128,20 +123,16 @@ struct RegistroView: View {
                             VStack(alignment: .leading) {
                                 
                                 CamposEntrada(placeholder: "Email", isSecureField: false, text: self.$usuarioValidacion.email)
-                                
-                                if !usuarioValidacion.email.isEmpty {
-                                    Text(usuarioValidacion.validoTextoEmail).font(.caption).foregroundColor(.red).padding(.horizontal,40)
-                                }
+                                //Validacion de errores
+                                ValidacionError(textStart: usuarioValidacion.email, textError: usuarioValidacion.validoTextoEmail)
                                 
                             }
                             //Contraseña
                             VStack(alignment: .leading) {
                                 
-                                CamposEntrada(placeholder: "Contraseña", isSecureField: true, text: self.$usuarioValidacion.password)
-                                
-                                if !usuarioValidacion.password.isEmpty {
-                                    Text(usuarioValidacion.validoTextoPassword).font(.caption).foregroundColor(.red).padding(.horizontal,40)
-                                }
+                                CamposEntrada(placeholder: "registrarCuenta-password", isSecureField: true, text: self.$usuarioValidacion.password)
+                                //Validacion de errores
+                                ValidacionError(textStart: usuarioValidacion.password, textError: usuarioValidacion.validoTextoPassword)
                                 
                             }
                             //Confirmar Contraseña
@@ -150,7 +141,7 @@ struct RegistroView: View {
                                 CamposEntrada(placeholder: "Confirmar contraseña", isSecureField: true, text: self.$usuarioValidacion.confirmarPassword)
                                 
                                 if !usuarioValidacion.passwordsCoinciden(_coincidenPw: usuarioValidacion.confirmarPassword) {
-                                    Text(usuarioValidacion.validoTextoConfirmarPassword).font(.caption).foregroundColor(.red).padding(.horizontal,40)
+                                    Text(LocalizedStringKey(usuarioValidacion.validoTextoConfirmarPassword)).font(.caption).foregroundColor(.red).padding(.horizontal,40)
                                 }
                             }
                         }
@@ -163,12 +154,24 @@ struct RegistroView: View {
                                 
                                 HStack(spacing:160){
                                     
-                                    Text("Seleccionar tu sexo:").foregroundColor(Color.white)
+                                    Text(LocalizedStringKey("registrarCuenta-sexo_elegir")).foregroundColor(Color.white)
                                     
                                     //Elegir el sexo
                                     Picker(selection: $elegirSexo, label: Text("")) {
                                         ForEach(Sexo.allCases, id: \.self) { sexo in
-                                            Text(sexo.sexo)
+                                            //Evaluamos las opciones del sexo y mostramos el sexo elegido con LocalizedStringKey para luego su posible traducción
+                                            if sexo.sexo == "Hombre"{
+                                                
+                                                Text(LocalizedStringKey("registrarCuenta-sexo_hombre"))
+                                                
+                                            }else if(sexo.sexo == "Mujer"){
+                                                
+                                                Text(LocalizedStringKey("registrarCuenta-sexo_mujer"))
+                                                
+                                            }else if(sexo.sexo == "Otro"){
+                                                
+                                                Text(LocalizedStringKey("registrarCuenta-sexo_otro"))
+                                            }
                                         }
                                     }.labelsHidden()
                                         .padding(.leading,-100)
@@ -178,7 +181,7 @@ struct RegistroView: View {
                             VStack(alignment: .leading){
                                 
                                 HStack{
-                                    Text("Introduce tu edad:").foregroundColor(.white)
+                                    Text("registrarCuenta-edad").foregroundColor(.white)
                                     
                                     //Edad
                                     DatePicker(selection: self.$usuarioValidacion.fechaNacimiento, displayedComponents: .date){
@@ -189,7 +192,7 @@ struct RegistroView: View {
                                     .colorMultiply(Color.blue)
                                 }
                                 //Texto que muestra los errores
-                                Text(usuarioValidacion.validaEdad).font(.caption).foregroundColor(.red)
+                                Text(LocalizedStringKey(usuarioValidacion.validaEdad)).font(.caption).foregroundColor(.red)
                                 
                             }.padding(.horizontal,50)
                         }
@@ -212,7 +215,7 @@ struct RegistroView: View {
                                     
                                     //En caso de que se no lo haya encontrado
                                 case .success(true):
-                                    self.errorString = "El nombre de usuario introducido ya existe, añade otro"
+                                    self.errorString = ErroresString.ErroresRegistrar.existeNombreUsuario
                                     //Mostramos el error
                                     self.showError = true
                                     
@@ -232,8 +235,8 @@ struct RegistroView: View {
                                             //Elegimos el texto de error a mostrar, controlamos el tipo de error
                                             switch error.localizedDescription{
                                                 //En caso que el ya exista el email introducido
-                                            case  "The email address is already in use by another account.":
-                                                self.errorString = "La dirección de correo electrónico introducida ya existe"
+                                            case  ErroresString.ErroresRegistrar.existeEmail:
+                                                self.errorString = ErroresString.ErroresRegistrar.existeEmail
                                                 break
                                                 //Mostramos cualquier tipo de error sucedido
                                             default:
@@ -251,7 +254,7 @@ struct RegistroView: View {
                             }
                             
                         }) {
-                            PrimaryButton(title: "Registrarse")
+                            PrimaryButton(title: "registrarCuenta")
                             //La opacidad se modifica según la validación de los campos
                                 .opacity(usuarioValidacion.estaRegistrarseCompletado ? 1 : 0.50)
                         }
@@ -267,10 +270,10 @@ struct RegistroView: View {
                         }label: {
                             HStack {
                                 
-                                Text("¿Ya tienes cuenta?")
+                                Text(LocalizedStringKey("registrarCuenta-ya-cuenta"))
                                     .font(.footnote)
                                 
-                                Text("Inicia sesión aquí")
+                                Text(LocalizedStringKey("registrarCuenta-link-iniciarSesion"))
                                     .font(.footnote)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.blue)
@@ -288,7 +291,7 @@ struct RegistroView: View {
                     /*------------------------------------*/
                     .alert(isPresented: $showError) {
                         //El alert que se va mostrar
-                        Alert(title: Text("Error al crear cuenta"), message: Text(self.errorString), dismissButton: .default(Text("OK")))
+                        Alert(title: Text(LocalizedStringKey("registrarCuenta-error")), message: Text(self.errorString), dismissButton: .default(Text("OK")))
                     }
                     .navigationBarTitle("Registrar", displayMode: .inline)
                     
@@ -300,14 +303,14 @@ struct RegistroView: View {
                     //SeleccionarFoto(image: self.$pickedImage, isShown: self.$showingImagePicker, sourceType: self.sourceType)
                 }
                 .actionSheet(isPresented: $showingActionSheet) {
-                    ActionSheet(title: Text("Selecciona una opción"),
+                    ActionSheet(title: Text(LocalizedStringKey("registrarCuenta-notificacion")),
                                 buttons: [
-                                    .default(Text("Galería")) {
+                                    .default(Text(LocalizedStringKey("registrarCuenta-notificacion-galeria"))) {
                                         //vm.source = .library
                                         self.sourceType = .photoLibrary
                                         self.showingImagePicker = true
                                     },
-                                    .default(Text("Camera")) {
+                                    .default(Text(LocalizedStringKey("registrarCuenta-notificacion-camara"))) {
                                         //vm.source = .camera
                                         self.sourceType = .camera
                                         self.showingImagePicker = true

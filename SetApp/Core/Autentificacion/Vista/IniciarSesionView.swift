@@ -53,7 +53,7 @@ struct IniciarSesionView: View {
                     //Email y contraseña
                     /*------------------------------------*/
                     CamposEntrada(placeholder: "Email", isSecureField: false, text: self.$usuarioValidacion.email)
-                    CamposEntrada(placeholder: "Contraseña", isSecureField: true, text: $usuarioValidacion.password)
+                    CamposEntrada(placeholder: "iniciarSesion-campo-password", isSecureField: true, text: $usuarioValidacion.password)
                     
                     //Página olvido de contraseña
                     /*------------------------------------*/
@@ -64,7 +64,7 @@ struct IniciarSesionView: View {
                         NavigationLink{
                             CambiarPasswordView()
                         }label: {
-                            Text("¿Has olvidado la contraseña?")
+                            Text("iniciarSesion-olvido-password")
                                 .font(.caption)
                                 .fontWeight(.semibold)
                                 .padding(.top)
@@ -99,7 +99,7 @@ struct IniciarSesionView: View {
                         
                         
                     }) {
-                        PrimaryButton(title: "Iniciar Sesión")
+                        PrimaryButton(title: "iniciarSesion")
                         //La opacidad se modifica según la validación de los campos
                             .opacity(usuarioValidacion.estaIniciarSesionCompletado ? 1 : 0.50)
                         //Desabilitaremos el botón si la validación no es correcta
@@ -117,11 +117,11 @@ struct IniciarSesionView: View {
                     }label: {
                         
                         HStack {
-                            Text("¿No tienes cuenta?")
+                            Text("iniciarSesion-no-cuenta")
                                 .font(.footnote)
                                 .foregroundColor(.white)
                             
-                            Text("Registrate aquí")
+                            Text("iniciarSesion-link-registrar")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.blue)
@@ -134,7 +134,7 @@ struct IniciarSesionView: View {
                     /*------------------------------------*/
                     .alert(isPresented: $showAlert) {
                         /* self.authError?.localizedDescription ?? "Error desconocido" indicamos que nos muestre el error en el caso que no se encuentre entre los errores personalizados */
-                        Alert(title: Text("Error inicio de sesión"), message: Text(self.authError?.localizedDescription ?? "Error desconocido"), dismissButton: .default(Text("OK")) {
+                        Alert(title: Text("iniciarSesion-error-notificacion"), message: Text(self.authError?.localizedDescription ?? "iniciarSesion-error-desconocido"), dismissButton: .default(Text("OK")) {
                             //Si hay un error en la contraseña solo se borra el campo contraseña no el campo email introducido
                             if self.authError == .incorrectPassword {
                                 self.usuarioValidacion.password = ""
