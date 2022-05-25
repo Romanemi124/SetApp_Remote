@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - Signin in with email errors
-//Tipos de errores en el momento de la autentificación de los usuarios
+// MARK: - Errores de iniciar sesión con email
+//Tipos de errores en el momento de la autentificación de los usuarios con email
 /* Es obligatorio que implemente la clase Error para la gestión de los errores */
 enum EmailAutentificacionError: Error {
     
@@ -19,7 +19,7 @@ enum EmailAutentificacionError: Error {
     case couldNotCreate
     case extraDataNotCreated
 }
-
+//Identificamos el tipo de error
 extension EmailAutentificacionError: LocalizedError {
    
     var errorDescription: String? {

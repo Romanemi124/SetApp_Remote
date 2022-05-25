@@ -22,10 +22,11 @@ struct SubirImagen{
             
             //Mostramos los errores
             if let error = error{
-                print("Debug: Failerd to uplad with error: \(error.localizedDescription)")
+                print("Debug: Error al subir la imagen \(error.localizedDescription)")
                 return
             }
             
+            //Nos descargamos una url de la imagen para guardarla en el usuario
             storageProfileImageRef.downloadURL{ (url, error)in
                 
                 //Evaluamos si la imagen es una URL de tipo String, el caso que no lo sea sala de la función

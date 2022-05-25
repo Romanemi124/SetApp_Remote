@@ -162,7 +162,7 @@ struct CamposPost: View {
         //Todo se coloca a la derecha de la pantalla
         ZStack (alignment: .leading) {
             
-            Text(placeholder)
+            Text(LocalizedStringKey(placeholder))
                 .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
                 .offset(y: text.isEmpty ? 0 : -25)
                 .scaleEffect(text.isEmpty ? 1 : 0.9, anchor: .leading)
@@ -171,13 +171,13 @@ struct CamposPost: View {
             if isSecureField ?? false{
                 
                 //Contraseña
-                SecureField(placeholder, text: $text)
+                SecureField(LocalizedStringKey(placeholder), text: $text)
                     .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
                 
             }else{
                 
                 //Email
-                TextField(placeholder, text: $text)
+                TextField(LocalizedStringKey(placeholder), text: $text)
                     .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
                 
             }

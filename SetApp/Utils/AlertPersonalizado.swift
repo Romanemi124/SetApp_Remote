@@ -7,7 +7,7 @@
 
 import Foundation
 
-//Mostrar el tipo de alerts
+/* Seleccionar el tipo de alert a mostrar */
 enum TipoAlert{
     
     case sucess

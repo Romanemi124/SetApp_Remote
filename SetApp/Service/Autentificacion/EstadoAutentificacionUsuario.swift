@@ -13,11 +13,6 @@ import FirebaseAuth
 /* Esta clase sirve para indicar el estado de autentificación del usuario, si está o no registrado */
 class EstadoAutentificacionUsuario: ObservableObject {
     
-    /* Listado de los posibles casos de autentificación del usuario */
-    enum EstadoAutentificacion {
-        case indefinido, iniciarSesion, cerrarSesion
-    }
-    
     //Variable para acceder al estado de autentificación del usuario
     @Published var estaUsuarioAutentificado: EstadoAutentificacion = .indefinido
     //Guarda los datos del usuario autentificado
@@ -50,7 +45,7 @@ class EstadoAutentificacionUsuario: ObservableObject {
                 switch result {
                 //En el caso que haya algún error nos imprimirá por consola el tipo de error
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print("Debug Error: Error al obtener el usuario que ha iniciado sesión \(error.localizedDescription)")
                 //En el caso que no haya ningún error guardaremos el usuario obtenido de FireBase en la variable usuario, de está forma puesto que se trata el usuario de un objecto de entorno podremos obtener sus datos en las demás vistas
                 case .success(let user):
                     self.usuario = user
@@ -61,7 +56,6 @@ class EstadoAutentificacionUsuario: ObservableObject {
         
     }
     
-    
     //Para mostrar las publicaciones del usuario
     func loadUserPosts(userId: String) {
         
@@ -70,4 +64,9 @@ class EstadoAutentificacionUsuario: ObservableObject {
         }
     }
     
+}
+
+/* Listado de los posibles casos de autentificación del usuario */
+enum EstadoAutentificacion {
+    case indefinido, iniciarSesion, cerrarSesion
 }
