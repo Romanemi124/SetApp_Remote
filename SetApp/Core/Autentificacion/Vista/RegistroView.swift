@@ -64,7 +64,7 @@ struct RegistroView: View {
                         /*------------------------------------*/
                         VStack{
                             
-                            Text("Crear cuenta")
+                            Text("registrarCuenta-titulo")
                                 .font(.largeTitle)
                                 .foregroundColor(.white)
                                 .padding(10)

@@ -42,7 +42,7 @@ struct IniciarSesionView: View {
                     
                     //Título
                     /*------------------------------------*/
-                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "¡Bienvenido de nuevo!")
+                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "iniciarSesion-titulo")
                         .padding(.top, 20)
                     
                     Image("SetApp")
