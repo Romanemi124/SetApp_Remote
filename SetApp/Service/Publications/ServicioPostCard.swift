@@ -27,8 +27,6 @@ class ServicioPostCard: ObservableObject {
             .updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": true])
         
         ServicioPost.AllPosts.document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": true])
-        
-        ServicioPost.timelineUserId(userId: post.OwnerId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": true])
     }
     
     func unLike() {
@@ -39,49 +37,5 @@ class ServicioPostCard: ObservableObject {
             .updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": false])
         
         ServicioPost.AllPosts.document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": false])
-        
-        ServicioPost.timelineUserId(userId: post.OwnerId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": false])
     }
 }
-
-/*-------------------*/
-/*-------------------*/
-/*-------------------*/
-/*-------------------*/
-/*
-@Published var post: Post
-private let service = ServicioPost()
-
-init(post: Post) {
-    self.post = post
-    checkIfUserLikedPost()
-}
-
-func likePost() {
-    service.likePost(post) {
-        self.post.didLike = true
-        print("like")
-    }
-}
-
-func unlikePost() {
-    service.unlikePost(post) {
-        self.post.didLike = false
-        print("unlike")
-    }
-}
-
-func checkIfUserLikedPost() {
-    
-    service.checkIfUserLikedTweet(post) { didLike in
-        if didLike {
-            self.post.didLike = true
-            print("ha dado like")
-        }
-    }
-}
- */
-/*-------------------*/
-/*-------------------*/
-/*-------------------*/
-/*-------------------*/

@@ -123,8 +123,6 @@ class StorageService {
                                 return
                             }
                             
-                            ServicioPost.timelineUserId(userId: userId).collection("timeline").document(postId).setData(dict)
-                            
                             ServicioPost.AllPosts.document(postId).setData(dict)
                             onSuccess()
                         }

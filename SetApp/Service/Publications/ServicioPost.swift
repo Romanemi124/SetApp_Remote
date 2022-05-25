@@ -15,7 +15,6 @@ class ServicioPost: ObservableObject {
     
     static var Posts = StorageService.storeRoot.collection("posts")
     static var AllPosts = StorageService.storeRoot.collection("allPosts")
-    static var Timeline = StorageService.storeRoot.collection("timeline")
     
     //--Para el feed
     static var following = StorageService.storeRoot.collection("following")
@@ -31,11 +30,6 @@ class ServicioPost: ObservableObject {
     static func PostUserId(userId: String) -> DocumentReference {
         
         return Posts.document(userId)
-    }
-    
-    static func timelineUserId(userId: String) -> DocumentReference {
-        
-        return Timeline.document(userId)
     }
     
     static func uploadPost(imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String, link: String, puntosPositivos: String, puntosNegativos: String, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
