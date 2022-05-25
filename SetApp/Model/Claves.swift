@@ -7,7 +7,7 @@
 
 import Foundation
 
-/* Guardaremos los nombres y las rutas de las bases de datos de firebase. También los atributos del usuario*/
+/* Guardaremos los nombres de las colecciones de la bases de datos de firebase. También los atributos del usuario */
 enum Claves {
     
     //El nombre de la colección en firebase

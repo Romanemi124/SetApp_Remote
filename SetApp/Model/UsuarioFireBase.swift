@@ -20,6 +20,7 @@ struct UsuarioFireBase: Identifiable, Decodable {
     let fechaNacimiento: String
     let urlImagenPerfil: String
     
+    //Inicializamos el objecto usuario con estos atributos
     init(id: String, nombreCompleto: String, nombreUsuario: String, email: String, sexo: String, fechaNacimiento: String, urlImagenPerfil: String) {
         self.id = id
         self.nombreCompleto = nombreCompleto
@@ -32,9 +33,12 @@ struct UsuarioFireBase: Identifiable, Decodable {
     
 }
 
+/* Las extensiones permiten agregar métodos y/o atributos a objectos existentes, de esta forma ese objecto tendrá esos atributos y/o acciones agregadas
+ Por ejemplo, UsuarioFireBase ahora tendrá el método dataDict()*/
 extension UsuarioFireBase {
     
     //Crear un diccionarío con todas las claves y valores cuando se crea la instacia
+    //Utilizamos el enumerado Claves para controlar las claves que se añaden en el diccionario
     init?(documentData: [String : Any]) {
         
         let id = documentData[Claves.Usuario.id] as? String ?? ""

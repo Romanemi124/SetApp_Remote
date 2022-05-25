@@ -63,7 +63,7 @@ struct Autentificacion {
         }
     }
     
-    // MARK: - FireBase Crear usuario
+    // MARK: - Crear usuario
     /* Función para registrar un usuario solo se almecenará en está función el el nombre completo, nombre de usuario, email, sexo ,la fechaNacimiento, foto de perfil y el id del usuario
      En caso de error nos devolverá un error de tipo Error, sino hay ninguno, un booleano cuyo valor será verdadero */
     static func crearUsuario(nombreCompleto: String, nombreUsuario: String, email:String,
@@ -112,29 +112,31 @@ struct Autentificacion {
     /* Buscar que no se repita el nombre de usuario */
     static func buscarNombreUsuario(withNombreUsuario nombreUsuario: String, completionHandler:@escaping (Result<Bool,Error>) -> Void){
         
-        //"nombreUsuario".lowercased(), isEqualTo: nombreUsuario.lowercased() para pasar todo a minúsculas para que en la busqueda de igual si está mayusculas
+        //whereField("nombreUsuario", isEqualTo: nombreUsuario) seleccionamos el campo que se va buscar
         Firestore.firestore().collection("usuarios").whereField("nombreUsuario", isEqualTo: nombreUsuario).getDocuments{ (resultado, error) in
             
             if let error = error {
-                print("Error al buscar el usuario \(error.localizedDescription)")
+                print("Debug Error: al buscar el usuario \(error.localizedDescription)")
             }else{
                 //Si encuentra al usuario
                 if (resultado!.documents.count > 0){
                     completionHandler(.success(true))
-                    print("nombreUsuario encontrado")
+                    print("Debug: nombreUsuario encontrado")
                 }else{
                     //No encuentra al usuario
                     completionHandler(.success(false))
-                    print("nombreUsuario No encontrado")
+                    print("Debug: nombreUsuario no encontrado")
                 }
             }
         }
     }
     
     // MARK: - Modificar perfil
+    //Modificar el perfil cuando el usuario eliga una foto nueva de perfil
     static func modificarUsuario( id:String, nombreCompleto: String,sexo: String, fechaNacimiento: String, imageData:Data,
                                   completionHandler:@escaping (Result<Bool,Error>) -> Void) {
 
+        //Seleccionamos los datos a modificar
         let data = ["nombreCompleto" : nombreCompleto, "sexo" :sexo, "fechaNacimiento" : fechaNacimiento]
         
         //Si hay algún error nos devolverá el error producido
@@ -155,9 +157,11 @@ struct Autentificacion {
         
     }
     
+    //Modificar el perfil cuando el usuario no eliga una foto nueva de perfil
     static func modificarUsuarioSinImagen( id:String, nombreCompleto: String,sexo: String, fechaNacimiento: String,
                                   completionHandler:@escaping (Result<Bool,Error>) -> Void) {
 
+        //Seleccionamos los datos a modificar
         let data = ["nombreCompleto" : nombreCompleto, "sexo" :sexo, "fechaNacimiento" : fechaNacimiento]
         
         //Si hay algún error nos devolverá el error producido
@@ -175,8 +179,11 @@ struct Autentificacion {
     /* Función para cerrar sesión
      En caso de error nos devolverá un error de tipo Error, sino hay ninguno, un booleano cuyo valor será verdadero */
     static func cerrarSesion(completion: @escaping (Result<Bool, Error>) -> ()) {
+        //Obtenemeos la autentificación
         let auth = Auth.auth()
+        //Comprobamos si hay algún error
         do {
+            //Intentamos cerrar sesión
             try auth.signOut()
             completion(.success(true))
         } catch let err {
@@ -202,10 +209,15 @@ struct Autentificacion {
         case password
     }
     
+    //Obtener el provedor que se ha a utilizar para la autentificación, en proximás se utilizarán distintos provedores como Apple o Google
     static func getProviders() -> [ProviderType] {
+        //Obtenemos el provedor
         var providers:[ProviderType] = []
+        //Obtenemos el usuario que ha iniciado sesión
         if let user = Auth.auth().currentUser {
+            //Recorremos el array de provedores
             for data in user.providerData {
+                //Elegimos el provedor
                 if let providerType = ProviderType(rawValue: data.providerID) {
                     providers.append(providerType)
                 }
@@ -216,8 +228,11 @@ struct Autentificacion {
     
     //Reautentificación del usuario, se utiliazará parq borrar el usuario
     static func reautenticacionConPassword(password: String, completion: @escaping (Result<Bool,Error>) -> Void) {
+        //Obtenemos el usuario que ha iniciado sesión
         if let user = Auth.auth().currentUser {
+            //Obtenemos las credenciales user.email ?? "" puesto que con las credenciales con Apple al poser FaceID es otro tratamiento
             let credential = EmailAuthProvider.credential(withEmail: user.email ?? "", password: password)
+            //Reautenticamos el usuario
             user.reauthenticate(with: credential) { _, error in
                 if let error = error {
                     completion(.failure(error))
@@ -230,7 +245,9 @@ struct Autentificacion {
     
     //Eliminar el usuario
     static func eliminarUsuario(completion: @escaping (Result<Bool,Error>) -> Void) {
+        //Obtenemos el usuario que ha iniciado sesión
         if let user = Auth.auth().currentUser {
+            //Borramos el usuario
             user.delete { error in
                 if let error = error {
                     completion(.failure(error))

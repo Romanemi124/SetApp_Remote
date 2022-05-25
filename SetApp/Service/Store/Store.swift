@@ -14,6 +14,7 @@ import FirebaseStorage
 /*  Clase permite recuparar el usuario e inyectarlo a la variable de entorno que utilizamos en toda la aplicación */
 enum Store {
     
+    //Variables con la ruta de las colecciones
     static let rutaUsuarios = Firestore.firestore().collection(Claves.RutaColeccion.usuarios)
     static let rutaPublicacionAllPost = Firestore.firestore().collection(Claves.RutaColeccion.allPost)
     static let rutaPublicacionPost = Firestore.firestore().collection(Claves.RutaColeccion.post)
@@ -121,12 +122,11 @@ enum Store {
                     completion(.failure(StoreError.noDocumentSnapshot))
                     return
                 }
-
-                
+                //Comprobamos que haya recogido los documentos
                 guard let documentsData = querySnapshot?.documents else {
-                        print("Error mostrar documents: \(error!)")
-                        completion(.failure(StoreError.noSnapshotData))
-                        return
+                    print("Error mostrar documents: \(error!)")
+                    completion(.failure(StoreError.noSnapshotData))
+                    return
                 }
                 
                 //Variable que almacena los usuarios de FireBase
@@ -154,7 +154,7 @@ enum Store {
                 }
                 
             }
-      
+            
         }
         
     }
@@ -171,7 +171,7 @@ enum Store {
             }
         }
     }
-
+    
     // MARK: - Borrar publicaciones
     //Borrar de la coleccion allpost (todas las publicaciones)
     static func eliminarColeccionAllPost(idPublicacion:String,completion: @escaping (Result<Bool,Error>) -> Void){
@@ -205,7 +205,7 @@ enum Store {
                 completion(.success(true))
             }
         }
-      
+        
     }
     
 }
