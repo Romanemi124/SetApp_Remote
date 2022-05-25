@@ -40,7 +40,7 @@ struct PerfilSeguidoresView: View {
                 VStack {
                     Text("\(seguidores)").font(.title3)
                         .foregroundColor(.white)
-                    Text("Seguidores")
+                    Text("perfil-seguidores")
                         .font(.subheadline)
                         .foregroundColor(.white)
                 }
@@ -52,7 +52,7 @@ struct PerfilSeguidoresView: View {
                     
                     Text("\(seguidos)").font(.title3)
                         .foregroundColor(.white)
-                    Text("Seguidos")
+                    Text("perfil-seguidos")
                         .font(.subheadline)
                         .foregroundColor(.white)
                 }

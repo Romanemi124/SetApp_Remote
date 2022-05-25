@@ -33,6 +33,7 @@
 "registrarCuenta-nombreCompleto" = "Full Name";
 "registrarCuenta-nombreUsuario" = "Username";
 "registrarCuenta-password" = "Password";
+"registrarCuenta-password-dos" = "Repeat password";
 "registrarCuenta-edad" = "Enter your age:";
 "registrarCuenta-sexo_elegir" = "Select your sex:";
 "registrarCuenta-sexo_hombre" = "Man";
@@ -70,6 +71,8 @@
 "menuDesplegable-cerrarSesion" = "Log out";
 
 /* Perfil */
+"perfil-seguidores" = "Followers";
+"perfil-seguidos" = "Follows";
 "perfil-editar" = "Edit";
 "perfil-ajustes" = "Settings";
 
@@ -100,3 +103,22 @@
 "reautentificacion-cancelar" = "Cancel";
 //Errores
 "reautentificacion-error-password-incorrecto" = "The password is invalid or the user does not have a password";
+
+/*Añadir publicación*/
+"publicacion-titulo" = "Post";
+"publicacion-marca-titulo" = "Select brand:";
+"publicacion-categoria-titulo" = "Select category:";
+"publicacion-valoracion-titulo" = "Select valuation:";
+"publicacion-nombre" = "Component name";
+"publicacion-ventajas" = "Advantages:";
+"publicacion-desventajas" = "Disadvantages:";
+"publicacion-link" = "Component link";
+
+
+/*Feed*/
+"feed-titulo" = "Discover";
+
+/*CourseView*/
+"course-ventajas" = "Advantages";
+"course-desventajas" = "Disadvantages";
+"course-safari" = "Open in Safari";

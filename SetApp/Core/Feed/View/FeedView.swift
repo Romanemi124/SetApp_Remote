@@ -40,7 +40,7 @@ struct FeedView: View {
                     
                     VStack {
                         
-                        Text("Descubre")
+                        Text("feed-titulo")
                             .font(.title)
                             .fontWeight(.heavy)
                             .foregroundColor(.white)

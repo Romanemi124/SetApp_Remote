@@ -178,7 +178,6 @@ struct BuscadorView: View {
                     if let marca = detailMarca, showMarcaView {
                         MarcaView(marca: marca.nombreMarca, marcaTxt: marca.nombreMarca)
                     }
-                    
                 }
             }
             .overlay(
@@ -243,35 +242,7 @@ struct BuscadorView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: size.width, height: size.height)
                 .cornerRadius(0)
-            
-            /*
-            TabView(selection: $currentIndex) {
-                
-                ForEach(categorias.indices, id: \.self) { index in
-                    Image(categorias[index].fondo)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: size.width, height: size.height)
-                        .clipped()
-                        .tag(index)
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .animation(.easeInOut, value: currentIndex)
-            
-            let color: Color = (scheme == .light ? .black : .white)
-            
-            LinearGradient(colors: [
-                .black,
-                .clear,
-                color.opacity(1),
-            ], startPoint: .top, endPoint: .bottom)
-            
-            Rectangle()
-                .fill(.ultraThinMaterial)
-             */
         }
-        //.overlay()
         .overlay(.ultraThinMaterial)
         .ignoresSafeArea()
     }

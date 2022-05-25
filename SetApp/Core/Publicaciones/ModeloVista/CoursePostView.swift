@@ -101,7 +101,7 @@ struct CoursePostView: View {
                         
                         VStack(alignment: .leading, spacing: 6) {
                             
-                            Text("Ventajas")
+                            Text("course-ventajas")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -119,7 +119,7 @@ struct CoursePostView: View {
                         
                         VStack(alignment: .leading, spacing: 6) {
                             
-                            Text("Desventajas")
+                            Text("course-desventajas")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -161,7 +161,7 @@ struct CoursePostView: View {
                     
                     //El link de la publicacion en caso de tenerlo
                     Link(destination: URL(string: post.link)!, label: {
-                        Label("Abrir en Safari", systemImage: "safari.fill")
+                        Label("course-safari", systemImage: "safari.fill")
                             .font(.title3)
                             .foregroundColor(.white)
                             .padding(.vertical, 10)

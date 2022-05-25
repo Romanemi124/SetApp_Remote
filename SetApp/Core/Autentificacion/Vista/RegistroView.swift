@@ -138,7 +138,7 @@ struct RegistroView: View {
                             //Confirmar Contraseña
                             VStack(alignment: .leading) {
                                 
-                                CamposEntrada(placeholder: "Confirmar contraseña", isSecureField: true, text: self.$usuarioValidacion.confirmarPassword)
+                                CamposEntrada(placeholder: "registrarCuenta-password-dos", isSecureField: true, text: self.$usuarioValidacion.confirmarPassword)
                                 
                                 if !usuarioValidacion.passwordsCoinciden(_coincidenPw: usuarioValidacion.confirmarPassword) {
                                     Text(LocalizedStringKey(usuarioValidacion.validoTextoConfirmarPassword)).font(.caption).foregroundColor(.red).padding(.horizontal,40)

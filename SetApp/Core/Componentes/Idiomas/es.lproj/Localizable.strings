@@ -34,6 +34,7 @@
 "registrarCuenta-nombreCompleto" = "Nombre completo";
 "registrarCuenta-nombreUsuario" = "Nombre de usuario";
 "registrarCuenta-password" = "Contraseña";
+"registrarCuenta-password-dos" = "Repetir contraseña";
 "registrarCuenta-edad" = "Introduce tu edad:";
 "registrarCuenta-sexo_elegir" = "Seleccionar tu sexo:";
 "registrarCuenta-sexo_hombre" = "Hombre";
@@ -71,6 +72,8 @@
 "menuDesplegable-cerrarSesion" = "Cerrar sesión";
 
 /* Perfil */
+"perfil-seguidores" = "Seguidores";
+"perfil-seguidos" = "Seguidos";
 "perfil-editar" = "Editar";
 "perfil-ajustes" = "Ajustes";
 
@@ -101,3 +104,21 @@
 "reautentificacion-cancelar" = "Cancelar";
 //Errores
 "reautentificacion-error-password-incorrecto" = "La contraseña no es válida o el usuario no tiene contraseña";
+
+/*Añadir publicación*/
+"publicacion-titulo" = "Publicar";
+"publicacion-marca-titulo" = "Selecciona marca:";
+"publicacion-categoria-titulo" = "Selecciona categoría:";
+"publicacion-valoracion-titulo" = "Selecciona valoración:";
+"publicacion-nombre" = "Nombre del componente";
+"publicacion-ventajas" = "Ventajas:";
+"publicacion-desventajas" = "Desventajas:";
+"publicacion-link" = "Link del componente";
+
+/*Feed*/
+"feed-titulo" = "Descubre";
+
+/*CourseView*/
+"course-ventajas" = "Ventajas";
+"course-desventajas" = "Desventajas";
+"course-safari" = "Abrir en Safari";

@@ -57,7 +57,7 @@ struct PublicacionView: View {
                     //Este link se muestra en el momento en el que ya se ha seleccionado una foto para publicar
                     HStack{
                         
-                        Text("Publicar")
+                        Text("publicacion-titulo")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423))
@@ -108,7 +108,7 @@ struct PublicacionView: View {
                                 //Se despliegan las distintas marcas que existen dentro del fichero de Xcode
                                 HStack {
                                     
-                                    Text("Seleccionar Marca:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                    Text("publicacion-marca-titulo").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
                                     
                                     VStack(alignment: .leading, spacing: 6) {
                                         
@@ -126,7 +126,7 @@ struct PublicacionView: View {
                                 //Se despliegan las distintas categorías que hay dentro del fichero
                                 HStack {
                                     
-                                    Text("Seleccionar Categoría:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                    Text("publicacion-categoria-titulo").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
                                     
                                     VStack(alignment: .leading, spacing: 6) {
                                         
@@ -144,7 +144,7 @@ struct PublicacionView: View {
                                 //Se selecciona una valoración entre el 1 al 10
                                 HStack {
                                     
-                                    Text("Seleccionar Valoración:").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
+                                    Text("publicacion-valoracion-titulo").foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
                                     
                                     VStack(alignment: .leading, spacing: 6) {
                                         
@@ -159,13 +159,13 @@ struct PublicacionView: View {
                                 }
                                 .padding(.leading, 35)
                                 
-                                CamposPost(placeholder: "Nombre componente", isSecureField: false,text: $nombreProducto)
+                                CamposPost(placeholder: "publicacion-nombre", isSecureField: false,text: $nombreProducto)
                                 
                                 HStack {
                                     
                                     VStack(alignment: .leading, spacing: 6) {
                                         
-                                        Text("Ventajas:")
+                                        Text("publicacion-ventajas")
                                             .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
                                         
                                         TextEditor(text: $puntosPositivos)
@@ -185,7 +185,7 @@ struct PublicacionView: View {
                                     
                                     VStack(alignment: .leading, spacing: 6) {
                                         
-                                        Text("Desventajas:")
+                                        Text("publicacion-desventajas")
                                             .foregroundColor(Color(red: 0.331, green: 0.074, blue: 0.423)).fontWeight(.heavy)
                                         
                                         TextEditor(text: $puntosNegativos)
@@ -201,7 +201,7 @@ struct PublicacionView: View {
                                 .padding(.horizontal, 35)
                                 .padding(.top, 20)
                                 
-                                CamposPost(placeholder: "Link componente", isSecureField: false,text: $linkProducto)
+                                CamposPost(placeholder: "publicacion-link", isSecureField: false,text: $linkProducto)
                                     .padding(.top, 20)
                                     .padding(.bottom, 40)
                                 
@@ -215,14 +215,14 @@ struct PublicacionView: View {
                         //SeleccionarFoto(image: self.$pickedImage, isShown: self.$showingImagePicker, sourceType: self.sourceType)
                     }
                     .actionSheet(isPresented: $showingActionSheet) {
-                        ActionSheet(title: Text("Selecciona una opción"),
+                        ActionSheet(title: Text(LocalizedStringKey("registrarCuenta-notificacion")),
                                     buttons: [
-                                        .default(Text("Galería")) {
+                                        .default(Text(LocalizedStringKey("registrarCuenta-notificacion-galeria"))) {
                                             //vm.source = .library
                                             self.sourceType = .photoLibrary
                                             self.showingImagePicker = true
                                         },
-                                        .default(Text("Camera")) {
+                                        .default(Text(LocalizedStringKey("registrarCuenta-notificacion-camara"))) {
                                             //vm.source = .camera
                                             self.sourceType = .camera
                                             self.showingImagePicker = true
