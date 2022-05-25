@@ -21,27 +21,27 @@ enum EmailAutentificacionError: Error {
 }
 
 extension EmailAutentificacionError: LocalizedError {
-    // This will provide me with a specific localized description for the EmailAuthError
+   
     var errorDescription: String? {
         switch self {
+            //Contraseña incorrecta
         case .incorrectPassword:
-            return NSLocalizedString("La contraseña introducida es incorrecta", comment: "")
-            //Incorrect Password for this account
+            return NSLocalizedString("iniciarSesion-password-incorrecta", comment: "")
+            //Formato email no válido
         case .invalidEmail:
-             return NSLocalizedString("Introduce una dirección de email válida", comment: "")
-            //Not a valid email address
+            return NSLocalizedString("iniciarSesion-email-incorrecto", comment: "")
+            //El emial introducido no coincide con ninguna cuenta registrada
         case .accoundDoesNotExist:
-            return NSLocalizedString("La dirección de email introducida no coincide con ninguna cuenta", comment: "")
-            //Not a valid email address.  This account does not exist.
+            return NSLocalizedString("iniciarSesion-email-no-existe", comment: "")
+            //Error desconocido
         case .unknownError:
-            return NSLocalizedString("Error desconocido. No es posible iniciar sesión, por favor contacta con servicio al cliente", comment: "")
-            //Unknown error.  Cannot log in.
+            return NSLocalizedString("iniciarSesion-error-desconocido-validacion", comment: "")
+            //No es posible crear la cuenta
         case .couldNotCreate:
             return NSLocalizedString("No se pudo crear una cuenta de usuario en este momento", comment: "")
-            //Could not create user at this time.
+            //No se puede guardar un campo en este momento
         case .extraDataNotCreated:
             return NSLocalizedString("No se puede guardar el nombre completo en este momento", comment: "")
-            //Could not save user's full name.
         }
     }
 }
@@ -51,16 +51,16 @@ enum ErroresString{
     
     enum ErroresRegistrar{
         static let existeEmail = "The email address is already in use by another account."
-        static let existeEmailTraduccion =  "La dirección de correo electrónico introducida ya existe"
-        static let existeNombreUsuario = "El nombre de usuario introducido ya existe, añade otro"
+        static let existeEmailTraduccion =  "registrarCuenta-existe-email"
+        static let existeNombreUsuario = "registrarCuenta-existe-nombre-usuario"
     }
     enum ErroresCambiarContraseña{
         static let noExisteUsuario = "There is no user record corresponding to this identifier. The user may have been deleted."
-        static let noExisteUsuarioTraduccion = "No existe registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado"
+        static let noExisteUsuarioTraduccion = "cambiar-password-error-noexiste-usuario"
     }
     enum ErroresReAutentificacion{
         static let passwordIncorrecta = "The password is invalid or the user does not have a password."
-        static let passwordIncorrectaTraduccion = "La contraseña no es válida o el usuario no tiene contraseña."
+        static let passwordIncorrectaTraduccion = "reautentificacion-error-password-incorrecto"
     }
 }
 

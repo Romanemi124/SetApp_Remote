@@ -69,7 +69,7 @@ struct ReAutentificacionView: View {
                         }
                     }
                     //Texto de error
-                    Text(textError)
+                    Text(LocalizedStringKey(textError))
                         .foregroundColor(.red)
                         .fixedSize(horizontal: false, vertical: true)
                     

@@ -37,7 +37,7 @@ struct EliminarCuentaView: View {
                 VStack {
                     //Título
                     /*------------------------------------*/
-                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "Eliminar cuenta")
+                    CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "eliminarCuenta-titulo")
                     
                     Image("SetApp")
                         .resizable()
@@ -55,7 +55,7 @@ struct EliminarCuentaView: View {
                     
                     HStack {
                         //Cancelar
-                        Button("Cancel") {
+                        Button(LocalizedStringKey("reautentificacion-cancelar")) {
                             poderEliminar = false
                             presentationMode.wrappedValue.dismiss()
                         }

@@ -34,7 +34,7 @@ struct AjustePerfilView: View {
                     
                     //Título
                     /*------------------------------------*/
-                    CabeceraAutentificacionView(titulo1: "Ajustes", titulo2: "")
+                    CabeceraAutentificacionView(titulo1: "ajustes-cambiar-titulo", titulo2: "")
                     
                     Image("SetApp")
                         .resizable()

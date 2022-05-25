@@ -45,7 +45,10 @@
 "registrarCuenta" = "Sign Up";
 "registrarCuenta-ya-cuenta" = "Do you already have an account?";
 "registrarCuenta-link-iniciarSesion" = "Login here";
+//Errores
 "registrarCuenta-error" = "Failed to create account";
+"registrarCuenta-existe-email" = "The email address is already in use by another account";
+"registrarCuenta-existe-nombre-usuario" = "The username is already in use by another account";
 //Validación Clase
 "validacion-clase-foto" = "You must choose a profile picture";
 "validacion-clase-nombreCompleto" = "Wrong full name format";
@@ -59,6 +62,7 @@
 "cambiar-password-titulo" = "Change Password";
 "cambiar-password" = "Introduce your email address";
 "cambiar-password-aceptado" = "Password change request accepted. An email has been sent to you to change it";
+"cambiar-password-error-noexiste-usuario" = "There is no user record corresponding to this identifier. The user may have been deleted"; 
 
 /* Menu desplegable */
 "menuDesplegable-perfil" = "Profile";
@@ -78,16 +82,21 @@
 "editar-boton" = "Modify";
 
 /* Ajustes Perfil */
+"ajustes-cambiar-titulo" = "Settings";
 "ajustes-cambiar-pasword" = "Change Password";
 "ajustes-eliminar-cuenta" = "Delete account";
 
 /* Eliminar Cuenta */
+"eliminarCuenta-titulo" = "Delete account";
 "eliminarCuenta-pregunta-seguridad" = "Are you sure you want to delete your account?";
 "eliminarCuenta-inicio" = "To delete your account, you must first re-authenticate yourself. Deleting your account will delete all your posts and personal information.";
 "eliminarCuenta-boton-eliminar" = "DELETE ACCOUNT";
 "eliminarCuenta-boton-autentificarte" = "Authenticate";
 
+
 /* Reautentificacion */
 "reautentificacion-password" = "Enter your password";
 "reautentificacion-terminar" = "Done";
 "reautentificacion-cancelar" = "Cancel";
+//Errores
+"reautentificacion-error-password-incorrecto" = "The password is invalid or the user does not have a password";
