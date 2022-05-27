@@ -11,6 +11,7 @@ import SwiftUI
 /* Clase para la gestion de imagenes */
 struct ImagePicker: UIViewControllerRepresentable {
     
+    //Tipo de dato que se va a usar para recoger la foto y almacenarla
     @Binding var pickedImage : Image?
     @Binding var showImagePicker : Bool
     @Binding var imageData : Data
@@ -20,6 +21,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
+    //Controlador de la imagen para seleccionar el formato de imagen como la calidad de la misma
     func makeUIViewController(context: Context) -> some UIImagePickerController {
         let picker = UIImagePickerController()
         picker.sourceType = sourceType
@@ -28,10 +30,12 @@ struct ImagePicker: UIViewControllerRepresentable {
         return picker
     }
     
+    //Necesario para la estructura principal de la clase
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         
     }
     
+    //Coordinador que permite seleccionar la imagen ya sea desde la galería o cámara con la  calidad requerida
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         
         var parent: ImagePicker

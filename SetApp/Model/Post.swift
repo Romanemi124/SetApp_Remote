@@ -8,6 +8,7 @@
 import FirebaseFirestoreSwift
 import Firebase
 
+/*Clase que se usa para almacenar las publicaciones en la base de datos*/
 struct Post: Encodable, Decodable {
     
     var likes: [String: Bool]

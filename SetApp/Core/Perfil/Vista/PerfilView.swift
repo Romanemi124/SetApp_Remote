@@ -39,8 +39,6 @@ struct PerfilView: View {
                     
                     VStack {
                         
-                        //Vista superior del perfil
-                        //PerfilHeader(usuario: usuarioSesion.usuario, postCount: informacionPerfil.posts.count, seguidos: $informacionPerfil.seguidos, seguidores: $informacionPerfil.seguidores)
                         headerPerfil
                         
                         //Editar y Eliminar Cuenta

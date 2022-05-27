@@ -281,21 +281,6 @@ struct EditarPerfilView: View {
                                 .cancel()
                             ])
             }
-            /*.sheet(isPresented: $showingImagePicker, onDismiss: cargarImagen){
-                
-                //Selección de la foto
-                ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$fotoPerfil)
-                
-            }.actionSheet(isPresented: $showingActionSheet){
-                //Menu elegir la foto de perfil
-                ActionSheet(title: Text(LocalizedStringKey("registrarCuenta-notificacion")),
-                            buttons: [.default(Text(LocalizedStringKey("registrarCuenta-notificacion-camara"))){
-                    self.sourceType = .photoLibrary
-                    self.showingImagePicker = true
-                },.cancel()])
-                
-            }
-             */
             .accentColor(.white)
         }
     }

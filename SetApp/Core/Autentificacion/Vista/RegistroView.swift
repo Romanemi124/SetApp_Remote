@@ -318,22 +318,6 @@ struct RegistroView: View {
                                     .cancel()
                                 ])
                 }
-                /*
-                .sheet(isPresented: $showingImagePicker, onDismiss: cargarImagen){
-                    
-                    //Selección de la foto
-                    ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$usuarioValidacion.fotoPerfil)
-                    
-                }.actionSheet(isPresented: $showingActionSheet){
-                    //Menu elegir la foto de perfil
-                    ActionSheet(title: Text("Notificación"),
-                                buttons: [.default(Text("Seleccionar Imagen")){
-                        self.sourceType = .photoLibrary
-                        self.showingImagePicker = true
-                    },.cancel()])
-                    
-                }
-                 */
             }
             .accentColor(.white)
             

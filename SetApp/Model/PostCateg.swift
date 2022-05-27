@@ -8,7 +8,7 @@
 import FirebaseFirestoreSwift
 import Firebase
 
-//Esto se usa para mostrar las publicaciones de las categorias
+/*Esto se usa para mostrar las publicaciones de las categorias*/
 struct PostCateg: Identifiable, Decodable {
     
     @DocumentID var id: String?

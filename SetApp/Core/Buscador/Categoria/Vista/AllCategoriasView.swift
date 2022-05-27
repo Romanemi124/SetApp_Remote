@@ -144,12 +144,6 @@ struct FilaCategoria: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            /*
-            Rectangle()
-                .fill(Color.white)
-                .frame(height: 0.5)
-                .padding(.top, 20)
-             */
         }
         .padding()
     }

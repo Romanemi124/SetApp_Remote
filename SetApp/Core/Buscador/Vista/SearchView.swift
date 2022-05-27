@@ -68,25 +68,6 @@ struct SearchView: View {
                     
                     ForEach(viewModel.searchableUsers){ user in
                         
-                        // PROBLEMA
-                        /*
-                        Button(action:{
-                            self.followPrueba(userid: user.id!)
-                            //self.presentation.wrappedValue.dismiss()
-                            self.showlink = true
-                        }) {
-                            UserRowView(user: user)
-                                               
-                        }
-                        .background(NavigationLink("", destination: PerfilUserView(user: user, boolCheck: followCheck).navigationBarHidden(true), isActive: $showlink))
-                        */
-                        /*
-                        NavigationLink(destination: PerfilUserView(user: user, boolCheck: followCheck).onAppear {
-                            self.followPrueba(userid: user.id!)
-                                    }) {
-                                        UserRowView(user: user)
-                                    }
-                        */
                         NavigationLink{
                             
                             //.navigationBarHidden(true) quitamos el link de navegación

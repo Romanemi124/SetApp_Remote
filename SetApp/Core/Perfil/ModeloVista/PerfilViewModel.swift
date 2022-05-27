@@ -37,33 +37,6 @@ class PerfilViewModel: ObservableObject {
         return followers.document(userId).collection("followers").document(Auth.auth().currentUser!.uid)
     }
     
-    /*
-    func followState(userid: String) {
-        PerfilViewModel.followingId(userId: userid).getDocument { (document, error) in
-            
-            if let doc = document, doc.exists {
-                self.followCheck = true
-            } else {
-                self.followCheck = true
-            }
-        }
-    }
-     */
-    /*
-    func followState(userid: String) {
-     
-        PerfilViewModel.followingId(userId: userid).getDocuments { (document, error) in
-            
-            if let doc = document, doc.exists {
-                self.followCheck = true
-            } else {
-                self.followCheck = false
-            }
-        }
-    }
-     */
-    
-    
     //Cragar los datos recogidos en objetos de tipo Post para luego mostrarlos por pantalla
     func cargarPostUser(userId: String) {
         
@@ -95,25 +68,3 @@ class PerfilViewModel: ObservableObject {
         }
     }
 }
-
-/*
- @Published var publicaciones = [Publicacion]()
- private let service = ServicioProducto()
- let user: Usuario
- 
- init(user: Usuario) {
-     self.user = user
-     self.mostrarPublicUsuarios()
- }
- 
- func mostrarPublicUsuarios() {
-     guard let uid = user.id else { return }
-     service.fetchPublicationsUser(forUid: uid) { publicaciones in
-         self.publicaciones = publicaciones
-         
-         for i in 0 ..< publicaciones.count {
-             self.publicaciones[i].user = self.user
-         }
-     }
- }
- */
