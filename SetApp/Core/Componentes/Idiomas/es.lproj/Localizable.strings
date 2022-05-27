@@ -31,6 +31,7 @@
 
 /* Registrar cuenta */
 //Vista
+"registrarCuenta-titulo" = "Crear cuenta";
 "registrarCuenta-nombreCompleto" = "Nombre completo";
 "registrarCuenta-nombreUsuario" = "Nombre de usuario";
 "registrarCuenta-password" = "Contraseña";
