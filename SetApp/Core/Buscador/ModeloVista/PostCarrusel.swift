@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
  
+/*https://www.youtube.com/watch?v=GvKUmUA86WM*/
 //Estructura donde se muestran las las distintas opciones principales del buscador como las marcas o los tipos de productos que hay
 struct PostCarrusel<Content: View,T: Identifiable>: View {
     
@@ -20,6 +21,7 @@ struct PostCarrusel<Content: View,T: Identifiable>: View {
     var trailingSpace: CGFloat
     @Binding var index: Int
     
+    /*Son las características principales de cada imagen para saber cómo se van a distribuir*/
     init(spacing: CGFloat = 15, trailingSpace: CGFloat = 100, index: Binding<Int>, items: [T], @ViewBuilder content: @escaping (T) -> Content) {
         
         self.list = items
@@ -29,21 +31,25 @@ struct PostCarrusel<Content: View,T: Identifiable>: View {
         self.content = content
     }
     
-    //Offset
+    //Offset para la colocación  de los iconos
     @GestureState var offset: CGFloat = 0
     @State var currentIndex: Int = 0
     
     var body: some View {
         
+        /*Geometry reader esun objecto que se usa para ajustar el tamaño de la imagen dependiendo del tamaño de la pantalla*/
         GeometryReader { proxy in
             
+            /*Se ajusta el ancho de la imagen*/
             let width = proxy.size.width - (trailingSpace - spacing)
             let adjusMentWidth = (trailingSpace / 2) - spacing
             
             HStack(spacing: spacing) {
                 
+                /*Se recorre la lista de las publicaciones de las categorias más usadas*/
                 ForEach(list) { item in
                     
+                    /*Se ajusta al tamaño de la vista del modelo de la imagen*/
                     content(item)
                         .frame(width: proxy.size.width - trailingSpace)
                         .offset(y: getOffset(item: item, width: width))
@@ -53,6 +59,7 @@ struct PostCarrusel<Content: View,T: Identifiable>: View {
             .offset(x: (CGFloat(currentIndex) * -width) +
                     (currentIndex != 0 ? adjusMentWidth : 0) +
             offset)
+            /*El efecto carousel de las imágenes para el efecto*/
             .gesture(
                 DragGesture()
                     .updating($offset, body: { value, out, _ in
@@ -84,6 +91,7 @@ struct PostCarrusel<Content: View,T: Identifiable>: View {
         .animation(.easeInOut, value: offset == 0)
     }
     
+    /*Ajusta la imágenes cuand se hace el efecto del carousel y no se desajuste*/
     func getOffset(item: T, width: CGFloat)->CGFloat {
         
         let progress = ((offset < 0 ? offset : -offset) / width) * 60
@@ -95,6 +103,7 @@ struct PostCarrusel<Content: View,T: Identifiable>: View {
         return getIndex(item: item) == currentIndex ? -60 - topOffset : checkBetween
     }
     
+    /* Recorre los iconos  de las publicacines según el id que tengan*/
     func getIndex(item: T)->Int {
         let index = list.firstIndex { currentItem in
             

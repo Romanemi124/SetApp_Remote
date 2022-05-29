@@ -212,8 +212,8 @@ struct PublicacionView: View {
                     }
                     .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                         ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$imageData, sourceType: self.sourceType)
-                        //SeleccionarFoto(image: self.$pickedImage, isShown: self.$showingImagePicker, sourceType: self.sourceType)
                     }
+                    /*Dependiendo de la opción que escoja, se muestra la galería o la cámara*/
                     .actionSheet(isPresented: $showingActionSheet) {
                         ActionSheet(title: Text(LocalizedStringKey("registrarCuenta-notificacion")),
                                     buttons: [
@@ -231,13 +231,6 @@ struct PublicacionView: View {
                                     ])
                     }
                     .accentColor(Color(red: 0.331, green: 0.074, blue: 0.423))
-                    /*
-                    .alert("Error", isPresented: $vm.showCameraAlert, presenting: vm.cameraError, actions: { cameraError in
-                        cameraError.button
-                    }, message: { cameraError in
-                        Text(cameraError.message)
-                    })
-                     */
                 }
                 .padding(30)
             }
@@ -260,6 +253,7 @@ struct PublicacionView: View {
             return
         }
         
+        /*Una vez se comprueba que noo hay errores se llama al método y se pasan las características que el usuarioha rellenado*/
         ServicioPost.uploadPost(imageData: imageData, categoria: categoria.tiposCategoria, nombreProducto: nombreProducto, marca: marca.nombreMarcas, valoracion: valoracion.numValoracion, link: linkProducto, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos, usuario: self.session.usuario, onSuccess: {
             self.clear()
         }) {
@@ -271,6 +265,7 @@ struct PublicacionView: View {
         }
     }
     
+    /*Una vez se almacena la publicación se vacían los datos */
     func clear() {
         self.nombreProducto = ""
         self.linkProducto = ""
@@ -280,6 +275,7 @@ struct PublicacionView: View {
         self.postImage = Image("camaraFondo")
     }
     
+    /*Para subir una publicación tienen que estar todos los datos rellenos*/
     func errorCheck() -> String? {
         
         if nombreProducto.trimmingCharacters(in: .whitespaces).isEmpty || linkProducto.trimmingCharacters(in: .whitespaces).isEmpty || puntosPositivos.trimmingCharacters(in: .whitespaces).isEmpty || puntosNegativos.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty {

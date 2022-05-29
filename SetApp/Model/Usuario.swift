@@ -7,10 +7,7 @@
 
 import FirebaseFirestoreSwift
 
-/* DEPRECATED  */
-
-//Tabla Usuarios de nuestra base de datos
-//Creamos el objecto usuario
+/*Clase auxilizar para almacenar datos y mostrar personas*/
 struct Usuario: Identifiable, Decodable{
     
     /* @DocumentID indicar que se trata del id del usuario */

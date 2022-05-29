@@ -90,11 +90,13 @@ class StorageService {
         }
     }
     
+    /*Para almacenar la publicación que quiera el usuario*/
     static func savePostPhoto(userId: String, imageData: Data, categoria: String, nombreProducto: String, marca: String, valoracion: String,
                               link:String, puntosPositivos: String, puntosNegativos: String, postId: String, metadata: StorageMetadata, storagePostRef: StorageReference, usuario: UsuarioFireBase?, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         
         storagePostRef.putData(imageData, metadata: metadata) { (StorageMetadata, error) in
             
+            /*En caso de haber errorse mostraría, sino se almacenaría en la base de datos*/
             if error != nil {
                 onError(error!.localizedDescription)
                 return
@@ -104,15 +106,21 @@ class StorageService {
                 
                 (StorageMetadata, error) in
                 
+                /*Una  vez dentro comprueba de nuevo que no haya ningún error*/
                 if error != nil {
                     onError(error!.localizedDescription)
                     return
                 }
                 
+                /*Comprime la imagen de manera URL para almacenar la imagen*/
                 storagePostRef.downloadURL { (url, error) in
+                    /*Transforma la dirección de la imagen a  un string*/
                     if let metaImageUrl = url?.absoluteString {
+                        
+                        /*Se almacena en la  base de datos recogiendo el id del usuario que publica la imagen*/
                         let firestorePostRef = ServicioPost.PostUserId(userId: userId).collection("posts").document(postId)
                         
+                        /*Inicializamos el objeto detipo Post, recogiendo todos los datos que el usuario introduce al guardar una publicación*/
                         let post = Post.init(likes: [:], geoLocation: "", OwnerId: userId, postId: postId, username: usuario!.nombreUsuario, profile: usuario!.urlImagenPerfil, mediaUrl: metaImageUrl, date: Date().timeIntervalSince1970, likeCount: 0, categoria: categoria, nombreProducto: nombreProducto, marca: marca, valoracion: valoracion, link: link, puntosPositivos: puntosPositivos, puntosNegativos: puntosNegativos)
                         
                         guard let dict = try? post.asDictionary() else { return }
@@ -123,6 +131,7 @@ class StorageService {
                                 return
                             }
                             
+                            /*Sino hay ningún error y todo está correcto se almacena en la otra tabla de Firebase con el id del post*/
                             ServicioPost.AllPosts.document(postId).setData(dict)
                             onSuccess()
                         }

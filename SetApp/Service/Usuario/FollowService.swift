@@ -92,9 +92,6 @@ class FollowService: ObservableObject {
         //"nombreUsuario".lowercased(), isEqualTo: nombreUsuario.lowercased() para pasar todo a minúsculas para que en la busqueda de igual si está mayusculas
         Firestore.firestore().collection("followers").whereField("followers", isEqualTo: userId).getDocuments{ (resultado, error) in
             
-            //Firestore.firestore().collection("followers").document(userId).collection("followers").document(Auth.auth().currentUser!.uid).getDocuments { (resultado, error) in
-            //PerfilViewModel.followingId(userId: userId).getDocuments { (resultado, error) in
-            
             if let error = error {
                 print("Follow: error al encontrar el usuario \(error.localizedDescription)")
             }else{

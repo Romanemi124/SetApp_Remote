@@ -30,6 +30,7 @@ struct CourseView: View {
                     
                     ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
                         
+                        /*Se muestra la imagen de la publicación*/
                         KFImage(URL(string: post.mediaUrl))
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -56,6 +57,7 @@ struct CourseView: View {
                     }
                     //.gesture(DragGesture(minimumDistance: 0).onChanged(onChanged(value:)).onEnded(onEnded(value:)))
                     
+                    /*Se muestran los distintos datos de las publicaciones con sus estilos*/
                     Text(post.nombreProducto)
                         .font(.title)
                         .fontWeight(.heavy)

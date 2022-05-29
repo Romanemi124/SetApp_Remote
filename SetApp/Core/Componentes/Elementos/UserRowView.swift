@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 
+/*Esta clase se usa para mostrar los datos del usuario en el buscador*/
 struct UserRowView: View {
     
     let user: UsuarioFireBase

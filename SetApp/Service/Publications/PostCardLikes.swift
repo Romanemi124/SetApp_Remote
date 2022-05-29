@@ -12,6 +12,7 @@ struct PostCardLikes: View {
     
     @ObservedObject var servicioPost = ServicioPostCard()
     
+    /*Una vez se llama a esta parte de la publicación, llama al método de los likes para subir o restar el contador de los likes*/
     init(post: Post) {
         self.servicioPost.post = post
         self.servicioPost.hasLikedPost()
@@ -32,6 +33,7 @@ struct PostCardLikes: View {
                     }
                 })
             }) {
+                /*En caso de dar like se muestra el corazón relleno o vacío cuando se lo quita*/
                 Image(systemName: (self.servicioPost.isLiked) ? "heart.fill": "heart")
                     .foregroundColor((self.servicioPost.isLiked) ? Color(red: 0.721, green: 0.491, blue: 0.849) : .white)
             }

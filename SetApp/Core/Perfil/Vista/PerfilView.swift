@@ -100,10 +100,9 @@ struct PerfilView: View {
                     }
                     .padding(.bottom, 10)
                     
+                    /*Barra debajo de la cabezera*/
                     Picker("", selection: $selection) {
                         Image(systemName: "circle.grid.2x2.fill").tag(0)
-    //                    Image(systemName: "suit.heart.fill").tag(1)
-    //                    Image(systemName: "star.fill").tag(2)
                     }
                     .pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
                     
@@ -112,6 +111,7 @@ struct PerfilView: View {
                         
                         VStack {
                             
+                            /*Recorre el array donde se guardan las publicaciones para mostrarlas en el perfil*/
                             ForEach(self.informacionPerfil.posts, id:\.postId) { (post) in
                                 
                                 NavigationLink{
@@ -136,17 +136,6 @@ struct PerfilView: View {
     }
 }
 
-//Para mostrar el orden de las publicaciones
-/*
- func getIndex(post: Post) -> Int {
- 
- return _post.firstIndex { currentPost in
- return post.postId == currentPost.postId
- } ?? 0
- }*/
-
-
-
 
 struct PerfilView_Previews: PreviewProvider {
     static var previews: some View {
@@ -154,6 +143,7 @@ struct PerfilView_Previews: PreviewProvider {
     }
 }
 
+/*Cabezera donde se muestran los datos del usuario*/
 extension PerfilView{
     
     //Vista superior del perfil(informacion del usuario) y los seguidores, seguidos y publicaciones

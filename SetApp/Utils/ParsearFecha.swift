@@ -7,6 +7,7 @@
 
 import Foundation
 
+/* Clase que se usa para almacenar la fecha de nacimiento en Firebase según estructura*/
 class ParsearFecha{
     
     //Método para pasar de Date a String con un formato de fecha

@@ -53,7 +53,6 @@ struct PerfilHeader: View {
                 
                 if usuario != nil {
                     
-                    //WebImage(url: URL(string: usuario!.urlImagenPerfil)!)
                     KFImage(URL(string: usuario!.urlImagenPerfil)!)
                         .resizable()
                         .scaledToFit()

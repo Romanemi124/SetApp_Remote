@@ -17,6 +17,7 @@ struct CategoriaView: View {
     
     //private let categoria: String
     
+    /*Inicializamos la categoria para pasar por parámetro la que se busca*/
     init(categoria: String, categoriaTxt: String) {
         self.viewModel = CategoriaViewModel(categoria: categoria)
         self.categoriaTxt = categoriaTxt
@@ -45,6 +46,7 @@ struct CategoriaView: View {
                    
                    LazyVGrid(columns: threeColumn) {
                        
+                       /*Recorre el array de todas las publicaciones que se han almacenado en el array*/
                        ForEach(viewModel.posts) { post in
                            
                            NavigationLink{

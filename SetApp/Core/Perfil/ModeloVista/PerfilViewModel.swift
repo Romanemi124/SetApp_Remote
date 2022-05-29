@@ -37,7 +37,7 @@ class PerfilViewModel: ObservableObject {
         return followers.document(userId).collection("followers").document(Auth.auth().currentUser!.uid)
     }
     
-    //Cragar los datos recogidos en objetos de tipo Post para luego mostrarlos por pantalla
+    /*Cargar las publicaciones y seguidores y seguidos para mostrar en el perfil del usuario cuando se inicializa*/
     func cargarPostUser(userId: String) {
         
         ServicioPost.loadUserPosts(userId: userId) { (posts) in
@@ -48,6 +48,7 @@ class PerfilViewModel: ObservableObject {
         followers(userId: userId)
     }
     
+    /*Cargan los seguidos del usuario*/
     func follows(userId: String) {
         
         PerfilViewModel.followingCollection(userId: userId).getDocuments { (querysnapshot, err) in
@@ -58,6 +59,7 @@ class PerfilViewModel: ObservableObject {
         }
     }
     
+    /*Cargan los seguidores del usuario*/
     func followers(userId: String) {
         
         PerfilViewModel.followersCollection(userId: userId).getDocuments { (querysnapshot, err) in

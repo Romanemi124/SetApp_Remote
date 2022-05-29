@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 import FirebaseAuth
 
+/*Vista de perfil para el resto de usuarios que no son el principal*/
 struct PerfilUserView: View {
     
     var user: UsuarioFireBase
@@ -39,8 +40,6 @@ struct PerfilUserView: View {
                     
                     Picker("", selection: $selection) {
                         Image(systemName: "circle.grid.2x2.fill").tag(0)
-//                        Image(systemName: "suit.heart.fill").tag(1)
-//                        Image(systemName: "star.fill").tag(2)
                     }
                     .pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
                     
@@ -48,7 +47,7 @@ struct PerfilUserView: View {
                     if selection == 0 {
                         
                         VStack {
-                            
+                            /*Recorre el array donde se guardan las publicaciones para mostrarlas en el perfil*/
                             ForEach(self.viewModel.posts, id:\.postId) { (post) in
                                 
                                 NavigationLink{

@@ -20,10 +20,12 @@ struct PostItem: View {
             
             ZStack(alignment: .topLeading) {
                 
+                /*El Geometry Reader se usa para ajustar la imagen según el tamaño del móvil*/
                 GeometryReader { proxy in
                     
                     let size = proxy.size
                     
+                    /*Se ajusta el tamaño de la imagen*/
                     KFImage(URL(string: post.mediaUrl))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -35,6 +37,7 @@ struct PostItem: View {
             
             HStack(spacing: 12) {
                 
+                /*Se ponen las características principales de cada publicación*/
                 KFImage(URL(string: post.profile))
                     .resizable()
                     .aspectRatio(contentMode: .fill)

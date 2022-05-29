@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
  
+/*Datos que se muestran cuando el usuario suba unapublicación y selccione la categoría*/
 enum TiposCategoria: String, CaseIterable {
     
     case monitor = "Monitor"

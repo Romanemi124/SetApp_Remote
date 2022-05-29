@@ -47,6 +47,7 @@ struct MarcaView: View {
                         
                         ForEach(viewModel.posts) { post in
                             
+                            /*Recorre el array de todas las publicaciones que se han almacenado en el array*/
                             NavigationLink{
                                 //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
                                 CoursePostView(post: post)

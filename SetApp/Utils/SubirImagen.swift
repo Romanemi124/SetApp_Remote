@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 
-/* Estructura para subir la imagen de peril */
+/* Esta clase se usa para subir a Firebase la foto seleccionada para el perfil */
 struct SubirImagen{
     
     /*  @escaping son aquellos que pueden ser ejecutados o llamados más tarde, después de que la función que los contiene haya terminado de ejecutarse */

@@ -133,20 +133,6 @@ struct BuscadorView: View {
                             
                             ForEach(marcas) { marca in
                                 
-                                //1º opción
-                                /*
-                                NavigationLink{
-                                    //Mostramos el usuario gracias el usuario que hemos guardado de la sesión
-                                    MarcaView(marca: marca.nombreCategoria, marcaTxt: marca.nombreCategoria)
-                                }label: {
-                                    Image(marca.artwork)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 100, height: 120)
-                                        .cornerRadius(15)
-                                }
-                                 */
-                                
                                 //2º opción
                                 Image(marca.artwork)
                                     .resizable()

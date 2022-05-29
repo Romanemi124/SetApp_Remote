@@ -80,9 +80,7 @@
 		B0CE87B928242F6100D1670A /* ParsearFecha.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87B828242F6100D1670A /* ParsearFecha.swift */; };
 		B0CE87C128242FF600D1670A /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87C028242FF600D1670A /* Usuario.swift */; };
 		B0CE87C52824301700D1670A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87C42824301700D1670A /* Post.swift */; };
-		B0CE87C92824308F00D1670A /* SeleccionarFoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87C82824308F00D1670A /* SeleccionarFoto.swift */; };
 		B0CE87CF282430A100D1670A /* ServicioPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87CC282430A100D1670A /* ServicioPost.swift */; };
-		B0CE87D2282430B200D1670A /* ServicioUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87D0282430B200D1670A /* ServicioUsuario.swift */; };
 		B0CE87E4282431C300D1670A /* PerfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87E2282431C200D1670A /* PerfilViewModel.swift */; };
 		B0CE87E5282431C300D1670A /* PerfilPublicacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87E3282431C300D1670A /* PerfilPublicacion.swift */; };
 		B0CE87E8282431CA00D1670A /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE87E6282431CA00D1670A /* PerfilView.swift */; };
@@ -164,9 +162,7 @@
 		B0CE87B828242F6100D1670A /* ParsearFecha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsearFecha.swift; sourceTree = "<group>"; };
 		B0CE87C028242FF600D1670A /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		B0CE87C42824301700D1670A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		B0CE87C82824308F00D1670A /* SeleccionarFoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeleccionarFoto.swift; sourceTree = "<group>"; };
 		B0CE87CC282430A100D1670A /* ServicioPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicioPost.swift; sourceTree = "<group>"; };
-		B0CE87D0282430B200D1670A /* ServicioUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicioUsuario.swift; sourceTree = "<group>"; };
 		B0CE87E2282431C200D1670A /* PerfilViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewModel.swift; sourceTree = "<group>"; };
 		B0CE87E3282431C300D1670A /* PerfilPublicacion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilPublicacion.swift; sourceTree = "<group>"; };
 		B0CE87E6282431CA00D1670A /* PerfilView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
@@ -534,7 +530,6 @@
 			isa = PBXGroup;
 			children = (
 				B026B2652831433A000CA61C /* FollowService.swift */,
-				B0CE87D0282430B200D1670A /* ServicioUsuario.swift */,
 			);
 			path = Usuario;
 			sourceTree = "<group>";
@@ -688,7 +683,6 @@
 		B0CE87C72824307D00D1670A /* Publications */ = {
 			isa = PBXGroup;
 			children = (
-				B0CE87C82824308F00D1670A /* SeleccionarFoto.swift */,
 				B0CE87CC282430A100D1670A /* ServicioPost.swift */,
 				B0D4CCF9282C5CF400F93CF0 /* ServicioPostCard.swift */,
 				B03FFC4C282D050A00BDA7CC /* PostCardLikes.swift */,
@@ -836,7 +830,6 @@
 			files = (
 				B0CE87FD2824322200D1670A /* CategoriaView.swift in Sources */,
 				B006D7BD282BD39300D06A91 /* IniciarSesionView.swift in Sources */,
-				B0CE87C92824308F00D1670A /* SeleccionarFoto.swift in Sources */,
 				62AD86332839037B0077ECA1 /* PerfilSeguidoresView.swift in Sources */,
 				628647542833B7D600B1DA11 /* EditarPerfilView.swift in Sources */,
 				62605864280595E1009D2DC2 /* MenuDeslizanteModeloView.swift in Sources */,
@@ -854,7 +847,6 @@
 				6222DB1D282D74B5006C08B1 /* UserRowView.swift in Sources */,
 				B0A734772835076A00163138 /* CategoriaViewModel.swift in Sources */,
 				B006D763282BD22C00D06A91 /* EstadoAutentificacionUsuario.swift in Sources */,
-				B0CE87D2282430B200D1670A /* ServicioUsuario.swift in Sources */,
 				622286D828357CA500FA8F87 /* CambiarPasswordView.swift in Sources */,
 				B0D4CCFA282C5CF400F93CF0 /* ServicioPostCard.swift in Sources */,
 				6260586D280595E1009D2DC2 /* MainTabView.swift in Sources */,

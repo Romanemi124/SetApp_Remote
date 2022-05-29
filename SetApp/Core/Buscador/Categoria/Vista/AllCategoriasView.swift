@@ -44,6 +44,7 @@ struct AllCategoriasView: View {
                     .padding()
                     .padding(.top, 10)
                     
+                    /*Se almacenan todas las categorías que se pueden tener dentro de la aplicación*/
                     Group {
                         FilaCategoria(txtCategoria: "Monitor", logoCategoria: "desktopcomputer")
                         FilaCategoria(txtCategoria: "Ratón", logoCategoria: "magicmouse.fill")
@@ -106,6 +107,7 @@ struct AllCategoriasView_Previews: PreviewProvider {
     }
 }
 
+/*Estructura para mostrar cada categoría con su nombre e icono*/
 struct FilaCategoria: View {
     
     var txtCategoria: String

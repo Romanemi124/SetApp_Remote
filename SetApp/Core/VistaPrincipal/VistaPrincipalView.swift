@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//Se usa en todas las vistas principales del acceso del usuario para poner de fondo
+/*Se usa en todas las vistas principales del acceso del usuario para poner de fondo*/
 struct EstablecerFondoPrincipal: View {
     var body: some View {
         Image("fondo")
@@ -17,7 +17,7 @@ struct EstablecerFondoPrincipal: View {
     }
 }
 
-// Estilos del botón morado para iniciar sesión o registrarse
+/*Estilos del botón morado para iniciar sesión o registrarse*/
 struct PrimaryButton: View {
     
     var title: String
@@ -34,7 +34,7 @@ struct PrimaryButton: View {
     
 }
 
-//Fondo de los círculos donde
+/*Son fondos de colores para poner dentro de todas las vistas de la app*/
 struct FondoPantallasApp: View {
     
     var body: some View {
@@ -78,7 +78,7 @@ struct FondoPantallasApp: View {
     }
 }
 
-//Fondo de los círculos donde
+/*Son fondos de colores para poner dentro de todas las vistas de la app*/
 struct FondoPantallaClaroApp: View {
     
     var body: some View {
@@ -89,13 +89,6 @@ struct FondoPantallaClaroApp: View {
         GeometryReader { proxy in
             
             let size = proxy.size
-            
-            /*
-            Color.white
-                .opacity(0.8)
-                .blur(radius: 200)
-                .ignoresSafeArea()
-            */
             
             //Color oscuro
             Circle()

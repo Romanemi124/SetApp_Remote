@@ -263,7 +263,6 @@ struct EditarPerfilView: View {
             }
             .sheet(isPresented: $showingImagePicker, onDismiss: cargarImagen) {
                 ImagePicker(pickedImage: self.$pickedImage, showImagePicker: self.$showingImagePicker, imageData: self.$fotoPerfil, sourceType: self.sourceType)
-                //SeleccionarFoto(image: self.$pickedImage, isShown: self.$showingImagePicker, sourceType: self.sourceType)
             }
             .actionSheet(isPresented: $showingActionSheet) {
                 ActionSheet(title: Text(LocalizedStringKey("registrarCuenta-notificacion")),
