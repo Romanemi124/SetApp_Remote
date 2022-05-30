@@ -59,16 +59,17 @@ class StorageService {
         }
         
     }
-    //completion: @escaping (Result<Bool,Error>) -> Void
+    
+    //Eliminar la foto de perfil de un usuario
+    //completion: @escaping (Result<Bool,Error>) -> Void devolver un error en caso de error, devolver un void en caso de que no hay ningún error
     static func eliminarFotoPerfil(id:String,completion: @escaping (Result<Bool,Error>) -> Void){
         
+        //storageRoot.child("posts").child(idPublicacion) seleccionamos la foto de perfil
         storageRoot.child(Claves.RutaColeccion.usuarioImagenPerfil).child(id).delete{ error in
             
             if let error = error{
-                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
                 completion(.failure(error))
             }else{
-                print("Se ha borrado correctamente")
                 completion(.success(true))
             }
         }
@@ -76,15 +77,15 @@ class StorageService {
     
     // MARK: - Borrar publicaciones
     /* Eliminar publicacion storage */
+    //completion: @escaping (Result<Bool,Error>) -> Void devolver un error en caso de error, devolver un void en caso de que no hay ningún error
     static func eliminarPublicacion(idPublicacion:String,completion: @escaping (Result<Bool,Error>) -> Void){
+        
         //storageRoot.child("posts").child(idPublicacion) seleccionamos la publicacion
         storageRoot.child("posts").child(idPublicacion).delete{ error in
             
             if let error = error{
-                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
                 completion(.failure(error))
             }else{
-                print("Se ha borrado correctamente")
                 completion(.success(true))
             }
         }

@@ -180,10 +180,8 @@ enum Store {
         referenciaAllPost(id: idPublicacion).delete{ error in
             
             if let error = error{
-                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
                 completion(.failure(error))
             }else{
-                print("Se ha borrado correctamente")
                 completion(.success(true))
             }
         }
@@ -198,10 +196,8 @@ enum Store {
         referenciaPost(id: idUsuario).collection("posts").document(idPublicacion).delete{ error in
             
             if let error = error{
-                print("Error: Al borrar foto de perfil \(error.localizedDescription)")
                 completion(.failure(error))
             }else{
-                print("Se ha borrado correctamente")
                 completion(.success(true))
             }
         }
