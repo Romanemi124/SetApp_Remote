@@ -39,12 +39,3 @@ struct UserRowView: View {
         .padding(.vertical, 4)
     }
 }
-
-
-/*
-struct UserRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserRowView()
-    }
-}
-*/

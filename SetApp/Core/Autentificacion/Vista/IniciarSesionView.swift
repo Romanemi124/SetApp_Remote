@@ -78,6 +78,7 @@ struct IniciarSesionView: View {
                     /*------------------------------------*/
                     Button(action: {
                         
+                        //Autentificar el usuario según su email y contraseña
                         Autentificacion.autenticar(withEmail: self.usuarioValidacion.email,
                                                    password: self.usuarioValidacion.password) { (result) in
                             
@@ -95,8 +96,6 @@ struct IniciarSesionView: View {
                                 
                             }
                         }
-                        
-                        
                         
                     }) {
                         PrimaryButton(title: "iniciarSesion")

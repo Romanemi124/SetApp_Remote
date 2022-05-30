@@ -17,7 +17,6 @@ struct SetAppApp: App {
     //Cada vez que se cargue la app realizará este método
     /* Realizamos la configuración directamente con este método porque no tenemos otras clases "main" */
     init(){
-        
         FirebaseApp.configure()
     }
     var body: some Scene {

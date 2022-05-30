@@ -13,7 +13,7 @@ struct ContentView: View {
     //Variable que controla el menu
     @State private var mostraMenu = false
     
-    //Para OtroProyecto
+    //Control de la sesión del usuario que se ha autentificado
     @EnvironmentObject var estadoUsuario: EstadoAutentificacionUsuario
     
     var body: some View {
@@ -22,7 +22,7 @@ struct ContentView: View {
         Group{
             if estadoUsuario.estaUsuarioAutentificado == .indefinido{
                 /* Se añadirá una vista cuando el usuario no esté autentificando. Tras aparecer está vista llamará a la función y al comprobar que no se ha auntetificado refrescará la vista y llamará a la vista LoginView() */
-                Text("Cargando..")
+                Text("Cargando...")
             }else if estadoUsuario.estaUsuarioAutentificado == .iniciarSesion{
                 /* Cuando el usuario esté logeado nos mostrará la pantalla principal de la aplicación */
                 mainInterfaceView

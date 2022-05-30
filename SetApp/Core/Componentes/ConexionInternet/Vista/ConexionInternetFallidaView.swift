@@ -41,19 +41,3 @@ struct ConexionInternetFallidaView: View {
     }
     
 }
-/*
- 
- //Verficamos que esté conectado a Internet
- if !networkManager.isConnected {
-     
-     //Mostramos la vista de fallo de conexión a Internet
-     ConexionInternetFallidaView(networkManager: networkManager)
-     
- }else{
- 
-     //Mostramos la vista deseada
-     
-     
- }
- 
- */

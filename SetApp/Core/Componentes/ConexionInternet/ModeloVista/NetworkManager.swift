@@ -8,7 +8,7 @@
 import Foundation
 import Network
 
-//Observable object para este esci¡uchando cuando se desconecta o no de internet
+//La clase es de tipo ObservableObject para que se mantenga atento a los cambios de conexión a Internet
 class NetworkManager: ObservableObject{
     
     //Controlador de la red
@@ -30,6 +30,7 @@ class NetworkManager: ObservableObject{
             return ""
         }
     }
+    
     init(){
         
         // monitor.pathUpdateHandler controlamos si hay algún cambio en la conexión

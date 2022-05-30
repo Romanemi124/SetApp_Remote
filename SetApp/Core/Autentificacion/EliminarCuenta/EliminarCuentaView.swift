@@ -34,7 +34,9 @@ struct EliminarCuentaView: View {
                 
                 //Imagen de fondo de la vista
                 EstablecerFondoPrincipal()
+                
                 VStack {
+                    
                     //Título
                     /*------------------------------------*/
                     CabeceraAutentificacionView(titulo1: "SetApp", titulo2: "eliminarCuenta-titulo")
@@ -70,8 +72,6 @@ struct EliminarCuentaView: View {
                             
                             if poderEliminar {
                                 
-                                print("DELETE ACCOUNT")
-                                
                                 StorageService.eliminarFotoPerfil(id: estadoUsuario.usuario.id!){ result in
                                     // Mostramos los resultados de la busqueda
                                     switch result {
@@ -82,7 +82,6 @@ struct EliminarCuentaView: View {
                                         print("Error: Al borrar foto de perfil \(error.localizedDescription)")
                                         //En caso de que se haya borrado correcatmente
                                     case .success(_):
-                                        print("Se ha borrado la foto correctamente")
                                         
                                         Store.borrarDatosUsuario(id: estadoUsuario.usuario.id!){ result in
                                             switch result {
@@ -90,7 +89,7 @@ struct EliminarCuentaView: View {
                                                 //Eliminamos el usuario
                                                 Autentificacion.eliminarUsuario{ result in
                                                     if case let .failure(error) = result {
-                                                        print(error.localizedDescription)
+                                                        print("Debug Error: Error al eliminar el usuario \(error.localizedDescription)")
                                                     }
                                                 }
                                             case .failure(let error):
@@ -103,8 +102,8 @@ struct EliminarCuentaView: View {
                                 }
                                 
                             } else {
-                                print("Autenticando")
                                 withAnimation {
+                                    //Obtener los proveedores de autentificación
                                     provedores = Autentificacion.getProviders()
                                 }
                             }
@@ -119,6 +118,7 @@ struct EliminarCuentaView: View {
                 }
                 .padding(.top, 30)
                 .padding(.horizontal,10)
+                //Se dirigirá a la vista reautentificación si hay por lo menos algún proveedor de reautentificación
                 if !provedores.isEmpty {
                     ReAutentificacionView(provedores: $provedores, poderEliminar: $poderEliminar)
                 }

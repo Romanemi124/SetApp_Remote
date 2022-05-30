@@ -89,7 +89,7 @@ class FollowService: ObservableObject {
     //Comprobar si ya sigue al usuario o todavía no
     static func buscarSeguimientoUser(withIdUsuario userId: String, completionHandler:@escaping (Result<Bool,Error>) -> Void){
         
-        //"nombreUsuario".lowercased(), isEqualTo: nombreUsuario.lowercased() para pasar todo a minúsculas para que en la busqueda de igual si está mayusculas
+        //whereField("followers", isEqualTo: userId) seleccionar el campo
         Firestore.firestore().collection("followers").whereField("followers", isEqualTo: userId).getDocuments{ (resultado, error) in
             
             if let error = error {

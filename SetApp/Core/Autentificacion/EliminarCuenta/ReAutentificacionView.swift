@@ -41,9 +41,10 @@ struct ReAutentificacionView: View {
                             .frame(height: 60)
                             .padding(.horizontal)
                     }
-                    
+                    /* Seleccionamos los provdedores de autentificación, en este caso solo hay uno */
                     ForEach(provedores, id: \.self) { provider in
                         
+                        //Seleccionamos el proveedor de autentificación
                         if provider == .password{
                             
                             VStack {
@@ -68,7 +69,8 @@ struct ReAutentificacionView: View {
                             
                         }
                     }
-                    //Texto de error
+                    
+                    //Texto de error cuando haya algún error
                     Text(LocalizedStringKey(textError))
                         .foregroundColor(.red)
                         .fixedSize(horizontal: false, vertical: true)
@@ -94,16 +96,20 @@ struct ReAutentificacionView: View {
         
     }
     
+    //Recoge el resultado producido en la autentificación, incluido los errores
     func handleResult(result: Result<Bool,Error>) {
         switch result {
+            
         case .success:
             //Ya está reutentificado ya puede borrar la cuenta
             poderEliminar = true
             withAnimation {
                 provedores = []
             }
+            
         case .failure(let error):
             //Elegimos el texto de error a mostrar, controlamos el tipo de error
+            
             switch error.localizedDescription{
                 
             case ErroresString.ErroresReAutentificacion.passwordIncorrecta:
@@ -111,8 +117,10 @@ struct ReAutentificacionView: View {
                 //Mostramos cualquier tipo de error sucedido
             default:
                 self.textError = error.localizedDescription
+                
             }
         }
+        
     }
 }
 

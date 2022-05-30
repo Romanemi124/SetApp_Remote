@@ -69,8 +69,6 @@ struct AjustePerfilView: View {
                         //Separación de los laterales de la vista
                         .cornerRadius(10)
                         .padding(35)
-                        //Para que sólo se mueva uno
-                        
                         
                         //Eliminar cuenta
                         HStack {
@@ -96,7 +94,6 @@ struct AjustePerfilView: View {
                         .padding(35)
                         //Para que sólo se mueva uno
                         .frame(height: 100)
-                        
                     }
                     Spacer(minLength: 50)
                 }

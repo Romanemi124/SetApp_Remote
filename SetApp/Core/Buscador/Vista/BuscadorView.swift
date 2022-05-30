@@ -74,12 +74,10 @@ struct BuscadorView: View {
                     .onTapGesture {
                         
                         withAnimation(.easeInOut) {
-                            viewModel.searchActivated = true
-                            print("Array de usuarios de searh bar \(viewModel.usuarios)")
-                            print("El usuario2 es \(usuario)")
-                            print("La posicion del usuario que ha iniciado sesión es\(self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios))")
                             
-                            //Borramos el usuario que ha iniciado sesión del buscador
+                            viewModel.searchActivated = true
+                           
+                            //Borramos el usuario que ha iniciado sesión del buscador para no poder buscar su propia cuenta
                             self.viewModel.usuarios.remove(at: self.viewModel.posicionUsuario(usuario:  self.usuario, arrayUsuarioFireBase: self.viewModel.usuarios)!)
                         }
                     }

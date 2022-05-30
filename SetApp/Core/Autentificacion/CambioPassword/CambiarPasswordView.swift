@@ -74,7 +74,7 @@ struct CambiarPasswordView: View {
                                     alertType = .error
                                 case .success( _):
                                     //Cuando haya cambiado de contraseña se cerrará la sesión
-                                    print("Exito")
+                                    print("Debug: CambiarPassword éxito")
                                     alertType = .sucess
                                 }
                                 self.showAlert = true

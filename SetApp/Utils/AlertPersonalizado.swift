@@ -12,5 +12,5 @@ enum TipoAlert{
     
     case sucess
     case error
-    
+
 }
