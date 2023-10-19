@@ -1,5 +1,7 @@
 # SetApp
 
+App creada para dispositivos iOS
+
 ![SetApp](https://github.com/Romanemi124/Romanemi124/assets/102904774/9ec72727-de7b-4398-b6ec-6e87111e43ee)
 
 ### Descripción del proyecto
